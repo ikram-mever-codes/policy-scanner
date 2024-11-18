@@ -8,7 +8,7 @@ import ChooseSmoker from "@/Pages/Quote-form/ChooseSomker";
 import { CSSTransition } from "react-transition-group";
 import { useRouter } from "next/navigation";
 
-const page = () => {
+const FinalQuote = () => {
   const [openPopup, setOpenPopup] = useState(true);
   const [selected, setSelected] = useState(null);
   const [isWholeLife, setIsWholeLife] = useState(false);
@@ -108,4 +108,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default FinalQuote;
