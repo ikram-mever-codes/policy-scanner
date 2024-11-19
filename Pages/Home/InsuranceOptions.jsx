@@ -41,13 +41,13 @@ const InsuranceOptions = () => {
         <h2 className="text-halfBlack text-[40px] font-semibold text-center ">
           Customized plans. Full protection. Explore options{" "}
         </h2>
-        <div className="w-[1150px] grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-5 lg:gap-6">
+        <div className="w-[1000px] grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-5 gap-y-[4rem] lg:gap-6">
           {insuranceOptions.map((ins, index) => (
             <div
               key={index}
               onClick={() => setActiveIndex(index)}
               className={`
-                group relative w-[558px] h-[275px] overflow-hidden cursor-pointer
+                group relative w-[480px] h-[275px] overflow-hidden cursor-pointer
                 bg-white rounded-[20px] shadow-lg 
                 flex flex-col 
                 transition-all duration-500 ease-in-out

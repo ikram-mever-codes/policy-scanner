@@ -28,7 +28,7 @@ const OurPartners = () => {
           <h2 className="text-[40px] mb-[20px] font-bold text-center text-halfBlack">
             Our partners
           </h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-[2rem]">
+          <div className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-[25px]">
             {partners.map((prov, index) => (
               <div
                 key={index}

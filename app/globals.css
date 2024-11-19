@@ -185,6 +185,11 @@ button:focus {
   color: white;
   padding: 5px;
 }
+.grad {
+  background-size: cover;
+  background-position: center;
+  background-image: url("../assets/home-asset-2.png");
+}
 
 @keyframes vibrate {
   0% {

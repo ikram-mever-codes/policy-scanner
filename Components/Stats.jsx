@@ -35,7 +35,7 @@ const Stats = () => {
               alt="4.6 out of 5 Excellent rating"
               className="object-cover object-center w-[37px] h-[40px]"
             />
-            150+
+            100%
           </div>
           <div className="text-[16px] underline">Canadian Company</div>
         </div>

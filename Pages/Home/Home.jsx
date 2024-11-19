@@ -123,36 +123,38 @@ const Home = () => {
     <div className="overflow-hidden">
       <Hero />
       <Stats />
-      <div className="sm:flex hidden w-full  h-max  justify-start flex-col items-center gap-[40px] mb-[100px]">
-        <h2 className="text-halfBlack text-[40px] font-semibold text-center ">
-          Why trust PolicyScanner for buying life insurance?{" "}
-        </h2>
-        <div className="w-[60vw] h-max grid grid-cols-2 gap-x-[20px] gap-y-[40px]">
-          {reasons.map((reason) => {
-            return (
-              <div
-                id={reason.id}
-                className="flex  text-dg justify-center p-[15px] rounded-lg items-center gap-[20px] flex-col cursor-pointer transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
-              >
-                <h4 className="w-full flex justify-center items-center gap-[15px] font-[600] text-[28px] text-halfBlack">
-                  {reason.id === "feat1" && (
-                    <SettingsOutlined sx={{ fontSize: "30px" }} />
-                  )}
-                  {reason.id === "feat2" && (
-                    <GppGoodOutlinedIcon sx={{ fontSize: "30px" }} />
-                  )}
-                  {reason.id === "feat3" && (
-                    <HealthAndSafetyOutlinedIcon sx={{ fontSize: "30px" }} />
-                  )}
-                  {reason.id === "feat4" && (
-                    <SupportAgentOutlinedIcon sx={{ fontSize: "30px" }} />
-                  )}
-                  {reason.title}
-                </h4>
-                <p className="text-center text-dg">{reason.description}</p>
-              </div>
-            );
-          })}
+      <div className="w-full h-max flex justify-center items-center">
+        <div className="flex  w-[1000px] overflow-hidden min-h-[70vh] justify-start flex-col items-center gap-[40px] mb-[100px]">
+          <h2 className="text-halfBlack text-[40px] font-semibold text-center ">
+            Why trust PolicyScanner for buying life insurance?{" "}
+          </h2>
+          <div className="w-full h-max grid grid-cols-2 gap-x-[40px] gap-y-[40px]">
+            {reasons.map((reason) => {
+              return (
+                <div
+                  id={reason.id}
+                  className="flex w-[500px] h-[200px] text-dg justify-center p-[15px] rounded-lg items-center gap-[20px] flex-col cursor-pointer transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+                >
+                  <h4 className="w-full flex justify-center items-center gap-[15px] font-[600] text-[28px] text-halfBlack">
+                    {reason.id === "feat1" && (
+                      <SettingsOutlined sx={{ fontSize: "30px" }} />
+                    )}
+                    {reason.id === "feat2" && (
+                      <GppGoodOutlinedIcon sx={{ fontSize: "30px" }} />
+                    )}
+                    {reason.id === "feat3" && (
+                      <HealthAndSafetyOutlinedIcon sx={{ fontSize: "30px" }} />
+                    )}
+                    {reason.id === "feat4" && (
+                      <SupportAgentOutlinedIcon sx={{ fontSize: "30px" }} />
+                    )}
+                    {reason.title}
+                  </h4>
+                  <p className="text-center text-dg">{reason.description}</p>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
       <div className="flex justify-center items-center   w-full  h-[156px] px-[20px]  bg-foreground2">
