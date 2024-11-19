@@ -8,11 +8,11 @@ const Hero = () => {
   return (
     <>
       <section
-        className="w-full h-[88vh] min-w-screen justify-between bg-foreground2 sm:grid hidden "
+        className="w-full min-h-[100vh] h-max min-w-screen justify-between bg-foreground2  sm:grid hidden "
         style={{ gridTemplateColumns: "50% auto" }}
       >
-        <div className="flex justify-end items-center  w-full h-full">
-          <div className="w-max h-full flex justify-start gap-[1rem]   items-center flex-col py-[5rem]">
+        <div className="flex justify-end items-center  w-full h-full pt-[86px]">
+          <div className="w-max h-full flex justify-start gap-[1rem]   items-center flex-col ">
             <div className="w-full h-max flex justify-start items-start flex-col">
               <h1 className="text-[45px] font-extrabold  text-left text-halfBlack">
                 Let us do the comparison. <br /> You enjoy the savings.
@@ -22,7 +22,7 @@ const Hero = () => {
               </p>
             </div>
 
-            <div className="w-full grid grid-cols-2 gap-x-[2rem] gap-y-[1rem] mt-[1.5rem]">
+            <div className="w-full grid grid-cols-2 pb-[100px] gap-x-[2rem] gap-y-[1rem] mt-[1.5rem]">
               {["Term Life", "Whole Life", "Mortgage", "Critical Illness"].map(
                 (item) => (
                   <Link href="/quote-form" key={item}>
@@ -44,7 +44,7 @@ const Hero = () => {
           alt="Policy Scanner Insurance"
           width={616}
           height={600}
-          className=" object-fit object-center w-max h-[88vh] "
+          className=" object-fit object-center w-max h-[100vh] pr-[60px] "
         />
       </section>
     </>

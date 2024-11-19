@@ -171,12 +171,12 @@ button:focus {
   outline: none;
   box-shadow: 0 0 0 3px rgba(0, 98, 98, 0.5);
 } */
-.active-options-card {
+/* .active-options-card {
   border: 2px solid #fe685e;
   /* background-color: #4949493e; */
-}
+/* } */
 .active-options-card svg {
-  color: white;
+  color: black;
   background-color: #fe685e;
   border-bottom-right-radius: 10px;
 }
@@ -222,4 +222,10 @@ button:focus {
 
 .shadow-sidebar {
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.315);
+}
+
+.text-dg {
+  font-weight: 400;
+  font-size: 18px;
+  font-family: Spline Sans, sans-serif;
 }

@@ -5,20 +5,12 @@ import comp2 from "../../assets/comp2.png";
 import comp3 from "../../assets/comp3.png";
 import comp4 from "../../assets/comp4.png";
 import comp5 from "../../assets/comp5.png";
-import homextr1 from "../../assets/home-extra-1.png";
-import homextr2 from "../../assets/home-extra-2.png";
 import GppGoodOutlinedIcon from "@mui/icons-material/GppGoodOutlined";
 import Image from "next/image";
 import HealthAndSafetyOutlinedIcon from "@mui/icons-material/HealthAndSafetyOutlined";
 
-import Reviews from "./Reviews";
-import InsuranceCalculator from "../../Components/InsuranceCalculator";
 import ContactCta from "../../Components/ConnectCta";
 import InsuranceOptions from "./InsuranceOptions";
-import InsuranceTutorial from "./InsuranceTutorial";
-import whyUs from "../../assets/why-us.png";
-import InsuranceProviders from "../../Components/InsuranceProviders";
-import InsuranceInformation from "./InsuranceInformation";
 import {
   ArrowForwardIos,
   Settings,
@@ -31,6 +23,7 @@ import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
 import QuoteProcess from "./QuoteProcess";
 import OurPartners from "./OurPartners";
 import Guides from "./Guides";
+import Stats from "@/Components/Stats";
 
 const faqs = [
   {
@@ -129,44 +122,9 @@ const Home = () => {
   return (
     <div className="overflow-hidden">
       <Hero />
-      <div className="w-full flex justify-center items-center min-h-[15vh] sm:bg-white bg-foreground2 h-max">
-        <div className="flex flex-wrap justify-center gap-[2rem] sm:gap-[10rem] items-center w-full py-[40px]  px-[20px] sm:px-[60px]">
-          <div className="flex justify-center items-center flex-col">
-            <div className="font-bold text-[20px] sm:text-[30px] text-halfBlack">
-              150+
-            </div>
-            <div className="text-[12px] sm:text-base">
-              Expert reviewed articles
-            </div>
-          </div>
-
-          <div className="flex justify-center items-center flex-col">
-            <Image
-              src={homextr1}
-              alt="4.6 out of 5 Excellent rating"
-              className="object-cover object-center  h-max w-[80px] sm:w-[120px]"
-            />
-            <div className="text-[12px] sm:text-base">
-              4.6 out of 5 Excellent rating
-            </div>
-          </div>
-
-          <div className="flex justify-center items-center flex-col">
-            <div className="font-bold text-[20px] sm:text-[30px] text-halfBlack flex justify-center items-center gap-2">
-              <Image
-                src={homextr2}
-                alt="4.6 out of 5 Excellent rating"
-                className="object-cover object-center w-[25px] sm:w-[40px]"
-              />
-              150+
-            </div>
-            <div className="text-[12px] sm:text-base">Canadian Company</div>
-          </div>
-        </div>
-      </div>
-      {/* <InsuranceProviders /> */}
-      <div className="sm:flex hidden w-full mt-[5rem] h-max  justify-start flex-col items-center gap-[40px] mb-[60px]">
-        <h2 className="text-halfBlack text-[30px] font-semibold text-center ">
+      <Stats />
+      <div className="sm:flex hidden w-full  h-max  justify-start flex-col items-center gap-[40px] mb-[100px]">
+        <h2 className="text-halfBlack text-[40px] font-semibold text-center ">
           Why trust PolicyScanner for buying life insurance?{" "}
         </h2>
         <div className="w-[60vw] h-max grid grid-cols-2 gap-x-[20px] gap-y-[40px]">
@@ -174,9 +132,9 @@ const Home = () => {
             return (
               <div
                 id={reason.id}
-                className="flex justify-center p-[15px] rounded-lg items-center gap-[20px] flex-col cursor-pointer transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+                className="flex  text-dg justify-center p-[15px] rounded-lg items-center gap-[20px] flex-col cursor-pointer transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
               >
-                <h4 className="w-full flex justify-center items-center gap-[15px] text-[18px] font-semibold">
+                <h4 className="w-full flex justify-center items-center gap-[15px] font-[600] text-[28px] text-halfBlack">
                   {reason.id === "feat1" && (
                     <SettingsOutlined sx={{ fontSize: "30px" }} />
                   )}
@@ -191,63 +149,64 @@ const Home = () => {
                   )}
                   {reason.title}
                 </h4>
-                <p className="text-center text-[16px]">{reason.description}</p>
+                <p className="text-center text-dg">{reason.description}</p>
               </div>
             );
           })}
         </div>
       </div>
-      <div className="flex justify-around gap-[20px] items-center w-full min-h-[25vh] px-[20px] sm:px-[60px] bg-foreground2">
-        <Image
-          src={comp1}
-          alt="Fortnite"
-          width={100}
-          height={100}
-          objectFit="cover"
-          objectPosition="center"
-          loading="lazy"
-          className="sm:h-[30px] h-[15px] w-max "
-        />
-        <Image
-          src={comp2}
-          alt="Fortnite"
-          width={100}
-          height={100}
-          objectFit="cover"
-          objectPosition="center"
-          loading="lazy"
-          className="sm:h-[30px] h-[15px] w-max "
-        />
-        <Image
-          src={comp3}
-          alt="Fortnite"
-          width={100}
-          height={100}
-          objectFit="cover"
-          objectPosition="center"
-          loading="lazy"
-          className="sm:h-[30px] h-[15px] w-max "
-        />{" "}
-        <Image
-          src={comp4}
-          alt="Fortnite"
-          width={100}
-          height={100}
-          objectFit="cover"
-          objectPosition="center"
-          loading="lazy"
-          className="sm:h-[30px] h-[15px] w-max "
-        />{" "}
-        <Image
-          src={comp5}
-          alt="Fortnite"
-          width={100}
-          height={100}
-          objectFit="cover"
-          objectPosition="center"
-          loading="lazy"
-          className="sm:h-[30px] h-[15px] w-max "
-        />{" "}
+      <div className="flex justify-center items-center   w-full  h-[156px] px-[20px]  bg-foreground2">
+        <div className="text-[25px] font-[500] text-halfBlack w-[15rem] ">
+          Featured In:
+        </div>
+        <div className="w-max flex justify-center items-center gap-[102px]">
+          <Image
+            src={comp1}
+            alt="Fortnite"
+            width={102}
+            height={136}
+            objectFit="cover"
+            objectPosition="center"
+            loading="lazy"
+            className=" w-max "
+          />
+          <Image
+            src={comp2}
+            alt="Fortnite"
+            width={100}
+            height={54}
+            objectFit="cover"
+            objectPosition="center"
+            loading="lazy"
+          />
+          <Image
+            src={comp3}
+            alt="Fortnite"
+            width={146}
+            height={25}
+            objectFit="cover"
+            objectPosition="center"
+            loading="lazy"
+          />{" "}
+          <Image
+            src={comp4}
+            alt="Fortnite"
+            width={102}
+            height={32}
+            objectFit="cover"
+            objectPosition="center"
+            loading="lazy"
+          />{" "}
+          <Image
+            src={comp5}
+            alt="Fortnite"
+            width={69}
+            height={69}
+            objectFit="cover"
+            objectPosition="center"
+            loading="lazy"
+          />{" "}
+        </div>
       </div>
       <QuoteProcess />
       {/* <Reviews /> */}

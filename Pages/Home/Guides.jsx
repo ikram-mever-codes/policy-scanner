@@ -1,8 +1,8 @@
 import Image from "next/image";
 import React from "react";
 import termLife2 from "../../assets/term-life-2.png";
-import termLife4 from "../../assets/term-life-4.png";
 import termLife3 from "../../assets/term-life-3.png";
+import termLife4 from "../../assets/term-life-4.png";
 
 const Guides = () => {
   const blogs = [
@@ -33,32 +33,32 @@ const Guides = () => {
   ];
 
   return (
-    <section className="w-full min-h-[80vh] px-6 sm:px-12 lg:px-20 py-12 flex flex-col items-center">
-      {/* Header */}
-      <div className="w-full max-w-[1200px] flex flex-col items-center gap-12">
-        <h2 className="w-full font-bold text-2xl sm:text-3xl md:text-4xl text-center text-gray-800">
+    <section className="w-full px-4  py-[60px]  flex flex-col items-center">
+      <div className="w-full max-w-7xl flex flex-col items-center gap-[90px]">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-halfBlack">
           Explore Our Guides
         </h2>
 
-        {/* Blog Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
+        <div className="w-full h-max flex justify-center items-center gap-[25px]">
           {blogs.map((blog) => (
             <div
               key={blog.id}
-              className="min-h-[300px] bg-white shadow-lg flex flex-col rounded-xl border border-gray-200 overflow-hidden"
+              className="min-h-[267px] bg-white shadow-lg flex flex-col rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl"
             >
-              {/* Image */}
-              <Image
-                src={blog.image}
-                className="w-full h-[180px] object-cover"
-                alt={blog.title}
-              />
-              {/* Content */}
-              <div className="flex flex-col justify-between h-full p-4">
-                <h3 className="text-lg font-medium text-gray-800">
+              <div className="relative w-full h-[200px]">
+                <Image
+                  src={blog.image}
+                  fill
+                  className="object-cover object-center"
+                  alt={blog.title}
+                />
+              </div>
+
+              <div className="flex flex-col justify-between h-max py-[20px] px-[25px]">
+                <h3 className="text-halfBlack text-[22px] font-semibold">
                   {blog.title}
                 </h3>
-                <h4 className="text-sm text-gray-600 mt-2">
+                <h4 className="text-[16px] text-halfBlack mt-1">
                   {blog.description}
                 </h4>
               </div>

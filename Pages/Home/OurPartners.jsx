@@ -1,9 +1,10 @@
 import React from "react";
+import Image from "next/image";
 import prov1 from "../../assets/prov1.png";
 import prov2 from "../../assets/prov2.png";
 import prov3 from "../../assets/prov3.png";
 import prov4 from "../../assets/prov4.png";
-import Image from "next/image";
+
 const OurPartners = () => {
   const partners = [
     prov1,
@@ -19,23 +20,32 @@ const OurPartners = () => {
     prov3,
     prov4,
   ];
+
   return (
-    <section className="w-full h-max sm:px-[60px] px-[20px] pt-[2rem] pb-[4rem] bg-foreground2 flex justify-start items-center   flex-col">
-      <div className="sm:w-[85%] w-full flex justify-start items-center flex-col gap-[3rem] sm:gap-[5rem] sm:px-[40px]">
-        <h2 className="w-full font-bold text-[35px] text-center text-halfBlack">
-          Our partners
-        </h2>
-        <div className="w-full  grid grid-cols-4 sm:grid-cols-6 gap-[1rem]">
-          {partners.map((prov, index) => {
-            return (
+    <section className="w-full px-[150px] py-[60px] bg-foreground2 flex justify-center items-center">
+      <div className="w-full max-w-7xl">
+        <div className="flex flex-col gap-8 sm:gap-12 w-full">
+          <h2 className="text-[40px] mb-[20px] font-bold text-center text-halfBlack">
+            Our partners
+          </h2>
+          <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-[2rem]">
+            {partners.map((prov, index) => (
               <div
                 key={index}
-                className="h-[3rem] sm:h-[6rem] w-[5rem] sm:w-[10rem] p-[1rem] bg-white border-solid border border-gray2 flex justify-center items-center rounded-lg"
+                className="h-[100px] w-[174px] 
+                  p-4 
+                  bg-white border border-gray2 
+                  flex justify-center items-center rounded-lg 
+                  transition-all duration-300 hover:shadow-lg"
               >
-                <Image src={prov} alt="Partner Image" />
+                <Image
+                  src={prov}
+                  alt="Partner Image"
+                  className="w-full h-full object-contain scale-90"
+                />
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </div>
     </section>
