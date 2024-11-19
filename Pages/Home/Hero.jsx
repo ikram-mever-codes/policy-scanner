@@ -8,11 +8,11 @@ const Hero = () => {
   return (
     <>
       <section
-        className="w-full min-h-[90vh] h-max min-w-screen justify-between bg-foreground2  sm:grid hidden "
+        className="w-full min-h-[650px] h-max min-w-screen justify-between bg-foreground2  sm:grid hidden "
         style={{ gridTemplateColumns: "50% auto" }}
       >
         <div className="flex justify-center  items-start  w-full h-full">
-          <div className="w-max h-full pt-[80px] flex justify-start gap-[1rem]   items-center flex-col ">
+          <div className="w-max h-full  flex justify-end pb-[80px] gap-[1rem]   items-center flex-col ">
             <div className="w-full h-max flex justify-start items-start flex-col">
               <h1 className="text-[45px] font-extrabold  text-left text-halfBlack">
                 Let us do the comparison. <br /> You enjoy the savings.
@@ -44,7 +44,7 @@ const Hero = () => {
           alt="Policy Scanner Insurance"
           width={492}
           height={500}
-          className=" object-fit object-center w-full h-[90vh] "
+          className=" object-fit object-center w-full h-[650px] "
         />
       </section>
     </>
