@@ -123,7 +123,7 @@ const Home = () => {
     <div className="overflow-hidden">
       <Hero />
       <Stats />
-      <div className="w-full h-max flex justify-center items-center">
+      <div className="w-full h-max flex justify-center items-center mt-[20px]">
         <div className="flex  w-[1000px] overflow-hidden min-h-[70vh] justify-start flex-col items-center gap-[40px] mb-[20px ] ">
           <h2 className="text-halfBlack text-[40px] font-semibold text-center ">
             Why trust PolicyScanner for buying life insurance?{" "}
