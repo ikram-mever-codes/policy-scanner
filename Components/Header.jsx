@@ -56,8 +56,8 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="w-full h-[15vh] relative">
-      <header className="px-[150px] h-[15vh]  w-full py-[15px] bg-white z-[100] flex justify-between items-center fixed top-0 shadow-md">
+    <div className="w-full h-[90px] relative">
+      <header className="px-[150px] h-[90px]  w-full py-[15px] bg-white z-[100] flex justify-between items-center fixed top-0 shadow-md">
         <Toolbar
           className="w-full flex justify-between items-center"
           bgColor="white"

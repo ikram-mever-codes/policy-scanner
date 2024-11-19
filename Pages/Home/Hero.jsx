@@ -11,8 +11,8 @@ const Hero = () => {
         className="w-full min-h-[100vh] h-max min-w-screen justify-between bg-foreground2  sm:grid hidden "
         style={{ gridTemplateColumns: "50% auto" }}
       >
-        <div className="flex justify-end items-center  w-full h-full pt-[86px]">
-          <div className="w-max h-full flex justify-start gap-[1rem]   items-center flex-col ">
+        <div className="flex justify-center  items-center  w-full h-full">
+          <div className="w-max h-full flex justify-center gap-[1rem]   items-center flex-col ">
             <div className="w-full h-max flex justify-start items-start flex-col">
               <h1 className="text-[45px] font-extrabold  text-left text-halfBlack">
                 Let us do the comparison. <br /> You enjoy the savings.
@@ -26,7 +26,7 @@ const Hero = () => {
               {["Term Life", "Whole Life", "Mortgage", "Critical Illness"].map(
                 (item) => (
                   <Link href="/quote-form" key={item}>
-                    <div className="relative group flex justify-center items-center w-[17rem] h-[6rem] shadow-2xl text-halfBlack  rounded-2xl bg-white border border-solid hover:text-white border-primary transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer overflow-hidden">
+                    <div className="relative group flex justify-center items-center w-[260px] h-[85px] shadow-2xl text-halfBlack  rounded-2xl bg-white border border-solid hover:text-white border-primary transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer overflow-hidden">
                       <div className="absolute inset-0 bg-primary scale-x-0 origin-bottom-left transition-transform duration-500 group-hover:scale-x-100"></div>
 
                       <h3 className="relative text-center text-[18px] font-normal z-10">
