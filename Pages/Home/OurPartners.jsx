@@ -22,7 +22,7 @@ const OurPartners = () => {
   ];
 
   return (
-    <section className="w-full px-[150px] py-[60px] bg-foreground2 flex justify-center items-center">
+    <section className="w-full px-[150px] py-[40px] bg-foreground2 flex justify-center items-center">
       <div className="w-full max-w-7xl">
         <div className="flex flex-col gap-8 sm:gap-12 w-full">
           <h2 className="text-[40px] mb-[20px] font-bold text-center text-halfBlack">
