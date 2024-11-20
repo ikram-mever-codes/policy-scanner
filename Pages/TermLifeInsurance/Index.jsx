@@ -13,6 +13,8 @@ import homextr1 from "../../assets/home-extra-1.png";
 import homextr2 from "../../assets/home-extra-2.png";
 import Image from "next/image";
 import CanadaLife from "../../assets/canada-life.png";
+import Stats from "@/Components/Stats";
+import NewCta from "@/Components/NewCta";
 
 const Index = () => {
   const faqs = [
@@ -86,37 +88,13 @@ const Index = () => {
     <>
       <Hero />
       {/* <QuotePanel /> */}
-      <div className="flex justify-center gap-[10rem] items-center w-full min-h-[15vh] pt-[40px] px-[60px]">
-        <div className="flex justify-center items-center flex-col">
-          <div className="font-bold text-[30px] text-halfBlack">150+</div>
-          <div>Expert reviewed articles</div>
-        </div>
-        <div className="flex justify-center items-center flex-col">
-          <Image
-            src={homextr1}
-            alt="4.6 out of 5 Excellent rating"
-            className=" object-cover object-center"
-          />
-          <div>4.6 out of 5 Excellent rating</div>
-        </div>
-        <div className="flex justify-center items-center flex-col">
-          <div className="font-bold text-[30px] text-halfBlack flex justify-center items-center gap-2">
-            <Image
-              src={homextr2}
-              alt="4.6 out of 5 Excellent rating"
-              className=" object-cover object-center"
-            />{" "}
-            150+
-          </div>
-          <div>Canadian Company</div>
-        </div>
-      </div>
-      <section className="w-full h-max  bg-white gap-[3rem] px-[80px] pt-[3rem] flex justify-center items-center flex-col">
-        <div className="w-[75%] h-full flex justify-start items-center flex-col gap-[2rem]">
-          <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
-            Top term life insurance plans{" "}
+      <Stats />
+      <section className="w-full h-max  bg-white gap-[3rem] px-[80px] pt-[60px] flex justify-center items-center flex-col">
+        <div className="w-[1000px] h-full flex justify-start items-center flex-col gap-[2rem]">
+          <h2 className="w-full font-bold text-[35px] pb-[20px] text-left text-halfBlack">
+            Top term life insurance plans
           </h2>
-          <div className="w-full h-max flex justify-start items-center gap-6 flex-col">
+          <div className="w-full h-max flex justify-start items-center gap-[25px] flex-col">
             {[1, 2, 3].map(() => {
               return (
                 <div className="w-full rounded-lg bg-white shadow-sidebar flex flex-col sm:flex-row justify-between items-center gap-[10px] sm:gap-[1rem] p-6 sm:p-8">
@@ -169,13 +147,23 @@ const Index = () => {
               );
             })}
           </div>
+          <p className="text-halfBlack pt-[25px] text-[16px]">
+            <strong>Disclaimer:</strong>
+            The plans and premiums listed are for CAD 200K coverage for an
+            18-year-old with a 20-year term. Rates vary by individual profile
+            and the final guaranteed cash value will be determined by the
+            insurer, policyscanner have no role in that. Also, PolicyScanner
+            does not endorse any insurer or product. For a full list of Canadian
+            insurers, please visit the Financial Services Regulatory Authority
+            of Ontario (FSRA) website, www.fsrao.ca.
+          </p>
         </div>
       </section>
 
       {/* <InsuranceProviders /> */}
       <TermLifeInfo />
       <TermLifeInofo2 />
-      <ConnectCta bg={"#EBFEFE"} />
+      <NewCta />
       <TermLifeFaq />
       <TermLifeFaq2 />
       <InsuranceCalculator

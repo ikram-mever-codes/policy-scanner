@@ -54,14 +54,14 @@ const InsuranceCalculator = ({ title, paragraph }) => {
 
   return (
     <section className="px-[60px] bg-primary w-full h-max py-[40px] gap-[50px] flex justify-start items-center flex-col">
-      <div className="w-full h-max flex justify-start items-center gap-[20px] flex-col">
+      <div className="w-[1000px] h-max flex justify-start items-center gap-[20px] flex-col">
         <h2 className="text-white text-[30px] font-medium text-center">
           {title}
         </h2>
         <p className="text-center font-light text-[15px] text-white w-[50%]">
           {paragraph}
         </p>
-        <div className="w-full  h-max flex justify-center gap-[20px] items-center">
+        <div className="w-max  h-max flex justify-center gap-[20px] items-center">
           {steps.map((step, index) => {
             return (
               <React.Fragment key={step.no}>
@@ -91,7 +91,7 @@ const InsuranceCalculator = ({ title, paragraph }) => {
         </div>
       </div>
 
-      <div className="w-[70vw] h-max flex bg-white p-[50px] rounded-xl justify-start items-center gap-[30px] flex-col">
+      <div className="w-[1000px] h-max flex bg-white p-[50px] rounded-xl justify-start items-center gap-[30px] flex-col">
         <div className="flex justify-start items-center flex-col gap-[10px]">
           <h3 className="text-center text-halfBlack text-[20px] font-medium">
             Mortgage

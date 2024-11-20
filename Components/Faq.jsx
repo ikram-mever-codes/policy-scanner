@@ -17,7 +17,7 @@ const Faq = ({ faqs }) => {
   };
 
   return (
-    <section className="w-full h-max bg-white gap-8 px-6 sm:px-12 my-[4rem] mb-[160px] md:px-20 lg:px-32 py-12 flex flex-col items-center">
+    <section className="w-full  h-max bg-white gap-8 px-6 sm:px-12 my-[4rem] mb-[160px] md:px-20 lg:px-32 py-12 flex flex-col items-center">
       {/* Header */}
       <h2 className="w-full font-bold text-[40px] text-center text-halfBlack">
         Frequently Asked Questions
@@ -27,7 +27,7 @@ const Faq = ({ faqs }) => {
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="w-full border-b border-gray-300 mb-4 last:mb-0"
+            className="w-[1000px] border-b border-gray-300 mb-4 last:mb-0"
           >
             <Accordion
               expanded={expanded === `panel${index}`}
@@ -46,7 +46,7 @@ const Faq = ({ faqs }) => {
                 aria-controls={`panel${index}d-content`}
                 id={`panel${index}d-header`}
               >
-                <Typography className="py-[1rem] w-full text-[25px] text-halfBlack font-[500]">
+                <Typography className="py-[1rem] w-full text-[22px] text-halfBlack font-[500]">
                   {faq.question}
                 </Typography>
               </AccordionSummary>

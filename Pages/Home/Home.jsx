@@ -133,7 +133,7 @@ const Home = () => {
               return (
                 <div
                   id={reason.id}
-                  className="flex w-[500px] h-[200px] text-dg justify-center p-[15px] rounded-lg items-center gap-[20px] flex-col cursor-pointer transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
+                  className="flex w-[480px] h-[200px] text-dg justify-center p-[15px] rounded-lg items-center gap-[20px] flex-col cursor-pointer transform transition-transform duration-300 hover:scale-105 hover:shadow-xl"
                 >
                   <h4 className="w-full flex justify-center items-center gap-[15px] font-[600] text-[28px] text-halfBlack">
                     {reason.id === "feat1" && (

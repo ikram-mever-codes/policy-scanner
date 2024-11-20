@@ -44,7 +44,7 @@ const TermLifeFaq = () => {
 
   return (
     <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
-      <div className="w-[75%] h-full flex justify-center items-center flex-col gap-[3rem]">
+      <div className="w-[1000px] h-full flex justify-center items-center flex-col gap-[3rem]">
         <div className="w-full h-max flex flex-col justify-start items-center gap-[1rem]">
           <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
             What are the types of whole life insurance? (Change){" "}
