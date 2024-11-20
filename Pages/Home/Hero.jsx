@@ -1,13 +1,17 @@
 import Image from "next/image";
 import React from "react";
-import home1 from "../../assets/home-asset-1.png";
+import home1 from "../../assets/home-asset-3.png";
 import ellipseImage from "../../assets/ellipse1.png";
 import Link from "next/link";
 
 const Hero = () => {
   return (
     <>
-      <section className="w-full h-[650px]  min-w-screen flex justify-around items-center  overflow-hidden bg-foreground2   ">
+      <section
+        className="w-full h-[650px] hero-bg  min-w-screen 
+        overflow-hidden bg-foreground2   "
+        style={{ display: "grid", gridTemplateColumns: "50% 50%" }}
+      >
         <div className="flex justify-end   items-end   w-full h-full  ">
           <div className="w-max h-full  flex justify-end pb-[80px] gap-[1rem]   items-center flex-col ">
             <div className="w-full h-max flex justify-end items-start flex-col">
@@ -36,12 +40,15 @@ const Hero = () => {
             </div>
           </div>
         </div>
-        <Image
-          src={home1}
-          alt="Policy Scanner Insurance"
-          height={466}
-          className="object-fit   object-center  h-[750px] w-[750px] lg:w-[1000px] 3xl:w-[1200px]"
-        />
+        <div className="w-full h-full flex justify-start items-end">
+          <Image
+            src={home1}
+            alt="Policy Scanner Insurance"
+            height={466}
+            width={492}
+            className="object-fit relative bottom-0 left-[150px]   object-center"
+          />
+        </div>
       </section>
     </>
   );

@@ -88,7 +88,7 @@ const Footer = () => {
 
       <div className="footer-gradient-line" />
 
-      <p className="text-center text-xs sm:text-sm font-light leading-relaxed w-[1000px]">
+      <p className="text-center text-xs sm:text-sm font-light  leading-relaxed w-[1000px]">
         PolicyScanner Brokerage Inc. is an insurance brokerage authorized to
         offer life insurance products in Ontario. All policy obligations are the
         responsibility of the issuing insurance company. The issuance of

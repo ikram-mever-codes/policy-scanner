@@ -234,3 +234,9 @@ button:focus {
   font-size: 18px;
   font-family: Spline Sans, sans-serif;
 }
+
+.hero-bg {
+  background-position: center;
+  background-size: cover;
+  background-image: url("../assets/hero-back.png");
+}
