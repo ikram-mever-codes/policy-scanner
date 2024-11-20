@@ -7,8 +7,8 @@ import Link from "next/link";
 const Hero = () => {
   return (
     <>
-      <section className="w-full h-[650px]  min-w-screen flex justify-between items-center  overflow-hidden bg-foreground2   ">
-        <div className="flex justify-end   bg-blak items-end   w-full h-full  ">
+      <section className="w-full h-[650px]  min-w-screen flex justify-around items-center  overflow-hidden bg-foreground2   ">
+        <div className="flex justify-end   items-end   w-full h-full  ">
           <div className="w-max h-full  flex justify-end pb-[80px] gap-[1rem]   items-center flex-col ">
             <div className="w-full h-max flex justify-end items-start flex-col">
               <h1 className="text-[45px] font-extrabold  text-left text-halfBlack">
@@ -39,9 +39,8 @@ const Hero = () => {
         <Image
           src={home1}
           alt="Policy Scanner Insurance"
-          width={600}
           height={466}
-          className="object-fit  object-center h-[650px] w-max"
+          className="object-fit   object-center  h-[750px] w-[750px] lg:w-[1000px] 3xl:w-[1200px]"
         />
       </section>
     </>
