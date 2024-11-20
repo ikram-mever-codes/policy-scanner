@@ -9,9 +9,9 @@ import { EmailOutlined, Facebook, Phone } from "@mui/icons-material";
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-[#002625] py-[40px] px-[20px] sm:px-[40px] md:px-[60px] flex flex-col gap-[30px] text-white overflow-hidden">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-[30px]">
-        <div className="flex flex-col gap-[15px] sm:w-1/3">
+    <footer className="w-full bg-[#002625] py-[40px]  flex flex-col justify-center items-center   gap-[30px] text-white overflow-hidden">
+      <div className="flex w-[1000px]  flex-col sm:flex-row justify-between items-start sm:items-center gap-[30px]">
+        <div className="flex flex-col justify-between gap-[15px] h-full w-max">
           <Image
             src={logo}
             alt="Policy Scanner"
@@ -19,50 +19,7 @@ const Footer = () => {
             width={200}
             className="object-cover"
           />
-          <p className="text-sm sm:text-[15px] leading-relaxed">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s.
-          </p>
-        </div>
 
-        {/* Navigation Links */}
-        <div className="flex flex-col sm:flex-row gap-[30px] sm:gap-[50px]">
-          <ul className="flex flex-col gap-[10px] sm:gap-[20px]">
-            {[
-              "Home",
-              "Term Life Insurance",
-              "Whole Life Insurance",
-              "Mortgage Insurance",
-              "Critical Illness Insurance",
-            ].map((item, index) => (
-              <li key={index}>
-                <Link
-                  href={"#"}
-                  className="hover:underline text-sm sm:text-[15px]"
-                >
-                  {item}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <ul className="flex flex-col gap-[10px] sm:gap-[20px]">
-            {["News", "Blog", "Career", "About Us", "Contact Us"].map(
-              (item, index) => (
-                <li key={index}>
-                  <Link
-                    href={"#"}
-                    className="hover:underline text-sm sm:text-[15px]"
-                  >
-                    {item}
-                  </Link>
-                </li>
-              )
-            )}
-          </ul>
-        </div>
-
-        <div className="flex flex-col justify-between gap-[15px] sm:gap-[25px] sm:w-1/3 h-full">
           <p className="text-sm sm:text-[15px]">
             6 Urbane Blvd, Kitchener Ontario N2E0J6
           </p>
@@ -91,14 +48,55 @@ const Footer = () => {
             ))}
           </div>
         </div>
+
+        {/* Navigation Links */}
+        {/* <div className="flex flex-col sm:flex-row gap-[30px] sm:gap-[50px]"> */}
+        <ul className="flex flex-col gap-[10px] sm:gap-[20px]">
+          {[
+            "Home",
+            "Term Life Insurance",
+            "Whole Life Insurance",
+            "Mortgage Insurance",
+            "Critical Illness Insurance",
+          ].map((item, index) => (
+            <li key={index}>
+              <Link
+                href={"#"}
+                className="hover:underline text-sm sm:text-[15px]"
+              >
+                {item}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <ul className="flex flex-col gap-[10px] sm:gap-[20px]">
+          {["News", "Blog", "Career", "About Us", "Contact Us"].map(
+            (item, index) => (
+              <li key={index}>
+                <Link
+                  href={"#"}
+                  className="hover:underline text-sm sm:text-[15px]"
+                >
+                  {item}
+                </Link>
+              </li>
+            )
+          )}
+        </ul>
+        {/* </div> */}
       </div>
 
       <div className="footer-gradient-line" />
 
-      <p className="text-center text-xs sm:text-sm font-light leading-relaxed">
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type.
+      <p className="text-center text-xs sm:text-sm font-light leading-relaxed w-[1000px]">
+        PolicyScanner Brokerage Inc. is an insurance brokerage authorized to
+        offer life insurance products in Ontario. All policy obligations are the
+        responsibility of the issuing insurance company. The issuance of
+        coverage is subject to underwriting by the respective insurance
+        provider. For full terms, conditions, and exclusions, please refer to
+        the policy documents. The logos and trademarks displayed here are the
+        property of their respective owners. For additional information, please
+        refer to our Privacy Policy and Terms of Service.
       </p>
     </footer>
   );
