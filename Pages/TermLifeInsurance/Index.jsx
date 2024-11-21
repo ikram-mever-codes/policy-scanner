@@ -94,7 +94,7 @@ const Index = () => {
       <Hero />
       {/* <QuotePanel /> */}
       <Stats />
-      <section className="w-full h-max  bg-white gap-[3rem] px-[80px]  flex justify-center items-center flex-col mb-[60px]">
+      <section className="w-full h-max  bg-white gap-[3rem] px-[80px]  flex justify-center items-center flex-col mb-[40px]">
         <div className="w-[1140px] h-full flex justify-start items-center flex-col gap-[2rem]">
           <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
             Top term life insurance plans
@@ -153,7 +153,7 @@ const Index = () => {
             })}
           </div>
           <p className="text-halfBlack line-h  text-[16px]">
-            <strong>Disclaimer:</strong>
+            <strong>Disclaimer: </strong>
             The plans and premiums listed are for CAD 200K coverage for an
             18-year-old with a 20-year term. Rates vary by individual profile
             and the final guaranteed cash value will be determined by the

@@ -3,12 +3,12 @@ import React from "react";
 import termLife2 from "../../assets/term-life-2.png";
 const TermLifeInfo = () => {
   return (
-    <section className="w-full h-max  bg-foreground2 gap-[3rem] px-[80px] py-[60px] flex justify-center items-center flex-col">
+    <section className="w-full h-max  bg-foreground2 gap-[3rem] px-[80px] py-[60px] pt-[40px] flex justify-center items-center flex-col">
       <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[25px]">
         <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
           What is term life insurance in Canada?{" "}
         </h2>
-        <p className="text-halfBlack line-h">
+        <p className="text-halfBlack text-dg ">
           Term life insurance in Canada provides coverage for a specific period,
           typically ranging from Term 10 to Term 30, or up to a certain age.
           Term life insurance quotes are often more affordable than whole life
@@ -36,11 +36,11 @@ const TermLifeInfo = () => {
               factors:
             </h3>
             <ul className="custom-list-bullets flex flex-col gap-[40px] text-[16px]">
-              <li className="w-full flex justify-start items-start">
+              <li className="w-full flex justify-start items-start text-dg text-halfBlack">
                 Age: The younger you are when purchasing the policy, the lower
                 your term life insurance quotes will be.
               </li>
-              <li className="w-full flex justify-start items-start">
+              <li className="w-full flex justify-start items-start text-dg text-halfBlack">
                 Coverage Term: The longer the coverage term, the higher the
                 monthly premiums. This is because the premiums are fixed for the
                 longer contracted years.

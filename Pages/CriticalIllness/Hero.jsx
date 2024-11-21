@@ -1,17 +1,17 @@
 import Image from "next/image";
 import React from "react";
-import wholeLife2 from "../../assets/whole-life-2.png";
+import wholeLife2 from "../../assets/home-asset-3.png";
 import Link from "next/link";
 
 const Hero = () => {
   return (
     <section
-      className="w-full h-[88vh] min-w-screen justify-between bg-foreground2"
-      style={{ display: "grid", gridTemplateColumns: "50% auto" }}
+      className="w-full h-[650px] hero-bg  min-w-screen overflow-hidden bg-foreground2"
+      style={{ display: "grid", gridTemplateColumns: "50% 50%" }}
     >
-      <div className="flex justify-end items-center  w-full h-full">
-        <div className="w-max h-full flex justify-center gap-[1rem]   items-center flex-col py-[5rem]">
-          <div className="w-full h-max flex justify-start items-start flex-col">
+      <div className="flex justify-end   items-end   w-full h-full  ">
+        <div className="w-max h-full  flex justify-center pb-[80px] gap-[2rem]   items-center flex-col ">
+          <div className="w-full h-max flex justify-end items-start flex-col gap-[1rem]">
             <h1 className="text-[45px] font-extrabold  text-left text-halfBlack">
               Compare and Buy <br />
               Critical Illness Insurance{" "}
@@ -29,13 +29,15 @@ const Hero = () => {
           </Link>
         </div>
       </div>
-      <Image
-        src={wholeLife2}
-        alt="Policy Scanner Insurance"
-        width={616}
-        height={600}
-        className=" object-cover object-center w-[50vw] h-[88vh]"
-      />
+      <div className="w-full h-full flex justify-start items-end">
+        <Image
+          src={wholeLife2}
+          alt="Policy Scanner Insurance"
+          height={510}
+          width={500}
+          className="object-fit relative bottom-0  left-[130px]  lg:left-[150px] 4xl:left-[200px] object-center"
+        />
+      </div>
     </section>
   );
 };

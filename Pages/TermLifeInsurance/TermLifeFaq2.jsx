@@ -45,11 +45,11 @@ const TermLifeFaq2 = () => {
   return (
     <section className="w-full h-max  bg-foreground2 gap-[3rem] px-[80px] py-[60px] flex justify-center items-center flex-col">
       <div className="w-[1140px] h-full flex justify-center items-center flex-col ">
-        <div className="w-full h-max flex flex-col justify-start items-center  ">
-          <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
+        <div className="w-full h-max flex flex-col justify-start items-center  gap-[1rem]">
+          <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">
             How much coverage do you need?{" "}
           </h2>
-          <p className="w-full text-left text-dg ">
+          <p className="w-full text-left text-dg text-halfBlack">
             When determining how much term life insurance coverage you need,
             it's important to analyze your family’s future financial needs.
             Whether you’re comparing term life insurance quotes or calculating
@@ -59,13 +59,13 @@ const TermLifeFaq2 = () => {
         </div>
         <div className="w-full h-[80vh flex justify-between mt-[2rem] items-center gap-[3rem]">
           <div className="w-full h-full flex justify-center  items-center gap-[2rem] flex-col ">
-            <ul className="flex w-full h-max flex-col justify-center items-start gap-[4px]  px-[0rem] bullets">
+            <ul className="flex w-full h-max flex-col justify-center items-start gap-[4px]  px-[0rem] bullets text-dg text-halfBlack ">
               <li>Future mortgage or rental payments</li>
               <li>Living costs to maintain a similar quality of life</li>
               <li>Mortgage protection for your loved ones</li>
               <li>An inheritance for your loved ones.</li>
             </ul>
-            <h3 className=" font-semibold text-[20px] text-left w-full">
+            <h3 className=" font-semibold text-[22px] text-left w-full">
               Optional riders for term life insurance
             </h3>
             <div className="w-full relative left-[-20px] ">

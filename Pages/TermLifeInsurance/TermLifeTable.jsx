@@ -2,7 +2,7 @@ import React from "react";
 
 const TermLifeTable = () => {
   return (
-    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] pb-[3rem] pt-[2rem] flex justify-center items-center flex-col">
+    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] pb-[40px] flex justify-center items-center flex-col">
       <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[1rem]">
         <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">
           Monthly term life insurance Cost

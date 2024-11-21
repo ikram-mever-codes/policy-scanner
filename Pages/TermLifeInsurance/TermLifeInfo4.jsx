@@ -4,7 +4,7 @@ import React from "react";
 
 const TermLifeInfo4 = () => {
   return (
-    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
+    <section className="w-full h-max  bg-white gap-[3rem] px-[80px]  py-[40px] flex justify-center items-center flex-col">
       <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[2rem]">
         <div className="w-full h-[380px] flex justify-between items-center gap-[3rem]">
           <div className="w-full h-full flex justify-start items-start flex-col gap-[1rem]">
