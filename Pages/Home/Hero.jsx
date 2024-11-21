@@ -13,9 +13,9 @@ const Hero = () => {
         style={{ display: "grid", gridTemplateColumns: "50% 50%" }}
       >
         <div className="flex justify-end   items-end   w-full h-full  ">
-          <div className="w-max h-full  flex justify-end pb-[80px] gap-[1rem]   items-center flex-col ">
+          <div className="w-max  h-full  relative left-[120px] flex justify-end pb-[80px] gap-[1rem]   items-end flex-col ">
             <div className="w-full h-max flex justify-end items-start flex-col">
-              <h1 className="text-[45px] font-extrabold  text-left text-halfBlack">
+              <h1 className="text-[55px] font-extrabold  leading-[4.5rem] text-left text-halfBlack">
                 Let us do the comparison. <br /> You enjoy the savings.
               </h1>
               <p className="w-full text-halfBlack text-[17px] text-left my-[10px]">
@@ -23,7 +23,7 @@ const Hero = () => {
               </p>
             </div>
 
-            <div className="w-full grid grid-cols-2 pb-[100px] gap-x-[2rem] gap-y-[1rem] mt-[1.5rem]">
+            <div className="w-max self-start grid grid-cols-2 pb-[100px] gap-x-[2rem] gap-y-[1rem] mt-[1.5rem] justify-center items-center">
               {["Term Life", "Whole Life", "Mortgage", "Critical Illness"].map(
                 (item) => (
                   <Link href="/quote-form" key={item}>
@@ -46,7 +46,7 @@ const Hero = () => {
             alt="Policy Scanner Insurance"
             height={466}
             width={492}
-            className="object-fit relative bottom-0  left-[150px]  lg:left-[250px] object-center"
+            className="object-fit relative bottom-0  left-[150px]  lg:left-[200px] object-center"
           />
         </div>
       </section>

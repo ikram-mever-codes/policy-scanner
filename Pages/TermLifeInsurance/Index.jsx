@@ -95,7 +95,7 @@ const Index = () => {
       {/* <QuotePanel /> */}
       <Stats />
       <section className="w-full h-max  bg-white gap-[3rem] px-[80px] pt-[60px] flex justify-center items-center flex-col">
-        <div className="w-[1000px] h-full flex justify-start items-center flex-col gap-[2rem]">
+        <div className="w-[1140px] h-full flex justify-start items-center flex-col gap-[2rem]">
           <h2 className="w-full font-bold text-[35px] pb-[20px] text-left text-halfBlack">
             Top term life insurance plans
           </h2>

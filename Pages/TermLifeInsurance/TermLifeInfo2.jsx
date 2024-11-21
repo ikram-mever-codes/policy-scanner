@@ -4,7 +4,7 @@ import Image from "next/image";
 const TermLifeInofo2 = () => {
   return (
     <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
-      <div className="w-[1000px] h-full flex justify-center items-center flex-col gap-[2rem]">
+      <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[2rem]">
         <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
           How Does Term Life Insurance Work in Canada?{" "}
         </h2>

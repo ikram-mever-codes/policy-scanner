@@ -41,7 +41,7 @@ const InsuranceOptions = () => {
         <h2 className="text-halfBlack text-[40px] font-bold text-center ">
           Customized plans. Full protection. Explore options{" "}
         </h2>
-        <div className="w-[1000px] grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-5 gap-y-[4rem] lg:gap-6 ">
+        <div className="w-[1140px] grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-5 gap-y-[4rem] lg:gap-6 ">
           {insuranceOptions.map((ins, index) => (
             <div
               key={index}

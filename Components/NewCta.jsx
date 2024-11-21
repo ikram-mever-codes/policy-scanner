@@ -5,7 +5,7 @@ import Image from "next/image";
 const NewCta = () => {
   return (
     <section className="w-full h-max  bg-white gap-[3rem]  py-[5rem] flex justify-center items-center flex-col">
-      <div className="w-[1000px] h-full  shadow-2xl  bg-foreground2 p-4 pt-[3rem]  rounded-2xl flex justify-center overflow-hidden items-center flex-col  gap-[3rem]">
+      <div className="w-[1140px] h-full  shadow-2xl  bg-foreground2 p-4 pt-[3rem]  rounded-2xl flex justify-center overflow-hidden items-center flex-col  gap-[3rem]">
         <h2 className="w-full font-bold text-[35px] text-center text-halfBlack">
           Get insured from the comfort of your home
         </h2>

@@ -3,7 +3,7 @@ import React from "react";
 const TermLifeInfo3 = () => {
   return (
     <section className="w-full h-max  bg-foreground2 gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
-      <div className="w-[1000px] h-full flex justify-center items-center flex-col gap-[3rem]">
+      <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[3rem]">
         <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">
           What are the factors that affect the term insurance premium?
         </h2>
