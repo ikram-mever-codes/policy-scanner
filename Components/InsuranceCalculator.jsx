@@ -53,7 +53,7 @@ const InsuranceCalculator = ({ title, paragraph }) => {
   };
 
   return (
-    <section className="px-[60px] bg-primary w-full h-max py-[40px] gap-[50px] flex justify-start items-center flex-col">
+    <section className="px-[60px] bg-primary w-full h-max py-[60px] gap-[50px] flex justify-start items-center flex-col">
       <div className="w-[1000px] h-max flex justify-start items-center gap-[20px] flex-col">
         <h2 className="text-white text-[30px] font-medium text-center">
           {title}

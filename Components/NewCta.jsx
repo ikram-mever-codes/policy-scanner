@@ -4,22 +4,36 @@ import Image from "next/image";
 
 const NewCta = () => {
   return (
-    <section className="w-full h-max  bg-foreground2 gap-[3rem]  py-[5rem] flex justify-center items-center flex-col">
-      <div className="w-[1000px] h-full flex justify-center items-center flex-col px-[80px] gap-[3rem]">
-        <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">
+    <section className="w-full h-max  bg-white gap-[3rem]  py-[5rem] flex justify-center items-center flex-col">
+      <div className="w-[1000px] h-full  shadow-2xl  bg-foreground2 p-4 pt-[3rem]  rounded-2xl flex justify-center overflow-hidden items-center flex-col  gap-[3rem]">
+        <h2 className="w-full font-bold text-[35px] text-center text-halfBlack">
           Get insured from the comfort of your home
         </h2>
-        <div className="w-full h-[360px] flex justify-between gap-[10rem] items-cener">
-          <Image
+        <div className="w-full h-[360px] flex justify-between   flex-col-reverse items-cener">
+          {/* <Image
             src={newCta1}
-            width={361}
+            width={340}
             className="object-cover object-center"
-            height={356}
+            height={200}
             alt="          Get insured from the comfort of your home
 "
-          />
-          <div className="w-max h-full flex justify-center items-center flex-col gap-[2rem]">
-            <div className="text-[25px] font-semibold text-center w-full ">
+          /> */}
+
+          <div className="w-full flex justify-start items-center gap-[4rem]  relative left-[-30px] ">
+            <div className="w-[628px] h-[90px] rounded-lg bg-primary rounded-tl-none rounded-bl-none ">
+              <div className="w-full h-full flex justify-end  items-center p-6 gap-5 ">
+                <div className="text-white text-right text-[20px]">
+                  Monthly premium
+                </div>
+                <div className="text-white text-[40px]">$350</div>
+              </div>
+            </div>
+            <button className="w-[250px] h-[64px] text-[22px] rounded-xl bg-secondary text-black">
+              View Plans
+            </button>
+          </div>
+          <div className="w-[620px] h-full flex justify-center overflow-hidden items-end flex-col gap-[2rem]">
+            <div className="text-[25px] font-semibold text-right pr-[30px]  ">
               Calculate your Insurance Premium
             </div>
             <div className="w-[472px] h-[128px] grid-cols-2 grid gap-x-[4rem] justify-center items-center  ">
@@ -96,20 +110,6 @@ const NewCta = () => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="w-full flex justify-start items-center gap-[4rem] mt-[2rem]">
-        <div className="w-[807px] h-[120px] rounded-lg bg-primary rounded-tl-none rounded-bl-none ">
-          <div className="w-full h-full flex justify-end  items-center p-6 gap-5 ">
-            <div className="text-white text-right text-[20px]">
-              Monthly premium
-              <br /> start from
-            </div>
-            <div className="text-white text-[40px]">$350</div>
-          </div>
-        </div>
-        <button className="w-[330px] h-[84px] text-[22px] rounded-xl bg-secondary text-black">
-          View Plans
-        </button>
       </div>
     </section>
   );

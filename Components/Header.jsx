@@ -57,9 +57,9 @@ const Header = () => {
 
   return (
     <div className="w-full h-[90px] relative">
-      <header className="px-[150px] h-[90px]  w-full py-[15px] bg-white z-[100] flex justify-between items-center fixed top-0 shadow-md">
+      <header className="px-[150px] h-[90px]  w-full py-[15px] bg-white z-[100] flex justify-center items-center fixed top-0 shadow-md">
         <Toolbar
-          className="w-full flex justify-between items-center"
+          className="w-[1500px] flex justify-between items-center"
           bgColor="white"
         >
           <Box className="w-[200px] sm:w-[300px]">
@@ -77,18 +77,10 @@ const Header = () => {
           {/* Desktop Navigation */}
           <nav className="hidden sm:flex items-center gap-8">
             <ul className="flex items-center gap-8">
-              <li>
-                <Link
-                  href="/"
-                  className="text-black hover:text-primary font-medium"
-                >
-                  Home
-                </Link>
-              </li>
               {menuItems.map((item, index) => (
                 <li key={index} className="relative" ref={dropdownRef}>
                   <button
-                    className="flex items-center gap-1 text-black hover:text-primary font-medium"
+                    className="flex items-center gap-1 text-black text-nowrap hover:text-primary font-medium"
                     onClick={() => handleMenuClick(index)}
                     aria-expanded={menuOpenIndex === index}
                   >
@@ -107,7 +99,7 @@ const Header = () => {
                             href={`/insurance/${subItem
                               .toLowerCase()
                               .replace(" ", "-")}`}
-                            className="block px-4 py-2 hover:bg-gray-100 submenu-link"
+                            className="block px-4 py-2  hover:bg-gray-100 submenu-link"
                           >
                             {subItem}
                           </Link>

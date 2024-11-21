@@ -46,10 +46,10 @@ const TermLifeFaq2 = () => {
     <section className="w-full h-max  bg-foreground2 gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
       <div className="w-[1000px] h-full flex justify-center items-center flex-col gap-[3rem]">
         <div className="w-full h-max flex flex-col justify-start items-center gap-[1rem]">
-          <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
+          <h2 className="w-full font-bold text-[35px] leading-10 text-left text-halfBlack">
             How much coverage do you need?{" "}
           </h2>
-          <p className="w-full text-left">
+          <p className="w-full text-left text-dg">
             When determining how much term life insurance coverage you need,
             it's important to analyze your family’s future financial needs.
             Whether you’re comparing term life insurance quotes or calculating
@@ -59,18 +59,18 @@ const TermLifeFaq2 = () => {
         </div>
         <div className="w-full h-[80vh flex justify-between items-center gap-[3rem]">
           <div className="w-full h-full flex justify-center  items-center gap-[2rem] flex-col ">
-            <ul className="flex w-full h-max flex-col justify-center items-start gap-[4px]  px-[2rem]">
+            <ul className="flex w-full h-max flex-col justify-center items-start gap-[4px]  px-[0rem] bullets">
               <li>Future mortgage or rental payments</li>
               <li>Living costs to maintain a similar quality of life</li>
               <li>Mortgage protection for your loved ones</li>
               <li>An inheritance for your loved ones.</li>
             </ul>
-            <h3 className="px-[1rem] font-semibold text-[18px] text-left w-full">
+            <h3 className=" font-semibold text-[18px] text-left w-full">
               Optional riders for term life insurance
             </h3>
-            <div className="">
+            <div className="w-full relative left-[-20px]">
               {faqs.map((faq, index) => (
-                <div key={index} className="w-full border-b border-gray-300">
+                <div key={index} className="w-full  gap-[3rem]">
                   <Accordion
                     expanded={expanded === `panel${index}`}
                     onChange={handleChange(`panel${index}`)}
@@ -89,12 +89,12 @@ const TermLifeFaq2 = () => {
                       aria-controls={`panel${index}d-content`}
                       id={`panel${index}d-header`}
                     >
-                      <Typography className="w-full text-[16px] text-left font-medium">
+                      <Typography className="w-full text-[18px] text-left font-medium ">
                         {faq.question}
                       </Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                      <Typography className="w-full h-max flex justify-start pb-[5rem] bg-white items-start font-normal p-[40px] text-left rounded-xl">
+                      <Typography className="w-full h-max flex justify-start pb-[5rem] bg-white items-start font-normal p-[40px] px-0 text-left rounded-xl">
                         {faq.answer}
                       </Typography>
                     </AccordionDetails>
@@ -109,8 +109,8 @@ const TermLifeFaq2 = () => {
                 src={termLife4}
                 objectFit="cover"
                 objectPosition="center"
-                width={400}
-                height={500}
+                width={486}
+                height={476}
                 alt="What are the types of whole life insurance? (Change)"
               />
             </div>

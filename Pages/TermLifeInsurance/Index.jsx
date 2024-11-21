@@ -15,6 +15,11 @@ import Image from "next/image";
 import CanadaLife from "../../assets/canada-life.png";
 import Stats from "@/Components/Stats";
 import NewCta from "@/Components/NewCta";
+import TermLifeTable2 from "./TermLifeTable2";
+import TermLifeInfo3 from "./TermLifeInfo3";
+import TermLifeInfo4 from "./TermLifeInfo4";
+import TermLifeTable from "./TermLifeTable";
+import TermLifeInfo5 from "./TermLifeInfo5";
 
 const Index = () => {
   const faqs = [
@@ -170,6 +175,12 @@ const Index = () => {
         title={"Life Insurance Calculator"}
         paragraph={`Use our online insurance calculator to quickly determine how much coverage you need and get direct life insurance quotes for term life, whole life, or mortgage insurance from the top insurance companies in Canada..`}
       />
+      <TermLifeInfo3 />
+      <TermLifeInfo4 />
+      <TermLifeTable />
+      <TermLifeInfo5 />
+
+      <TermLifeTable2 />
       <Faq faqs={faqs} />
     </>
   );
