@@ -36,7 +36,7 @@ const InsuranceOptions = () => {
   ];
 
   return (
-    <section className="w-full px-4 sm:px-10 py-[60px] lg:px-16 xl:px-24  bg-white flex items-center justify-center">
+    <section className="w-full px-4 sm:px-10 py-[60px] lg:px-16 xl:px-24  bg-foreground2 flex items-center justify-center">
       <div className="w-[1140px] max-w-7xl flex justify-center items-center flex-col gap-[60px]">
         <h2 className="text-halfBlack text-[40px] font-bold text-center ">
           Customized plans. Full protection. Explore options{" "}
