@@ -46,13 +46,13 @@ const Faq = ({ faqs }) => {
                 aria-controls={`panel${index}d-content`}
                 id={`panel${index}d-header`}
               >
-                <Typography className="py-[1rem] w-full text-[22px] text-halfBlack font-[500]">
+                <Typography className="py-[1rem] w-full text-[22px] text-halfBlack font-[500] font-semibold">
                   {faq.question}
                 </Typography>
               </AccordionSummary>
 
               <AccordionDetails>
-                <Typography className="w-full text-halfBlack bg-foreground2 text-gray-600 text-base sm:text-lg font-normal p-6 rounded-lg">
+                <Typography className="w-full text-halfBlack bg-foreground2 text-base sm:text-lg font-normal p-6 rounded-lg">
                   {faq.answer}
                 </Typography>
               </AccordionDetails>

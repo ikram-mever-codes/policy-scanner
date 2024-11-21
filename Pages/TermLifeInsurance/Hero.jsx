@@ -6,7 +6,7 @@ import Link from "next/link";
 const Hero = () => {
   return (
     <section
-      className="w-full h-[650px] hero-bg  min-w-screen 
+      className="w-full h-[550px] hero-bg  min-w-screen 
     overflow-hidden bg-foreground2   "
       style={{ display: "grid", gridTemplateColumns: "50% 50%" }}
     >
@@ -38,7 +38,7 @@ const Hero = () => {
           alt="Policy Scanner Insurance"
           height={510}
           width={500}
-          className="object-fit relative bottom-0  left-[150px]  lg:left-[250px] object-center"
+          className="object-fit relative bottom-0  left-[130px]  lg:left-[130px] 4xl:left-[200px] object-center"
         />
       </div>
     </section>

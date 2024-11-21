@@ -13,7 +13,7 @@ const Hero = () => {
         style={{ display: "grid", gridTemplateColumns: "50% 50%" }}
       >
         <div className="flex justify-end   items-center    w-full h-full  ">
-          <div className="w-max  h-full  relative left-[120px] flex justify-center  gap-[1rem]   items-center flex-col ">
+          <div className="w-max  h-full  relative left-[120px] flex justify-start py-[70px]  gap-[1rem]   items-center flex-col ">
             <div className="w-full h-max flex justify-end items-center flex-col">
               <h1 className="text-[55px] font-extrabold  leading-[4.5rem] text-left text-halfBlack">
                 Let us do the comparison. <br /> You enjoy the savings.
