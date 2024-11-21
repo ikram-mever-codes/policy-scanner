@@ -35,7 +35,7 @@ const Guides = () => {
   return (
     <section className="w-full px-4  py-[60px]  flex flex-col items-center">
       <div className="w-[1140px] max-w-7xl flex flex-col items-center gap-[90px]">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-center text-halfBlack">
+        <h2 className="text-halfBlack text-[40px] font-bold text-center ">
           Explore Our Guides
         </h2>
 

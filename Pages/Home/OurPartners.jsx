@@ -25,7 +25,7 @@ const OurPartners = () => {
     <section className="w-full px-[150px] py-[40px] bg-foreground2 flex justify-center items-center">
       <div className="w-[1140px] max-w-7xl">
         <div className="flex flex-col gap-8 sm:gap-12 w-full">
-          <h2 className="text-[40px] mb-[20px] font-bold text-center text-halfBlack">
+          <h2 className="text-halfBlack text-[40px] font-bold text-center ">
             Our partners
           </h2>
           <div className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-6 gap-[25px]">

@@ -125,11 +125,11 @@ const Home = () => {
       <Hero />
       <Stats />
       <div className="w-full h-max flex justify-center items-center mt-[20px] ">
-        <div className="flex  w-[1140px] overflow-hidden  justify-start flex-col items-center gap-[40px] mt-[20px] mb-[4rem] ">
-          <h2 className="text-halfBlack text-[40px] font-semibold text-center ">
+        <div className="flex  w-[1140px] overflow-hidden  justify-center  flex-col items-center gap-[40px] mt-[20px] mb-[4rem] ">
+          <h2 className="text-halfBlack text-[40px] font-bold text-center ">
             Why trust PolicyScanner for buying life insurance?{" "}
           </h2>
-          <div className="w-full h-max grid grid-cols-2 gap-x-[40px] gap-y-[40px]">
+          <div className=" h-max grid grid-cols-2 justify-center items-center gap-y-[40px]">
             {reasons.map((reason) => {
               return (
                 <div

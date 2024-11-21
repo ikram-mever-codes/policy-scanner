@@ -36,91 +36,80 @@ const InsuranceOptions = () => {
   ];
 
   return (
-    <section className="w-full px-4 sm:px-10 py-[60px] lg:px-16 xl:px-24  bg-foreground2 flex items-center justify-center">
-      <div className="w-full max-w-7xl flex justify-center items-center flex-col gap-[60px]">
+    <section className="w-full px-4 sm:px-10 py-[60px] lg:px-16 xl:px-24  bg-white flex items-center justify-center">
+      <div className="w-[1140px] max-w-7xl flex justify-center items-center flex-col gap-[60px]">
         <h2 className="text-halfBlack text-[40px] font-bold text-center ">
           Customized plans. Full protection. Explore options{" "}
         </h2>
-        <div className="w-[1140px] grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-5 gap-y-[4rem] lg:gap-6 ">
+        <div className=" grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-5 gap-y-[4rem] lg:gap-6 ">
           {insuranceOptions.map((ins, index) => (
-            <div
-              key={index}
-              onClick={() => setActiveIndex(index)}
-              className={`
-                group relative w-[470px] h-[275px] overflow-hidden cursor-pointer
-                bg-white rounded-[20px] shadow-lg 
-                flex flex-col 
-                transition-all duration-500 ease-in-out
-
-                ? "border-2 border-opposite scale-[1.02] shadow-2xl"
-                  : "hover:scale-[1.02] hover:shadow-xl"
-              }
-                relative z-10
-              `}
-            >
+            <div className=" ">
               <div
+                key={index}
+                onClick={() => setActiveIndex(index)}
                 className={`
-        
+                group relative bg-white    w-[555spx] h-[215px] overflow-hidden cursor-pointer
+                 shadow-lg 
+                flex  
+                justify-center items-center
+                transition-all duration-500 ease-in-out
+                p-6
+                
+                `}
+              >
+                <div
+                  className={`
+                  
                   absolute inset-0 z-[-1] opacity-0 group-hover:opacity-10 
                   transition-opacity duration-500 
                   bg-gradient-to-br from-opposite/20 to-opposite/10
-                  ${activeIndex === index ? "opacity-20" : ""}
-                `}
-              />
+                  `}
+                />
 
-              <div
-                className={`
-                rounded-none
-py-3
-                rounded-br-[40px]
-          w-[100px]
-m-2
-h-[70px]
-
-
-                  transition-transform duration-500
-                  ${
-                    activeIndex === index
-                      ? "scale-110"
-                      : "group-hover:scale-105"
-                  }
-                `}
-              >
-                {ins.icon}
-              </div>
-
-              <div
-                className="flex-grow flex flex-col text-center 
-                p-4 lg:p-6
-              "
-              >
-                <h4
+                <div
                   className={`
-text-[28px] text-left
-                    font-semibold transition-colors duration-500
-                    ${
-                      activeIndex === index
-                        ? "text-opposite"
-                        : "text-halfBlack group-hover:text-opposite/80"
-                    }
+                  rounded-none
+                  py-3
+                  w-[104px]
+                  m-2
+                  h-[104px]
+                  
+                  
+                  transition-transform duration-500
                   `}
                 >
-                  {ins.title}
-                </h4>
+                  {ins.icon}
+                </div>
 
-                <p
-                  className={`
-text-gray text-dg text-left
+                <div
+                  className="flex-grow flex flex-col text-center 
+                p-4 lg:p-6
+                "
+                >
+                  <h4
+                    className={`
+                    text-[28px] text-left
+                    font-semibold transition-colors duration-500
+                    
+                    `}
+                  >
+                    {ins.title}
+                  </h4>
+
+                  <p
+                    className={`
+                    text-gray text-dg text-left
                     transition-opacity duration-500
                     ${
                       activeIndex === index
                         ? "opacity-100"
                         : "group-hover:opacity-80"
                     }
-                  `}
-                >
-                  {ins.description}
-                </p>
+                    `}
+                  >
+                    {ins.description}
+                  </p>
+                </div>
               </div>
             </div>
           ))}

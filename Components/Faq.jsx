@@ -19,7 +19,7 @@ const Faq = ({ faqs }) => {
   return (
     <section className="w-full  h-max bg-white gap-8 px-6 sm:px-12 my-[4rem] mb-[160px] md:px-20 lg:px-32 py-12 flex flex-col items-center">
       {/* Header */}
-      <h2 className="w-full font-bold text-[40px] text-center text-halfBlack">
+      <h2 className="text-halfBlack text-[40px] font-bold text-center ">
         Frequently Asked Questions
       </h2>
 

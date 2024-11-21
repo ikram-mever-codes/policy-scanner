@@ -8,10 +8,10 @@ const QuoteProcess = () => {
   return (
     <section className="w-full h-max bg-white sm:px-[80px] px-[20px] mt-[60px] mb-[60px] gap-[2.5rem] flex justify-start items-center flex-col">
       <div className="w-[1140px] overflow-hidden flex justify-start items-center flex-col gap-[4rem]">
-        <h2 className="text-halfBlack text-[40px] font-semibold text-center ">
+        <h2 className="text-halfBlack text-[40px] font-bold text-center ">
           Get Custom Quotes in Less Than 3 Minutes{" "}
         </h2>
-        <div className="flex justify-center items-center   w-full flex-col gap-[80px]">
+        <div className="flex  w-[950px] justify-center items-center  overflow-hidden flex-col gap-[80px]">
           <div
             className="w-full h-max justify-center    items-center mx-auto"
             style={{ display: "grid", gridTemplateColumns: "50%  50%" }}

@@ -18,7 +18,7 @@ module.exports = {
         selected: "#4949493e",
         selected2: "#f4f4f4",
 
-        gray: "#818181",
+        // gray: "#818181",
         gray2: "#BDBDBD",
         gray1: "#CFCFCF",
       },
