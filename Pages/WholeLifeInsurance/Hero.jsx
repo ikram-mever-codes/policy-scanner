@@ -6,36 +6,40 @@ import Link from "next/link";
 const Hero = () => {
   return (
     <section
-      className="w-full h-[88vh] min-w-screen justify-between bg-foreground2"
-      style={{ display: "grid", gridTemplateColumns: "40% auto" }}
+      className="w-full h-[650px] hero-bg  min-w-screen overflow-hidden bg-foreground2"
+      style={{ display: "grid", gridTemplateColumns: "50% 50%" }}
     >
-      <div className="flex justify-end items-center  w-full h-full">
-        <div className="w-max h-full flex justify-center gap-[1rem]   items-center flex-col py-[5rem]">
-          <div className="w-full h-max flex justify-start items-start flex-col">
+      <div className="flex justify-end   items-end   w-full h-full  ">
+        <div className="w-max h-full  flex justify-center pb-[80px] gap-[2rem]   items-center flex-col ">
+          <div className="w-full h-max flex justify-end items-start flex-col gap-[1rem]">
             <h1 className="text-[45px] font-extrabold  text-left text-halfBlack">
-              Compare and Buy <br /> Whole Life Insurance
+              Compare and Buy Canada's
+              <br />
+              Best Whole Life Insurance
             </h1>
-            <p className="w-full text-halfBlack text-[18px] font-semibold text-left my-[10px]">
+            <p className="w-full text-halfBlack text-[20px] font-semibold text-left ">
               Save time, Save money{" "}
             </p>
           </div>
 
           <Link
             href="#"
-            className="relative group flex justify-center items-center text-[18px] w-full h-[5rem] shadow-2xl text-halfBlack rounded-2xl bg-white border border-solid hover:text-white border-primary transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer overflow-hidden"
+            className="relative group flex justify-center items-center text-[18px] self-start w-[30rem] h-[5rem] shadow-2xl text-halfBlack rounded-2xl bg-white border border-solid hover:text-white border-primary transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer overflow-hidden"
           >
             <div className="absolute inset-0 bg-primary scale-x-0 origin-bottom-left transition-transform duration-300 group-hover:scale-x-100"></div>
-            <span className="relative z-10">Compare Whole Life Insurance</span>
+            <span className="relative z-10">Compare Term Life Insurance</span>
           </Link>
         </div>
       </div>
-      <Image
-        src={wholeLife2}
-        alt="Policy Scanner Insurance"
-        width={616}
-        height={600}
-        className=" object-cover object-center w-[50vw] h-[88vh]"
-      />
+      <div className="w-full h-full flex justify-start items-end">
+        <Image
+          src={wholeLife2}
+          alt="Policy Scanner Insurance"
+          height={510}
+          width={500}
+          className="object-fit relative bottom-0  left-[130px]  lg:left-[150px] 4xl:left-[200px] object-center"
+        />
+      </div>
     </section>
   );
 };

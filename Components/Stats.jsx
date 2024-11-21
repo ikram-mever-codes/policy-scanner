@@ -6,7 +6,7 @@ import homextr2 from "../assets/home-extra-2.png";
 const Stats = () => {
   return (
     <div className="w-[1000px] flex justify-center items-center  sm:bg-white mx-auto bg-foreground2 h-max mt-[60px] my-[80px]">
-      <div className="flex flex-wrap justify-center gap-[190px]  items-center  px-[20px] ">
+      <div className="flex flex-wrap justify-center gap-[190px]  items-center  px-[20px]  ">
         <div className="flex justify-center items-center flex-col">
           <div className="font-bold text-[40px] sm:text-[30px] text-halfBlack">
             150+

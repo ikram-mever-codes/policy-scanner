@@ -2,26 +2,26 @@ import React from "react";
 
 const WholeLifeInfo4 = () => {
   return (
-    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
-      <div className="w-[75%] h-full flex justify-center items-center flex-col gap-[5rem]">
+    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[5rem] pb-0 flex justify-center items-center flex-col">
+      <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[5rem]">
         <div className="w-full h-max flex justify-start items-start flex-col gap-[1rem]">
-          <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
+          <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">
             Can You Cash Out a Whole Life Insurance Policy?
           </h2>
-          <p className="mt-[1rem]">
+          <p className="mt-[1rem] text-dg text-halfBlack">
             Yes, a whole of life insurance policies can be cashed out. This
             involves accessing the accumulated cash value that has built up over
             time. Here's a breakdown of how this works and what should be taken
             into consideration:
           </p>
-          <h3 className="font-semibold text-[22px] mt-[1rem]">
+          <h3 className="font-semibold text-[25px] mt-[1rem]">
             How to Cash Out
           </h3>
           <ul className="custom-list-bullets flex flex-col gap-[20px] text-[16px]">
             <li className="w-full flex justify-start items-start">
               <div className="w-full h-max flex justify-start items-start flex-col gap-[10px]">
-                <h4 className="font-semibold text-[18px]">Policy Surrender</h4>
-                <p>
+                <h4 className="font-semibold text-[20px]">Policy Surrender</h4>
+                <p className="text-dg text-halfBlack">
                   This means canceling your whole life insurance policy and
                   receiving the cash surrender value, which is the whole life
                   insurance cash value minus any fees. Selecting this option
@@ -31,8 +31,8 @@ const WholeLifeInfo4 = () => {
             </li>
             <li className="w-full flex justify-start items-start">
               <div className="w-full h-max flex justify-start items-start flex-col gap-[10px]">
-                <h4 className="font-semibold text-[18px]">Policy Loans</h4>
-                <p>
+                <h4 className="font-semibold text-[20px]">Policy Loans</h4>
+                <p className="text-dg text-halfBlack">
                   You can take out a policy loan against the cash value of your
                   whole life insurance without canceling the policy. This is the
                   best option to access the cash value without affecting the
@@ -42,8 +42,8 @@ const WholeLifeInfo4 = () => {
             </li>
             <li className="w-full flex justify-start items-start">
               <div className="w-full h-max flex justify-start items-start flex-col gap-[10px]">
-                <h4 className="font-semibold text-[18px]">Withdrawals</h4>
-                <p>
+                <h4 className="font-semibold text-[20px]">Withdrawals</h4>
+                <p className="text-dg text-halfBlack">
                   You can also withdraw the accumulated cash value from your
                   whole life insurance policy. However, there will be tax
                   implications for the withdrawn amount.
@@ -52,7 +52,7 @@ const WholeLifeInfo4 = () => {
             </li>
             <li className="w-full flex justify-start items-start">
               <div className="w-full h-max flex justify-start items-start flex-col gap-[10px]">
-                <h4 className="font-semibold text-[18px]">
+                <h4 className="font-semibold text-[20px]">
                   Time Frame for Cash Value Accumulation
                 </h4>
                 <p>
@@ -67,10 +67,10 @@ const WholeLifeInfo4 = () => {
           </ul>
         </div>
         <div className="w-full h-max flex justify-start items-start flex-col gap-[1rem]">
-          <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
+          <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">
             Whole Life Insurance Vs Universal Life Insurance?
           </h2>
-          <p>
+          <p className="text-dg text-halfBlack">
             Let's analyze the whole Life Insurance and universal Life Insurance
             policies and understand their key differences.
           </p>

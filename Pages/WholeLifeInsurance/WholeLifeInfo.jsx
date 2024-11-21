@@ -3,12 +3,12 @@ import React from "react";
 import WholeLife3 from "../../assets/whole-life-3.png";
 const WholeLifeInfo = () => {
   return (
-    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
-      <div className="w-[75%] h-full flex justify-center items-center flex-col gap-[2rem]">
-        <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
+    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] pb-[80px] pt-0  flex justify-center items-center flex-col">
+      <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[2rem]">
+        <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">
           What is whole life Insurance in Canada?
         </h2>
-        <p>
+        <p className="text-halfBlack text-dg">
           Whole life insurance in Canada is a type of permanent life insurance
           that guarantees a payout whenever you pass away, as it has no
           expiration date. Unlike term life insurance, which covers a specific
@@ -39,7 +39,7 @@ const WholeLifeInfo = () => {
                 <h3 className="font-semibold text-[18px]">
                   What are the benefits of permanent insurance coverage?
                 </h3>
-                <p>
+                <p className="text-halfBlack text-dg">
                   Permanent insurance coverage ensures that you have protection
                   for your entire life. This means your beneficiaries are
                   guaranteed a payout, regardless of when you pass away.
@@ -51,7 +51,7 @@ const WholeLifeInfo = () => {
                 <h3 className="font-semibold text-[18px]">
                   How does the cash value component work?
                 </h3>
-                <p>
+                <p className="text-halfBlack text-dg">
                   The cash value component of whole life insurance grows over
                   time as you pay your premiums. This cash value can be accessed
                   during your lifetime through loans or withdrawals.

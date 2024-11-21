@@ -43,13 +43,13 @@ const WholeLifeFaq = () => {
   };
 
   return (
-    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
-      <div className="w-[75%] h-full flex justify-center items-center flex-col gap-[3rem]">
+    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[60px] flex justify-center items-center flex-col">
+      <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[3rem]">
         <div className="w-full h-max flex flex-col justify-start items-center gap-[1rem]">
           <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
-            What are the types of whole life insurance? (Change){" "}
+            What are the types of whole life insurance?
           </h2>
-          <p className="w-full text-left">
+          <p className="w-full text-halfBlack text-dg">
             Whole life insurance comes in several forms to meet various
             financial needs. Here’s a brief overview of the main types:
           </p>
@@ -83,12 +83,15 @@ const WholeLifeFaq = () => {
                     aria-controls={`panel${index}d-content`}
                     id={`panel${index}d-header`}
                   >
-                    <Typography className="w-full text-[16px] text-left font-medium">
+                    <Typography className="w-full text-[16px] text-left font-medium text-dg">
                       {faq.question}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <Typography className="w-full h-max flex justify-start pb-[5rem] bg-foreground2 items-start font-normal p-[40px] text-left rounded-xl">
+                    <Typography
+                      className="w-full text-halfBlack text-dg
+                    h-max flex justify-start pb-[5rem] bg-foreground2 items-start font-normal p-[40px] text-left rounded-xl"
+                    >
                       {faq.answer}
                     </Typography>
                   </AccordionDetails>

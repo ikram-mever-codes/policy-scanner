@@ -4,12 +4,12 @@ import wholeLife5 from "../../assets/whole-life-6.png";
 import { ArrowForwardIos } from "@mui/icons-material";
 const WholeLifeInfo5 = () => {
   return (
-    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
-      <div className="w-[75%] h-full flex justify-center items-center flex-col gap-[1rem]">
-        <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
+    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[60px] pt-0 flex justify-center items-center flex-col">
+      <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[1rem]">
+        <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">
           How much does whole life insurance cost in Canada?
         </h2>
-        <p>
+        <p className="w-full text-halfBlack text-dg">
           Even though the cost of whole life insurance depends on your personal
           circumstances such as age, gender, lifestyle, and smoking status. it
           is expensive than term life insurance for two main reasons: first, the
@@ -17,12 +17,12 @@ const WholeLifeInfo5 = () => {
           there is a savings or investment component included in the policy.
         </p>
         <div className="flex justify-between items-center h-max w-full gap-[3rem]">
-          <div className="w-full h-full flex justify-between items-start gap-[2rem] flex-col">
+          <div className="w-full h-full flex justify-between items-start gap-[2rem] mt-[2rem] flex-col">
             <div className="flex gap-[10px] flex-col text-left">
-              <h3 className="text-[18px] font-semibold">
+              <h3 className="text-[22px] font-semibold text-halfBlack">
                 What is the monthly premium for whole life insurance?
               </h3>
-              <p className="text-[16px]">
+              <p className="w-full text-halfBlack text-dg">
                 Whole life insurance quotes can be tailored based on customer
                 preferences. You can choose to leave a tax-free inheritance for
                 your kids and grandkids or utilize the policy as a source of
@@ -30,10 +30,10 @@ const WholeLifeInfo5 = () => {
               </p>
             </div>
             <div className="flex gap-[10px] flex-col text-left">
-              <h3 className="text-[18px] font-semibold">
+              <h3 className="text-[22px] font-semibold text-halfBlack">
                 Monthly Whole Life Insurance Premiums in Canada
               </h3>
-              <p className="text-[16px]">
+              <p className="w-full text-halfBlack text-dg">
                 This table shows approximate rates for a non-smoking male in
                 perfect health.
               </p>

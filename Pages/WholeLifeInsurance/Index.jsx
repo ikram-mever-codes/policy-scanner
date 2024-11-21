@@ -14,6 +14,8 @@ import WholeLifeInfo5 from "./WholeLifeInfo5";
 import homextr1 from "../../assets/home-extra-1.png";
 import homextr2 from "../../assets/home-extra-2.png";
 import Image from "next/image";
+import Stats from "@/Components/Stats";
+import NewCta from "@/Components/NewCta";
 const faqs = [
   {
     question: "  What is PolicyScanner, and how does it work?",
@@ -86,35 +88,11 @@ const Index = () => {
     <>
       <Hero />
       {/* <QuotePanel /> */}
-      <div className="flex justify-center gap-[10rem] items-center w-full min-h-[15vh] pt-[40px] px-[60px]">
-        <div className="flex justify-center items-center flex-col">
-          <div className="font-bold text-[30px] text-halfBlack">150+</div>
-          <div>Expert reviewed articles</div>
-        </div>
-        <div className="flex justify-center items-center flex-col">
-          <Image
-            src={homextr1}
-            alt="4.6 out of 5 Excellent rating"
-            className=" object-cover object-center"
-          />
-          <div>4.6 out of 5 Excellent rating</div>
-        </div>
-        <div className="flex justify-center items-center flex-col">
-          <div className="font-bold text-[30px] text-halfBlack flex justify-center items-center gap-2">
-            <Image
-              src={homextr2}
-              alt="4.6 out of 5 Excellent rating"
-              className=" object-cover object-center"
-            />{" "}
-            150+
-          </div>
-          <div>Canadian Company</div>
-        </div>
-      </div>
+      <Stats />
       {/* <InsuranceProviders /> */}
       <WholeLifeInfo />
       <WholeLifeInofo2 />
-      <ConnectCta bg={"#EBFEFE"} />
+      <NewCta />
       <WholeLifeFaq />
       <WholeLifeInfo5 />
       <WholeLifeInfo3 />
