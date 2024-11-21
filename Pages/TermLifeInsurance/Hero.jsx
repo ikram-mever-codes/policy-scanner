@@ -6,7 +6,7 @@ import Link from "next/link";
 const Hero = () => {
   return (
     <section
-      className="w-full h-[550px] hero-bg  min-w-screen 
+      className="w-full h-[650px] hero-bg  min-w-screen 
     overflow-hidden bg-foreground2   "
       style={{ display: "grid", gridTemplateColumns: "50% 50%" }}
     >
