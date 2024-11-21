@@ -33,7 +33,9 @@ const TermLifeTable = () => {
                 <td class="py-4 px-6 border-b border-r border-halfBlack">
                   $15.58{" "}
                 </td>
-                <td class="py-4 px-6 border-b  border-halfBlack">$19.47 </td>
+                <td class="py-4 px-6 border-b border-r border-halfBlack">
+                  $19.47{" "}
+                </td>
                 <td class="py-4 px-6 border-b  border-halfBlack">$23.36 </td>
               </tr>
               <tr class="even:bg-gray-50">
@@ -43,7 +45,9 @@ const TermLifeTable = () => {
                 <td class="py-4 px-6 border-b border-r border-halfBlack">
                   $22.22{" "}
                 </td>
-                <td class="py-4 px-6 border-b  border-halfBlack"> $27.78 </td>
+                <td class="py-4 px-6 border-b border-r border-halfBlack">
+                  $27.78{" "}
+                </td>
                 <td class="py-4 px-6 border-b  border-halfBlack">$33.34</td>
               </tr>{" "}
               <tr class="even:bg-gray-50">
@@ -53,7 +57,9 @@ const TermLifeTable = () => {
                 <td class="py-4 px-6 border-b border-r border-halfBlack">
                   $27.80{" "}
                 </td>
-                <td class="py-4 px-6 border-b  border-halfBlack">$34.75 </td>
+                <td class="py-4 px-6 border-b border-r border-halfBlack">
+                  $34.75{" "}
+                </td>
                 <td class="py-4 px-6 border-b  border-halfBlack">$41.70 </td>
               </tr>{" "}
               <tr class="even:bg-gray-50">
@@ -63,7 +69,9 @@ const TermLifeTable = () => {
                 <td class="py-4 px-6 border-b border-r border-halfBlack">
                   $29.92{" "}
                 </td>
-                <td class="py-4 px-6 border-b  border-halfBlack">$37.40 </td>
+                <td class="py-4 px-6 border-b border-r border-halfBlack">
+                  $37.40{" "}
+                </td>
                 <td class="py-4 px-6 border-b  border-halfBlack">$44.88 </td>
               </tr>{" "}
               <tr class="even:bg-gray-50">
@@ -73,7 +81,9 @@ const TermLifeTable = () => {
                 <td class="py-4 px-6 border-b border-r border-halfBlack">
                   $51.60{" "}
                 </td>
-                <td class="py-4 px-6 border-b  border-halfBlack">$64.50 </td>
+                <td class="py-4 px-6 border-b border-r border-halfBlack">
+                  $64.50{" "}
+                </td>
                 <td class="py-4 px-6 border-b  border-halfBlack">$77.40 </td>
               </tr>{" "}
               <tr class="even:bg-gray-50">
@@ -83,7 +93,9 @@ const TermLifeTable = () => {
                 <td class="py-4 px-6 border-b border-r border-halfBlack">
                   $151.20{" "}
                 </td>
-                <td class="py-4 px-6 border-b  border-halfBlack">$189.00 </td>
+                <td class="py-4 px-6 border-b border-r border-halfBlack">
+                  $189.00{" "}
+                </td>
                 <td class="py-4 px-6 border-b  border-halfBlack"> $226.80 </td>
               </tr>{" "}
               <tr class="even:bg-gray-50">
@@ -93,7 +105,9 @@ const TermLifeTable = () => {
                 <td class="py-4 px-6 border-b border-r border-halfBlack">
                   $481.20{" "}
                 </td>
-                <td class="py-4 px-6 border-b  border-halfBlack">$601.50</td>
+                <td class="py-4 px-6 border-b border-r border-halfBlack">
+                  $601.50
+                </td>
                 <td class="py-4 px-6 border-b  border-halfBlack"> $721.80</td>
               </tr>
             </tbody>

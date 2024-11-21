@@ -14,9 +14,9 @@ const Hero = () => {
         <div className="w-max h-full  flex justify-center pb-[80px] gap-[2rem]   items-center flex-col ">
           <div className="w-full h-max flex justify-end items-start flex-col gap-[1rem]">
             <h1 className="text-[45px] font-extrabold  text-left text-halfBlack">
-              Compare and Buy
+              Compare and Buy Canada's
               <br />
-              Term Life Insurance
+              Best Term Life Insurance
             </h1>
             <p className="w-full text-halfBlack text-[20px] font-semibold text-left ">
               Quick, easy & hassle free{" "}

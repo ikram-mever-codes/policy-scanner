@@ -6,12 +6,12 @@ const TermLifeInfo4 = () => {
   return (
     <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
       <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[2rem]">
-        <div className="w-full h-[380px] flex justify-between items-center gap-[1rem]">
+        <div className="w-full h-[380px] flex justify-between items-center gap-[3rem]">
           <div className="w-full h-full flex justify-start items-start flex-col gap-[1rem]">
             <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">
               How much does term life insurance cost?
             </h2>
-            <p className="text-halfBlack">
+            <p className="text-halfBlack text-[18px] line-h">
               Lets examine how premium calculation works.
             </p>
             <ul className="custom-list-bullets w-full h-full flex justify-around  flex-col">
@@ -20,7 +20,7 @@ const TermLifeInfo4 = () => {
                   <h4 className="font-semibold text-halfBlack">
                     Premium calculation
                   </h4>
-                  <p className="text-halfBlack">
+                  <p className="text-halfBlack text-[18px] line-h">
                     The insurance premium is calculated based on age, health,
                     lifestyle, and the amount of coverage. It is determined
                     through an underwriting process.
@@ -32,7 +32,7 @@ const TermLifeInfo4 = () => {
                   <h4 className="font-semibold text-halfBlack">
                     Example costs:{" "}
                   </h4>
-                  <p className="text-halfBlack">
+                  <p className="text-halfBlack text-[18px] line-h">
                     Premiums can range from $20 to $50 per month for a healthy
                     individual in their 30s for $500,000 coverage. These example
                     costs can help you understand what to expect in terms of

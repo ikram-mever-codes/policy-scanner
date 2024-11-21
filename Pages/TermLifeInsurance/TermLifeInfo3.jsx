@@ -38,7 +38,7 @@ const TermLifeInfo3 = () => {
           </div>
           <div className="w-full h-[120px] rounded-xl flex justify-center p-4 border border-solid border-opposite items-center flex-col gap-[10px]">
             <h4 className="w-full text-left text-[20px] font-semibold">
-              Policy duration::
+              Policy duration:
             </h4>
             <div className="text-halfBlack w-full text-left">
               The length of your term life insurance policy in Canada can also

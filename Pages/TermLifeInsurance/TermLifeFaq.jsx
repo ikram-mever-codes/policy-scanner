@@ -13,24 +13,18 @@ import wholeLife5 from "../../assets/whole-life-5.png";
 
 const faqs = [
   {
-    question: "  What is PolicyScanner, and how does it work?",
+    question: "Becoming a New Parent",
     answer: `PolicyScanner is an online life insurance brokerage platform that
                 Kitchener Ontario, and registered under FSRA.`,
   },
   {
-    question:
-      "What makes PolicyScanner different from other online life insurance brokers?",
+    question: "Buying a Home",
     answer: `PolicyScanner is an online life insurance brokerage platform the
                   offer. We are a proudly 100% Canadian company, headquartered in
               Kitchener Ontario, and registered under FSRA.`,
   },
   {
-    question: "Does PolicyScanner work with insurance companies directly?",
-    answer:
-      "Yes, we work directly with leading insurance companies to ensure the best service.",
-  },
-  {
-    question: "What types of insurance does PolicyScanner offer?",
+    question: "Retirement Planning",
     answer:
       "We offer term life insurance, whole life insurance, critical illness insurance, and mortgage protection.",
   },
@@ -43,15 +37,15 @@ const TermLifeFaq = () => {
   };
 
   return (
-    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
+    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] pt-[40px] pb-[60px] flex justify-center items-center flex-col">
       <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[3rem]">
         <div className="w-full h-max flex flex-col justify-start items-center gap-[1rem]">
           <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
-            What are the types of whole life insurance? (Change){" "}
+            When to buy term life insurance?{" "}
           </h2>
           <p className="w-full text-left">
-            Whole life insurance comes in several forms to meet various
-            financial needs. Here’s a brief overview of the main types:
+            Unsure if it's the right time to buy term life insurance in Canada,
+            check if any of the following situations apply to you.
           </p>
         </div>
         <div className="w-full h-max flex justify-between items-center gap-[3rem]">
@@ -60,7 +54,7 @@ const TermLifeFaq = () => {
             objectFit="cover"
             objectPosition="center"
             width={400}
-            height={500}
+            height={280}
             alt="What are the types of whole life insurance? (Change)"
           />
           <div>
@@ -75,9 +69,9 @@ const TermLifeFaq = () => {
                   <AccordionSummary
                     expandIcon={
                       expanded === `panel${index}` ? (
-                        <RemoveIcon className="text-opposite text-[25px]" />
+                        <RemoveIcon className="text-halfBlack text-[25px]" />
                       ) : (
-                        <AddIcon className="text-opposite text-[25px]" />
+                        <AddIcon className="text-halfBlack text-[25px]" />
                       )
                     }
                     aria-controls={`panel${index}d-content`}

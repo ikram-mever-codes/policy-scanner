@@ -9,12 +9,12 @@ const TermLifeInfo5 = () => {
         <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">
           What happens after your term life insurance ends?
         </h2>{" "}
-        <p className="text-[18px] text-halfBlack w-full text-left mb-[2rem]">
+        <p className="text-[18px] text-halfBlack w-full text-left mb-[2rem] line-h">
           Depending on the type of your term insurance policy, you may have four
           choices before the end of the contract period.
         </p>
-        <div className="w-full h-[550px] flex justify-between items-center gap-[2rem]">
-          <div className="flex-col w-full h-full flex justify-center items-start gap-[1rem]">
+        <div className="w-full h-[550px] flex justify-between items-center ">
+          <div className="flex-col w-full h-full flex justify-center items-start gap-[2rem]">
             <div className=" w-[568px] h-[169px] flex justify-center items-center flex-col gap-[1rem] py-4 px-6 rounded-2xl border border-solid border-opposite">
               <h3 className="font-semibold text-[20px] w-full text-left text-halfBlack">
                 Convert your coverage
@@ -51,8 +51,8 @@ const TermLifeInfo5 = () => {
             alt="
           What happens after your term life insurance ends?
           "
-            width={520}
-            height={560}
+            width={500}
+            height={540}
             className="object-cover object-center"
           />
         </div>

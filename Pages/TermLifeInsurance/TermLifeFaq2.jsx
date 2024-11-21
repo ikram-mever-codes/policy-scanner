@@ -43,13 +43,13 @@ const TermLifeFaq2 = () => {
   };
 
   return (
-    <section className="w-full h-max  bg-foreground2 gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
-      <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[3rem]">
-        <div className="w-full h-max flex flex-col justify-start items-center gap-[1rem]">
+    <section className="w-full h-max  bg-foreground2 gap-[3rem] px-[80px] py-[60px] flex justify-center items-center flex-col">
+      <div className="w-[1140px] h-full flex justify-center items-center flex-col ">
+        <div className="w-full h-max flex flex-col justify-start items-center  ">
           <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
             How much coverage do you need?{" "}
           </h2>
-          <p className="w-full text-left text-dg">
+          <p className="w-full text-left text-dg ">
             When determining how much term life insurance coverage you need,
             it's important to analyze your family’s future financial needs.
             Whether you’re comparing term life insurance quotes or calculating
@@ -57,7 +57,7 @@ const TermLifeFaq2 = () => {
             the best term life insurance in Canada.
           </p>
         </div>
-        <div className="w-full h-[80vh flex justify-between items-center gap-[3rem]">
+        <div className="w-full h-[80vh flex justify-between mt-[2rem] items-center gap-[3rem]">
           <div className="w-full h-full flex justify-center  items-center gap-[2rem] flex-col ">
             <ul className="flex w-full h-max flex-col justify-center items-start gap-[4px]  px-[0rem] bullets">
               <li>Future mortgage or rental payments</li>
@@ -65,12 +65,15 @@ const TermLifeFaq2 = () => {
               <li>Mortgage protection for your loved ones</li>
               <li>An inheritance for your loved ones.</li>
             </ul>
-            <h3 className=" font-semibold text-[18px] text-left w-full">
+            <h3 className=" font-semibold text-[20px] text-left w-full">
               Optional riders for term life insurance
             </h3>
-            <div className="w-full relative left-[-20px]">
+            <div className="w-full relative left-[-20px] ">
               {faqs.map((faq, index) => (
-                <div key={index} className="w-full  gap-[3rem]">
+                <div
+                  key={index}
+                  className="w-full  gap-[3rem] border-b-2 mb-2 border-solid border-gray-300 "
+                >
                   <Accordion
                     expanded={expanded === `panel${index}`}
                     onChange={handleChange(`panel${index}`)}
@@ -81,9 +84,9 @@ const TermLifeFaq2 = () => {
                       className="bg-foreground2"
                       expandIcon={
                         expanded === `panel${index}` ? (
-                          <RemoveIcon className="text-opposite text-[25px]" />
+                          <RemoveIcon className="text-halfBlack text-[25px]" />
                         ) : (
-                          <AddIcon className="text-opposite text-[25px]" />
+                          <AddIcon className="text-halfBlack text-[25px]" />
                         )
                       }
                       aria-controls={`panel${index}d-content`}
@@ -93,8 +96,8 @@ const TermLifeFaq2 = () => {
                         {faq.question}
                       </Typography>
                     </AccordionSummary>
-                    <AccordionDetails>
-                      <Typography className="w-full h-max flex justify-start pb-[5rem] bg-white items-start font-normal p-[40px] px-0 text-left rounded-xl">
+                    <AccordionDetails className="bg-foreground2">
+                      <Typography className="w-full h-max flex justify-start pb-[5rem] bg-foreground2 items-start font-normal p-[40px] px-0 text-left rounded-xl">
                         {faq.answer}
                       </Typography>
                     </AccordionDetails>

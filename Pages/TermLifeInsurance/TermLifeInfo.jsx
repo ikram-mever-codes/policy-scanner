@@ -3,12 +3,12 @@ import React from "react";
 import termLife2 from "../../assets/term-life-2.png";
 const TermLifeInfo = () => {
   return (
-    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[60px] flex justify-center items-center flex-col">
-      <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[2rem]">
+    <section className="w-full h-max  bg-foreground2 gap-[3rem] px-[80px] py-[60px] flex justify-center items-center flex-col">
+      <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[25px]">
         <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
           What is term life insurance in Canada?{" "}
         </h2>
-        <p>
+        <p className="text-halfBlack line-h">
           Term life insurance in Canada provides coverage for a specific period,
           typically ranging from Term 10 to Term 30, or up to a certain age.
           Term life insurance quotes are often more affordable than whole life
@@ -30,8 +30,8 @@ const TermLifeInfo = () => {
             loading="lazy"
             priority={false}
           />
-          <div className="w-full h-full flex justify-start items-center flex-col gap-[1rem]">
-            <h3 className="font-semibold text-[18px] text-left">
+          <div className="w-full h-full flex justify-start items-center flex-col gap-[1rem] line-h">
+            <h3 className="font-semibold text-[22px] text-left w-full ">
               The cost of term life insurance in Canada depends on two primary
               factors:
             </h3>

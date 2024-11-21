@@ -27,7 +27,7 @@ const Faq = ({ faqs }) => {
         {faqs.map((faq, index) => (
           <div
             key={index}
-            className="w-[1000px] border-b border-gray-300 mb-4 last:mb-0"
+            className="w-[1000px] border-b border-gray-400 mb-4 last:mb-0"
           >
             <Accordion
               expanded={expanded === `panel${index}`}

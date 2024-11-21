@@ -93,12 +93,12 @@ li {
   );
 }
 .whole-life-divider {
-  width: 3px;
+  width: 1px;
   height: 5rem;
   background-image: linear-gradient(
     to bottom,
     transparent,
-    #494949ec 50%,
+    #333333 50%,
     transparent
   );
 }
@@ -245,4 +245,8 @@ button:focus {
 .bullets li {
   list-style: disc;
   line-height: 2rem;
+}
+
+.line-h {
+  line-height: 25px;
 }

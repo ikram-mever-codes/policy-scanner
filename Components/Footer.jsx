@@ -10,7 +10,7 @@ import { EmailOutlined, Facebook, Phone } from "@mui/icons-material";
 const Footer = () => {
   return (
     <footer className="w-full bg-[#002625] py-[40px]  flex flex-col justify-center items-center   gap-[30px] text-white overflow-hidden">
-      <div className="flex w-[1000px]  flex-col sm:flex-row justify-between items-start sm:items-center gap-[30px]">
+      <div className="flex w-[1140px]  flex-col sm:flex-row justify-between items-start sm:items-center gap-[30px]">
         <div className="flex flex-col justify-between gap-[15px] h-full w-max">
           <Image
             src={logo}
