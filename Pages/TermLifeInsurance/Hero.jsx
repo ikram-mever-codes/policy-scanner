@@ -38,7 +38,7 @@ const Hero = () => {
           alt="Policy Scanner Insurance"
           height={510}
           width={500}
-          className="object-fit relative bottom-0  left-[130px]  lg:left-[130px] 4xl:left-[200px] object-center"
+          className="object-fit relative bottom-0  left-[130px]  lg:left-[150px] 4xl:left-[200px] object-center"
         />
       </div>
     </section>

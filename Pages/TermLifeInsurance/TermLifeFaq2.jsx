@@ -46,7 +46,7 @@ const TermLifeFaq2 = () => {
     <section className="w-full h-max  bg-foreground2 gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
       <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[3rem]">
         <div className="w-full h-max flex flex-col justify-start items-center gap-[1rem]">
-          <h2 className="w-full font-bold text-[35px] leading-10 text-left text-halfBlack">
+          <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
             How much coverage do you need?{" "}
           </h2>
           <p className="w-full text-left text-dg">

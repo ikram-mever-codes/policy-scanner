@@ -3,7 +3,7 @@ import React from "react";
 import termLife2 from "../../assets/term-life-2.png";
 const TermLifeInfo = () => {
   return (
-    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
+    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[60px] flex justify-center items-center flex-col">
       <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[2rem]">
         <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
           What is term life insurance in Canada?{" "}

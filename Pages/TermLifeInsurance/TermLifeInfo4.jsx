@@ -8,7 +8,7 @@ const TermLifeInfo4 = () => {
       <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[2rem]">
         <div className="w-full h-[380px] flex justify-between items-center gap-[1rem]">
           <div className="w-full h-full flex justify-start items-start flex-col gap-[1rem]">
-            <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
+            <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">
               How much does term life insurance cost?
             </h2>
             <p className="text-halfBlack">
