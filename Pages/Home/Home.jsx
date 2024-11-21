@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Hero from "./Hero";
 import comp1 from "../../assets/comp1.png";
@@ -123,8 +124,8 @@ const Home = () => {
     <div className="overflow-hidden">
       <Hero />
       <Stats />
-      <div className="w-full h-max flex justify-center items-center mt-[20px]">
-        <div className="flex  w-[1140px] overflow-hidden min-h-[70vh] justify-start flex-col items-center gap-[40px] mb-[20px ] ">
+      <div className="w-full h-max flex justify-center items-center mt-[20px] ">
+        <div className="flex  w-[1140px] overflow-hidden  justify-start flex-col items-center gap-[40px] mt-[20px] mb-[4rem] ">
           <h2 className="text-halfBlack text-[40px] font-semibold text-center ">
             Why trust PolicyScanner for buying life insurance?{" "}
           </h2>
