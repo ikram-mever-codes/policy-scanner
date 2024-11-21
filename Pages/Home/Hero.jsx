@@ -12,9 +12,9 @@ const Hero = () => {
         overflow-hidden bg-foreground2   "
         style={{ display: "grid", gridTemplateColumns: "50% 50%" }}
       >
-        <div className="flex justify-end   items-end   w-full h-full  ">
-          <div className="w-max  h-full  relative left-[120px] flex justify-end pb-[80px] gap-[1rem]   items-end flex-col ">
-            <div className="w-full h-max flex justify-end items-start flex-col">
+        <div className="flex justify-end   items-center    w-full h-full  ">
+          <div className="w-max  h-full  relative left-[120px] flex justify-center  gap-[1rem]   items-center flex-col ">
+            <div className="w-full h-max flex justify-end items-center flex-col">
               <h1 className="text-[55px] font-extrabold  leading-[4.5rem] text-left text-halfBlack">
                 Let us do the comparison. <br /> You enjoy the savings.
               </h1>
@@ -23,7 +23,7 @@ const Hero = () => {
               </p>
             </div>
 
-            <div className="w-max self-start grid grid-cols-2 pb-[100px] gap-x-[2rem] gap-y-[1rem] mt-[1.5rem] justify-center items-center">
+            <div className="w-max self-start grid grid-cols-2  gap-x-[2rem] gap-y-[1rem] mt-[1.5rem] justify-center items-center">
               {["Term Life", "Whole Life", "Mortgage", "Critical Illness"].map(
                 (item) => (
                   <Link href="/quote-form" key={item}>

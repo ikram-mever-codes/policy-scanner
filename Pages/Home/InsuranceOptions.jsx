@@ -90,7 +90,7 @@ const InsuranceOptions = () => {
                     className={`
                     text-[28px] text-left
                     font-semibold transition-colors duration-500
-                    
+                    text-halfBlack
                     `}
                   >
                     {ins.title}
@@ -99,6 +99,8 @@ const InsuranceOptions = () => {
                   <p
                     className={`
                     text-gray text-dg text-left
+                                        text-halfBlack
+
                     transition-opacity duration-500
                     ${
                       activeIndex === index
