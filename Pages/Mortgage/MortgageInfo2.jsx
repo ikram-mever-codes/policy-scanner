@@ -4,12 +4,12 @@ import criticalInfo2 from "../../assets/critical-info-2.png";
 
 const MortgageInfo2 = () => {
   return (
-    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] pt-[1rem] py-[3rem] flex justify-center items-center flex-col">
-      <div className="w-[75%] h-full flex justify-center text-halfBlack items-center flex-col gap-[2rem]">
-        <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
+    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] pt-[1rem] py-[60px] pb-0 flex justify-center items-center flex-col">
+      <div className="w-[1140px] h-full flex justify-center text-halfBlack items-center flex-col gap-[2rem]">
+        <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">
           How does mortgage life insurance work?{" "}
         </h2>
-        <p>
+        <p className="text-dg text-halfBlack">
           Mortgage protection insurance,is a specific type of term insurance
           designed to match your mortgage amount and term. If the policyholder
           passes away during the term, the insurance company provides a payout
@@ -20,8 +20,8 @@ const MortgageInfo2 = () => {
           <Image
             src={criticalInfo2}
             alt="What is whole life Insurance in Canada"
-            width={400}
-            height={500}
+            width={524}
+            height={261}
             className="h-max object-cover object-center"
             loading="lazy"
             priority={false}
@@ -36,7 +36,7 @@ const MortgageInfo2 = () => {
                 <h3 className="font-semibold text-[17px] ">
                   Disability protection{" "}
                 </h3>
-                <p>
+                <p className="text-dg text-halfBlack">
                   Mortgage protection life insurance is independent. This means
                   your coverage remains intact even if you decide to switch
                   mortgage lenders.
@@ -48,7 +48,7 @@ const MortgageInfo2 = () => {
                 <h3 className="font-semibold text-[17px] ">
                   Guaranteed payout:{" "}
                 </h3>
-                <p>
+                <p className="text-dg text-halfBlack">
                   Mortgage protection insurance undergoes thorough underwriting
                   at the time the policy is issued, adding more security to the
                   payout during a claim.

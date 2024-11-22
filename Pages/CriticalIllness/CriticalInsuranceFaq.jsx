@@ -69,7 +69,7 @@ const CriticalInsuranceFaq = () => {
           />
           <div>
             {faqs.map((faq, index) => (
-              <div key={index} className="w-full border-b border-gray-300 mb-6">
+              <div key={index} className="w-full border-b border-gray-400 mb-6">
                 <Accordion
                   expanded={expanded === `panel${index}`}
                   onChange={handleChange(`panel${index}`)}
@@ -79,21 +79,21 @@ const CriticalInsuranceFaq = () => {
                   <AccordionSummary
                     expandIcon={
                       expanded === `panel${index}` ? (
-                        <RemoveIcon className="text-opposite text-[25px]" />
+                        <RemoveIcon className="text-halfBlack text-[25px]" />
                       ) : (
-                        <AddIcon className="text-opposite text-[25px]" />
+                        <AddIcon className="text-halfBlack text-[25px]" />
                       )
                     }
                     aria-controls={`panel${index}d-content`}
                     className="bg-[#ebfefe] "
                     id={`panel${index}d-header`}
                   >
-                    <Typography className="w-full text-dg text-halfBlack text-left font-medium bg-[#ebfefe] ">
+                    <Typography className="w-full text-dg text-halfBlack text-left font-medium bg-foreground2">
                       {faq.question}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <Typography className="w-full h-max flex  text-dg text-halfBlack justify-start pb-[5rem] bg-white items-start font-normal p-[40px] text-left rounded-xl">
+                    <Typography className="w-full h-max flex  text-dg text-halfBlack justify-start pb-[5rem] bg-wjote items-start font-normal p-[40px] text-left rounded-xl">
                       {faq.answer}
                     </Typography>
                   </AccordionDetails>

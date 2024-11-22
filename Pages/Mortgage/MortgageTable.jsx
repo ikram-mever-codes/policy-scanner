@@ -5,8 +5,8 @@ import { ArrowForwardIos } from "@mui/icons-material";
 
 const MortgageTable = () => {
   return (
-    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
-      <div className="w-[75%] h-full flex justify-center items-center flex-col gap-[5rem]">
+    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[60px] pt-0 flex justify-center items-center flex-col">
+      <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[5rem]">
         <div className="w-full h-max flex justify-start items-start flex-col gap-[1rem]">
           <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
             How is Mortgage Insurance Different from Term Life Insurance?{" "}
@@ -118,7 +118,7 @@ const MortgageTable = () => {
             <h4 className="text-[25px] font-bold text-primary text-left">
               Save Time, Save Money{" "}
             </h4>
-            <p className="text-left mt-[10px]">
+            <p className="text-left mt-[10px] text-dg text-halfBlack">
               Compare Life Insurance Quotes Instantly.{" "}
             </p>
           </div>

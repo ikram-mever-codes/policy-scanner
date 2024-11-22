@@ -10,6 +10,7 @@ import MortgageInfo3 from "./MortgageInfo3";
 import Faq from "@/Components/Faq";
 import MortgageInfo4 from "./MortgageInfo4";
 import MortgageInfo5 from "./MortgageInfo5";
+import Stats from "@/Components/Stats";
 
 const faqs = [
   {
@@ -81,32 +82,7 @@ const faqs = [
 const Index = () => {
   return (
     <>
-      <Hero />{" "}
-      <div className="flex justify-center gap-[10rem] items-center w-full min-h-[15vh] py-[40px] px-[60px]">
-        <div className="flex justify-center items-center flex-col">
-          <div className="font-bold text-[30px] text-halfBlack">150+</div>
-          <div>Expert reviewed articles</div>
-        </div>
-        <div className="flex justify-center items-center flex-col">
-          <Image
-            src={homextr1}
-            alt="4.6 out of 5 Excellent rating"
-            className=" object-cover object-center"
-          />
-          <div>4.6 out of 5 Excellent rating</div>
-        </div>
-        <div className="flex justify-center items-center flex-col">
-          <div className="font-bold text-[30px] text-halfBlack flex justify-center items-center gap-2">
-            <Image
-              src={homextr2}
-              alt="4.6 out of 5 Excellent rating"
-              className=" object-cover object-center"
-            />{" "}
-            150+
-          </div>
-          <div>Canadian Company</div>
-        </div>
-      </div>
+      <Hero /> <Stats />
       <MortgageInfo />
       <MortgageInfo2 />
       <MortgageInfo3 />
