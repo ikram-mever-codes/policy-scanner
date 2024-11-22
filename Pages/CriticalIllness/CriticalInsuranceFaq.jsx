@@ -47,13 +47,13 @@ const CriticalInsuranceFaq = () => {
   };
 
   return (
-    <section className="w-full h-max  bg-[#ebfefe] gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
-      <div className="w-[75%] h-full flex justify-center items-center flex-col gap-[3rem]">
+    <section className="w-full h-max  bg-[#ebfefe] gap-[3rem] px-[80px] pb-[40px] pt-[40px] flex justify-center items-center flex-col">
+      <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[3rem]">
         <div className="w-full h-max flex flex-col justify-start items-center gap-[1rem]">
-          <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
+          <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">
             Factors that influence your critical illness insurance quote{" "}
           </h2>
-          <p className="w-full text-left">
+          <p className="w-full text-left text-dg text-halfBlack">
             While many factors affect the cost of critical illness insurance,
             here are the key ones that impact your monthly premium:
           </p>
@@ -63,8 +63,8 @@ const CriticalInsuranceFaq = () => {
             src={wholeLife5}
             objectFit="cover"
             objectPosition="center"
-            width={400}
-            height={500}
+            width={465}
+            height={41}
             alt="What are the types of whole life insurance? (Change)"
           />
           <div>
@@ -88,12 +88,12 @@ const CriticalInsuranceFaq = () => {
                     className="bg-[#ebfefe] "
                     id={`panel${index}d-header`}
                   >
-                    <Typography className="w-full text-[16px] text-left font-medium bg-[#ebfefe] ">
+                    <Typography className="w-full text-dg text-halfBlack text-left font-medium bg-[#ebfefe] ">
                       {faq.question}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
-                    <Typography className="w-full h-max flex justify-start pb-[5rem] bg-white items-start font-normal p-[40px] text-left rounded-xl">
+                    <Typography className="w-full h-max flex  text-dg text-halfBlack justify-start pb-[5rem] bg-white items-start font-normal p-[40px] text-left rounded-xl">
                       {faq.answer}
                     </Typography>
                   </AccordionDetails>

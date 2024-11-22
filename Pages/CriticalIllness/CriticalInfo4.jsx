@@ -2,20 +2,20 @@ import React from "react";
 
 const CriticalInfo4 = () => {
   return (
-    <section className="w-full h-max  bg-foreground2 gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
-      <div className="w-[75%] h-full flex justify-center items-center flex-col gap-[1rem]">
-        <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
+    <section className="w-full h-max  bg-foreground2 gap-[3rem] px-[80px] py-[40px] flex justify-center items-center flex-col">
+      <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[1rem]">
+        <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">
           When to Buy Critical Illness Insurance in Canada?
         </h2>
         <div>
-          <p>
+          <p className="text-dg text-halfBlack">
             Purchasing critical illness insurance in Canada at the right time
             can make a significant difference in both cost and coverage.
           </p>
           <ul className="custom-list-bullets flex flex-col gap-[40px] text-[16px] mt-5">
             <li className="w-full flex justify-start items-start">
               <div className="w-full h-max flex justify-start items-start flex-col gap-[1rem]">
-                <p>
+                <p className="text-dg text-halfBlack">
                   Marriage: If you’re getting married, it’s an ideal time to
                   consider critical illness insurance. Protecting your partner
                   and future family from financial strain due to a serious
@@ -25,7 +25,7 @@ const CriticalInfo4 = () => {
             </li>
             <li className="w-full flex justify-start items-start">
               <div className="w-full h-max flex justify-start items-start flex-col gap-[1rem]">
-                <p>
+                <p className="text-dg text-halfBlack">
                   Starting a Family: Planning for a new family is another
                   important milestone. Critical illness insurance can provide
                   financial security during uncertain times, ensuring that your
@@ -35,7 +35,7 @@ const CriticalInfo4 = () => {
             </li>
             <li className="w-full flex justify-start items-start">
               <div className="w-full h-max flex justify-start items-start flex-col gap-[1rem]">
-                <p>
+                <p className="text-dg text-halfBlack">
                   Planning for Early Retirement: If you’re planning for early
                   retirement, securing a critical illness policy beforehand can
                   help safeguard your retirement savings from unexpected medical
@@ -45,7 +45,7 @@ const CriticalInfo4 = () => {
             </li>
             <li className="w-full flex justify-start items-start">
               <div className="w-full h-max flex justify-start items-start flex-col gap-[1rem]">
-                <p>
+                <p className="text-dg text-halfBlack">
                   Insuring Your Children: Some critical illness policies allow
                   you to insure your children. For example, you can pay premiums
                   for 20 years and provide coverage until your child reaches age

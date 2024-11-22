@@ -36,8 +36,9 @@ const Index = () => {
         }
       />
       <CriticalInsuranceFaq />
+      <CriticalInfo5 />
       <CriticalInfo4 />
-      <div className="w-full flex justify-center items-center gap-[3rem] my-[3rem]">
+      <div className="w-full flex justify-center items-center gap-[3rem] mb-0 my-[40px]">
         <div>
           <h4 className="text-[25px] font-bold text-primary text-left">
             Save Time, Save Money{" "}
@@ -54,7 +55,6 @@ const Index = () => {
           </button>{" "}
         </div>
       </div>
-      <CriticalInfo5 />
       <CriticalInfo6 />
     </>
   );

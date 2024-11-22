@@ -3,12 +3,12 @@ import React from "react";
 import criticalInfo2 from "../../assets/critical-info-2.png";
 const CriticalInfo5 = () => {
   return (
-    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] pt-[1rem] py-[3rem] flex justify-center items-center flex-col">
-      <div className="w-[75%] h-full flex justify-center items-center text-halfBlack flex-col gap-[1rem]">
-        <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
+    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[40px]  flex justify-center items-center flex-col">
+      <div className="w-[1140px] h-full flex justify-center items-center text-halfBlack flex-col gap-[1rem]">
+        <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">
           Best critical illness insurance companies in Canada{" "}
         </h2>
-        <p>
+        <p className="text-dg text-halfBlack ">
           Canada has many top-tier insurance companies offering critical illness
           coverage, and at PolicyScanner, we work directly with most of them.
           This means you can easily compare and find the best options available.
@@ -17,19 +17,19 @@ const CriticalInfo5 = () => {
           <Image
             src={criticalInfo2}
             alt="What is whole life Insurance in Canada"
-            width={400}
-            height={500}
+            width={461}
+            height={300}
             className="h-max object-cover object-center"
             loading="lazy"
             priority={false}
           />
           <ul className="custom-list-bullets flex flex-col gap-[30px] text-[16px]">
-            <h4 className="w-full font-semibold text-[18px]  text-left text-halfBlack">
+            <h4 className="w-full font-semibold text-[28px]  text-left text-halfBlack">
               Why comparing quotes matters
             </h4>
             <li className="w-full flex justify-start items-start">
               <div className="w-full h-max flex justify-start items-start flex-col gap-[1rem]">
-                <p>
+                <p className="text-dg text-halfBlack">
                   Our network includes leading companies like Manulife
                   Financial, Foresters Financial, Beneva, BMO Insurance, Canada
                   Life, Desjardins Insurance, Humania Assurance, IA Financial
@@ -41,7 +41,7 @@ const CriticalInfo5 = () => {
 
             <li className="w-full flex justify-start items-start">
               <div className="w-full h-max flex justify-start items-start flex-col gap-[1rem]">
-                <p>
+                <p className="text-dg text-halfBlack">
                   PolicyScanner provides you with the option to compare critical
                   illness insurance quotes from of these companies.
                   Additionally, you can receive personalized critical illness
