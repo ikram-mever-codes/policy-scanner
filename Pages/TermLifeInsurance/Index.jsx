@@ -171,10 +171,10 @@ const Index = () => {
       <NewCta />
       <TermLifeFaq />
       <TermLifeFaq2 />
-      <InsuranceCalculator
+      {/* <InsuranceCalculator
         title={"Life Insurance Calculator"}
         paragraph={`Use our online insurance calculator to quickly determine how much coverage you need and get direct life insurance quotes for term life, whole life, or mortgage insurance from the top insurance companies in Canada..`}
-      />
+      /> */}
       <TermLifeInfo3 />
       <TermLifeInfo4 />
       <TermLifeTable />

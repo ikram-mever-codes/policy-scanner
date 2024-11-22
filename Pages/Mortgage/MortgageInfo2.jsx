@@ -16,7 +16,7 @@ const MortgageInfo2 = () => {
           to the beneficiaries, which can be used to pay off the remaining
           mortgage balance or any other outstanding debts.
         </p>
-        <div className="w-full flex justify-between items-start gap-[2rem]  flex-row-reverse">
+        <div className="w-full flex justify-between items-center   gap-[2rem]  flex-row-reverse">
           <Image
             src={criticalInfo2}
             alt="What is whole life Insurance in Canada"

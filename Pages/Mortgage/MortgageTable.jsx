@@ -113,7 +113,7 @@ const MortgageTable = () => {
           </div>
         </div>
 
-        <div className="w-full flex justify-center items-center gap-[3rem] mt-[0rem] mb-[3rem]">
+        <div className="w-full flex justify-center items-center gap-[3rem]">
           <div>
             <h4 className="text-[25px] font-bold text-primary text-left">
               Save Time, Save Money{" "}
