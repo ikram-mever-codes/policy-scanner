@@ -10,15 +10,14 @@ module.exports = {
       colors: {
         primary: "#00615F",
         primary2: "#007f73",
-        secondary: "#FCC600",
+        secondary: "#FFD700",
         foreground2: "#EBFEFE",
         opposite: "#FE685E",
         black: "#181818",
         halfBlack: "#494949",
         selected: "#4949493e",
         selected2: "#f4f4f4",
-
-        // gray: "#818181",
+        grays: "#818181",
         gray2: "#BDBDBD",
         gray1: "#CFCFCF",
       },

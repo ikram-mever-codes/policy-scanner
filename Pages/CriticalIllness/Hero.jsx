@@ -16,7 +16,7 @@ const Hero = () => {
               Compare and Buy <br />
               Critical Illness Insurance{" "}
             </h1>
-            <p className="w-full text-halfBlack text-[18px] font-semibold text-left my-[10px]">
+            <p className="w-full text-halfBlack text-[20px] font-semibold text-left ">
               Save time, Save money{" "}
             </p>
           </div>

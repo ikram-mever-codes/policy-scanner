@@ -2,10 +2,10 @@ import React from "react";
 
 const WholeLifeInfo3 = () => {
   return (
-    <section className="w-full h-max  bg-foreground2 gap-[3rem] px-[80px] py-[5rem]  flex justify-center items-center flex-col">
+    <section className="w-full h-max  bg-foreground2 gap-[3rem] px-[80px] py-[40px]   flex justify-center items-center flex-col">
       <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[2rem]">
         <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
-          How much does whole life insurance cost in Canada?
+          What are the payment options for whole life insurance?{" "}
         </h2>
         <p className="text-dg text-hlafBlack">
           Whole life insurance offers various payment options to suit different

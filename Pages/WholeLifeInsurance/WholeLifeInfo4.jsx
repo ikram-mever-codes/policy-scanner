@@ -2,7 +2,7 @@ import React from "react";
 
 const WholeLifeInfo4 = () => {
   return (
-    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[5rem] pb-0 flex justify-center items-center flex-col">
+    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[5rem] pt-[40px] pb-0 flex justify-center items-center flex-col">
       <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[5rem]">
         <div className="w-full h-max flex justify-start items-start flex-col gap-[1rem]">
           <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">

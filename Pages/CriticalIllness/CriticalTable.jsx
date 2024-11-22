@@ -5,13 +5,13 @@ import { ArrowForwardIos } from "@mui/icons-material";
 import CriticalInfo4 from "./CriticalInfo4";
 const CriticalTable = () => {
   return (
-    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
-      <div className="w-[75%] h-full flex justify-center items-center flex-col gap-[5rem]">
+    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] pt-[40px] pb-[40px] flex justify-center items-center flex-col">
+      <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[5rem]">
         <div className="w-full h-max flex justify-start items-start flex-col gap-[1rem]">
-          <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
+          <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">
             How much does critical illness insurance cost monthly?{" "}
           </h2>
-          <p className="text-halfBlack">
+          <p className="text-halfBlack text-dg ">
             The cost of critical illness insurance can vary significantly
             depending on factors such as age, gender, smoking status, and the
             type of coverage you choose. Here’s a simple breakdown of what the
@@ -120,10 +120,10 @@ const CriticalTable = () => {
           <ul className="custom-list-bullets flex flex-col gap-[40px] text-[16px] mt-5">
             <li className="w-full flex justify-start items-start">
               <div className="w-full h-max flex justify-start items-start flex-col gap-[5px]">
-                <h3 className="font-semibold text-halfBlack">
+                <h3 className="font-semibold text-halfBlack  text-[18px]">
                   Understanding your quote
                 </h3>
-                <p className="text-halfBlack">
+                <p className="text-halfBlack text-dg ">
                   These rates provide a starting point for what you might expect
                   to pay, but your actual monthly premium could be higher or
                   lower based on personal factors. For instance, smokers
@@ -133,10 +133,10 @@ const CriticalTable = () => {
             </li>
             <li className="w-full flex justify-start items-start">
               <div className="w-full h-max flex justify-start items-start flex-col gap-[5px]">
-                <h3 className="font-semibold text-halfBlack">
+                <h3 className="font-semibold text-halfBlack  text-[18px]">
                   Getting the best rate{" "}
                 </h3>
-                <p className="text-halfBlack">
+                <p className="text-halfBlack text-dg ">
                   For best rates it’s essential to compare direct quotes from
                   multiple providers. PolicyScanner makes it easy to explore
                   different options and find a plan that fits your needs and

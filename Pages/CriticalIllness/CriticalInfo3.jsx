@@ -2,17 +2,17 @@ import React from "react";
 
 const CriticalInfo3 = () => {
   return (
-    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[5rem] flex justify-center items-center flex-col">
-      <div className="w-[75%] h-full flex justify-center items-center flex-col gap-[1rem]">
-        <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
+    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[60px] pb-0 flex justify-center items-center flex-col">
+      <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[1rem]">
+        <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">
           What does Critical Insurance Cover?
         </h2>
         <div className="flex justify-start items-start flex-col gap-[1rem] ">
-          <p>
+          <p className="text-dg text-halfBlack px-1">
             Critical illness insurance protects against loss from serious
             illnesses.
           </p>
-          <div className="w-full h-max grid grid-cols-3 gap-[1rem]">
+          <div className="w-full h-max grid grid-cols-3 gap-[2rem]">
             {[
               {
                 title: "Cancer",
@@ -41,21 +41,26 @@ const CriticalInfo3 = () => {
               },
             ].map((c) => {
               return (
-                <div className="w-[w-full] h-[12rem] flex justify-center items-center flex-col p-5 gap-7  border rounded-xl border-opposite border-solid">
-                  <div className="text-[18px] font-semibold text-halfBlack">
+                <div
+                  className="w-[340px] h-[220px] flex hover:shadow-xl hover:scale-105 justify-center items-center transition-all duration-[350ms] ease-in-out
+   flex-col p-5 gap-7  border rounded-xl border-opposite border-solid"
+                >
+                  <div className="text-[20px] font-semibold text-halfBlack">
                     {c.title}
                   </div>
-                  <div className="text-center">{c.desc}</div>
+                  <div className="text-center text-halfBlack text-dg">
+                    {c.desc}
+                  </div>
                 </div>
               );
             })}
           </div>
         </div>
         <div>
-          <ul className="custom-list-bullets flex flex-col gap-[40px] text-[16px] mt-5">
-            <li className="w-full flex justify-start items-start">
-              <div className="w-full h-max flex justify-start items-start flex-col gap-[1rem]">
-                <p>
+          <ul className="custom-list-bullets flex flex-col gap-[30px] text-[16px] mt-5">
+            <li className="w-full ">
+              <div className="w-full">
+                <p className="text-dg text-halfBlack">
                   In Canada, while hospital visits are covered by the
                   government, the cost of treatment and lost income can still be
                   overwhelming.C.I provides a tax-free lump sum payout during
@@ -63,9 +68,9 @@ const CriticalInfo3 = () => {
                 </p>
               </div>
             </li>
-            <li className="w-full flex justify-start items-start">
-              <div className="w-full h-max flex justify-start items-start flex-col gap-[1rem]">
-                <p>
+            <li className="w-full">
+              <div className="w-full h-max ">
+                <p className="text-dg text-halfBlack">
                   Since the specific illnesses covered vary between insurance
                   providers, it's essential to compare policies if you need
                   coverage for a particular condition. Commonly covered

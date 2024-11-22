@@ -4,10 +4,10 @@ import wholeLife5 from "../../assets/whole-life-6.png";
 import { ArrowForwardIos } from "@mui/icons-material";
 const WholeLifeInfo5 = () => {
   return (
-    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] py-[60px] pt-0 flex justify-center items-center flex-col">
+    <section className="w-full h-max  bg-white gap-[3rem] px-[80px] pb-[40px]  pt-0 flex justify-center items-center flex-col">
       <div className="w-[1140px] h-full flex justify-center items-center flex-col gap-[1rem]">
         <h2 className="w-full font-bold text-[35px] text-left text-halfBlack">
-          How much does whole life insurance cost in Canada?
+          What are the payment options for whole life insurance?{" "}
         </h2>
         <p className="w-full text-halfBlack text-dg">
           Even though the cost of whole life insurance depends on your personal

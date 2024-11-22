@@ -4,35 +4,22 @@ import Image from "next/image";
 
 const NewCta = () => {
   return (
-    <section className="w-full h-max  bg-white gap-[3rem]  py-[60px] pb-0 flex justify-center items-center flex-col">
+    <section className="w-full h-max  bg-white gap-[3rem]  flex justify-center items-center flex-col">
       <div className="w-[1140px] h-full  shadow-2xl  bg-foreground2 p-4 pt-[3rem]  rounded-2xl flex justify-center overflow-hidden items-center flex-col  gap-[3rem]">
-        <h2 className="w-full font-bold text-[28px] text-center text-halfBlack">
-          Get insured from the comfort of your home
+        <h2 className="w-full font-bold text-[35px] text-center text-halfBlack">
+          Get insured from the comfort of your home{" "}
         </h2>
-        <div className="w-full h-[360px] flex justify-between   flex-col-reverse items-cener">
-          {/* <Image
+        <div className="w-full h-max flex pr-[50px] pl-[180px] justify-between  items-cener">
+          <Image
             src={newCta1}
-            width={340}
-            className="object-cover object-center"
-            height={200}
-            alt="          Get insured from the comfort of your home
+            width={250}
+            className="object-cover object-center "
+            height={250}
+            alt=" Get insured from the comfort of your home
 "
-          /> */}
+          />
 
-          <div className="w-full flex justify-start items-center gap-[4rem]  relative left-[-30px] ">
-            <div className="w-[628px] h-[90px] rounded-lg bg-primary rounded-tl-none rounded-bl-none ">
-              <div className="w-full h-full flex justify-end  items-center p-6 gap-5 ">
-                <div className="text-white text-right text-[20px]">
-                  Monthly premium
-                </div>
-                <div className="text-white text-[40px]">$350</div>
-              </div>
-            </div>
-            <button className="w-[250px] h-[64px] text-[22px] rounded-xl bg-secondary text-black">
-              View Plans
-            </button>
-          </div>
-          <div className="w-[620px] h-full flex justify-center overflow-hidden items-end flex-col gap-[2rem]">
+          <div className="w-max h-full  flex justify-center overflow-hidden items-end flex-col gap-[2rem]">
             <div className="text-[25px] font-semibold text-right pr-[30px]  ">
               Calculate your Insurance Premium
             </div>
@@ -109,6 +96,19 @@ const NewCta = () => {
               </div>
             </div>
           </div>
+        </div>
+        <div className="w-full flex justify-start items-center gap-[4rem]  relative left-[-30px] ">
+          <div className="w-[524px] h-[90px] rounded-lg bg-primary rounded-tl-none rounded-bl-none ">
+            <div className="w-full h-full flex justify-end  items-center p-6 gap-5 ">
+              <div className="text-white text-right text-[20px]">
+                Monthly premium
+              </div>
+              <div className="text-white text-[40px]">$350</div>
+            </div>
+          </div>
+          <button className="w-[510px] h-[70px] text-[22px] rounded-xl bg-secondary text-black">
+            View Plans
+          </button>
         </div>
       </div>
     </section>

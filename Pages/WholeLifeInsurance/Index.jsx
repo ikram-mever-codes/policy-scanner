@@ -7,6 +7,7 @@ import Faq from "@/Components/Faq";
 import QuotePanel from "../../Components/QuotePanel";
 import WholeLifeInfo from "./WholeLifeInfo";
 import WholeLifeInofo2 from "./WholeLifeInofo2";
+import CanadaLife from "../../assets/canada-life.png";
 import WholeLifeFaq from "./WholeLifeFaq";
 import WholeLifeInfo3 from "./WholeLifeInfo3";
 import WholeLifeInfo4 from "./WholeLifeInfo4";
@@ -89,6 +90,88 @@ const Index = () => {
       <Hero />
       {/* <QuotePanel /> */}
       <Stats />
+      <section className="w-full h-max  bg-white gap-[3rem] px-[80px]  flex justify-center items-center flex-col mb-[60px]">
+        <div className="w-[1140px] h-full flex justify-start items-center flex-col gap-[2rem]">
+          <h2 className="w-full font-bold text-[28px] text-left text-halfBlack">
+            Top whole life insurance plans{" "}
+          </h2>
+          <div className="w-full h-max flex justify-start items-center gap-[20px] flex-col">
+            <div
+              className="w-[500px]   h-[80px] rounded-[10px] border-grays self-start  justify-center border-solid border-2  bg-white "
+              style={{ display: "grid", gridTemplateColumns: "50% 50%" }}
+            >
+              <div className="text-[18px]  font-semibold text-halfBlack border-r-2 border-gray1 border-solid my-[10px] px-8">
+                Coverage Amount:
+                <br /> 200K
+              </div>
+              <div className="text-[18px]  font-semibold text-halfBlack border-r border-grays border-solid py-[10px] px-8">
+                Non Participating Whole life plan
+              </div>
+            </div>
+            {[1, 2, 3].map(() => {
+              return (
+                <div className="w-full rounded-lg bg-white shadow-sidebar flex my flex-col sm:flex-row justify-between items-center gap-[10px] sm:gap-[1rem] p-6 sm:p-8">
+                  <div className="flex justify-center items-center w-full sm:w-auto sm:border-r sm:border-solid sm:border-halfBlack">
+                    <Image
+                      alt="Insurance Provider"
+                      width={120}
+                      height={80}
+                      className="h-auto"
+                      src={CanadaLife}
+                    />
+                  </div>
+
+                  <div className="flex text-left justify-center gap-[10px] flex-col items-center w-full sm:w-[10rem] sm:border-r sm:border-solid sm:border-halfBlack">
+                    <div className="text-halfBlack w-full text-left">
+                      Term Length
+                    </div>
+                    <div className="text-black font-semibold w-full text-left">
+                      60 Years
+                    </div>
+                  </div>
+
+                  <div className="flex text-left justify-center gap-[10px] flex-col items-center w-full sm:w-[10rem] sm:border-r sm:border-solid sm:border-halfBlack">
+                    <div className="text-halfBlack w-full text-left">
+                      Coverage Amount
+                    </div>
+                    <div className="text-black font-semibold w-full text-left">
+                      $100,000.00
+                    </div>
+                  </div>
+
+                  <div className="flex justify-center gap-[10px] flex-col items-center w-full sm:w-[8rem] sm:border-r sm:border-solid sm:border-halfBlack">
+                    <div className="text-halfBlack w-full text-left">
+                      Rating
+                    </div>
+                    <div className="text-black font-semibold w-full text-left">
+                      A+
+                    </div>
+                  </div>
+
+                  <div className="flex justify-center items-center gap-[5px] flex-col w-full sm:w-auto">
+                    <div className="font-semibold text-center text-[20px] text-halfBlack">
+                      $250.00/Month
+                    </div>
+                    <button className="w-full sm:w-auto h-[3.4rem] flex justify-center items-center bg-secondary text-nowrap px-[15px] py-[5px] gap-[10px] rounded-lg">
+                      Get this Rate
+                    </button>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <p className="text-halfBlack line-h  text-[16px]">
+            <strong>Disclaimer: </strong>
+            The plans and premiums listed are for CAD 200K coverage for an
+            18-year-old with a 20-year term. Rates vary by individual profile
+            and the final guaranteed cash value will be determined by the
+            insurer, policyscanner have no role in that. Also, PolicyScanner
+            does not endorse any insurer or product. For a full list of Canadian
+            insurers, please visit the Financial Services Regulatory Authority
+            of Ontario (FSRA) website, www.fsrao.ca.
+          </p>
+        </div>
+      </section>
       {/* <InsuranceProviders /> */}
       <WholeLifeInfo />
       <WholeLifeInofo2 />
