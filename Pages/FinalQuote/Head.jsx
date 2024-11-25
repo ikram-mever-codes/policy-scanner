@@ -9,6 +9,8 @@ import {
 } from "@mui/material";
 import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import EditInfoSidebar from "./EditInfoSidebar";
+import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
+import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import "./Head.css";
 
 const Head = ({ toggleLifeType, isWholeLife, quoteData }) => {
@@ -31,30 +33,41 @@ const Head = ({ toggleLifeType, isWholeLife, quoteData }) => {
   const handleCloseSidebar = () => {
     setSidebarOpen(false);
   };
+  function renderComponent(insurance) {
+    switch (insurance) {
+      case "term-life":
+        return (
+          <button className="min-w-[164px] w-max px-[5px] text-[15px] h-[50px] rounded-[6px] bg-selected2 border-solid border border-gray-200 flex justify-center items-center gap-[2px] text-gray-500">
+            Term Calculator{" "}
+            <KeyboardArrowRightOutlinedIcon sx={{ fontSize: "17px" }} />
+          </button>
+        );
+    }
+  }
 
   return (
-    <div className="w-full h-max flex justify-start items-center gap-[1.5rem] flex-col">
+    <div className="w-[845px] h-max flex justify-start items-center gap-[1.5rem] flex-col">
       {isSidebarOpen && (
         <div className="fixed inset-0 bg-black opacity-50 z-10"></div>
       )}
       <div className="w-full h-max flex justify-between items-center">
-        <div className="w-max h-[2.5rem] rounded-md overflow-hidden border-solid border border-halfBlack">
+        <div className="w-[240px] h-[45px] rounded-md overflow-hidden border-solid border border-halfBlack">
           <button
             onClick={toggleLifeType}
-            className={`w-[8rem] h-full ${
+            className={`w-[50%] h-full ${
               isWholeLife
-                ? "bg-transparent text-halfBlack"
-                : "bg-primary text-white"
+                ? "bg-transparent text-halfBlack "
+                : "bg-primary text-white  rounded-r-[5px]"
             }`}
           >
             Term Life
           </button>
           <button
             onClick={toggleLifeType}
-            className={`w-[8rem] h-full ${
+            className={`w-[50%] h-full ${
               isWholeLife
-                ? "bg-primary text-white"
-                : "bg-transparent text-halfBlack"
+                ? "bg-primary text-white  rounded-l-[5px]"
+                : "bg-transparent text-halfBlack "
             }`}
           >
             Whole Life
@@ -70,24 +83,27 @@ const Head = ({ toggleLifeType, isWholeLife, quoteData }) => {
           <div className="border-r border-solid border-halfBlack px-[5px]">
             {quoteData.smoker === "yes" ? "Smoker" : "Non-smoker"}
           </div>
-          <button className="px-[5px] text-[#0066ff]" onClick={handleEditClick}>
-            Edit
+          <button
+            className="px-[5px] text-[#0066ff] flex justify-center items-center gap-[3px]"
+            onClick={handleEditClick}
+          >
+            Edit <KeyboardArrowDownOutlinedIcon sx={{ fontSize: "18px" }} />
           </button>{" "}
         </div>
       </div>
-      <div className="w-full rounded-lg bg-white shadow-sidebar h-[7rem] flex justify-between items-center gap-[1rem] px-[2rem] py-[1rem]">
-        <div className="flex flex-col w-[10rem] h-full py-[5px]">
+      <div className="w-full rounded-lg bg-white shadow-sidebar h-[7rem] flex justify-start  items-center gap-[1rem] px-[2rem] py-[1rem]">
+        <div className="flex flex-col w-[10rem]  py-[5px] h-[70px]  pr-[1rem]">
           <div className="flex flex-col items-start justify-center border-r border-solid border-halfBlack h-full">
-            <div className="text-[16px] text-left text-halfBlack">
+            <div className="text-[14px] text-left text-halfBlack">
               Coverage Amount
             </div>
             <select
               id="coverage"
               value={""}
-              className="rounded-md w-[8rem] py-[10px] text-left border-none font-medium focus:outline-none"
+              className="rounded-md w-max py-[10px] text-left border-none font-medium focus:outline-none"
             >
               <option value="" disabled>
-                $10,000,000
+                $100,000{" "}
               </option>
               {coverageOptions.map((option) => (
                 <option key={option} value={option}>
@@ -97,15 +113,15 @@ const Head = ({ toggleLifeType, isWholeLife, quoteData }) => {
             </select>
           </div>
         </div>
-        <div className="flex flex-col w-[10rem] h-full py-[5px]">
+        <div className="flex flex-col w-[10rem]  py-[5px] h-[70px]  pr-[1rem]">
           <div className="flex flex-col items-start justify-center border-r border-solid border-halfBlack h-full">
-            <div className="text-[16px] text-left text-halfBlack">
+            <div className="text-[14px] text-left text-halfBlack">
               Term Length
             </div>
             <select
               id="coverage"
               value={""}
-              className="rounded-md w-[8rem] py-[10px] text-left border-none font-medium focus:outline-none"
+              className="rounded-md w-max py-[10px] text-left border-none font-medium focus:outline-none"
             >
               <option value="" disabled>
                 20 Years
@@ -119,23 +135,26 @@ const Head = ({ toggleLifeType, isWholeLife, quoteData }) => {
           </div>
         </div>
         <div className="w-max h-full flex justify-center items-center gap-[1rem]">
-          <div className="flex justify-between h-[3.5rem] gap-[1rem] border-solid border border-selected items-center p-[10px] rounded-md bg-selected2">
-            <button className="w-[5rem] h-[2.5rem] shadow-xl text-halfBlack bg-white rounded-md">
+          <div className="flex justify-center  h-[50px] gap-[10px] border-solid border w-[164px] overflow-hidden border-selected items-center p-[10px] rounded-md bg-selected2">
+            <button className="w-[5rem] h-[30px] shadow-xl text-black bg-white rounded-md p-4 flex justify-center items-center font-medium text-[14px]">
               Monthly
             </button>
-            <button className="w-[5rem] h-[2.5rem] text-halfBlack bg-transparent rounded-md">
+            <button className="w-[5rem] h-[30px] text-halfBlack rounded-md text-[14px] p-3 flex justify-center items-center">
               Yearly
             </button>
           </div>
-          <div className="text-primary2 flex justify-start items-start gap-[5px] font-medium">
+
+          <div className="text-primary2 flex justify-start w-max items-start gap-[5px] text-[14px] font-medium">
             <KeyboardBackspaceIcon />
             <span className="text-left w-full">
-              Save 5% <br /> yearly
+              Save up to <br />
+              8% yearly
             </span>
           </div>
         </div>
         <div>
-          <div>
+          {renderComponent("term-life")}
+          {/* <div>
             <div className="w-[60%] bg-[#596b8a] rounded-tl-lg rounded-br-lg p-[3px] text-white text-[12px] text-left">
               What is Critical illness?
             </div>
@@ -167,7 +186,7 @@ const Head = ({ toggleLifeType, isWholeLife, quoteData }) => {
                 Add Critical illness
               </span>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>{" "}
       <EditInfoSidebar open={isSidebarOpen} onClose={handleCloseSidebar} />

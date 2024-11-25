@@ -39,7 +39,7 @@ const FinalQuote = () => {
     }
   }, []);
   return (
-    <div className="px-[80px] py-[40px]">
+    <div className="py-[60px] ">
       <Modal
         open={openPopup}
         onClose={handleClosePopup}
@@ -51,36 +51,38 @@ const FinalQuote = () => {
         </div>
       </Modal>
       <div className="flex justify-start items-center w-full h-max flex-col gap-[10rem]">
-        <div
-          className="gap-[3rem]"
-          style={{ display: "grid", gridTemplateColumns: "auto 20%" }}
-        >
-          <div className="flex justify-start items-center gap-[2rem] flex-col w-full">
-            <Head
-              toggleLifeType={toggleLifeType}
-              isWholeLife={isWholeLife}
-              quoteData={quoteData}
-            />
-            <CSSTransition
-              in={isWholeLife}
-              timeout={300}
-              classNames="fade"
-              unmountOnExit
-            >
-              <Quotes type="whole" />
-            </CSSTransition>
-            <CSSTransition
-              in={!isWholeLife}
-              timeout={300}
-              classNames="fade"
-              unmountOnExit
-            >
-              <Quotes type="term" />
-            </CSSTransition>
+        <div className=" w-main relative overflow-hidden h-max">
+          <div
+            className="gap-[15px]"
+            style={{ display: "grid", gridTemplateColumns: "75% auto" }}
+          >
+            <div className="flex justify-start items-center gap-[2rem] flex-col w-[850px]  overflow-hidden z-[0]">
+              <Head
+                toggleLifeType={toggleLifeType}
+                isWholeLife={isWholeLife}
+                quoteData={quoteData}
+              />
+              <CSSTransition
+                in={isWholeLife}
+                timeout={300}
+                classNames="fade"
+                unmountOnExit
+              >
+                <Quotes type="whole" />
+              </CSSTransition>
+              <CSSTransition
+                in={!isWholeLife}
+                timeout={300}
+                classNames="fade"
+                unmountOnExit
+              >
+                <Quotes type="term" />
+              </CSSTransition>
+            </div>
+            <Sidebar />
           </div>
-          <Sidebar />
         </div>
-        <div className="w-full px-[15rem] quote-shadow py-[2rem] rounded-lg flex text-center justify-center items-center flex-col gap-[2rem]">
+        <div className="w-[1140px] quote-shadow py-[2rem] rounded-lg flex text-center justify-center items-center flex-col gap-[2rem]">
           <p>
             PolicyScanner Brokerage Incorporated (Registration No. 742, valid
             till 09/06/2027, License Category: Composite Broker) is acting

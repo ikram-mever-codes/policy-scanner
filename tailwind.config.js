@@ -21,6 +21,9 @@ module.exports = {
         gray2: "#BDBDBD",
         gray1: "#CFCFCF",
       },
+      width: {
+        main: "1140px",
+      },
     },
   },
   plugins: [],
