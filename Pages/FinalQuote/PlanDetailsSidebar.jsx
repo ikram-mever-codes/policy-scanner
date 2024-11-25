@@ -11,7 +11,7 @@ const PlanDetailsSidebar = ({ open, onClose }) => {
 
   return (
     <Slide direction="left" in={open} mountOnEnter unmountOnExit>
-      <div className="fixed top-0 right-0 h-[100vh] w-[40vmax] overflow-y-scroll scrollbar-hidden overflow-x-hidden bg-white shadow-lg z-30 p-5 flex flex-col">
+      <div className="fixed top-0 right-0 h-[100vh] w-[40vmax] overflow-y-scroll scrollbar-hidden z-30 overflow-x-hidden bg-white shadow-lg p-5 flex flex-col">
         <div className="flex justify-between items-center mb-4">
           <button
             onClick={onClose}

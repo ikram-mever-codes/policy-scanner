@@ -14,10 +14,12 @@ import { CSSTransition } from "react-transition-group";
 import Star from "../../assets/star.svg";
 import "./Head.css";
 import PlanDetailsSidebar from "./PlanDetailsSidebar";
+import Link from "next/link";
 
 const Quotes = () => {
   const [expanded, setExpanded] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [paidAddons, setPaidAddons] = useState([]);
 
   const toggleExpanded = () => {
     setExpanded((prev) => !prev);
@@ -27,14 +29,23 @@ const Quotes = () => {
     setSidebarOpen((prev) => !prev);
   };
 
+  const handleCheckboxChange = (isChecked, value) => {
+    setPaidAddons((prev) => {
+      if (isChecked) {
+        return [...prev, value];
+      } else {
+        return prev.filter((addon) => addon !== value);
+      }
+    });
+  };
   return (
-    <div className="w-[845px] h-max pb-[2rem]  ">
+    <div className="w-[845px] h-max pb-[2rem]">
       {sidebarOpen && (
         <div className="fixed inset-0 bg-black opacity-50 z-10"></div>
       )}
 
       <div className="w-full h-max flex justify-start items-center gap-[2rem] flex-col relative z-0">
-        <div className="w-full rounded-lg bg-white shadow-sidebar h-[220px] flex relative justify-between pb-[1.5rem] items-center gap-[4px] flex-col">
+        <div className="w-full rounded-lg h-max bg-white shadow-sidebar min-h-[220px] flex relative justify-between pb-[1.5rem] items-center gap-[4px] flex-col">
           <div className="w-max h-[30px] px-[1rem] py-[7px] rounded-tl-[10px] rounded-br-[10px] bg-[#596B8A] text-white self-start text-[14px] font-normal flex justify-center items-center gap-[3px]">
             $ Whole life convertiable- See How{" "}
             <KeyboardArrowDownOutlined sx={{ fontSize: "16px" }} />
@@ -135,67 +146,117 @@ const Quotes = () => {
               </div>
             </div>
           </div>
-
           <CSSTransition
             in={expanded}
             timeout={300}
             classNames="fade"
             unmountOnExit
           >
-            <div className="py-5 px-8 w-full flex justify-start items-center gap-[1.5rem] mt-[1rem]">
-              <div className="w-[25rem] shadow-sidebar p-[1rem] rounded-lg flex justify-start items-start flex-col gap-[1rem]">
-                <div className="w-full flex justify-between items-center">
-                  <div className="text-[17px] font-medium text-halfBlack">
-                    4 Free Add-ons
-                  </div>
-                  <button
-                    className="w-[20px] flex items-center justify-center h-[20px] rounded-full bg-selected text-halfBlack"
-                    onClick={toggleExpanded}
-                  >
-                    {expanded ? (
-                      <Close className="text-[16px]" />
-                    ) : (
-                      <ExpandMore className="text-[16px]" />
-                    )}
-                  </button>
+            <div className="overflow-hidden  mt-[2rem] gap-4 flex justify-start flex-col items-start  w-full">
+              {paidAddons.length !== 0 && (
+                <div className="w-full flex justify-start items-center gap-3 px-[2rem]">
+                  {paidAddons.map((pds) => {
+                    return (
+                      <div>
+                        <input
+                          type="checkbox"
+                          checked={true}
+                          className="text-[20px] mx-[5px] "
+                          onChange={(e) => handleCheckboxChange(false, pds)}
+                        />
+                        {pds}
+                      </div>
+                    );
+                  })}
                 </div>
-                <div className="w-full h-max flex justify-start items-start gap-[10px] flex-col">
-                  <div>
-                    <CheckCircleOutlineOutlinedIcon className="text-[20px]" />{" "}
-                    Wavier Of Premium Cover
-                    <span className="text-primary2 mx-[5px]">free</span>
+              )}
+              <div className="py-5 pt-2 px-[2rem] overflow-hidden w-full flex justify-start items-center gap-[1.5rem] ">
+                <div className="w-[23rem] shadow-sidebar p-[1rem] rounded-lg flex justify-start items-start flex-col gap-[1rem]">
+                  <div className="w-full flex justify-between items-center">
+                    <div className="text-[17px] font-medium text-halfBlack">
+                      4 Free Add-ons
+                    </div>
+                    <button
+                      className="w-[20px] flex items-center justify-center h-[20px] rounded-full bg-selected text-halfBlack"
+                      onClick={toggleExpanded}
+                    >
+                      {expanded ? (
+                        <Close className="text-[16px]" />
+                      ) : (
+                        <ExpandMore className="text-[16px]" />
+                      )}
+                    </button>
                   </div>
-                  <div>
-                    <CheckCircleOutlineOutlinedIcon className="text-[20px]" />{" "}
-                    100% payout on Terminal illness
-                    <span className="text-primary2 mx-[5px]">free</span>
+                  <div className="w-full h-max flex justify-start items-start gap-[10px] flex-col">
+                    <div>
+                      <CheckCircleOutlineOutlinedIcon className="text-[20px]" />{" "}
+                      Wavier Of Premium Cover
+                      <span className="text-primary2 mx-[5px]">free</span>
+                    </div>
+                    <div>
+                      <CheckCircleOutlineOutlinedIcon className="text-[20px]" />{" "}
+                      100% payout on Terminal illness
+                      <span className="text-primary2 mx-[5px]">free</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="w-[25rem] shadow-sidebar p-[1rem] rounded-lg flex justify-start items-start flex-col gap-[1rem]">
-                <div className="w-full flex justify-between items-center">
-                  <div className="text-[17px] font-medium text-halfBlack">
-                    4 Paid Add-ons
+
+                <div className="w-[23rem] shadow-sidebar p-[1rem] rounded-lg flex justify-start items-start flex-col gap-[1rem]">
+                  <div className="w-full flex justify-between items-center">
+                    <div className="text-[17px] font-medium text-halfBlack">
+                      4 Paid Add-ons
+                    </div>
+                    <button
+                      className="w-[20px] flex items-center justify-center h-[20px] rounded-full bg-selected text-halfBlack"
+                      onClick={toggleExpanded}
+                    >
+                      {expanded ? (
+                        <Close className="text-[16px]" />
+                      ) : (
+                        <ExpandMore className="text-[16px]" />
+                      )}
+                    </button>
                   </div>
-                  <button
-                    className="w-[20px] flex items-center justify-center h-[20px] rounded-full bg-selected text-halfBlack"
-                    onClick={toggleExpanded}
-                  >
-                    {expanded ? (
-                      <Close className="text-[16px]" />
-                    ) : (
-                      <ExpandMore className="text-[16px]" />
-                    )}
-                  </button>
-                </div>
-                <div className="w-full h-max flex justify-start items-start gap-[10px] flex-col">
-                  <div>
-                    <input type="checkbox" className="text-[20px] mx-[5px]" />{" "}
-                    Extra Payout on Accidental death $45
-                  </div>
-                  <div>
-                    <input type="checkbox" className="text-[20px] mx-[5px]" />{" "}
-                    Cover against 34 critical illnesses $65
+
+                  <div className="w-full h-max flex justify-start items-start gap-[10px] flex-col">
+                    <div>
+                      <input
+                        type="checkbox"
+                        className="text-[20px] mx-[5px]"
+                        onChange={(e) =>
+                          handleCheckboxChange(
+                            e.target.checked,
+                            "accidental death $45"
+                          )
+                        }
+                      />{" "}
+                      Extra Payout on{""}
+                      <Link
+                        href={"#"}
+                        className="text-[#0066FF] underline mx-1"
+                      >
+                        accidental death $45
+                      </Link>
+                    </div>
+                    <div>
+                      <input
+                        type="checkbox"
+                        className="text-[20px] mx-[5px]"
+                        onChange={(e) =>
+                          handleCheckboxChange(
+                            e.target.checked,
+                            "critical illnesses $65"
+                          )
+                        }
+                      />{" "}
+                      Cover against 34
+                      <Link
+                        href={"#"}
+                        className="text-[#0066FF] underline mx-2"
+                      >
+                        critical illnesses $65
+                      </Link>
+                    </div>
                   </div>
                 </div>
               </div>
