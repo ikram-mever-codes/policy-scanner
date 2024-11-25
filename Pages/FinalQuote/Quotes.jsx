@@ -11,6 +11,7 @@ import {
 } from "@mui/icons-material";
 import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
 import { CSSTransition } from "react-transition-group";
+import Star from "../../assets/star.svg";
 import "./Head.css";
 import PlanDetailsSidebar from "./PlanDetailsSidebar";
 
@@ -128,13 +129,7 @@ const Quotes = () => {
               </button>
               <div className="flex justify-center items-center text-[14px] text-grays ">
                 {" "}
-                <StarIcon
-                  sx={{
-                    fontSize: "20px ",
-                    color: "#F2D422",
-                    margin: "0px 2px",
-                  }}
-                />
+                <Star className="mx-2 text-[18px]" />
                 Insurer Rating:
                 <span className="font-semibold mx-1 text-black">A+</span>
               </div>
