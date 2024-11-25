@@ -113,7 +113,7 @@ const Quotes = () => {
             </div>
           </div>
 
-          <div className="w-[60vw] my-[10px] h-[1px] bg-gradient-to-r from-transparent via-halfBlack to-transparent"></div>
+          <div className="w-full my-[20px] h-[1px] bg-gradient-to-r from-transparent via-halfBlack to-transparent px-[2rem]"></div>
 
           <div className="w-full px-[2rem] h-max flex justify-between items-center flex-row-reverse">
             <button
