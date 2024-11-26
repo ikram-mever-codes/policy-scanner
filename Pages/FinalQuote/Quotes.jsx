@@ -51,8 +51,8 @@ const Quotes = () => {
             <KeyboardArrowDownOutlined sx={{ fontSize: "16px" }} />
           </div>
           <div className="w-full h-max  px-[2rem]  flex justify-between items-center ">
-            <div className="w-full h-full flex justify-start items-center gap-[20px] ">
-              <div className=" fle text-left justify-center gap-[3px] flex-col items-center w-[8rem] border-r border-solid border-halfBlack h-[44px]">
+            <div className="w-full h-full flex justify-start items-center gap-[2rem]">
+              <div className=" flex pr-[2rem] text-left justify-center gap-[3px] flex-col items-center w-[9rem] border-r border-solid border-grays h-[44px]">
                 <Image
                   alt="Insurance Provider"
                   width={100}
@@ -61,7 +61,7 @@ const Quotes = () => {
                   src={CanadaLife}
                 />
               </div>
-              <div className=" flex text-left justify-center gap-[3px] flex-col items-center w-[8rem] border-r border-solid border-halfBlack h-[44px]">
+              <div className=" flex text-left justify-center px-[2rem] gap-[3px] flex-col items-center w-max border-r border-solid border-halfBlack h-[44px]">
                 <div className="text-grays w-full text-left">Covered till</div>
 
                 <div className="text-black font-semibold w-full text-left">
@@ -75,7 +75,7 @@ const Quotes = () => {
                   />
                 </div>
               </div>
-              <div className=" flex text-left justify-center gap-[3px] flex-col items-center w-[8rem] border-r border-solid border-halfBlack h-[44px]">
+              <div className=" flex text-left justify-center px-[1rem] gap-[3px] flex-col items-center w-max h-[44px]">
                 <div className="text-grays w-full text-left">Max limit</div>
 
                 <div className="text-black font-semibold w-full text-left">
@@ -89,7 +89,7 @@ const Quotes = () => {
                   />
                 </div>
               </div>
-              <div className=" flex text-left justify-center gap-[3px] flex-col items-center w-[10rem] h-[44px]">
+              {/* <div className=" flex text-left justify-center gap-[3px] flex-col items-center w-[10rem] h-[44px]">
                 <div className="text-grays w-full text-left">
                   Coverage Amount
                 </div>
@@ -97,16 +97,16 @@ const Quotes = () => {
                 <div className="text-black font-semibold w-full text-left">
                   $100,000
                 </div>
-              </div>
+              </div> */}
             </div>
 
-            <div className="w-max h-full flex justify-center items-center gap-[5px] flex-col">
-              <div className="font-semibold text-center text-[17px] text-halfBlack">
-                $250.00/Month
+            <div className="w-max h-full flex justify-center items-center gap-[10px] flex-row ">
+              <div className="font-semibold flex items-center gap-1 justify-center text-center text-[20px] text-halfBlack">
+                $250.00 <span className="text-[14px]">p/m</span>
               </div>
               <button className="w-full h-[50px] flex justify-center items-center bg-secondary text-nowrap px-[15px] py-[5px] text-[14px] font-medium  flex-col rounded-lg">
                 Get this Rate
-                <span className="text-[12px] text-grays">
+                <span className="text-[12px] text-grays font-normal">
                   Incl. $5 policy Fee{" "}
                 </span>
               </button>
