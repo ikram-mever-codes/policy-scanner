@@ -105,7 +105,7 @@ const Quotes = () => {
                 <div className="flex justify-center text-[18px] leading-[27px] items-center  gap-1">
                   $250.00 <span className="text-[14px]">p/m</span>
                 </div>
-                <span className="text-[12px] text-grays font-light">
+                <span className="text-[12px] leading-[14px] text-grays font-light">
                   Incl. $5 policy Fee{" "}
                 </span>
               </div>
