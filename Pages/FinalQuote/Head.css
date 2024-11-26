@@ -16,3 +16,6 @@
   transform: translateY(-20px);
   transition: opacity 300ms, transform 300ms;
 }
+.fds {
+  backdrop-filter: #0addc8;
+}

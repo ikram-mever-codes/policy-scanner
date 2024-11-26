@@ -37,7 +37,15 @@ const Head = ({ toggleLifeType, isWholeLife, quoteData }) => {
     switch (insurance) {
       case "term-life":
         return (
-          <button className="min-w-[164px] w-max px-[5px] text-[15px] h-[50px] rounded-[6px]  border-solid border border-opposite     flex justify-center items-center gap-[2px] text-black">
+          <button
+            className={`w-[10rem] h-[3.5rem]  flex justify-center items-center gap-1  font-[500] text-[16px] rounded-md 
+                 bg-primary2/10 border-primary2
+             border-b-4 border-solid`}
+            onClick={() => {
+              setTab("term-calculator");
+            }}
+          >
+            {" "}
             Term Calculator{" "}
             <KeyboardArrowRightOutlinedIcon sx={{ fontSize: "17px" }} />
           </button>
