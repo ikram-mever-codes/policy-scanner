@@ -21,6 +21,14 @@ module.exports = {
         gray2: "#BDBDBD",
         gray1: "#CFCFCF",
       },
+      fontSize: {
+        text1: "14px",
+        text2: "12px",
+      },
+      lineHeight: {
+        l1: "18px",
+        l2: "14px",
+      },
       width: {
         main: "1140px",
       },

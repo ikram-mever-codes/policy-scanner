@@ -39,7 +39,7 @@ const Head = ({ toggleLifeType, isWholeLife, quoteData }) => {
         return (
           <button
             className={`w-[10rem] h-[3.5rem]  flex justify-center items-center gap-1  font-[500] text-[16px] rounded-md 
-                 bg-primary2/10 border-primary2
+                 bg-grays/10 border-gray1
              border-b-4 border-solid`}
             onClick={() => {
               setTab("term-calculator");

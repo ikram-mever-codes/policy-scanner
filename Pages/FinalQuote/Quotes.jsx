@@ -46,7 +46,7 @@ const Quotes = () => {
 
       <div className="w-full h-max flex justify-start items-center gap-[2rem] flex-col relative z-0">
         <div className="w-full rounded-lg h-max bg-white shadow-sidebar min-h-[220px] flex relative justify-between pb-[1.5rem] items-center gap-[4px] flex-col">
-          <div className="w-max h-[30px] px-[1rem] py-[7px] rounded-tl-[10px] rounded-br-[10px] bg-[#596B8A] text-white self-start text-[14px] font-normal flex justify-center items-center gap-[3px]">
+          <div className="w-max h-[30px] px-[1rem] py-[7px]  mb-[20px] rounded-tl-[10px] rounded-br-[10px] bg-[#596B8A] text-white self-start text-[14px] font-normal flex justify-center items-center gap-[3px]">
             $ Whole life convertiable- See How{" "}
             <KeyboardArrowDownOutlined sx={{ fontSize: "16px" }} />
           </div>
@@ -62,9 +62,11 @@ const Quotes = () => {
                 />
               </div>
               <div className=" flex text-left justify-center px-[2rem] gap-[3px] flex-col items-center w-max border-r border-solid border-halfBlack h-[44px]">
-                <div className="text-grays w-full text-left">Covered till</div>
+                <div className="text-grays w-full text-left text-text1 leading-l1">
+                  Covered till
+                </div>
 
-                <div className="text-black font-semibold w-full text-left">
+                <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
                   60 Years{" "}
                   <InfoIcon
                     sx={{
@@ -76,9 +78,11 @@ const Quotes = () => {
                 </div>
               </div>
               <div className=" flex text-left justify-center px-[1rem] gap-[3px] flex-col items-center w-max h-[44px]">
-                <div className="text-grays w-full text-left">Max limit</div>
+                <div className="text-grays w-full text-left text-text1 leading-l1">
+                  Max limit
+                </div>
 
-                <div className="text-black font-semibold w-full text-left">
+                <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
                   85 Years
                   <InfoIcon
                     sx={{
@@ -100,16 +104,16 @@ const Quotes = () => {
               </div> */}
             </div>
 
-            <div className="w-max h-full flex justify-center items-center gap-[10px] flex-row ">
-              <div className="font-semibold flex justify-center items-center  flex-col text-center text-[20px] text-halfBlack">
+            <div className="w-max flex justify-center items-center h-[45px] gap-[12px] flex-row ">
+              <div className="font-semibold flex justify-center gap-1 items-center h-full  flex-col text-center text-[20px] text-halfBlack">
                 <div className="flex justify-center text-[18px] leading-[27px] items-center  gap-1">
                   $250.00 <span className="text-[14px]">p/m</span>
                 </div>
-                <span className="text-[12px] leading-[14px] text-grays font-light">
-                  Incl. $5 policy Fee{" "}
+                <span className="text-text2 leading-l2 text-grays font-light">
+                  Incl. $5 policy fee{" "}
                 </span>
               </div>
-              <button className="w-full h-[50px] flex justify-center items-center bg-secondary text-nowrap px-[15px] py-[5px] text-[14px] font-medium  flex-col rounded-lg">
+              <button className="w-full h-[45px] flex justify-center items-center bg-secondary text-nowrap px-[15px] py-[5px] text-[14px] font-medium  flex-col rounded-lg">
                 Get this Rate
               </button>
             </div>
