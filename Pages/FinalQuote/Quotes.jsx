@@ -101,14 +101,16 @@ const Quotes = () => {
             </div>
 
             <div className="w-max h-full flex justify-center items-center gap-[10px] flex-row ">
-              <div className="font-semibold flex items-center gap-1 justify-center text-center text-[20px] text-halfBlack">
-                $250.00 <span className="text-[14px]">p/m</span>
+              <div className="font-semibold flex justify-center items-center  flex-col text-center text-[20px] text-halfBlack">
+                <div className="flex justify-center text-[18px] leading-[27px] items-center  gap-1">
+                  $250.00 <span className="text-[14px]">p/m</span>
+                </div>
+                <span className="text-[12px] text-grays font-light">
+                  Incl. $5 policy Fee{" "}
+                </span>
               </div>
               <button className="w-full h-[50px] flex justify-center items-center bg-secondary text-nowrap px-[15px] py-[5px] text-[14px] font-medium  flex-col rounded-lg">
                 Get this Rate
-                <span className="text-[12px] text-grays font-normal">
-                  Incl. $5 policy Fee{" "}
-                </span>
               </button>
             </div>
           </div>
