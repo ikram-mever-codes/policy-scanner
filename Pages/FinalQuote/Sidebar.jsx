@@ -6,7 +6,7 @@ import Image from "next/image";
 import AddIcCallOutlinedIcon from "@mui/icons-material/AddIcCallOutlined";
 const Sidebar = () => {
   return (
-    <div className="w-full  overflow-hidden relative top-[67px] min-h-[80vh] flex justify-start items-center gap-[1.5rem] flex-col">
+    <div className="w-full z-[1]  overflow-hidden relative top-[67px] min-h-[80vh] flex justify-start items-center gap-[1.5rem] flex-col">
       <button className="w-[268px] h-[60px] flex text-[18px] justify-center items-center gap-[4px] font-medium bg-primary rounded-[10px] text-white">
         <AddIcCallOutlinedIcon /> Talk to Expert
       </button>

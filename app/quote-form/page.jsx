@@ -28,10 +28,10 @@ const Page = () => {
   const [years, setYears] = useState("");
   const [dob, setDob] = useState("");
   const [age, setAge] = useState(null);
-  const [ContactInfo, setContactIno] = useState(null);
+  const [ContactInfo, setContactInfo] = useState(null);
 
   const totalSteps = steps.length;
-
+  console.log(ContactInfo);
   const handleNext = () => {
     if (currentStepIndex === -1) {
       setProvinceSelected(true);
@@ -40,7 +40,11 @@ const Page = () => {
     }
 
     if (steps[currentStepIndex] === "contact-info") {
+      const existingData = JSON.parse(localStorage.getItem("quote-data")) || {};
+      existingData.contactInfo = ContactInfo;
+      localStorage.setItem("quote-data", JSON.stringify(existingData));
       router.push("/final-quote");
+
       return;
     }
 
@@ -83,7 +87,7 @@ const Page = () => {
           />
         );
       case "contact-info":
-        return <ContactInformation setContactIno={setContactIno} />;
+        return <ContactInformation setContactInfo={setContactInfo} />;
       default:
         return null;
     }
@@ -161,7 +165,6 @@ const Page = () => {
                 (currentStepIndex === -1 && !provinceSelected) ||
                 (currentStepIndex === 0 && selectedGender === null) ||
                 (currentStepIndex === 1 && age === null)
-                // (currentStepIndex === 2 && ContactInfo === null)
               }
             >
               Continue

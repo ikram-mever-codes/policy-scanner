@@ -15,10 +15,7 @@ const validationSchema = Yup.object({
     .required("Email is required"),
   phone: Yup.string().required("Phone number is required"),
 });
-
-const ContactInformation = () => {
-  const policy_lead_type = "Scheduling Meeting";
-
+const ContactInformation = ({ setContactInfo }) => {
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -26,45 +23,17 @@ const ContactInformation = () => {
       phone: "",
     },
     validationSchema: validationSchema,
-    onSubmit: async (values) => {
-      saveToLocalStorage(values);
-
-      try {
-        const response = await fetch(
-          `https://testing.policyscanner.ca/api/crm/create`,
-          {
-            method: "POST",
-            cache: "no-store",
-            headers: {
-              Authorization: `Bearer 3fd486ff65855fdadb5512ba8b0b0c7404c35488`,
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              email: values.email,
-              name: values.name,
-              phone: values.phone,
-              policy_lead_type,
-            }),
-          }
-        );
-        const data = await response.json();
-        if (!response.ok) {
-          console.log(data);
-        }
-        alert(data.message);
-      } catch (error) {
-        console.log(error);
-      }
-    },
+    onSubmit: () => {},
   });
 
-  const saveToLocalStorage = (values) => {
+  const handleFieldChange = (field, value) => {
+    formik.setFieldValue(field, value);
+    const updatedValues = { ...formik.values, [field]: value };
+
+    setContactInfo(updatedValues);
+
     const existingData = JSON.parse(localStorage.getItem("quote-data")) || {};
-    existingData.contactInfo = {
-      name: values.name,
-      email: values.email,
-      phone: values.phone,
-    };
+    existingData.contactInfo = updatedValues;
     localStorage.setItem("quote-data", JSON.stringify(existingData));
   };
 
@@ -78,11 +47,7 @@ const ContactInformation = () => {
         </div>
       </div>
       <div className="flex justify-center items-center py-[20px] mb-[2rem]">
-        <form
-          onSubmit={formik.handleSubmit}
-          style={{ width: "40%" }}
-          className="flex flex-col gap-[20px]"
-        >
+        <form style={{ width: "40%" }} className="flex flex-col gap-[20px]">
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField
@@ -92,70 +57,35 @@ const ContactInformation = () => {
                 variant="outlined"
                 placeholder="Name"
                 value={formik.values.name}
-                onChange={formik.handleChange}
+                onChange={(e) => handleFieldChange("name", e.target.value)}
                 error={formik.touched.name && Boolean(formik.errors.name)}
                 helperText={formik.touched.name && formik.errors.name}
                 InputProps={{
                   style: { borderColor: "#494949", height: "3.2rem" },
                 }}
-                InputLabelProps={{ shrink: true }}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "& fieldset": {
-                      borderColor: "#494949",
-                    },
-                    "&:hover fieldset": {
-                      borderColor: "#494949",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#494949",
-                    },
-                  },
-                }}
               />
             </Grid>
-
             <Grid item xs={12}>
               <TextField
                 fullWidth
                 id="email"
                 name="email"
-                placeholder="email"
                 variant="outlined"
+                placeholder="Email"
                 value={formik.values.email}
-                onChange={formik.handleChange}
+                onChange={(e) => handleFieldChange("email", e.target.value)}
                 error={formik.touched.email && Boolean(formik.errors.email)}
                 helperText={formik.touched.email && formik.errors.email}
                 InputProps={{
                   style: { borderColor: "#494949", height: "3.2rem" },
                 }}
-                InputLabelProps={{ shrink: true }}
-                sx={{
-                  "& .MuiOutlinedInput-root": {
-                    "& fieldset": {
-                      borderColor: "#494949",
-                    },
-                    "&:hover fieldset": {
-                      borderColor: "#494949",
-                    },
-                    "&.Mui-focused fieldset": {
-                      borderColor: "#494949",
-                    },
-                  },
-                }}
               />
             </Grid>
-
             <Grid item xs={12}>
               <PhoneInput
                 country={"ca"}
                 value={formik.values.phone}
-                onChange={(phone) => formik.setFieldValue("phone", phone)}
-                inputProps={{
-                  name: "phone",
-                  required: true,
-                  autoFocus: true,
-                }}
+                onChange={(phone) => handleFieldChange("phone", phone)}
                 inputStyle={{
                   height: "3.2rem",
                   width: "100%",

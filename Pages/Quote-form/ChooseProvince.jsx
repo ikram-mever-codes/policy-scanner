@@ -9,11 +9,7 @@ const ChooseProvince = ({ setProvinceSelected, setCurrentStepIndex }) => {
     setSelectedButton(province);
     const existingData = JSON.parse(localStorage.getItem("quote-data")) || {};
     existingData.province = province;
-    existingData.contactInfo = {
-      name: "IKRAM KHAN",
-      email: "ikram.codes@gmail.com",
-      phone: "10234242",
-    };
+
     localStorage.setItem("quote-data", JSON.stringify(existingData));
     setProvinceSelected(true);
   };

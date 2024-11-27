@@ -4,17 +4,26 @@ import Image from "next/image";
 import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined";
 import { SmokeFreeRounded, SmokingRoomsOutlined } from "@mui/icons-material";
 
-const ChooseSmoker = ({ onClose, existingData, uploadPostData }) => {
+const ChooseSmoker = ({ onClose, uploadPostData }) => {
   const [loading, setLoading] = useState(false);
-  const handleClick = async (choice) => {
-    const existingData = JSON.parse(localStorage.getItem("quote-data"));
-    existingData.smoker = choice;
-    setLoading(true);
-    await uploadPostData({ ...existingData, smoker: choice });
-    setLoading(false);
 
-    onClose(choice);
-    localStorage.setItem("quote-data", JSON.stringify(existingData));
+  const handleClick = async (choice) => {
+    if (loading) return;
+    setLoading(true);
+
+    try {
+      const existingData = JSON.parse(localStorage.getItem("quote-data")) || {};
+      existingData.smoker = choice;
+      localStorage.setItem("quote-data", JSON.stringify(existingData));
+
+      onClose(choice);
+
+      await uploadPostData({ ...existingData, smoker: choice });
+    } catch (error) {
+      console.error("Error while handling smoker choice:", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -35,7 +44,9 @@ const ChooseSmoker = ({ onClose, existingData, uploadPostData }) => {
         <div className="w-max h-max flex justify-center items-center flex-col gap-[10px] text-[18px]">
           <button
             disabled={loading}
-            className={`w-[6rem] h-[6rem] rounded-md text-[18px] border border-solid border-halfBlack `}
+            className={`w-[6rem] h-[6rem] rounded-md text-[18px] border border-solid border-halfBlack ${
+              loading ? "cursor-not-allowed opacity-50" : "cursor-pointer"
+            }`}
             onClick={() => handleClick("yes")}
           >
             <SmokingRoomsOutlined className="text-[70px] text-halfBlack" />
@@ -45,7 +56,9 @@ const ChooseSmoker = ({ onClose, existingData, uploadPostData }) => {
         <div className="w-max h-max flex justify-center items-center flex-col gap-[10px] text-[18px]">
           <button
             disabled={loading}
-            className={`w-[6rem] h-[6rem] rounded-md text-[18px] border border-solid border-halfBlack `}
+            className={`w-[6rem] h-[6rem] rounded-md text-[18px] border border-solid border-halfBlack ${
+              loading ? "cursor-not-allowed opacity-50" : "cursor-pointer"
+            }`}
             onClick={() => handleClick("no")}
           >
             <SmokeFreeRounded className="text-[70px] text-halfBlack" />

@@ -11,7 +11,7 @@ const PlanDetailsSidebar = ({ open, onClose }) => {
 
   return (
     <Slide direction="left" in={open} mountOnEnter unmountOnExit>
-      <div className="fixed top-0 right-0 h-[100vh] w-[40vmax] overflow-y-scroll scrollbar-hidden z-30 overflow-x-hidden bg-white shadow-lg p-5 flex flex-col">
+      <div className="fixed top-0 right-0 h-[100vh] w-[665px] overflow-y-scroll scrollbar-hidden z-[30] overflow-x-hidden bg-white shadow-lg p-5 flex flex-col">
         <div className="flex justify-between items-center mb-4">
           <button
             onClick={onClose}
@@ -88,33 +88,6 @@ const PlanDetailsSidebar = ({ open, onClose }) => {
               </div>
             </div>
             <div></div>
-            <div className="grid grid-cols-3 gap-5">
-              <div className="bg-white shadow-sidebar rounded-xl p-4 flex  justify-start items-center flex-col gap-3 w-full">
-                <div className="font-semibold text-[25px] text-opposite">
-                  99.99%
-                </div>
-                <p className="text-gray text-center text-[14px]">
-                  of all claims filed last year were settled by HDFC Life
-                </p>
-              </div>
-
-              <div className="bg-white shadow-sidebar rounded-xl p-4 flex  justify-start items-center flex-col gap-3 w-full">
-                <div className="font-semibold text-[25px] text-[#0066FF]">
-                  99.99%
-                </div>
-                <p className="text-gray text-center text-[14px]">
-                  of all claims filed last year were settled by HDFC Life
-                </p>
-              </div>
-              <div className="bg-white shadow-sidebar rounded-xl p-4 flex  justify-start items-center flex-col gap-3 w-full">
-                <div className="font-semibold text-[25px] text-[#FF8913]">
-                  99.99%
-                </div>
-                <p className="text-gray text-center text-[14px]">
-                  of all claims filed last year were settled by HDFC Life
-                </p>
-              </div>
-            </div>
             <div className="w-[60vw] my-[20px] h-[1px] bg-gradient-to-r from-transparent via-halfBlack to-transparent"></div>
             <div className="w-full flex justify-center items-center gap-4">
               <div className="font-semibold text-center text-[20px] text-halfBlack">
