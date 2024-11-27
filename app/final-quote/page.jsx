@@ -8,12 +8,15 @@ import ChooseSmoker from "@/Pages/Quote-form/ChooseSomker";
 import { CSSTransition } from "react-transition-group";
 import { useRouter } from "next/navigation";
 import { uploadPostData } from "../api";
+import ChooseCoverageType from "@/Pages/FinalQuote/ChangeCoverageType";
+import { setIn } from "formik";
 
 const FinalQuote = () => {
   const [openPopup, setOpenPopup] = useState(true);
   const [selected, setSelected] = useState(null);
   const [insurance, setInsurance] = useState("term-life");
   const [quoteData, setQuoteData] = useState({});
+  const [choosePopup, setChoosePopup] = useState(false);
   const [isWholeLife, setIsWholeType] = useState(false);
   const router = useRouter();
 
@@ -25,8 +28,10 @@ const FinalQuote = () => {
     setSelected(choice);
     handleClosePopup();
   };
-
   useEffect(() => {
+    const ins = localStorage.getItem("ins");
+    setInsurance(ins);
+
     const sendDatatoOdoo = async () => {
       const existingData = JSON.parse(localStorage.getItem("quote-data"));
       if (!existingData || existingData === null) {
@@ -40,7 +45,7 @@ const FinalQuote = () => {
       setQuoteData(existingData);
     };
     sendDatatoOdoo();
-  }, []);
+  }, [insurance]);
   return (
     <div className="py-[60px] ">
       <Modal
@@ -50,6 +55,7 @@ const FinalQuote = () => {
         disableScrollLock={true}
       >
         <div className="border-none outline-none bg-white rounded-lg p-6 shadow-lg max-w-md w-full z-10">
+          3
           <ChooseSmoker
             onClose={handleSelection}
             existingData={quoteData}
@@ -57,6 +63,20 @@ const FinalQuote = () => {
           />
         </div>
       </Modal>
+      <Modal
+        open={choosePopup}
+        className="flex justify-center items-center"
+        disableScrollLock={true}
+      >
+        <div className="border-none outline-none bg-white rounded-lg py-2 px-4 shadow-lg  w-[530px] z-10 relative ">
+          <ChooseCoverageType
+            setChoosePopup={setChoosePopup}
+            insurance={insurance}
+            setInsurance={setInsurance}
+          />
+        </div>
+      </Modal>
+
       <div className="flex justify-start items-center w-full h-max flex-col gap-[10rem]">
         <div className=" w-main relative overflow-hidden h-max">
           <div
@@ -68,6 +88,7 @@ const FinalQuote = () => {
                 insurance={insurance}
                 setInsurance={setInsurance}
                 quoteData={quoteData}
+                setChoosePopup={setChoosePopup}
                 setIsWholeType={setIsWholeType}
                 isWholeLife={isWholeLife}
               />
@@ -77,7 +98,7 @@ const FinalQuote = () => {
                 classNames="fade"
                 unmountOnExit
               >
-                <Quotes insurance={insurance} />
+                <Quotes insurances={"dsgffd"} />
               </CSSTransition>
               <CSSTransition
                 in={!isWholeLife}
@@ -85,7 +106,7 @@ const FinalQuote = () => {
                 classNames="fade"
                 unmountOnExit
               >
-                <Quotes type="term" />
+                <Quotes insurance={insurance} />
               </CSSTransition>
             </div>
             <Sidebar />

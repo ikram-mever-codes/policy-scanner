@@ -1,3 +1,4 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import CanadaLife from "../../assets/canada-life.png";
 import Image from "next/image";
@@ -29,7 +30,6 @@ const Quotes = ({ insurance }) => {
     setSidebarOpen((prev) => !prev);
   };
 
-  const [ins, setIns] = useState(insurance);
   const handleCheckboxChange = (isChecked, value) => {
     setPaidAddons((prev) => {
       if (isChecked) {
@@ -39,13 +39,14 @@ const Quotes = ({ insurance }) => {
       }
     });
   };
+
   function renderComponent(ins) {
     switch (ins) {
       case "term-life":
         return (
           <div className=" flex text-left justify-center px-[1rem] gap-[3px] flex-col items-center w-max h-[44px]">
             <div className="text-grays w-full text-left text-text1 leading-l1">
-              Max limit
+              Max Coverage
             </div>
 
             <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
@@ -83,17 +84,24 @@ const Quotes = ({ insurance }) => {
         break;
     }
   }
-  useEffect(() => {
-    let ins = localStorage.getItem("ins");
-    setIns(ins);
-  }, [insurance]);
+  console.log(insurance);
 
+  useEffect(() => {
+    if (sidebarOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [sidebarOpen]);
   return (
     <div className="w-[845px] h-max pb-[2rem]">
       {sidebarOpen && (
-        <div className="fixed inset-0 bg-black opacity-50 z-10"></div>
+        <div className="fixed inset-0 bg-black opacity-50 z-10 pointer-events-none overflow-hidden"></div>
       )}
-
       <div className="w-full h-max flex justify-start items-center gap-[2rem] flex-col relative z-0">
         <div className="w-full rounded-lg h-max bg-white shadow-sidebar min-h-[220px] flex relative justify-between pb-[10px] items-center gap-[4px] flex-col">
           <div className="w-max h-[30px] px-[1rem] py-[7px]  mb-[20px] rounded-tl-[10px] rounded-br-[10px] bg-[#596B8A] text-white self-start text-[14px] font-normal flex justify-center items-center gap-[3px]">
@@ -104,7 +112,7 @@ const Quotes = ({ insurance }) => {
             <div className="w-full h-full flex justify-start items-center gap-[2rem]">
               <div className=" flex pr-[2rem] text-left justify-center gap-[3px] flex-col items-center w-[9rem] border-r border-solid border-grays h-[44px]">
                 <Image
-                  alt="Insurance Provider"
+                  alt="insurance Provider"
                   width={100}
                   height={40}
                   className="object-cover object-center"
@@ -117,7 +125,7 @@ const Quotes = ({ insurance }) => {
                 </div>
 
                 <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
-                  60 Years{" "}
+                  60 Years
                   <InfoIcon
                     sx={{
                       fontSize: "18px",
@@ -127,8 +135,7 @@ const Quotes = ({ insurance }) => {
                   />
                 </div>
               </div>
-
-              {renderComponent(ins || "term-life")}
+              {renderComponent(insurance)}
               {/* <div className=" flex text-left justify-center gap-[3px] flex-col items-center w-[10rem] h-[44px]">
                 <div className="text-grays w-full text-left">
                   Coverage Amount

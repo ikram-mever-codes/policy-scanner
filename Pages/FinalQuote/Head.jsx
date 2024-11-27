@@ -19,6 +19,7 @@ const Head = ({
   setInsurance,
   setIsWholeType,
   isWholeLife,
+  setChoosePopup,
 }) => {
   const coverageOptions = [
     "10,000",
@@ -54,6 +55,22 @@ const Head = ({
       return !prev;
     });
   };
+
+  function formatInsuranceHeading(insurance) {
+    if (!insurance) return null;
+
+    const formattedMap = {
+      "term-life": "Term Life",
+      "whole-life": "Whole Life",
+      "critical-illness": "Critical illness",
+      "mortgage-insurances": "Mortgage Insurance",
+    };
+
+    const formatted = formattedMap[insurance] || insurance;
+
+    return formatted;
+  }
+
   function renderComponent(insurances) {
     switch (insurances) {
       case "term-life":
@@ -66,8 +83,7 @@ const Head = ({
               setTab("term-calculator");
             }}
           >
-            {" "}
-            Term Calculator{" "}
+            Term Calculator
             <KeyboardArrowRightOutlinedIcon sx={{ fontSize: "17px" }} />
           </button>
         );
@@ -117,13 +133,10 @@ const Head = ({
         <div className="w-max flex justify-start items-center gap-2">
           <div className="w-max h-[45px] rounded-md overflow-hidden border-solid border border-halfBlack">
             <button
-              onClick={() => {
-                toggleLifeType("term-life");
-              }}
-              className={`w-[10rem] h-full bg-primary text-white  rounded-r-[5px]
+              className={`min-w-[10rem] h-full bg-primary text-white  rounded-r-[5px]
             }`}
             >
-              Term Life
+              {formatInsuranceHeading(insurance)}
             </button>
           </div>
         </div>
@@ -145,7 +158,9 @@ const Head = ({
           </button>{" "}
           <button
             className="px-[5px] text-[#0066ff] flex justify-center items-center gap-[3px]"
-            onClick={handleEditClick}
+            onClick={() => {
+              setChoosePopup(true);
+            }}
           >
             Change coverage type{" "}
           </button>{" "}
@@ -183,13 +198,13 @@ const Head = ({
               value={""}
               className="rounded-md w-max py-[10px] text-left border-none font-medium focus:outline-none"
             >
-              {insurance === "term-life "
-                ? yearTermOptions.map((option) => (
+              {insurance === "term-life"
+                ? yearWholeOptions.map((option) => (
                     <option key={option} value={option}>
                       {option}
                     </option>
                   ))
-                : yearWholeOptions.map((option) => (
+                : yearTermOptions.map((option) => (
                     <option key={option} value={option}>
                       {option}
                     </option>

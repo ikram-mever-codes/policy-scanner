@@ -6,7 +6,7 @@ import logo from "../../assets/canada-life.png";
 import { CSSTransition } from "react-transition-group";
 import "./Head.css";
 
-const PlanDetailsSidebar = ({ open, onClose }) => {
+const WholeLifeConvertible = ({ open, onClose }) => {
   const [activeTab, setActiveTab] = useState("Plan Summary");
 
   return (
@@ -232,4 +232,4 @@ const PlanDetailsSidebar = ({ open, onClose }) => {
   );
 };
 
-export default PlanDetailsSidebar;
+export default WholeLifeConvertible;

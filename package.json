@@ -9,8 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
+    "@emotion/react": "^11.13.5",
+    "@emotion/styled": "^11.13.5",
     "@mui/icons-material": "^6.1.2",
     "@mui/material": "^6.1.6",
     "formik": "^2.4.6",
@@ -20,6 +20,7 @@
     "react-loader-spinner": "^6.1.6",
     "react-phone-input-2": "^2.15.1",
     "react-transition-group": "^4.4.5",
+    "react-vertical-timeline-component": "^3.6.0",
     "yup": "^1.4.0"
   },
   "devDependencies": {
