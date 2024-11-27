@@ -4,16 +4,19 @@ import Image from "next/image";
 import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined";
 import { SmokeFreeRounded, SmokingRoomsOutlined } from "@mui/icons-material";
 
-const ChooseSmoker = ({ onClose }) => {
+const ChooseSmoker = ({ onClose, existingData, uploadPostData }) => {
   const [selectedButton, setSelectedButton] = useState(null);
-
-  const handleClick = (choice) => {
+  const [loading, setLoading] = useState(false);
+  const handleClick = async (choice) => {
     setSelectedButton(choice);
-    const existingData = JSON.parse(localStorage.getItem("quote-data")) || {};
+    const existingData = JSON.parse(localStorage.getItem("quote-data"));
     existingData.smoker = choice;
-    localStorage.setItem("quote-data", JSON.stringify(existingData));
+    setLoading(true);
+    await uploadPostData({ ...existingData, smoker: choice });
+    setLoading(false);
 
     onClose(choice);
+    localStorage.setItem("quote-data", JSON.stringify(existingData));
   };
 
   return (
@@ -33,6 +36,7 @@ const ChooseSmoker = ({ onClose }) => {
       <div className="flex justify-center items-center gap-[3rem] mt-[2rem]">
         <div className="w-max h-max flex justify-center items-center flex-col gap-[10px] text-[18px]">
           <button
+            disabled={loading}
             className={`w-[6rem] h-[6rem] rounded-md text-[18px] border border-solid border-halfBlack ${
               selectedButton === "yes" ? "bg-[#4949493e]" : "bg-transparent"
             }`}
@@ -44,6 +48,7 @@ const ChooseSmoker = ({ onClose }) => {
         </div>
         <div className="w-max h-max flex justify-center items-center flex-col gap-[10px] text-[18px]">
           <button
+            disabled={loading}
             className={`w-[6rem] h-[6rem] rounded-md text-[18px] border border-solid border-halfBlack ${
               selectedButton === "no" ? "bg-[#4949493e]" : "bg-transparent"
             }`}

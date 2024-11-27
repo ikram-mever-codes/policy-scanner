@@ -13,7 +13,13 @@ import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRig
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
 import "./Head.css";
 
-const Head = ({ toggleLifeType, isWholeLife, quoteData }) => {
+const Head = ({
+  quoteData,
+  insurance,
+  setInsurance,
+  setIsWholeType,
+  isWholeLife,
+}) => {
   const coverageOptions = [
     "10,000",
     "50,000",
@@ -22,7 +28,15 @@ const Head = ({ toggleLifeType, isWholeLife, quoteData }) => {
     "500,000",
     "1,000,000",
   ];
-  const yearOptions = ["1", "5", "10", "15", "20", "25", "30"];
+  const yearTermOptions = ["Life 100 Pay", "Life 20 Pay", "Life 10 Pay"];
+  const yearWholeOptions = [
+    "10 Years",
+    "20 Years",
+    "25 Years",
+    "30 Years",
+    "35 Years",
+    "40 Years",
+  ];
 
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
@@ -33,8 +47,15 @@ const Head = ({ toggleLifeType, isWholeLife, quoteData }) => {
   const handleCloseSidebar = () => {
     setSidebarOpen(false);
   };
-  function renderComponent(insurance) {
-    switch (insurance) {
+  const toggleLifeType = (ins) => {
+    setInsurance(ins);
+    localStorage.setItem("ins", ins);
+    setIsWholeType((prev) => {
+      return !prev;
+    });
+  };
+  function renderComponent(insurances) {
+    switch (insurances) {
       case "term-life":
         return (
           <button
@@ -50,6 +71,39 @@ const Head = ({ toggleLifeType, isWholeLife, quoteData }) => {
             <KeyboardArrowRightOutlinedIcon sx={{ fontSize: "17px" }} />
           </button>
         );
+      case "whole-life":
+        return (
+          <div>
+            <div className="flex gap-[6px] rounded-tl-none justify-center items-center bg-selected2 h-[4rem] px-[15px] rounded-md border border-solid border-selected ">
+              <Switch
+                sx={{
+                  padding: "4px",
+                  width: "4rem",
+                  "& .MuiSwitch-thumb": {
+                    backgroundColor: "#fff",
+                    width: 20,
+                    height: 20,
+                  },
+                  "& .MuiSwitch-track": {
+                    backgroundColor: "#494949",
+                    opacity: 1,
+                    borderRadius: "50px",
+                  },
+                  "& .Mui-checked .MuiSwitch-thumb": {
+                    backgroundColor: "#fff",
+                  },
+                  "& .Mui-checked .MuiSwitch-track": {
+                    backgroundColor: "#494949",
+                  },
+                }}
+                color="primary"
+              />
+              <span className="text-halfBlack text-text1 leading-l1">
+                Upto 35% Savings{" "}
+              </span>
+            </div>
+          </div>
+        );
     }
   }
 
@@ -58,28 +112,20 @@ const Head = ({ toggleLifeType, isWholeLife, quoteData }) => {
       {isSidebarOpen && (
         <div className="fixed inset-0 bg-black opacity-50 z-10"></div>
       )}
-      <div className="w-full h-max flex justify-between items-center">
-        <div className="w-[240px] h-[45px] rounded-md overflow-hidden border-solid border border-halfBlack">
-          <button
-            onClick={toggleLifeType}
-            className={`w-[50%] h-full ${
-              isWholeLife
-                ? "bg-transparent text-halfBlack "
-                : "bg-primary text-white  rounded-r-[5px]"
+      <EditInfoSidebar open={isSidebarOpen} onClose={handleCloseSidebar} />
+      <div className="w-full h-max flex justify-between items-end">
+        <div className="w-max flex justify-start items-center gap-2">
+          <div className="w-max h-[45px] rounded-md overflow-hidden border-solid border border-halfBlack">
+            <button
+              onClick={() => {
+                toggleLifeType("term-life");
+              }}
+              className={`w-[10rem] h-full bg-primary text-white  rounded-r-[5px]
             }`}
-          >
-            Term Life
-          </button>
-          <button
-            onClick={toggleLifeType}
-            className={`w-[50%] h-full ${
-              isWholeLife
-                ? "bg-primary text-white  rounded-l-[5px]"
-                : "bg-transparent text-halfBlack "
-            }`}
-          >
-            Whole Life
-          </button>
+            >
+              Term Life
+            </button>
+          </div>
         </div>
         <div className="w-max h-max flex justify-end items-center gap-[1px] text-halfBlack text-[14px]">
           <div className="border-r border-solid border-halfBlack px-[5px]">
@@ -92,10 +138,16 @@ const Head = ({ toggleLifeType, isWholeLife, quoteData }) => {
             {quoteData.smoker === "yes" ? "Smoker" : "Non-smoker"}
           </div>
           <button
-            className="px-[5px] text-[#0066ff] flex justify-center items-center gap-[3px]"
+            className="px-[5px] text-[#0066ff] flex justify-center items-center gap-[3px]  border-r border-solid border-halfBlack"
             onClick={handleEditClick}
           >
             Edit <KeyboardArrowDownOutlinedIcon sx={{ fontSize: "18px" }} />
+          </button>{" "}
+          <button
+            className="px-[5px] text-[#0066ff] flex justify-center items-center gap-[3px]"
+            onClick={handleEditClick}
+          >
+            Change coverage type{" "}
           </button>{" "}
         </div>
       </div>
@@ -131,14 +183,17 @@ const Head = ({ toggleLifeType, isWholeLife, quoteData }) => {
               value={""}
               className="rounded-md w-max py-[10px] text-left border-none font-medium focus:outline-none"
             >
-              <option value="" disabled>
-                20 Years
-              </option>
-              {yearOptions.map((option) => (
-                <option key={option} value={option}>
-                  ${option}
-                </option>
-              ))}
+              {insurance === "term-life "
+                ? yearTermOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))
+                : yearWholeOptions.map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
             </select>
           </div>
         </div>
@@ -160,44 +215,8 @@ const Head = ({ toggleLifeType, isWholeLife, quoteData }) => {
             </span>
           </div>
         </div>
-        <div>
-          {renderComponent("term-life")}
-          {/* <div>
-            <div className="w-[60%] bg-[#596b8a] rounded-tl-lg rounded-br-lg p-[3px] text-white text-[12px] text-left">
-              What is Critical illness?
-            </div>
-            <div className="flex gap-[6px] rounded-tl-none justify-center items-center bg-selected2 h-[4rem] px-[15px] rounded-md border border-solid border-selected ">
-              <Switch
-                sx={{
-                  padding: "4px",
-                  width: "4rem",
-                  "& .MuiSwitch-thumb": {
-                    backgroundColor: "#fff",
-                    width: 20,
-                    height: 20,
-                  },
-                  "& .MuiSwitch-track": {
-                    backgroundColor: "#494949",
-                    opacity: 1,
-                    borderRadius: "50px",
-                  },
-                  "& .Mui-checked .MuiSwitch-thumb": {
-                    backgroundColor: "#fff",
-                  },
-                  "& .Mui-checked .MuiSwitch-track": {
-                    backgroundColor: "#494949",
-                  },
-                }}
-                color="primary"
-              />
-              <span className="text-halfBlack text-[15px]">
-                Add Critical illness
-              </span>
-            </div>
-          </div> */}
-        </div>
+        <div>{renderComponent(insurance)}</div>
       </div>{" "}
-      <EditInfoSidebar open={isSidebarOpen} onClose={handleCloseSidebar} />
     </div>
   );
 };

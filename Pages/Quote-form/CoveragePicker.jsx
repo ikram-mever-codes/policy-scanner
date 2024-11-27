@@ -28,6 +28,8 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
     }
   }, []);
 
+  // Update the Logic to accept age above 18 yrs old
+
   const handleDobChange = (event) => {
     const dobInput = event.target.value;
     const dobPattern = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/;

@@ -10,7 +10,7 @@ const Sidebar = () => {
       <button className="w-[268px] h-[60px] flex text-[18px] justify-center items-center gap-[4px] font-medium bg-primary rounded-[10px] text-white">
         <AddIcCallOutlinedIcon /> Talk to Expert
       </button>
-      <div className="w-[268px] h-max  py-[20px] rounded-xl mt-[4rem] flex justify-between items-center flex-col gap-[10px] bg-white text-halfBlack shadow-sidebar">
+      <div className="w-[268px] h-max   py-[20px] rounded-xl mt-[4rem] flex justify-between items-center flex-col gap-[10px] bg-white text-halfBlack shadow-sidebar">
         <h4 className="text-center  font-extrabold tracking-wider text-[35px]">
           4.99/5{" "}
           <span className="text-[16px] font-medium tracking-normal">

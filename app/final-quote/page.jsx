@@ -7,12 +7,14 @@ import Modal from "@mui/material/Modal";
 import ChooseSmoker from "@/Pages/Quote-form/ChooseSomker";
 import { CSSTransition } from "react-transition-group";
 import { useRouter } from "next/navigation";
+import { uploadPostData } from "../api";
 
 const FinalQuote = () => {
   const [openPopup, setOpenPopup] = useState(true);
   const [selected, setSelected] = useState(null);
-  const [isWholeLife, setIsWholeLife] = useState(false);
+  const [insurance, setInsurance] = useState("term-life");
   const [quoteData, setQuoteData] = useState({});
+  const [isWholeLife, setIsWholeType] = useState(false);
   const router = useRouter();
   const handleClosePopup = () => {
     if (selected !== null) {
@@ -25,18 +27,20 @@ const FinalQuote = () => {
     handleClosePopup();
   };
 
-  const toggleLifeType = () => {
-    setIsWholeLife((prev) => !prev);
-  };
   useEffect(() => {
-    const existingData = JSON.parse(localStorage.getItem("quote-data"));
-    if (!existingData || existingData === null) {
-      return router.push("/quote-form");
-    }
-    setQuoteData(existingData);
-    if (existingData?.smoker) {
-      setOpenPopup(false);
-    }
+    const sendDatatoOdoo = async () => {
+      const existingData = JSON.parse(localStorage.getItem("quote-data"));
+      if (!existingData || existingData === null) {
+        return router.push("/quote-form");
+      }
+
+      if (existingData?.smoker) {
+        setOpenPopup(false);
+      }
+
+      setQuoteData(existingData);
+    };
+    sendDatatoOdoo();
   }, []);
   return (
     <div className="py-[60px] ">
@@ -47,7 +51,11 @@ const FinalQuote = () => {
         disableScrollLock={true}
       >
         <div className="border-none outline-none bg-white rounded-lg p-6 shadow-lg max-w-md w-full z-10">
-          <ChooseSmoker onClose={handleSelection} />
+          <ChooseSmoker
+            onClose={handleSelection}
+            existingData={quoteData}
+            uploadPostData={uploadPostData}
+          />
         </div>
       </Modal>
       <div className="flex justify-start items-center w-full h-max flex-col gap-[10rem]">
@@ -58,9 +66,11 @@ const FinalQuote = () => {
           >
             <div className="flex justify-start items-center gap-[2rem] flex-col w-[850px] h-max  overflow-hidden z-[0]">
               <Head
-                toggleLifeType={toggleLifeType}
-                isWholeLife={isWholeLife}
+                insurance={insurance}
+                setInsurance={setInsurance}
                 quoteData={quoteData}
+                setIsWholeType={setIsWholeType}
+                isWholeLife={isWholeLife}
               />
               <CSSTransition
                 in={isWholeLife}
@@ -68,7 +78,7 @@ const FinalQuote = () => {
                 classNames="fade"
                 unmountOnExit
               >
-                <Quotes type="whole" />
+                <Quotes insurance={insurance} />
               </CSSTransition>
               <CSSTransition
                 in={!isWholeLife}
