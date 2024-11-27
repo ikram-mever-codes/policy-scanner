@@ -5,10 +5,8 @@ import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined";
 import { SmokeFreeRounded, SmokingRoomsOutlined } from "@mui/icons-material";
 
 const ChooseSmoker = ({ onClose, existingData, uploadPostData }) => {
-  const [selectedButton, setSelectedButton] = useState(null);
   const [loading, setLoading] = useState(false);
   const handleClick = async (choice) => {
-    setSelectedButton(choice);
     const existingData = JSON.parse(localStorage.getItem("quote-data"));
     existingData.smoker = choice;
     setLoading(true);
@@ -37,9 +35,7 @@ const ChooseSmoker = ({ onClose, existingData, uploadPostData }) => {
         <div className="w-max h-max flex justify-center items-center flex-col gap-[10px] text-[18px]">
           <button
             disabled={loading}
-            className={`w-[6rem] h-[6rem] rounded-md text-[18px] border border-solid border-halfBlack ${
-              selectedButton === "yes" ? "bg-[#4949493e]" : "bg-transparent"
-            }`}
+            className={`w-[6rem] h-[6rem] rounded-md text-[18px] border border-solid border-halfBlack `}
             onClick={() => handleClick("yes")}
           >
             <SmokingRoomsOutlined className="text-[70px] text-halfBlack" />
@@ -49,9 +45,7 @@ const ChooseSmoker = ({ onClose, existingData, uploadPostData }) => {
         <div className="w-max h-max flex justify-center items-center flex-col gap-[10px] text-[18px]">
           <button
             disabled={loading}
-            className={`w-[6rem] h-[6rem] rounded-md text-[18px] border border-solid border-halfBlack ${
-              selectedButton === "no" ? "bg-[#4949493e]" : "bg-transparent"
-            }`}
+            className={`w-[6rem] h-[6rem] rounded-md text-[18px] border border-solid border-halfBlack `}
             onClick={() => handleClick("no")}
           >
             <SmokeFreeRounded className="text-[70px] text-halfBlack" />
