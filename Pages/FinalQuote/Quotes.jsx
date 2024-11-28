@@ -80,11 +80,48 @@ const Quotes = ({ insurance }) => {
             </div>
           </div>
         );
+      case "critical-illness":
+        return (
+          <div className=" flex text-left justify-center px-[1rem] gap-[3px] flex-col items-center w-max h-[44px]">
+            <div className="text-grays w-full text-left text-text1 leading-l1">
+              Pay Type
+            </div>
+
+            <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
+              Basic
+              <InfoIcon
+                sx={{
+                  fontSize: "18px",
+                  color: "#BDBDBD",
+                  margin: "0px 10px",
+                }}
+              />
+            </div>
+          </div>
+        );
+      case "mortgage-insurance":
+        return (
+          <div className=" flex text-left justify-center px-[1rem] gap-[3px] flex-col items-center w-max h-[44px]">
+            <div className="text-grays w-full text-left text-text1 leading-l1">
+              Pay type
+            </div>
+
+            <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
+              Level term
+              <InfoIcon
+                sx={{
+                  fontSize: "18px",
+                  color: "#BDBDBD",
+                  margin: "0px 10px",
+                }}
+              />
+            </div>
+          </div>
+        );
       default:
         break;
     }
   }
-  console.log(insurance);
 
   useEffect(() => {
     if (sidebarOpen) {
@@ -120,20 +157,78 @@ const Quotes = ({ insurance }) => {
                 />
               </div>
               <div className=" flex text-left justify-center px-[2rem] gap-[3px] flex-col items-center w-max border-r border-solid border-halfBlack h-[44px]">
-                <div className="text-grays w-full text-left text-text1 leading-l1">
-                  Covered till
-                </div>
+                {insurance === "whole-life" && (
+                  <>
+                    <div className="text-grays w-full text-left text-text1 leading-l1">
+                      Covered till
+                    </div>
 
-                <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
-                  60 Years
-                  <InfoIcon
-                    sx={{
-                      fontSize: "18px",
-                      color: "#BDBDBD",
-                      margin: "0px 10px",
-                    }}
-                  />
-                </div>
+                    <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
+                      60 Years
+                      <InfoIcon
+                        sx={{
+                          fontSize: "18px",
+                          color: "#BDBDBD",
+                          margin: "0px 10px",
+                        }}
+                      />
+                    </div>
+                  </>
+                )}
+                {insurance === "term-life" && (
+                  <>
+                    <div className="text-grays w-full text-left text-text1 leading-l1">
+                      Covered till
+                    </div>
+
+                    <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
+                      60 Years
+                      <InfoIcon
+                        sx={{
+                          fontSize: "18px",
+                          color: "#BDBDBD",
+                          margin: "0px 10px",
+                        }}
+                      />
+                    </div>
+                  </>
+                )}
+                {insurance === "critical-illness" && (
+                  <>
+                    <div className="text-grays w-full text-left text-text1 leading-l1">
+                      Term Length
+                    </div>
+
+                    <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
+                      20 Years
+                      <InfoIcon
+                        sx={{
+                          fontSize: "18px",
+                          color: "#BDBDBD",
+                          margin: "0px 10px",
+                        }}
+                      />
+                    </div>
+                  </>
+                )}
+                {insurance === "mortgage-insurance" && (
+                  <>
+                    <div className="text-grays w-full text-left text-text1 leading-l1">
+                      Term Length
+                    </div>
+
+                    <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
+                      20 Years
+                      <InfoIcon
+                        sx={{
+                          fontSize: "18px",
+                          color: "#BDBDBD",
+                          margin: "0px 10px",
+                        }}
+                      />
+                    </div>
+                  </>
+                )}
               </div>
               {renderComponent(insurance)}
               {/* <div className=" flex text-left justify-center gap-[3px] flex-col items-center w-[10rem] h-[44px]">

@@ -63,7 +63,7 @@ const Head = ({
       "term-life": "Term Life",
       "whole-life": "Whole Life",
       "critical-illness": "Critical illness",
-      "mortgage-insurances": "Mortgage Insurance",
+      "mortgage-insurance": "Mortgage Insurance",
     };
 
     const formatted = formattedMap[insurance] || insurance;
@@ -89,8 +89,57 @@ const Head = ({
         );
       case "whole-life":
         return (
+          <button
+            className={`w-[10rem] h-[3.5rem]  flex justify-center items-center gap-1  font-[500] text-[16px] rounded-md 
+               bg-grays/10 border-gray1
+           border-b-4 border-solid`}
+            onClick={() => {
+              setTab("term-calculator");
+            }}
+          >
+            Save upto 35%
+            <KeyboardArrowRightOutlinedIcon sx={{ fontSize: "17px" }} />
+          </button>
+        );
+      case "critical-illness":
+        return (
+          <>
+            <div>
+              <div className="flex gap-[6px]  w-[12rem] justify-center items-center bg-selected2 h-[4rem] px-[0px] rounded-md border border-solid border-selected ">
+                <Switch
+                  sx={{
+                    padding: "4px",
+                    width: "4rem",
+                    "& .MuiSwitch-thumb": {
+                      backgroundColor: "#fff",
+                      width: 20,
+                      height: 20,
+                    },
+                    "& .MuiSwitch-track": {
+                      backgroundColor: "#494949",
+                      opacity: 1,
+                      borderRadius: "50px",
+                    },
+                    "& .Mui-checked .MuiSwitch-thumb": {
+                      backgroundColor: "#fff",
+                    },
+                    "& .Mui-checked .MuiSwitch-track": {
+                      backgroundColor: "#494949",
+                    },
+                  }}
+                  color="primary"
+                />
+                <span className="text-halfBlack text-text2 leading-l2">
+                  Basic Plan (4 Illness)
+                </span>
+              </div>
+            </div>
+          </>
+        );
+      case "mortgage-insurance":
+        return (
           <div>
-            <div className="flex gap-[6px] rounded-tl-none justify-center items-center bg-selected2 h-[4rem] px-[15px] rounded-md border border-solid border-selected ">
+            <div className="flex gap-[6px]  w-[12rem] justify-center items-center bg-selected2 h-[4rem] px-[0px] rounded-md border border-solid border-selected ">
               <Switch
                 sx={{
                   padding: "4px",
@@ -114,8 +163,8 @@ const Head = ({
                 }}
                 color="primary"
               />
-              <span className="text-halfBlack text-text1 leading-l1">
-                Upto 35% Savings{" "}
+              <span className="text-halfBlack text-text2 leading-l2">
+                Decreasing Term{" "}
               </span>
             </div>
           </div>
@@ -198,17 +247,32 @@ const Head = ({
               value={""}
               className="rounded-md w-max py-[10px] text-left border-none font-medium focus:outline-none"
             >
-              {insurance === "term-life"
-                ? yearWholeOptions.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))
-                : yearTermOptions.map((option) => (
-                    <option key={option} value={option}>
-                      {option}
-                    </option>
-                  ))}
+              {insurance === "term-life" &&
+                yearWholeOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+              {insurance === "whole-life" &&
+                yearTermOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+
+              {insurance === "critical-illness" &&
+                yearWholeOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+
+              {insurance === "mortgage-insurance" &&
+                yearWholeOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
             </select>
           </div>
         </div>
