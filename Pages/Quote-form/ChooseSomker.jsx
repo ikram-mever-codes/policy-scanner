@@ -3,8 +3,9 @@ import quoteForm3 from "../../assets/quote-form-3.png";
 import Image from "next/image";
 import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined";
 import { SmokeFreeRounded, SmokingRoomsOutlined } from "@mui/icons-material";
+import { uploadPostData } from "@/app/api";
 
-const ChooseSmoker = ({ onClose, uploadPostData }) => {
+const ChooseSmoker = ({ onClose }) => {
   const [loading, setLoading] = useState(false);
 
   const handleClick = async (choice) => {

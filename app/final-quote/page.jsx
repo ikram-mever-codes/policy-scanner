@@ -30,6 +30,10 @@ const FinalQuote = () => {
   };
   useEffect(() => {
     const ins = localStorage.getItem("ins");
+    if (!ins) {
+      setInsurance("term-life");
+      localStorage.setItem("ins", "term-life");
+    }
     setInsurance(ins);
 
     const sendDatatoOdoo = async () => {
