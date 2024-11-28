@@ -9,11 +9,11 @@ import { CSSTransition } from "react-transition-group";
 import { useRouter } from "next/navigation";
 import { uploadPostData } from "../api";
 import ChooseCoverageType from "@/Pages/FinalQuote/ChangeCoverageType";
-import { setIn } from "formik";
 
 const FinalQuote = () => {
   const [openPopup, setOpenPopup] = useState(true);
   const [selected, setSelected] = useState(null);
+  const [decreasingTerm, setDecreasingTerm] = useState(false);
   const [insurance, setInsurance] = useState("term-life");
   const [quoteData, setQuoteData] = useState({});
   const [choosePopup, setChoosePopup] = useState(false);
@@ -50,6 +50,7 @@ const FinalQuote = () => {
     };
     sendDatatoOdoo();
   }, [insurance]);
+
   return (
     <div className="py-[60px] ">
       <Modal
@@ -95,22 +96,20 @@ const FinalQuote = () => {
                 setChoosePopup={setChoosePopup}
                 setIsWholeType={setIsWholeType}
                 isWholeLife={isWholeLife}
+                decreasingTerm={decreasingTerm}
+                setDecreasingTerm={setDecreasingTerm}
               />
               <CSSTransition
-                in={isWholeLife}
+                in={true}
                 timeout={300}
                 classNames="fade"
                 unmountOnExit
               >
-                <Quotes insurances={"dsgffd"} />
-              </CSSTransition>
-              <CSSTransition
-                in={!isWholeLife}
-                timeout={300}
-                classNames="fade"
-                unmountOnExit
-              >
-                <Quotes insurance={insurance} />
+                <Quotes
+                  insurance={insurance}
+                  decreasingTerm={decreasingTerm}
+                  t={"f"}
+                />
               </CSSTransition>
             </div>
             <Sidebar />

@@ -17,11 +17,11 @@ import "./Head.css";
 import PlanDetailsSidebar from "./PlanDetailsSidebar";
 import Link from "next/link";
 
-const Quotes = ({ insurance }) => {
+const Quotes = ({ insurance, decreasingTerm, t }) => {
+  console.log(t);
   const [expanded, setExpanded] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [paidAddons, setPaidAddons] = useState([]);
-
   const toggleExpanded = () => {
     setExpanded((prev) => !prev);
   };
@@ -103,11 +103,11 @@ const Quotes = ({ insurance }) => {
         return (
           <div className=" flex text-left justify-center px-[1rem] gap-[3px] flex-col items-center w-max h-[44px]">
             <div className="text-grays w-full text-left text-text1 leading-l1">
-              Pay type
+              Plan type
             </div>
 
             <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
-              Level term
+              {!decreasingTerm ? "Decreasing Term" : "Level Term"}{" "}
               <InfoIcon
                 sx={{
                   fontSize: "18px",
@@ -300,7 +300,10 @@ const Quotes = ({ insurance }) => {
                   <ExpandMore className="text-[16px]" />
                 )}
               </button>
-              <button className="w-max px-[10px] flex justify-center items-center gap-[5px] font-medium  text-[15px] h-[2.4rem] border-solid border border-opposite text-halfBlack rounded-md hover:bg-gray-200 transition">
+              <button
+                onClick={toggleExpanded}
+                className="w-max px-[10px] flex justify-center items-center gap-[5px] font-medium  text-[15px] h-[2.4rem] border-solid border border-opposite text-halfBlack rounded-md hover:bg-gray-200 transition"
+              >
                 2 Paid Riders
                 <ExpandMore className="text-[16px]" />
               </button>
@@ -336,7 +339,7 @@ const Quotes = ({ insurance }) => {
                   })}
                 </div>
               )}
-              <div className="py-5 pt-1 px-[2rem] overflow-hidden w-full flex justify-start items-center gap-[1.5rem] ">
+              <div className="py-5 pb-2 pt-1 px-[2rem] overflow-hidden w-full flex justify-start items-center gap-[1.5rem] ">
                 <div className="w-[23rem] shadow-sidebar p-[1rem] pb-[10px] rounded-lg flex justify-start items-start flex-col gap-[1rem]">
                   <div className=" w-full flex justify-between items-center">
                     <div className="text-text1 leading-l1 font-medium text-halfBlack">
@@ -431,7 +434,12 @@ const Quotes = ({ insurance }) => {
         </div>
       </div>
 
-      <PlanDetailsSidebar open={sidebarOpen} onClose={toggleSidebar} />
+      <PlanDetailsSidebar
+        open={sidebarOpen}
+        onClose={toggleSidebar}
+        insurance={insurance}
+        decreasingTerm={decreasingTerm}
+      />
     </div>
   );
 };

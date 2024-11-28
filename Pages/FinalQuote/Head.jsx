@@ -20,6 +20,8 @@ const Head = ({
   setIsWholeType,
   isWholeLife,
   setChoosePopup,
+  decreasingTerm,
+  setDecreasingTerm,
 }) => {
   const coverageOptions = [
     "25,000",
@@ -50,13 +52,6 @@ const Head = ({
 
   const handleCloseSidebar = () => {
     setSidebarOpen(false);
-  };
-  const toggleLifeType = (ins) => {
-    setInsurance(ins);
-    localStorage.setItem("ins", ins);
-    setIsWholeType((prev) => {
-      return !prev;
-    });
   };
 
   function formatInsuranceHeading(insurance) {
@@ -143,7 +138,12 @@ const Head = ({
         return (
           <div>
             <div className="flex gap-[6px]  w-[10rem] justify-center items-center bg-selected2 h-[4rem] px-[0px] rounded-md border border-solid border-selected ">
+              {/* When checked it would be Level term instead of Decreasing Term */}
               <Switch
+                onChange={(e) => {
+                  setDecreasingTerm(e.target.checked);
+                }}
+                checked={decreasingTerm}
                 sx={{
                   padding: "4px",
                   width: "4rem",
@@ -154,20 +154,21 @@ const Head = ({
                   },
                   "& .MuiSwitch-track": {
                     backgroundColor: "#494949",
-                    opacity: 1,
                     borderRadius: "50px",
                   },
-                  "& .Mui-checked .MuiSwitch-thumb": {
+                  "&.Mui-checked .MuiSwitch-thumb": {
                     backgroundColor: "#fff",
                   },
-                  "& .Mui-checked .MuiSwitch-track": {
-                    backgroundColor: "#494949",
+                  "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+                    backgroundColor: "#00615F",
+                    opacity: "1",
                   },
                 }}
                 color="primary"
               />
+
               <span className="text-halfBlack text-text2 leading-l2">
-                Decreasing Term{" "}
+                Level Term{" "}
               </span>
             </div>
           </div>

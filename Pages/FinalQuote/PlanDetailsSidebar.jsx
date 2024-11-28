@@ -6,9 +6,9 @@ import logo from "../../assets/canada-life.png";
 import { CSSTransition } from "react-transition-group";
 import "./Head.css";
 
-const PlanDetailsSidebar = ({ open, onClose }) => {
+const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
   const [activeTab, setActiveTab] = useState("Plan Summary");
-
+  console.log(decreasingTerm);
   return (
     <Slide direction="left" in={open} mountOnEnter unmountOnExit>
       <div className="fixed top-0 right-0 h-[100vh] w-[550px] overflow-y-scroll   z-[30] overflow-x-hidden bg-white shadow-lg p-5 flex flex-col">
@@ -36,7 +36,11 @@ const PlanDetailsSidebar = ({ open, onClose }) => {
               "border-solid border-b-[3px] font-semibold text-opposite border-opposite"
             } `}
           >
-            Plan Summary
+            {insurance === "mortgage-insurance"
+              ? decreasingTerm
+                ? "Decreasing Term"
+                : "Level term"
+              : "Plan Summary"}
           </button>
           <button
             onClick={() => setActiveTab("Riders")}
@@ -57,8 +61,8 @@ const PlanDetailsSidebar = ({ open, onClose }) => {
         >
           <div className="w-full h-max flex justify-start items-center gap-6 flex-col  py-2">
             <div className="w-full flex h-max justify-start items-center gap-4 flex-col">
-              <div className="w-full h-max p-4 bg-secondary/10 flex justify-start items-start gap-2  rounded-lg shadow-sidebar flex-col">
-                <h2 className="font-semibold text-halfBlack text-[18px]">
+              <div className="w-full h-max p-4 py-3 bg-primary2/10 flex justify-start items-start gap-1  rounded-lg shadow-sidebar flex-col">
+                <h2 className="font-semibold text-halfBlack text-[15px]">
                   Plan Details
                 </h2>
                 <p className="text-text1 leading-[24px] text-halfBlack">
@@ -66,27 +70,55 @@ const PlanDetailsSidebar = ({ open, onClose }) => {
                   nominee will receive the sum assured amount, free from taxes.
                 </p>
               </div>
-              <div className="w-full bg-primary2/10 h-max p-4 flex justify-start items-start  gap-2 rounded-lg shadow-sidebar flex-col">
-                <h2 className="font-semibold text-halfBlack text-[18px]">
-                  Renewability{" "}
-                </h2>
-                <p className="text-text1 leading-[24px] text-halfBlack">
-                  The policy auto-renews at the end of each term without a
-                  medical exam, with premiums increasing by age, until 85.
-                </p>
-              </div>
-              <div className="w-full h-max p-4 bg-opposite/10 flex justify-start items-start  gap-2 rounded-lg shadow-sidebar flex-col">
-                <h2 className="font-semibold text-halfBlack text-[18px]">
-                  Convertibility{" "}
-                </h2>
-                <p className="text-text1 leading-[24px] text-halfBlack">
-                  The policy can be converted to permanent life insurance before
-                  age 70.
-                </p>
-              </div>
+
+              {insurance === "term-life" && (
+                <>
+                  <div className="w-full bg-opposite/10 h-max p-4 py-3 flex justify-start items-start  gap-1 rounded-lg shadow-sidebar flex-col">
+                    <h2 className="font-semibold text-halfBlack text-[15px]">
+                      Renewability{" "}
+                    </h2>
+                    <p className="text-text1 leading-[24px] text-halfBlack">
+                      The policy auto-renews at the end of each term without a
+                      medical exam, with premiums increasing by age, until 85.
+                    </p>
+                  </div>
+                  <div className="w-full h-max p-4 py-3 bg-secondary/10 flex justify-start items-start  gap-1 rounded-lg shadow-sidebar flex-col">
+                    <h2 className="font-semibold text-halfBlack text-[15px]">
+                      Convertibility{" "}
+                    </h2>
+                    <p className="text-text1 leading-[24px] text-halfBlack">
+                      The policy can be converted to permanent life insurance
+                      before age 70.
+                    </p>
+                  </div>
+                </>
+              )}
+
+              {insurance === "mortgage-insurance" && (
+                <>
+                  <div className="w-full bg-opposite/10 h-max p-4 py-3 flex justify-start items-start  gap-1 rounded-lg shadow-sidebar flex-col">
+                    <h2 className="font-semibold text-halfBlack text-[15px]">
+                      Renewability{" "}
+                    </h2>
+                    <p className="text-text1 leading-[24px] text-halfBlack">
+                      The policy auto-renews at the end of each term without a
+                      medical exam, with premiums increasing by age, until 85.
+                    </p>
+                  </div>
+                  <div className="w-full h-max p-4 py-3 bg-secondary/10 flex justify-start items-start  gap-1 rounded-lg shadow-sidebar flex-col">
+                    <h2 className="font-semibold text-halfBlack text-[15px]">
+                      Convertibility{" "}
+                    </h2>
+                    <p className="text-text1 leading-[24px] text-halfBlack">
+                      The policy can be converted to permanent life insurance
+                      before age 70.
+                    </p>
+                  </div>
+                </>
+              )}
               <div className="w-full flex h-full justify-between items-center gap-4">
-                <div className="w-full  h-[9rem] p-4 flex justify-start items-start  gap-2 rounded-lg shadow-sidebar flex-col">
-                  <h2 className="font-medium text-black text-[18px]">
+                <div className="w-full  h-[8rem] p-4 py-3 flex justify-start items-start  gap-1 rounded-lg shadow-sidebar flex-col">
+                  <h2 className="font-medium text-black text-[15px]">
                     Policy Benefits
                   </h2>
                   <p className="text-text1 leading-[24px] text-halfBlack">
@@ -94,8 +126,8 @@ const PlanDetailsSidebar = ({ open, onClose }) => {
                     accidents, and illnesses.
                   </p>
                 </div>
-                <div className="w-full min-h-[9rem] p-4 flex justify-start items-start  gap-2 rounded-lg shadow-sidebar flex-col">
-                  <h2 className="font-semibold text-black text-[18px]">
+                <div className="w-full min-h-[8rem] p-4 flex justify-start items-start  gap-1 py-3 rounded-lg shadow-sidebar flex-col">
+                  <h2 className="font-semibold text-black text-[16px]">
                     Exclusions{" "}
                   </h2>
                   <p className="text-text1 leading-[24px] text-halfBlack">
@@ -128,7 +160,7 @@ const PlanDetailsSidebar = ({ open, onClose }) => {
           classNames="fade"
           unmountOnExit
         >
-          <div className="flex justify-start items-center flex-col gap-[1rem] px-4">
+          <div className="flex justify-start items-center flex-col gap-[1rem]">
             <div className="flex justify-start items-center gap-5 flex-col">
               <h2 className="w-full text-left font-medium text-[20px] text-halfBlack">
                 Paid Riders
@@ -151,7 +183,7 @@ const PlanDetailsSidebar = ({ open, onClose }) => {
                   </div>
                 </div>{" "}
                 <div className="flex justify-start items-center ">
-                  <div className="relative w-full shadow-sidebar h-max   bg-secondary/10  flex justify-start flex-col  rounded-lg overflow-hidden items-start gap-0 pb-5">
+                  <div className="relative w-full shadow-sidebar h-max   bg-opposite/10  flex justify-start flex-col  rounded-lg overflow-hidden items-start gap-0 pb-5">
                     {/* <div className="self-start px-4 py-1 rounded-br-lg text-gray top-0 left-0 font-medium bg-[#efc93daf]">
                       $25/m
                     </div> */}
@@ -168,7 +200,7 @@ const PlanDetailsSidebar = ({ open, onClose }) => {
                 </div>{" "}
               </div>
               <div className="flex justify-start items-center ">
-                <div className="relative w-full shadow-sidebar h-max  bg-opposite/10 flex justify-start flex-col  rounded-lg overflow-hidden items-start gap-0 pb-5">
+                <div className="relative w-full shadow-sidebar h-max  bg-secondary/10 flex justify-start flex-col  rounded-lg overflow-hidden items-start gap-0 pb-5">
                   {/* <div className="self-start px-4 py-1 rounded-br-lg text-gray top-0 left-0 font-medium bg-selected2">
                       Free
                     </div> */}
