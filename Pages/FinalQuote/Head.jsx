@@ -22,12 +22,15 @@ const Head = ({
   setChoosePopup,
 }) => {
   const coverageOptions = [
-    "10,000",
+    "25,000",
     "50,000",
     "100,000",
-    "200,000",
+    "150,000",
+    "250,000",
+    "400,000",
     "500,000",
-    "1,000,000",
+    "750,000",
+    "1M",
   ];
   const yearTermOptions = ["Life 100 Pay", "Life 20 Pay", "Life 10 Pay"];
   const yearWholeOptions = [
@@ -105,7 +108,7 @@ const Head = ({
         return (
           <>
             <div>
-              <div className="flex gap-[6px]  w-[12rem] justify-center items-center bg-selected2 h-[4rem] px-[0px] rounded-md border border-solid border-selected ">
+              <div className="flex gap-[6px]  w-[10rem] justify-center items-center bg-selected2 h-[4rem] px-[0px] rounded-md border border-solid border-selected ">
                 <Switch
                   sx={{
                     padding: "4px",
@@ -139,7 +142,7 @@ const Head = ({
       case "mortgage-insurance":
         return (
           <div>
-            <div className="flex gap-[6px]  w-[12rem] justify-center items-center bg-selected2 h-[4rem] px-[0px] rounded-md border border-solid border-selected ">
+            <div className="flex gap-[6px]  w-[10rem] justify-center items-center bg-selected2 h-[4rem] px-[0px] rounded-md border border-solid border-selected ">
               <Switch
                 sx={{
                   padding: "4px",
@@ -173,7 +176,7 @@ const Head = ({
   }
 
   return (
-    <div className="w-[845px] h-max flex justify-start items-center gap-[1.5rem] flex-col">
+    <div className="w-[845px] h-max flex justify-start items-center gap-[1rem] flex-col">
       {isSidebarOpen && (
         <div className="fixed inset-0 bg-black opacity-50 z-10"></div>
       )}
@@ -215,37 +218,40 @@ const Head = ({
           </button>{" "}
         </div>
       </div>
-      <div className="w-full rounded-lg bg-white shadow-sidebar h-[7rem] flex justify-start  items-center gap-[1rem] px-[2rem] py-[1rem]">
-        <div className="flex flex-col w-[10rem]  py-[5px] h-[70px]  pr-[1rem]">
-          <div className="flex flex-col items-start justify-center border-r border-solid border-halfBlack h-full">
-            <div className="text-[14px] text-left text-halfBlack">
+      <div className="w-full rounded-lg bg-white shadow-sidebar h-[5.5rem] flex justify-start  items-center gap-[1rem] px-[2rem] py-[0rem]">
+        <div className="flex flex-col w-[10rem]   py-[10px] h-[70px]  pr-[1rem]">
+          <div className="flex flex-col items-start justify-around border-r border-solid border-halfBlack h-full">
+            <div className="text-text1 leading-l1 text-left text-halfBlack">
               Coverage Amount
             </div>
             <select
               id="coverage"
               value={""}
-              className="rounded-md w-max py-[10px] text-left border-none font-medium focus:outline-none"
+              onChange={(e) => console.log(`Selected: ${e.target.value}`)}
+              className="rounded-md w-max  text-[16px] leading-[20px] text-left border-none font-medium focus:outline-none"
+              style={{ width: "7rem" }}
             >
               <option value="" disabled>
                 $100,000{" "}
               </option>
               {coverageOptions.map((option) => (
-                <option key={option} value={option}>
+                <option key={option} value={option} style={{ width: "150rem" }}>
                   ${option}
                 </option>
               ))}
             </select>
           </div>
         </div>
-        <div className="flex flex-col w-[10rem]  py-[5px] h-[70px]  pr-[1rem]">
-          <div className="flex flex-col items-start justify-center border-r border-solid border-halfBlack h-full">
-            <div className="text-[14px] text-left text-halfBlack">
+        <div className="flex flex-col w-[10rem]  py-[10px] h-[70px]  pr-[1rem]">
+          <div className="flex flex-col items-start justify-around border-r border-solid border-halfBlack h-full">
+            <div className="text-text1 leading-l1 text-left text-halfBlack">
               Term Length
             </div>
             <select
               id="coverage"
               value={""}
-              className="rounded-md w-max py-[10px] text-left border-none font-medium focus:outline-none"
+              style={{ width: "7rem" }}
+              className="rounded-md w-max  text-[16px] leading-[20px] text-left border-none font-medium focus:outline-none"
             >
               {insurance === "term-life" &&
                 yearWholeOptions.map((option) => (
@@ -278,10 +284,10 @@ const Head = ({
         </div>
         <div className="w-max h-full flex justify-center items-center gap-[1rem]">
           <div className="flex justify-center  h-[50px] gap-[10px] border-solid border w-[164px] overflow-hidden border-selected items-center p-[10px] rounded-md bg-selected2">
-            <button className="w-[5rem] h-[30px] shadow-xl text-black bg-white rounded-md p-4 flex justify-center items-center font-medium text-[14px]">
+            <button className="w-[5rem] h-[30px] shadow-xl text-black bg-white rounded-md p-4 flex justify-center items-center font-medium text-[14px] leading-l1">
               Monthly
             </button>
-            <button className="w-[5rem] h-[30px] text-halfBlack rounded-md text-[14px] p-3 flex justify-center items-center">
+            <button className="w-[5rem] h-[30px] text-halfBlack rounded-md text-[14px] leading-l1 p-3 flex justify-center items-center">
               Yearly
             </button>
           </div>

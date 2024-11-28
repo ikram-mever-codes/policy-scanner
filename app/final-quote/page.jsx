@@ -83,7 +83,7 @@ const FinalQuote = () => {
             className="gap-[15px]"
             style={{ display: "grid", gridTemplateColumns: "75% auto" }}
           >
-            <div className="flex justify-start items-center gap-[2rem] flex-col w-[850px] h-max  overflow-hidden">
+            <div className="flex justify-start items-center gap-[1rem] flex-col w-[850px] h-max  overflow-hidden">
               <Head
                 insurance={insurance}
                 setInsurance={setInsurance}
