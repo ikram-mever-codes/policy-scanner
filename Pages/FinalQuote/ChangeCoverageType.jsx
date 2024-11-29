@@ -43,7 +43,7 @@ const ChooseCoverageType = ({ setChoosePopup, setInsurance, insurance }) => {
             <SecurityIcon /> Term Life
           </button>
         )}
-        {insurance !== "mortgage-insurance" && (
+        {insurance !== "mortgage-insurance" && insurance !== "level-term" && (
           <button
             onClick={() => {
               setInsurance("mortgage-insurance");

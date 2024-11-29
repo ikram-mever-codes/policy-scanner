@@ -9,14 +9,19 @@ import { CSSTransition } from "react-transition-group";
 import { useRouter } from "next/navigation";
 import { uploadPostData } from "../api";
 import ChooseCoverageType from "@/Pages/FinalQuote/ChangeCoverageType";
+import EffectiveSaving from "@/Pages/FinalQuote/EffectiveSaving";
 
 const FinalQuote = () => {
+  const [effSaving, setEffSaving] = useState(false);
   const [openPopup, setOpenPopup] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selected, setSelected] = useState(null);
   const [decreasingTerm, setDecreasingTerm] = useState(false);
   const [insurance, setInsurance] = useState("term-life");
   const [quoteData, setQuoteData] = useState({});
   const [choosePopup, setChoosePopup] = useState(false);
+  const [yearly, setYearly] = useState(false);
+  const [payTermLength, setPayTermLength] = useState("Life 100 Pay");
   const [isWholeLife, setIsWholeType] = useState(false);
   const router = useRouter();
 
@@ -82,6 +87,20 @@ const FinalQuote = () => {
         </div>
       </Modal>
 
+      <Modal
+        open={effSaving}
+        className="flex justify-center items-center"
+        disableScrollLock={true}
+      >
+        <div className="border-none outline-none bg-white rounded-lg py-2 px-4 shadow-lg  w-[684px] z-10 relative ">
+          <EffectiveSaving
+            setEffSaving={setEffSaving}
+            effSaving={effSaving}
+            payTermLength={payTermLength}
+            setPayTermLength={setPayTermLength}
+          />
+        </div>
+      </Modal>
       <div className="flex justify-start items-center w-full h-max flex-col gap-[10rem]">
         <div className=" w-main relative overflow-hidden h-max">
           <div
@@ -90,14 +109,20 @@ const FinalQuote = () => {
           >
             <div className="flex justify-start items-center gap-[1rem] flex-col w-[850px] h-max  overflow-hidden">
               <Head
+                setSidebarOpenM={setSidebarOpen}
                 insurance={insurance}
+                yearly={yearly}
+                setYearly={setYearly}
                 setInsurance={setInsurance}
                 quoteData={quoteData}
+                setEffSaving={setEffSaving}
                 setChoosePopup={setChoosePopup}
                 setIsWholeType={setIsWholeType}
                 isWholeLife={isWholeLife}
                 decreasingTerm={decreasingTerm}
                 setDecreasingTerm={setDecreasingTerm}
+                setPayTermLength={setPayTermLength}
+                payTermLength={payTermLength}
               />
               <CSSTransition
                 in={true}
@@ -108,7 +133,11 @@ const FinalQuote = () => {
                 <Quotes
                   insurance={insurance}
                   decreasingTerm={decreasingTerm}
-                  t={"f"}
+                  yearly={yearly}
+                  setYearly={setYearly}
+                  sidebarOpen={sidebarOpen}
+                  setSidebarOpen={setSidebarOpen}
+                  payTermLength={payTermLength}
                 />
               </CSSTransition>
             </div>

@@ -17,10 +17,15 @@ import "./Head.css";
 import PlanDetailsSidebar from "./PlanDetailsSidebar";
 import Link from "next/link";
 
-const Quotes = ({ insurance, decreasingTerm, t }) => {
-  console.log(t);
+const Quotes = ({
+  insurance,
+  decreasingTerm,
+  yearly,
+  payTermLength,
+  sidebarOpen,
+  setSidebarOpen,
+}) => {
   const [expanded, setExpanded] = useState(false);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [paidAddons, setPaidAddons] = useState([]);
   const toggleExpanded = () => {
     setExpanded((prev) => !prev);
@@ -65,11 +70,11 @@ const Quotes = ({ insurance, decreasingTerm, t }) => {
         return (
           <div className=" flex text-left justify-center px-[1rem] gap-[3px] flex-col items-center w-max h-[44px]">
             <div className="text-grays w-full text-left text-text1 leading-l1">
-              Pay limit
+              Pay Term
             </div>
 
             <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
-              Life 100 Pay
+              {payTermLength}{" "}
               <InfoIcon
                 sx={{
                   fontSize: "18px",
@@ -118,6 +123,26 @@ const Quotes = ({ insurance, decreasingTerm, t }) => {
             </div>
           </div>
         );
+
+      case "level-term":
+        return (
+          <div className=" flex text-left justify-center px-[1rem] gap-[3px] flex-col items-center w-max h-[44px]">
+            <div className="text-grays w-full text-left text-text1 leading-l1">
+              Plan type
+            </div>
+
+            <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
+              Level Term
+              <InfoIcon
+                sx={{
+                  fontSize: "18px",
+                  color: "#BDBDBD",
+                  margin: "0px 10px",
+                }}
+              />
+            </div>
+          </div>
+        );
       default:
         break;
     }
@@ -141,9 +166,9 @@ const Quotes = ({ insurance, decreasingTerm, t }) => {
       )}
       <div className="w-full h-max flex justify-between items-center gap-[1rem]  flex-col relative z-0">
         <div className="w-full rounded-lg h-max bg-white shadow-sidebar min-h-[190px] flex relative justify-between pb-[15px] items-center gap-[0px] flex-col">
-          {insurance === "term-life" && (
+          {(insurance === "term-life" || insurance === "level-term") && (
             <div className="w-max h-[30px] px-[1rem] py-[7px]  mb-[12px] rounded-tl-[10px] rounded-br-[10px] bg-[#596B8A] text-white self-start text-[14px] font-normal flex justify-center items-center gap-[3px]">
-              $ Whole life convertiable- See How{" "}
+              $ Whole life convertible - See How{" "}
               <KeyboardArrowDownOutlined sx={{ fontSize: "16px" }} />
             </div>
           )}
@@ -161,10 +186,7 @@ const Quotes = ({ insurance, decreasingTerm, t }) => {
           )}
 
           {insurance === "mortgage-insurance" && (
-            <div className="w-max h-[30px] px-[1rem] py-[7px]  mb-[12px] rounded-tl-[10px] rounded-br-[10px] bg-[#AF7AB3] text-white self-start text-[14px] font-normal flex justify-center items-center gap-[3px]">
-              $ Effective saving 40% - See How{" "}
-              <KeyboardArrowDownOutlined sx={{ fontSize: "16px" }} />
-            </div>
+            <div className="h-[30px]"></div>
           )}
           <div className="w-full h-max  px-[2rem]  flex justify-between items-center ">
             <div className="w-full h-full flex justify-start items-center gap-[2rem]">
@@ -214,7 +236,24 @@ const Quotes = ({ insurance, decreasingTerm, t }) => {
                     </div>
                   </>
                 )}
+                {insurance === "level-term" && (
+                  <>
+                    <div className="text-grays w-full text-left text-text1 leading-l1">
+                      Covered till
+                    </div>
 
+                    <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
+                      100 Years
+                      <InfoIcon
+                        sx={{
+                          fontSize: "18px",
+                          color: "#BDBDBD",
+                          margin: "0px 10px",
+                        }}
+                      />
+                    </div>
+                  </>
+                )}
                 {insurance === "critical-illness" && (
                   <>
                     <div className="text-grays w-full text-left text-text1 leading-l1">
@@ -266,11 +305,12 @@ const Quotes = ({ insurance, decreasingTerm, t }) => {
 
             <div className="w-max flex justify-center items-center h-[38px] gap-[12px] flex-row ">
               <div className="font-semibold flex justify-center gap-1 items-center h-full  flex-col text-center text-[20px] text-halfBlack">
-                <div className="flex justify-center text-[18px] leading-[27px] items-center  gap-1">
-                  $250.00 <span className="text-[14px]">p/m</span>
+                <div className="flex justify-center text-[18px] leading-[27px] items-center w-max  gap-1">
+                  $250.00{" "}
+                  <span className="text-[14px]">p/{yearly ? "y" : "m"}</span>
                 </div>
-                <span className="text-text2 leading-l2 text-grays font-light">
-                  Incl. $5 policy fee{" "}
+                <span className="text-text2 leading-l2 text-grays font-light w-max">
+                  Incl. ${yearly ? "60" : "5"} policy fee{" "}
                 </span>
               </div>
               <button className="w-full h-[45px] flex justify-center items-center bg-secondary text-nowrap px-[15px] py-[5px] text-[14px] font-medium  flex-col rounded-lg">
@@ -289,22 +329,25 @@ const Quotes = ({ insurance, decreasingTerm, t }) => {
               Plan info <ArrowForwardIos className="text-[14px]" />
             </button>
             <div className="w-max flex justify-center items-center gap-[1rem]">
-              <button
-                className="w-max px-[10px] flex justify-center items-center gap-[5px] font-medium text-[15px] h-[2.4rem] border-solid border border-opposite text-halfBlack rounded-md hover:bg-gray-200 transition"
-                onClick={toggleExpanded}
-              >
-                2 Free Benefits{" "}
-                {expanded ? (
-                  <Close className="text-[16px]" />
-                ) : (
-                  <ExpandMore className="text-[16px]" />
+              {insurance !== "whole-life" &&
+                insurance !== "mortgage-insurance" && (
+                  <button
+                    className="w-max px-[10px] flex justify-center items-center gap-[5px] font-medium text-[15px] h-[2.4rem] border-solid border border-opposite text-halfBlack rounded-md hover:bg-gray-200 transition"
+                    onClick={toggleExpanded}
+                  >
+                    2 Free Benefits{" "}
+                    {expanded ? (
+                      <Close className="text-[16px]" />
+                    ) : (
+                      <ExpandMore className="text-[16px]" />
+                    )}
+                  </button>
                 )}
-              </button>
               <button
                 onClick={toggleExpanded}
                 className="w-max px-[10px] flex justify-center items-center gap-[5px] font-medium  text-[15px] h-[2.4rem] border-solid border border-opposite text-halfBlack rounded-md hover:bg-gray-200 transition"
               >
-                2 Paid Riders
+                2 Paid Benefits
                 <ExpandMore className="text-[16px]" />
               </button>
               <div className="flex justify-center items-center text-[14px] text-grays ">
@@ -340,36 +383,37 @@ const Quotes = ({ insurance, decreasingTerm, t }) => {
                 </div>
               )}
               <div className="py-5 pb-2 pt-1 px-[2rem] overflow-hidden w-full flex justify-start items-center gap-[1.5rem] ">
-                <div className="w-[23rem] shadow-sidebar p-[1rem] pb-[10px] rounded-lg flex justify-start items-start flex-col gap-[1rem]">
-                  <div className=" w-full flex justify-between items-center">
-                    <div className="text-text1 leading-l1 font-medium text-halfBlack">
-                      4 Free Benefits
+                {insurance !== "whole-life" && (
+                  <div className="w-[23rem] shadow-sidebar p-[1rem] pb-[10px] rounded-lg flex justify-start items-start flex-col gap-[1rem]">
+                    <div className=" w-full flex justify-between items-center">
+                      <div className="text-text1 leading-l1 font-medium text-halfBlack">
+                        4 Free Benefits
+                      </div>
+                      <button
+                        className="w-[20px] flex items-center justify-center h-[20px] rounded-full bg-selected text-halfBlack"
+                        onClick={toggleExpanded}
+                      >
+                        {expanded ? (
+                          <Close className="text-[16px]" />
+                        ) : (
+                          <ExpandMore className="text-[16px]" />
+                        )}
+                      </button>
                     </div>
-                    <button
-                      className="w-[20px] flex items-center justify-center h-[20px] rounded-full bg-selected text-halfBlack"
-                      onClick={toggleExpanded}
-                    >
-                      {expanded ? (
-                        <Close className="text-[16px]" />
-                      ) : (
-                        <ExpandMore className="text-[16px]" />
-                      )}
-                    </button>
+                    <div className="w-full h-[60px] flex justify-start items-start gap-[10px] flex-col">
+                      <div className="text-text1 leading-l1">
+                        <CheckCircleOutlineOutlinedIcon className="text-[16px] mr-1" />
+                        Wavier Of Premium Cover
+                        <span className="text-primary2 mx-[5px]">free</span>
+                      </div>
+                      <div className="text-text1 leading-l1">
+                        <CheckCircleOutlineOutlinedIcon className="text-[16px]" />{" "}
+                        100% payout on Terminal illness
+                        <span className="text-primary2 mx-[5px]">free</span>
+                      </div>
+                    </div>
                   </div>
-                  <div className="w-full h-[60px] flex justify-start items-start gap-[10px] flex-col">
-                    <div className="text-text1 leading-l1">
-                      <CheckCircleOutlineOutlinedIcon className="text-[16px] mr-1" />
-                      Wavier Of Premium Cover
-                      <span className="text-primary2 mx-[5px]">free</span>
-                    </div>
-                    <div className="text-text1 leading-l1">
-                      <CheckCircleOutlineOutlinedIcon className="text-[16px]" />{" "}
-                      100% payout on Terminal illness
-                      <span className="text-primary2 mx-[5px]">free</span>
-                    </div>
-                  </div>
-                </div>
-
+                )}
                 <div className="w-[23rem]   shadow-sidebar p-[1rem] pb-[10px] rounded-lg flex justify-start items-start flex-col gap-[1rem]">
                   <div className="w-full flex justify-between items-center">
                     <div className="text-text1 leading-l1 font-medium text-halfBlack">

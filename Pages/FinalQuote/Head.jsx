@@ -11,6 +11,7 @@ import KeyboardBackspaceIcon from "@mui/icons-material/KeyboardBackspace";
 import EditInfoSidebar from "./EditInfoSidebar";
 import KeyboardArrowRightOutlinedIcon from "@mui/icons-material/KeyboardArrowRightOutlined";
 import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDownOutlined";
+import InfoIcon from "@mui/icons-material/Info";
 import "./Head.css";
 
 const Head = ({
@@ -22,6 +23,12 @@ const Head = ({
   setChoosePopup,
   decreasingTerm,
   setDecreasingTerm,
+  yearly,
+  setYearly,
+  setEffSaving,
+  payTermLength,
+  setPayTermLength,
+  setSidebarOpenM,
 }) => {
   const coverageOptions = [
     "25,000",
@@ -33,6 +40,18 @@ const Head = ({
     "500,000",
     "750,000",
     "1M",
+  ];
+
+  const coverageMortgageOptions = [
+    "50,000",
+    "100,000",
+    "250,000",
+    "400,000",
+    "500,000",
+    "1M",
+    "1.5M",
+    "2M",
+    "2.5M",
   ];
   const yearTermOptions = ["Life 100 Pay", "Life 20 Pay", "Life 10 Pay"];
   const yearWholeOptions = [
@@ -62,6 +81,7 @@ const Head = ({
       "whole-life": "Whole Life",
       "critical-illness": "Critical illness",
       "mortgage-insurance": "Mortgage Insurance",
+      "level-term": "Mortgage Insurance",
     };
 
     const formatted = formattedMap[insurance] || insurance;
@@ -77,25 +97,71 @@ const Head = ({
             className={`w-[10rem] h-[3.5rem]  flex justify-center items-center gap-1  font-[500] text-[16px] rounded-md 
                  bg-grays/10 border-gray1
              border-b-4 border-solid`}
-            onClick={() => {
-              setTab("term-calculator");
-            }}
+            onClick={() => {}}
           >
             Term Calculator
             <KeyboardArrowRightOutlinedIcon sx={{ fontSize: "17px" }} />
           </button>
         );
+      case "level-term":
+        return (
+          <>
+            <div>
+              <div className="flex gap-[6px]  w-[10rem] justify-center items-center bg-primary2/20 h-[4rem] px-[0px] rounded-md border border-solid border-selected ">
+                <Switch
+                  sx={{
+                    padding: "4px",
+                    width: "4rem",
+                    "& .MuiSwitch-thumb": {
+                      backgroundColor: "#fff",
+                      width: 20,
+                      height: 20,
+                    },
+                    "& .MuiSwitch-track": {
+                      backgroundColor: "#494949",
+                      opacity: 1,
+                      borderRadius: "50px",
+                    },
+                    "& .Mui-checked .MuiSwitch-thumb": {
+                      backgroundColor: "#fff",
+                    },
+                    "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+                      backgroundColor: "#00615F",
+                      opacity: 1,
+                    },
+                  }}
+                  checked={insurance === "level-term"}
+                  onChange={() => {
+                    setInsurance("mortgage-insurance");
+                    localStorage.setItem("ins", "mortgage-insurance");
+                  }}
+                />
+                <span className="text-halfBlack text-text2 leading-l2">
+                  Level Term
+                </span>
+              </div>
+            </div>
+          </>
+        );
       case "whole-life":
         return (
           <button
-            className={`w-[10rem] h-[3.5rem]  flex justify-center items-center gap-1  font-[500] text-[16px] rounded-md 
-               bg-grays/10 border-gray1
+            className={`w-[10rem] h-[3.5rem] ${
+              payTermLength === "Life 100 Pay"
+                ? "bg-grays/10 border-gray1"
+                : " bg-primary2/20 border-primary "
+            } text-black flex justify-center items-center gap-1  font-[500] text-[16px] rounded-md 
            border-b-4 border-solid`}
             onClick={() => {
-              setTab("term-calculator");
+              if (insurance === "whole-life") {
+                setEffSaving(true);
+              }
             }}
           >
-            Save upto 35%
+            {payTermLength === "Life 10 Pay" && "Pay Term 10 yrs"}
+            {payTermLength === "Life 20 Pay" && "Pay Term 20 yrs"}
+            {payTermLength === "Life 100 Pay" && "Save upto 35%"}
+
             <KeyboardArrowRightOutlinedIcon sx={{ fontSize: "17px" }} />
           </button>
         );
@@ -136,42 +202,43 @@ const Head = ({
         );
       case "mortgage-insurance":
         return (
-          <div>
-            <div className="flex gap-[6px]  w-[10rem] justify-center items-center bg-selected2 h-[4rem] px-[0px] rounded-md border border-solid border-selected ">
-              {/* When checked it would be Level term instead of Decreasing Term */}
-              <Switch
-                onChange={(e) => {
-                  setDecreasingTerm(e.target.checked);
-                }}
-                checked={decreasingTerm}
-                sx={{
-                  padding: "4px",
-                  width: "4rem",
-                  "& .MuiSwitch-thumb": {
-                    backgroundColor: "#fff",
-                    width: 20,
-                    height: 20,
-                  },
-                  "& .MuiSwitch-track": {
-                    backgroundColor: "#494949",
-                    borderRadius: "50px",
-                  },
-                  "&.Mui-checked .MuiSwitch-thumb": {
-                    backgroundColor: "#fff",
-                  },
-                  "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
-                    backgroundColor: "#00615F",
-                    opacity: "1",
-                  },
-                }}
-                color="primary"
-              />
-
-              <span className="text-halfBlack text-text2 leading-l2">
-                Level Term{" "}
-              </span>
+          <>
+            <div>
+              <div className="flex gap-[6px]  w-[10rem] justify-center bg-selected2 items-center h-[4rem] px-[0px] rounded-md border border-solid border-selected ">
+                <Switch
+                  sx={{
+                    padding: "4px",
+                    width: "4rem",
+                    "& .MuiSwitch-thumb": {
+                      backgroundColor: "#fff",
+                      width: 20,
+                      height: 20,
+                    },
+                    "& .MuiSwitch-track": {
+                      backgroundColor: "#494949",
+                      opacity: 1,
+                      borderRadius: "50px",
+                    },
+                    "& .Mui-checked .MuiSwitch-thumb": {
+                      backgroundColor: "#fff",
+                    },
+                    "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+                      backgroundColor: "#00615F",
+                      opacity: 1,
+                    },
+                  }}
+                  onChange={(e) => {
+                    setInsurance("level-term");
+                    localStorage.setItem("ins", "level-term");
+                    setSidebarOpenM(true);
+                  }}
+                />
+                <span className="text-halfBlack text-text2 leading-l2">
+                  Level Term
+                </span>
+              </div>
             </div>
-          </div>
+          </>
         );
     }
   }
@@ -186,7 +253,7 @@ const Head = ({
         <div className="w-max flex justify-start items-center gap-2">
           <div className="w-max h-[45px] rounded-md overflow-hidden border-solid border border-halfBlack">
             <button
-              className={`min-w-[10rem] h-full bg-primary text-white  rounded-r-[5px]
+              className={`px-[1rem] min-w-[10rem] w-max h-full bg-primary text-white  rounded-r-[5px]
             }`}
             >
               {formatInsuranceHeading(insurance)}
@@ -232,14 +299,25 @@ const Head = ({
               className="rounded-md w-max  text-[16px] leading-[20px] text-left border-none font-medium focus:outline-none"
               style={{ width: "7rem" }}
             >
-              <option value="" disabled>
-                $100,000{" "}
-              </option>
-              {coverageOptions.map((option) => (
-                <option key={option} value={option} style={{ width: "150rem" }}>
-                  ${option}
-                </option>
-              ))}
+              {insurance !== "mortgage-insurance"
+                ? coverageOptions.map((option) => (
+                    <option
+                      key={option}
+                      value={option}
+                      style={{ width: "150rem" }}
+                    >
+                      ${option}
+                    </option>
+                  ))
+                : coverageMortgageOptions.map((option) => (
+                    <option
+                      key={option}
+                      value={option}
+                      style={{ width: "150rem" }}
+                    >
+                      ${option}
+                    </option>
+                  ))}
             </select>
           </div>
         </div>
@@ -249,9 +327,14 @@ const Head = ({
               Term Length
             </div>
             <select
-              id="coverage"
-              value={""}
+              id="pay-term"
+              value={payTermLength}
               style={{ width: "7rem" }}
+              onChange={(e) => {
+                if (insurance === "whole-life") {
+                  setPayTermLength(e.target.value);
+                }
+              }}
               className="rounded-md w-max  text-[16px] leading-[20px] text-left border-none font-medium focus:outline-none"
             >
               {insurance === "term-life" &&
@@ -260,6 +343,13 @@ const Head = ({
                     {option}
                   </option>
                 ))}
+              {insurance === "level-term" &&
+                yearWholeOptions.map((option) => (
+                  <option key={option} value={option}>
+                    {option}
+                  </option>
+                ))}
+
               {insurance === "whole-life" &&
                 yearTermOptions.map((option) => (
                   <option key={option} value={option}>
@@ -285,10 +375,24 @@ const Head = ({
         </div>
         <div className="w-max h-full flex justify-center items-center gap-[1rem]">
           <div className="flex justify-center  h-[50px] gap-[10px] border-solid border w-[164px] overflow-hidden border-selected items-center p-[10px] rounded-md bg-selected2">
-            <button className="w-[5rem] h-[30px] shadow-xl text-black bg-white rounded-md p-4 flex justify-center items-center font-medium text-[14px] leading-l1">
+            <button
+              className={`w-[5rem] h-[30px]  ${
+                !yearly
+                  ? "text-black bg-white shadow-xl  font-medium"
+                  : " text-halfBlack"
+              } rounded-md p-4 flex justify-center items-center text-[14px] leading-l1`}
+              onClick={() => setYearly(false)}
+            >
               Monthly
             </button>
-            <button className="w-[5rem] h-[30px] text-halfBlack rounded-md text-[14px] leading-l1 p-3 flex justify-center items-center">
+            <button
+              onClick={() => setYearly(true)}
+              className={`w-[5rem] h-[30px] ${
+                yearly
+                  ? "text-black bg-white  shadow-xl font-medium"
+                  : "text-halfBlack"
+              }  rounded-md text-[14px] leading-l1 p-3 flex justify-center items-center`}
+            >
               Yearly
             </button>
           </div>
