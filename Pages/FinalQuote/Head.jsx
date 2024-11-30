@@ -29,6 +29,8 @@ const Head = ({
   payTermLength,
   setPayTermLength,
   setSidebarOpenM,
+  enhanced,
+  setEnhanced,
 }) => {
   const coverageOptions = [
     "25,000",
@@ -53,6 +55,15 @@ const Head = ({
     "2M",
     "2.5M",
   ];
+
+  const coverageCiOptions = [
+    "10,000",
+    "50,000",
+    "100,000",
+    "200,000",
+    "250,000",
+    "500,000",
+  ];
   const yearTermOptions = ["Life 100 Pay", "Life 20 Pay", "Life 10 Pay"];
   const yearWholeOptions = [
     "10 Years",
@@ -63,6 +74,7 @@ const Head = ({
     "40 Years",
   ];
 
+  const yearCiOptions = ["10 Years", "20 Years", "Age 75 Pay", "Life pay 100"];
   const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   const handleEditClick = () => {
@@ -94,7 +106,7 @@ const Head = ({
       case "term-life":
         return (
           <button
-            className={`w-[10rem] h-[3.5rem]  flex justify-center items-center gap-1  font-[500] text-[16px] rounded-md 
+            className={`w-[10rem] h-[3.5rem]  flex justify-center items-center gap-1  font-[500] text-text1 leading-l1 rounded-md 
                  bg-grays/10 border-gray1
              border-b-4 border-solid`}
             onClick={() => {}}
@@ -136,7 +148,7 @@ const Head = ({
                     localStorage.setItem("ins", "mortgage-insurance");
                   }}
                 />
-                <span className="text-halfBlack text-text2 leading-l2">
+                <span className="text-halfBlack text-text1 leading-l1">
                   Level Term
                 </span>
               </div>
@@ -150,7 +162,7 @@ const Head = ({
               payTermLength === "Life 100 Pay"
                 ? "bg-grays/10 border-gray1"
                 : " bg-primary2/20 border-primary "
-            } text-black flex justify-center items-center gap-1  font-[500] text-[16px] rounded-md 
+            } text-black flex justify-center items-center gap-1  font-[500] text-text1 leading-l1 rounded-md 
            border-b-4 border-solid`}
             onClick={() => {
               if (insurance === "whole-life") {
@@ -187,15 +199,25 @@ const Head = ({
                     "& .Mui-checked .MuiSwitch-thumb": {
                       backgroundColor: "#fff",
                     },
-                    "& .Mui-checked .MuiSwitch-track": {
-                      backgroundColor: "#494949",
+                    "& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track": {
+                      backgroundColor: "#00615F",
+                      opacity: 1,
                     },
+                  }}
+                  checked={enhanced}
+                  onChange={(e) => {
+                    setEnhanced(e.target.checked);
                   }}
                   color="primary"
                 />
-                <span className="text-halfBlack text-text2 leading-l2">
-                  Basic Plan (4 Illness)
-                </span>
+                <span
+                  className="text-halfBlack text-text1 leading-l1"
+                  dangerouslySetInnerHTML={{
+                    __html: enhanced
+                      ? "Enhanced  <br /> (25 Illness)"
+                      : "Basic Plan <br /> (4 Illness)",
+                  }}
+                ></span>
               </div>
             </div>
           </>
@@ -233,7 +255,7 @@ const Head = ({
                     setSidebarOpenM(true);
                   }}
                 />
-                <span className="text-halfBlack text-text2 leading-l2">
+                <span className="text-halfBlack text-text1 leading-l1">
                   Level Term
                 </span>
               </div>
@@ -299,25 +321,40 @@ const Head = ({
               className="rounded-md w-max  text-[16px] leading-[20px] text-left border-none font-medium focus:outline-none"
               style={{ width: "7rem" }}
             >
-              {insurance !== "mortgage-insurance"
-                ? coverageOptions.map((option) => (
-                    <option
-                      key={option}
-                      value={option}
-                      style={{ width: "150rem" }}
-                    >
-                      ${option}
-                    </option>
-                  ))
-                : coverageMortgageOptions.map((option) => (
-                    <option
-                      key={option}
-                      value={option}
-                      style={{ width: "150rem" }}
-                    >
-                      ${option}
-                    </option>
-                  ))}
+              {(insurance === "whole-life" ||
+                insurance === "term-life" ||
+                insurance === "level-term") &&
+                coverageOptions.map((option) => (
+                  <option
+                    key={option}
+                    value={option}
+                    style={{ width: "150rem" }}
+                  >
+                    ${option}
+                  </option>
+                ))}
+
+              {insurance === "mortgage-insurance" &&
+                coverageMortgageOptions.map((option) => (
+                  <option
+                    key={option}
+                    value={option}
+                    style={{ width: "150rem" }}
+                  >
+                    ${option}
+                  </option>
+                ))}
+
+              {insurance === "critical-illness" &&
+                coverageCiOptions.map((option) => (
+                  <option
+                    key={option}
+                    value={option}
+                    style={{ width: "150rem" }}
+                  >
+                    ${option}
+                  </option>
+                ))}
             </select>
           </div>
         </div>
@@ -358,7 +395,7 @@ const Head = ({
                 ))}
 
               {insurance === "critical-illness" &&
-                yearWholeOptions.map((option) => (
+                yearCiOptions.map((option) => (
                   <option key={option} value={option}>
                     {option}
                   </option>

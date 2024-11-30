@@ -19,6 +19,7 @@ const FinalQuote = () => {
   const [decreasingTerm, setDecreasingTerm] = useState(false);
   const [insurance, setInsurance] = useState("term-life");
   const [quoteData, setQuoteData] = useState({});
+  const [enhanced, setEnhanced] = useState(false);
   const [choosePopup, setChoosePopup] = useState(false);
   const [yearly, setYearly] = useState(false);
   const [payTermLength, setPayTermLength] = useState("Life 100 Pay");
@@ -123,6 +124,8 @@ const FinalQuote = () => {
                 setDecreasingTerm={setDecreasingTerm}
                 setPayTermLength={setPayTermLength}
                 payTermLength={payTermLength}
+                enhanced={enhanced}
+                setEnhanced={setEnhanced}
               />
               <CSSTransition
                 in={true}
@@ -138,6 +141,7 @@ const FinalQuote = () => {
                   sidebarOpen={sidebarOpen}
                   setSidebarOpen={setSidebarOpen}
                   payTermLength={payTermLength}
+                  enhanced={enhanced}
                 />
               </CSSTransition>
             </div>
