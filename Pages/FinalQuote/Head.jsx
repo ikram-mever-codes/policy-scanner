@@ -32,7 +32,18 @@ const Head = ({
   enhanced,
   setEnhanced,
 }) => {
-  const coverageOptions = [
+  const coverageTermOptions = [
+    "50,000",
+    "100,000",
+    "250,000",
+    "500,000",
+    "1M",
+    "1.5M",
+    "2M",
+    "2.5M",
+  ];
+
+  const coverageWholeOptions = [
     "25,000",
     "50,000",
     "100,000",
@@ -48,7 +59,6 @@ const Head = ({
     "50,000",
     "100,000",
     "250,000",
-    "400,000",
     "500,000",
     "1M",
     "1.5M",
@@ -321,10 +331,8 @@ const Head = ({
               className="rounded-md w-max  text-[16px] leading-[20px] text-left border-none font-medium focus:outline-none"
               style={{ width: "7rem" }}
             >
-              {(insurance === "whole-life" ||
-                insurance === "term-life" ||
-                insurance === "level-term") &&
-                coverageOptions.map((option) => (
+              {(insurance === "term-life" || insurance === "level-term") &&
+                coverageTermOptions.map((option) => (
                   <option
                     key={option}
                     value={option}
@@ -334,6 +342,16 @@ const Head = ({
                   </option>
                 ))}
 
+              {insurance === "whole-life" &&
+                coverageWholeOptions.map((option) => (
+                  <option
+                    key={option}
+                    value={option}
+                    style={{ width: "150rem" }}
+                  >
+                    ${option}
+                  </option>
+                ))}
               {insurance === "mortgage-insurance" &&
                 coverageMortgageOptions.map((option) => (
                   <option

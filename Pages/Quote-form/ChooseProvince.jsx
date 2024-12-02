@@ -16,12 +16,14 @@ const ChooseProvince = ({ setProvinceSelected, setCurrentStepIndex }) => {
 
   return (
     <div className="w-full h-full flex justify-start items-center flex-col gap-[0rem]">
-      <Image src={quoteForm3} alt="Teena" />
-      <div className="w-full h-max flex text-halfBlack justify-start items-center gap-[5px] flex-col">
-        <h2 className="font-semibold text-[20px]">Hey I'm Tenna</h2>
-        <div>Before we start, which province do you reside in?</div>
+      <Image src={quoteForm3} alt="Teena" className="" />
+      <div className="w-full h-max flex text-halfBlack justify-start items-center gap-[5px] flex-col mt-[20px]">
+        <h2 className="font-semibold text-[30px]">Hey I'm Tenna</h2>
+        <div className="text-halfBlack font-normal text-[18px] ">
+          Before we start, which province do you reside in?
+        </div>
       </div>
-      <div className="flex justify-center items-center gap-[3rem] mt-[2rem]">
+      <div className="flex justify-center items-center gap-[3rem] mt-[5rem]">
         <button
           className={`w-[8rem] h-[3.5rem] rounded-md text-[18px] border border-solid border-halfBlack ${
             selectedButton === "Ontario" ? "bg-[#4949493e]" : "bg-transparent"
@@ -39,8 +41,8 @@ const ChooseProvince = ({ setProvinceSelected, setCurrentStepIndex }) => {
             selectedButton === "Other" ? "bg-[#4949493e]" : "bg-transparent"
           }`}
           onClick={() => {
-            handleClick("Other");
-            setCurrentStepIndex(0);
+            handleClick("other");
+            setCurrentStepIndex(3);
           }}
         >
           Other

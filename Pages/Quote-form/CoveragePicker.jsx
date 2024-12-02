@@ -6,19 +6,55 @@ import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined";
 
 const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
   const [coverage, setCoverage] = useState("");
-  const coverageOptions = [
+  const [ins, setIns] = useState("term-life");
+  const coverageTermOptions = [
+    "50,000",
+    "100,000",
+    "250,000",
+    "500,000",
+    "1M",
+    "1.5M",
+    "2M",
+    "2.5M",
+  ];
+
+  const coverageWholeOptions = [
+    "25,000",
+    "50,000",
+    "100,000",
+    "150,000",
+    "250,000",
+    "400,000",
+    "500,000",
+    "750,000",
+    "1M",
+  ];
+
+  const coverageMortgageOptions = [
+    "50,000",
+    "100,000",
+    "250,000",
+    "500,000",
+    "1M",
+    "1.5M",
+    "2M",
+    "2.5M",
+  ];
+
+  const coverageCiOptions = [
     "10,000",
     "50,000",
     "100,000",
     "200,000",
+    "250,000",
     "500,000",
-    "1,000,000",
   ];
-  const yearOptions = ["1", "5", "10", "15", "20", "25", "30"];
   const [errorMessage, setErrorMessage] = useState("");
 
   // Load data from localStorage on component mount
   useEffect(() => {
+    let ins = localStorage.getItem("ins");
+    setIns(ins);
     const savedData = JSON.parse(localStorage.getItem("quote-data"));
     if (savedData) {
       setCoverage(savedData.coverage || "");
@@ -100,68 +136,101 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
   return (
     <div className="w-full h-full flex justify-start items-center flex-col gap-[1rem]">
       <Image src={quoteForm3} alt="Teena" />
-      <div className="w-full h-max flex text-halfBlack justify-start items-center gap-[5px] flex-col">
+      <div className="w-full h-max flex text-halfBlack justify-start items-center gap-[5px] flex-col mt-[20px]">
         <div className="flex items-center gap-2">
-          <div>How much Coverage amount and number of years?</div>
-          <div className="flex items-center rounded-md border-solid border-halfBlack border px-[7px] cursor-pointer py-[3px]">
-            <LightbulbOutlinedIcon className="text-yellow-500" />
-            <span className="text-sm text-gray-500">Protip</span>
+          <div className="text-halfBlack font-normal text-[18px] leading-l2">
+            How much Coverage amount and Date of Birth?{" "}
           </div>
         </div>
       </div>
-      <div>
-        <div className="flex justify-center items-center gap-[1rem] mt-[2rem]">
-          <div className="flex flex-col items-center">
+      <div className="w-[350px]">
+        <div className="flex justify-center items-center w-full mt-[2rem]">
+          <div className="relative w-full">
+            <label
+              htmlFor="coverage"
+              className="absolute top-[-8px] left-2 bg-white px-1 text-sm text-gray-600"
+            >
+              Coverage
+            </label>
             <select
               id="coverage"
               value={coverage}
               onChange={(e) => handleCoverageChange(e.target.value)}
-              className="border border-halfBlack rounded-md p-2 py-[10px]"
-              style={{ width: "140px" }}
+              className="border-2 border-[#e5e7eb]  border-solid rounded-md p-4 h-[3.5rem] text-[16px] py-[10px] w-full text-halfBlack "
             >
-              <option value="" disabled>
-                Coverage
-              </option>
-              {coverageOptions.map((option) => (
-                <option key={option} value={option}>
-                  ${option}
-                </option>
-              ))}
-            </select>
-          </div>
+              {(ins === "term-life" || ins === "level-term") &&
+                coverageTermOptions.map((option) => (
+                  <option
+                    key={option}
+                    value={option}
+                    style={{ width: "150rem" }}
+                  >
+                    ${option}
+                  </option>
+                ))}
 
-          <div className="flex flex-col items-center">
-            <select
-              id="years"
-              value={years}
-              onChange={(e) => handleYearsChange(e.target.value)}
-              className="border border-halfBlack rounded-md px-[5px] py-[10px]"
-              style={{ width: "100px" }}
-            >
-              <option value="" disabled>
-                Years
-              </option>
-              {yearOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option} years
-                </option>
-              ))}
+              {ins === "whole-life" &&
+                coverageWholeOptions.map((option) => (
+                  <option
+                    key={option}
+                    value={option}
+                    style={{ width: "150rem" }}
+                  >
+                    ${option}
+                  </option>
+                ))}
+              {ins === "mortgage-insurance" &&
+                coverageMortgageOptions.map((option) => (
+                  <option
+                    key={option}
+                    value={option}
+                    style={{ width: "150rem" }}
+                  >
+                    ${option}
+                  </option>
+                ))}
+
+              {ins === "critical-illness" &&
+                coverageCiOptions.map((option) => (
+                  <option
+                    key={option}
+                    value={option}
+                    style={{ width: "150rem" }}
+                  >
+                    ${option}
+                  </option>
+                ))}
             </select>
           </div>
         </div>
-        <div className="flex justify-center items-center flex-col gap-[1rem] mt-[2rem]">
-          <div className="border border-solid w-full h-[3rem] border-halfBlack pr-3 rounded-md overflow-hidden relative flex justify-center items-center gap-[1rem]">
-            <input
-              type="text"
-              value={dob}
-              onChange={handleDobChange}
-              className="w-[8rem] h-full text-center border-none outline-none"
-              placeholder="MM/DD/YYYY"
-            />
-            <span className="text-halfBlack text-[14px] bg-selected p-[3px] flex justify-center items-center w-[4rem] rounded-md">
-              {age} years
-            </span>
+        <div className="flex justify-center items-center flex-col gap-[1rem] mt-[5px]">
+          <div className="w-full h-full flex justify-start items-center flex-col gap-[1rem]">
+            <div className="relative w-full mt-[1rem]">
+              <label
+                htmlFor="dob"
+                className="absolute top-[-8px] left-2 bg-white px-1 text-sm text-gray-600"
+              >
+                Date of Birth
+              </label>
+              <input
+                id="dob"
+                type="text"
+                value={dob}
+                onChange={handleDobChange}
+                className="border-2 border-[#e5e7eb]  border-solid rounded-md p-4 h-[3.5rem] text-[16px] w-full text-halfBlack outline-none "
+                placeholder="MM/DD/YYYY"
+              />
+              {age !== null && (
+                <span className="text-halfBlack text-[14px] bg-selected p-[3px] flex justify-center items-center w-[4rem] rounded-md absolute right-2 top-2/4 transform -translate-y-2/4">
+                  {age} years
+                </span>
+              )}
+            </div>
+            {errorMessage && (
+              <span className="text-red-500 text-xs mt-1">{errorMessage}</span>
+            )}
           </div>
+
           {errorMessage && (
             <span className="text-red-500 text-xs">{errorMessage}</span>
           )}
