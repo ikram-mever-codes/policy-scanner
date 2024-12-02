@@ -78,8 +78,6 @@ const Page = () => {
       );
     }
 
-    const isQForm = usePathname() === "/quote-form";
-
     switch (steps[currentStepIndex]) {
       case "choose-gender":
         return (
