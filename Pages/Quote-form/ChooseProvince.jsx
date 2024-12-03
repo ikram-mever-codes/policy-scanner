@@ -1,9 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import quoteForm3 from "../../assets/quote-form-3.png";
 import Image from "next/image";
+import gsap from "gsap";
 
 const ChooseProvince = ({ setProvinceSelected, setCurrentStepIndex }) => {
   const [selectedButton, setSelectedButton] = useState(null);
+
+  const titleRef = useRef(null);
+  const subtitleRef = useRef(null);
+
+  useEffect(() => {
+    const timeline = gsap.timeline();
+    timeline.fromTo(
+      [titleRef.current, subtitleRef.current],
+      { opacity: 0 },
+      { opacity: 1, duration: 1, ease: "power2.out", stagger: 0 }
+    );
+  }, []);
 
   const handleClick = (province) => {
     setSelectedButton(province);
@@ -18,8 +31,13 @@ const ChooseProvince = ({ setProvinceSelected, setCurrentStepIndex }) => {
     <div className="w-full h-full flex justify-start items-center flex-col gap-[0rem]">
       <Image src={quoteForm3} alt="Teena" className="" />
       <div className="w-full h-max flex text-halfBlack justify-start items-center gap-[5px] flex-col mt-[20px]">
-        <h2 className="font-semibold text-[30px]">Hey I'm Tenna</h2>
-        <div className="text-halfBlack font-normal text-[18px] ">
+        <h2 ref={titleRef} className="font-semibold text-[30px]">
+          Hey I'm Tenna
+        </h2>
+        <div
+          ref={subtitleRef}
+          className="text-halfBlack font-normal text-[18px]"
+        >
           Before we start, which province do you reside in?
         </div>
       </div>
