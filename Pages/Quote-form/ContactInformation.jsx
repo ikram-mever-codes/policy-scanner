@@ -61,18 +61,17 @@ const ContactInformation = ({ setContactInfo }) => {
   };
 
   return (
-    <div className="w-full h-full flex justify-start items-center flex-col gap-[1rem] relative">
+    <div className="w-full h-full flex justify-start items-center flex-col gap-[0rem] relative">
       <Image src={quoteForm3} alt="Teena" />
       <div className="w-full h-max flex text-halfBlack justify-start items-center gap-[5px] flex-col mt-[20px]">
         <div className="text-halfBlack font-normal text-[18px] text-center">
-          Get{" "}
-          <span className="mt-2 font-semibold text-green-600">$1 Million </span>
-          Coverage for as Low as $20/month!
+          Get $1 Million Coverage for as Low as{" "}
+          <span className="mt-2 font-normal text-green-600">$20/month!</span>
           <br />
           Share Your Details to Unlock Quotes.
         </div>
       </div>
-      <div className="flex justify-center items-center py-[20px] pb-0 mt-[1rem]">
+      <div className="flex justify-center items-center py-[20px] pb-0 ">
         <form style={{ width: "350px" }} className="flex flex-col ">
           <Grid container spacing={3}>
             <Grid item xs={12}>
@@ -82,7 +81,7 @@ const ContactInformation = ({ setContactInfo }) => {
                 name="name"
                 variant="outlined"
                 placeholder="Your Name"
-                label="Name"
+                // label="Name"
                 value={formik.values.name}
                 onChange={(e) => handleFieldChange("name", e.target.value)}
                 error={formik.touched.name && Boolean(formik.errors.name)}
@@ -117,12 +116,11 @@ const ContactInformation = ({ setContactInfo }) => {
                   borderRadius: "6px",
                   border: "2px solid  #cdd2da",
                 }}
-                placeholder="We don't spam"
-                specialLabel="Cell No."
+                specialLabel="Mobile no"
               />
               <Typography
                 variant="caption"
-                className="absolute bottom-[-8px]   bg-white left-[50px] text-halfBlack tracking-normal "
+                className="absolute bottom-[-9px] bg-white right-[15px]  text-black font-medium "
               >
                 We don't spam
               </Typography>
@@ -140,7 +138,7 @@ const ContactInformation = ({ setContactInfo }) => {
                 name="email"
                 variant="outlined"
                 placeholder="Your Email"
-                label="Email"
+                // label="Email"
                 type="text"
                 value={isEmailMasked ? maskedEmail : formik.values.email}
                 onChange={(e) => handleFieldChange("email", e.target.value)}

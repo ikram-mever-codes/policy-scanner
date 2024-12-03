@@ -66,7 +66,6 @@ const FinalQuote = () => {
         disableScrollLock={true}
       >
         <div className="border-none outline-none bg-white rounded-lg p-6 shadow-lg max-w-md w-full z-10">
-          3
           <ChooseSmoker
             onClose={handleSelection}
             existingData={quoteData}

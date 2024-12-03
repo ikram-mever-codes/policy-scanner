@@ -43,7 +43,7 @@ const ChooseProvince = ({ setProvinceSelected, setCurrentStepIndex }) => {
       </div>
       <div className="flex justify-center items-center gap-[3rem] mt-[5rem]">
         <button
-          className={`w-[8rem] h-[3.5rem] rounded-md text-[18px] border border-solid border-halfBlack ${
+          className={`w-[8rem] h-[3.5rem] rounded-md text-[18px] border border-solid border-halfBlack ease-in-out transition-all duration-[300ms] hover:bg-grays/20 ${
             selectedButton === "Ontario" ? "bg-[#4949493e]" : "bg-transparent"
           }`}
           onClick={() => {
@@ -55,7 +55,7 @@ const ChooseProvince = ({ setProvinceSelected, setCurrentStepIndex }) => {
         </button>
 
         <button
-          className={`w-[8rem] h-[3.5rem] rounded-md text-[18px] border border-solid border-halfBlack ${
+          className={`w-[8rem] h-[3.5rem] rounded-md text-[18px] border border-solid border-halfBlack ease-in-out transition-all duration-[300ms] hover:bg-grays/20 ${
             selectedButton === "Other" ? "bg-[#4949493e]" : "bg-transparent"
           }`}
           onClick={() => {

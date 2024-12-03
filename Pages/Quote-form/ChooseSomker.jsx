@@ -29,15 +29,10 @@ const ChooseSmoker = ({ onClose }) => {
 
   return (
     <div className="w-full h-full flex justify-start items-center flex-col gap-[0rem]">
-      <Image src={quoteForm3} alt="Teena" />
       <div className="w-full h-max flex text-halfBlack justify-start items-center gap-[5px] flex-col">
         <div className="flex items-center gap-2">
-          <div>
+          <div className="text-halfBlack font-normal text-[18px] text-center">
             Have you smoked or used any nicotine products in the past 12 months?
-          </div>
-          <div className="flex items-center rounded-md border-solid border-halfBlack border px-[7px] cursor-pointer py-[3px]">
-            <LightbulbOutlinedIcon className="text-yellow-500" />
-            <span className="text-sm text-gray-500">Protip</span>
           </div>
         </div>
       </div>
@@ -45,7 +40,7 @@ const ChooseSmoker = ({ onClose }) => {
         <div className="w-max h-max flex justify-center items-center flex-col gap-[10px] text-[18px]">
           <button
             disabled={loading}
-            className={`w-[6rem] h-[6rem] rounded-md text-[18px] border border-solid border-halfBlack ${
+            className={`w-[6rem] h-[6rem] rounded-md text-[18px] border border-solid border-halfBlack ease-in-out transition-all duration-[300ms] hover:bg-grays/20 ${
               loading ? "cursor-not-allowed opacity-50" : "cursor-pointer"
             }`}
             onClick={() => handleClick("yes")}
@@ -57,7 +52,7 @@ const ChooseSmoker = ({ onClose }) => {
         <div className="w-max h-max flex justify-center items-center flex-col gap-[10px] text-[18px]">
           <button
             disabled={loading}
-            className={`w-[6rem] h-[6rem] rounded-md text-[18px] border border-solid border-halfBlack ${
+            className={`w-[6rem] h-[6rem] rounded-md text-[18px] border border-solid border-halfBlack  ease-in-out transition-all duration-[300ms] hover:bg-grays/20 ${
               loading ? "cursor-not-allowed opacity-50" : "cursor-pointer"
             }`}
             onClick={() => handleClick("no")}

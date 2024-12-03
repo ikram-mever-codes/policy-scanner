@@ -129,10 +129,12 @@ const Page = () => {
       window.removeEventListener("resize", updateWidth);
     };
   }, []);
-
+  if (loading) {
+    return <Loading />;
+  }
   return (
     <div className="w-full min-h-[100vh] h-max flex justify-center items-start py-[3rem]">
-      <div className="w-full min-h-[70vh] h-max flex justify-between items-center flex-col">
+      <div className="w-full min-h-[70vh] h-max flex justify-start items-center flex-col">
         {/* {provinceSelected && ( */}
         <div>
           <div className=" text-center text-[18px] absolute  text-halfBlack top-[34px] right-[40px] pr-[50px] z-[10000]">
@@ -180,7 +182,7 @@ const Page = () => {
         {/* {currentStepIndex !== -1 && (
           <div className="w-[60vw] my-[20px] h-[1px] bg-gradient-to-r from-transparent via-halfBlack to-transparent"></div>
         )} */}
-        <div className="w-full min-h-[50vh]">
+        <div className="w-full min-h-[400px]">
           {loading ? (
             <div className="w-full h-[40vh] flex justify-center items-center">
               <Loading />
@@ -189,7 +191,7 @@ const Page = () => {
             renderStepContent()
           )}
         </div>
-        <div className="flex justify-start items-center flex-col gap-[14px] mt-[2rem]">
+        <div className="flex justify-start items-center flex-col gap-[14px] mt-[0rem]">
           <div className="flex justify-center items-center gap-[1rem]">
             <button
               className="w-max h-[2.8rem] flex justify-center cursor-pointer items-center bg-transparent border-[2px] border-solid border-opposite text-nowrap px-[15px] py-[5px] gap-[10px] rounded-lg"

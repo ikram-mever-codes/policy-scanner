@@ -53,7 +53,7 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
 
   // Load data from localStorage on component mount
   useEffect(() => {
-    let ins = localStorage.getItem("ins");
+    let ins = localStorage.getItem("ins") || "term-life";
     setIns(ins);
     const savedData = JSON.parse(localStorage.getItem("quote-data"));
     if (savedData) {

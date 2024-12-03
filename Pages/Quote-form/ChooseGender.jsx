@@ -26,7 +26,7 @@ const ChooseGender = ({ onSelection, handleNext }) => {
       </div>
       <div className="flex justify-center items-center gap-[3rem] mt-[4rem]">
         <button
-          className={`w-[6rem] h-[6rem] rounded-md text-[18px] border border-solid border-halfBlack ${
+          className={`w-[6rem] h-[6rem] rounded-md text-[18px] border border-solid border-halfBlack ease-in-out transition-all duration-[300ms] hover:bg-grays/20 ${
             selectedButton === "male" ? "bg-[#4949493e]" : "bg-transparent"
           }`}
           onClick={() => handleClick("male")}
@@ -35,7 +35,7 @@ const ChooseGender = ({ onSelection, handleNext }) => {
         </button>
 
         <button
-          className={`w-[6rem] h-[6rem] rounded-md text-[18px] border border-solid border-halfBlack ${
+          className={`w-[6rem] h-[6rem] rounded-md text-[18px] border border-solid border-halfBlack ease-in-out transition-all duration-[300ms] hover:bg-grays/20 ${
             selectedButton === "female" ? "bg-[#4949493e]" : "bg-transparent"
           }`}
           onClick={() => handleClick("female")}
