@@ -48,10 +48,6 @@ const FinalQuote = () => {
         return router.push("/quote-form");
       }
 
-      if (existingData?.smoker) {
-        setOpenPopup(false);
-      }
-
       setQuoteData(existingData);
     };
     sendDatatoOdoo();

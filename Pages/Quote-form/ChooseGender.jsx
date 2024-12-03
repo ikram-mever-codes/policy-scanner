@@ -21,7 +21,7 @@ const ChooseGender = ({ onSelection, handleNext }) => {
       <Image src={quoteForm3} alt="Teena" />
       <div className="w-full h-max flex text-halfBlack justify-start items-center gap-[5px] flex-col mt-[20px]">
         <div className="text-halfBlack font-normal text-[18px] text-center">
-          What is your Gender ?
+          What's your gender?
         </div>
       </div>
       <div className="flex justify-center items-center gap-[3rem] mt-[4rem]">
@@ -31,7 +31,10 @@ const ChooseGender = ({ onSelection, handleNext }) => {
           }`}
           onClick={() => handleClick("male")}
         >
-          <Man2OutlinedIcon className="text-[70px] text-halfBlack" />
+          <Man2OutlinedIcon
+            sx={{ fontSize: "70px" }}
+            className="text-[70px] text-halfBlack"
+          />
         </button>
 
         <button
@@ -40,7 +43,10 @@ const ChooseGender = ({ onSelection, handleNext }) => {
           }`}
           onClick={() => handleClick("female")}
         >
-          <WomanOutlinedIcon className="text-[70px] text-halfBlack" />
+          <WomanOutlinedIcon
+            sx={{ fontSize: "70px" }}
+            className="text-[70px] text-halfBlack"
+          />
         </button>
       </div>
     </div>

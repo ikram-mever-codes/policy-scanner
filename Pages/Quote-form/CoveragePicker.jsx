@@ -138,8 +138,9 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
       <Image src={quoteForm3} alt="Teena" />
       <div className="w-full h-max flex text-halfBlack justify-start items-center gap-[5px] flex-col mt-[20px]">
         <div className="flex items-center gap-2">
-          <div className="text-halfBlack font-normal text-[18px] leading-l2">
-            How much Coverage amount and Date of Birth?{" "}
+          <div className="text-halfBlack font-normal text-[18px]  text-center">
+            Also, how much coverage do you need?
+            <br /> and your date of birth?{" "}
           </div>
         </div>
       </div>

@@ -39,14 +39,13 @@ const Page = () => {
     ? ((currentStepIndex + 2) / totalSteps) * containerWidth
     : 0;
 
-  // References and state for animation
   const contentRef = useRef(null);
   const prevStepIndexRef = useRef(currentStepIndex);
   const isInitialMount = useRef(true);
   const [direction, setDirection] = useState(1);
 
   const handleNext = () => {
-    setDirection(1); // Set direction to right-to-left
+    setDirection(1);
     if (currentStepIndex === -1) {
       setProvinceSelected(true);
       setCurrentStepIndex(0);
@@ -68,7 +67,11 @@ const Page = () => {
   };
 
   const handleBack = () => {
-    setDirection(-1); // Set direction to left-to-right
+    setDirection(-1);
+    if (currentStepIndex === 3) {
+      setProvinceSelected(false);
+      return setCurrentStepIndex(-1);
+    }
     if (currentStepIndex > 0) {
       setCurrentStepIndex(currentStepIndex - 1);
     } else if (currentStepIndex === 0) {
@@ -82,6 +85,7 @@ const Page = () => {
       return (
         <ChooseProvince
           setProvinceSelected={setProvinceSelected}
+          setDirection={setDirection}
           setCurrentStepIndex={setCurrentStepIndex}
         />
       );
@@ -219,7 +223,9 @@ const Page = () => {
                 (currentStepIndex === 1 && age === null)
               }
             >
-              Continue
+              {currentStepIndex === 3 || currentStepIndex === 2
+                ? "Submit"
+                : "Continue"}
               <ArrowForwardIos className="rounded-full w-[20px] h-[20px] text-[20px] bg-white text-black p-[2px]" />
             </button>
           </div>

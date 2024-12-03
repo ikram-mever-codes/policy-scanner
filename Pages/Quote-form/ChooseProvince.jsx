@@ -3,7 +3,11 @@ import quoteForm3 from "../../assets/quote-form-3.png";
 import Image from "next/image";
 import gsap from "gsap";
 
-const ChooseProvince = ({ setProvinceSelected, setCurrentStepIndex }) => {
+const ChooseProvince = ({
+  setProvinceSelected,
+  setCurrentStepIndex,
+  setDirection,
+}) => {
   const [selectedButton, setSelectedButton] = useState(null);
 
   const titleRef = useRef(null);
@@ -25,20 +29,20 @@ const ChooseProvince = ({ setProvinceSelected, setCurrentStepIndex }) => {
 
     localStorage.setItem("quote-data", JSON.stringify(existingData));
     setProvinceSelected(true);
+    setDirection(1);
   };
-
   return (
     <div className="w-full h-full flex justify-start items-center flex-col gap-[0rem]">
       <Image src={quoteForm3} alt="Teena" className="" />
       <div className="w-full h-max flex text-halfBlack justify-start items-center gap-[5px] flex-col mt-[20px]">
         <h2 ref={titleRef} className="font-semibold text-[30px]">
-          Hey I'm Tenna
+          Hey I'm Teena
         </h2>
         <div
           ref={subtitleRef}
           className="text-halfBlack font-normal text-[18px]"
         >
-          Before we start, which province do you reside in?
+          Can you please tell me which province you’re in?
         </div>
       </div>
       <div className="flex justify-center items-center gap-[3rem] mt-[5rem]">

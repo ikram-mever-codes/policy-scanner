@@ -81,10 +81,11 @@ const Header = () => {
               } items-center`}
               bgColor="white"
             >
-              <IconButton onClick={toggleSidebar}>
-                <MenuIcon fontSize="large" sx={{ color: "black" }} />
-              </IconButton>
-
+              {isQForm && (
+                <IconButton onClick={toggleSidebar}>
+                  <MenuIcon fontSize="large" sx={{ color: "black" }} />
+                </IconButton>
+              )}
               <Box className="w-[200px] sm:w-[300px]">
                 <Link href="/">
                   <Image
