@@ -29,14 +29,17 @@ const ChooseSmoker = ({ onClose }) => {
 
   return (
     <div className="w-full h-full flex justify-start items-center flex-col gap-[0rem]">
-      <div className="w-full h-max flex text-halfBlack justify-start items-center gap-[5px] flex-col">
-        <div className="flex items-center gap-2">
-          <div className="text-halfBlack font-normal text-[18px] text-center">
+      <div className="w-full h-full flex text-halfBlack justify-start items-center gap-[5px] flex-col">
+        <div className="flex items-center gap-2 flex-col">
+          <div className="w-full h-max border-b font-light text-center text-[14px] p-4   border-halfBlack mb-4">
+            One last question to get your most accurate quote
+          </div>
+          <div className="text-halfBlack font-normal px-6 text-[18px] text-center">
             Have you smoked or used any nicotine products in the past 12 months?
           </div>
         </div>
       </div>
-      <div className="flex justify-center items-center gap-[3rem] mt-[2rem]">
+      <div className="flex justify-center  items-center gap-[3rem] mt-[2rem]">
         <div className="w-max h-max flex justify-center items-center flex-col gap-[10px] text-[18px]">
           <button
             disabled={loading}

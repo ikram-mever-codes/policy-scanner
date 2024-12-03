@@ -250,3 +250,18 @@ button:focus {
 .line-h {
   line-height: 25px;
 }
+
+.react-tel-input .special-label {
+  position: absolute;
+  z-index: 1;
+  top: -7px;
+  left: 25px;
+  display: block;
+  background: white;
+  color: #494949;
+  padding: 0 5px;
+  font-size: 13px;
+  white-space: nowrap;
+
+  /* background-color: ; */
+}

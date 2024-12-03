@@ -32,6 +32,7 @@ const Page = () => {
   const [dob, setDob] = useState("");
   const [age, setAge] = useState(null);
   const [ContactInfo, setContactInfo] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const totalSteps = steps.length;
   const [containerWidth, setContainerWidth] = useState(0);
 
@@ -44,6 +45,9 @@ const Page = () => {
   const isInitialMount = useRef(true);
   const [direction, setDirection] = useState(1);
 
+  const handleModalToggle = () => {
+    setIsModalOpen(!isModalOpen);
+  };
   const handleNext = () => {
     setDirection(1);
     if (currentStepIndex === -1) {
@@ -116,6 +120,7 @@ const Page = () => {
           <ContactInformation
             setContactInfo={setContactInfo}
             handleNext={handleNext}
+            setReason={setIsModalOpen}
           />
         );
       case "province-alt":
@@ -185,12 +190,12 @@ const Page = () => {
           </div>
         </div>
         <div
-          className="w-[700px] min-h-[400px]"
+          className="w-[700px] min-h-[420px]"
           style={{ overflow: "hidden", position: "relative" }}
         >
           <div ref={contentRef} style={{ position: "absolute", width: "100%" }}>
             {loading ? (
-              <div className="w-full h-[40vh] flex justify-center items-center">
+              <div className="w-full h-[41vh] flex justify-center items-center">
                 <Loading />
               </div>
             ) : (
@@ -269,13 +274,41 @@ const Page = () => {
           top: "90px",
           backgroundColor: "#00615F",
           width: `${progressWidth}px`,
-          height: "10px",
+          height: "5px",
           "& .MuiLinearProgress-bar": {
             transition: "width 0.5s ease-in-out",
-            background: "#00615F",
+            backgroundColor: "#FE685E",
+            // backgroundColor: "#099795",
           },
         }}
       />
+      {isModalOpen && (
+        <div
+          className="fixed inset-0 bg-black w-full h-full bg-opacity-50 flex justify-center items-center z-50"
+          onClick={handleModalToggle}
+        >
+          <div
+            className="bg-white w-[90%] h-[30vh] sm:w-[400px] rounded-lg shadow-lg p-6 relative flex justify-center items-center flex-col"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <h2 className="text-xl w-full text-center mb-4 text-primary ">
+              Why do we need your contact info?
+            </h2>
+            <p className="text-halfBlack text-sm leading-relaxed">
+              We use it to understand your needs better and provide tailored
+              advice. Our licensed experts are here to help answer any questions
+              you have, with no sales pressure or unwanted calls—just
+              unbiased guidance.
+            </p>
+            <button
+              className="absolute top-2 right-4 text-gray-500 hover:text-gray-700"
+              onClick={handleModalToggle}
+            >
+              &#x2715;
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

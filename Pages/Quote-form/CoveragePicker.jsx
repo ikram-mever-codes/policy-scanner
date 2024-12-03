@@ -64,21 +64,37 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
     }
   }, []);
 
-  // Update the Logic to accept age above 18 yrs old
-
   const handleDobChange = (event) => {
-    const dobInput = event.target.value;
-    const dobPattern = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/;
+    let dobInput = event.target.value;
+
+    dobInput = dobInput.replace(/\D/g, "");
+
+    if (dobInput.length >= 3 && dobInput.length <= 4) {
+      dobInput = dobInput.slice(0, 2) + "/" + dobInput.slice(2);
+    } else if (dobInput.length > 4) {
+      dobInput =
+        dobInput.slice(0, 2) +
+        "/" +
+        dobInput.slice(2, 4) +
+        "/" +
+        dobInput.slice(4, 8);
+    }
+
+    if (dobInput.length > 10) {
+      dobInput = dobInput.slice(0, 10);
+    }
 
     setDob(dobInput);
 
-    if (dobInput && !dobPattern.test(dobInput)) {
-      setErrorMessage("Date of birth must be in MM/DD/YYYY format.");
-      setAge(null);
-      return;
-    }
+    if (dobInput.length === 10) {
+      const dobPattern = /^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])\/\d{4}$/;
 
-    if (dobInput) {
+      if (!dobPattern.test(dobInput)) {
+        setErrorMessage("Date of birth must be in MM/DD/YYYY format.");
+        setAge(null);
+        return;
+      }
+
       const [month, day, year] = dobInput.split("/").map(Number);
       const selectedDate = new Date(year, month - 1, day);
       const today = new Date();
@@ -157,7 +173,12 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
               id="coverage"
               value={coverage}
               onChange={(e) => handleCoverageChange(e.target.value)}
-              className="border-2 border-[#e5e7eb]  border-solid rounded-md p-4 h-[3.5rem] text-[16px] py-[10px] w-full text-halfBlack "
+              className="border-2 border-[#e5e7eb] border-solid rounded-md h-[3.5rem] text-[16px] w-full text-halfBlack appearance-none pr-10 pl-4 py-[10px] bg-no-repeat bg-[url('/arrow-down.svg')] bg-right"
+              style={{
+                width: "350px",
+                backgroundPositionX: "calc(100% - 10px)",
+                backgroundPositionY: "center",
+              }}
             >
               {(ins === "term-life" || ins === "level-term") &&
                 coverageTermOptions.map((option) => (
@@ -166,7 +187,7 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
                     value={option}
                     style={{ width: "150rem" }}
                   >
-                    ${option}
+                    $ {option}
                   </option>
                 ))}
 
@@ -177,7 +198,7 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
                     value={option}
                     style={{ width: "150rem" }}
                   >
-                    ${option}
+                    $ {option}
                   </option>
                 ))}
               {ins === "mortgage-insurance" &&
@@ -187,7 +208,7 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
                     value={option}
                     style={{ width: "150rem" }}
                   >
-                    ${option}
+                    $ {option}
                   </option>
                 ))}
 
@@ -198,7 +219,7 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
                     value={option}
                     style={{ width: "150rem" }}
                   >
-                    ${option}
+                    $ {option}
                   </option>
                 ))}
             </select>

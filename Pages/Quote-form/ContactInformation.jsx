@@ -16,10 +16,9 @@ const validationSchema = Yup.object({
   phone: Yup.string().required("Phone number is required"),
 });
 
-const ContactInformation = ({ setContactInfo }) => {
+const ContactInformation = ({ setContactInfo, setReason }) => {
   const [maskedEmail, setMaskedEmail] = useState("");
   const [isEmailMasked, setIsEmailMasked] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
 
   const formik = useFormik({
     initialValues: {
@@ -91,6 +90,7 @@ const ContactInformation = ({ setContactInfo }) => {
                     borderColor: "#494949",
                     height: "3.5rem",
                     borderRadius: "6px",
+                    color: "#494949",
                   },
                 }}
                 InputLabelProps={{
@@ -149,6 +149,7 @@ const ContactInformation = ({ setContactInfo }) => {
                     border: "1px solid  #e5e7eb",
                     height: "3.5rem",
                     borderRadius: "6px",
+                    color: "#494949",
                   },
                 }}
                 InputLabelProps={{
@@ -167,7 +168,7 @@ const ContactInformation = ({ setContactInfo }) => {
               href={"#"}
               onClick={(e) => {
                 e.preventDefault();
-                handleModalToggle();
+                setReason(true);
               }}
               className="w-full text-right text-[13px] mt-[10px] cursor-pointer text-[#0066ff]"
             >
@@ -176,35 +177,6 @@ const ContactInformation = ({ setContactInfo }) => {
           </Grid>
         </form>
       </div>
-
-      {/* Modal Popup */}
-      {isModalOpen && (
-        <div
-          className="fixed inset-0 bg-black w-full h-full bg-opacity-50 flex justify-center items-center z-50"
-          onClick={handleModalToggle}
-        >
-          <div
-            className="bg-white w-[90%] h-[30vh] sm:w-[400px] rounded-lg shadow-lg p-6 relative flex justify-center items-center flex-col"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h2 className="text-xl w-full text-center mb-4 text-primary ">
-              Why do we need your contact info?
-            </h2>
-            <p className="text-halfBlack text-sm leading-relaxed">
-              We use it to understand your needs better and provide tailored
-              advice. Our licensed experts are here to help answer any questions
-              you have, with no sales pressure or unwanted calls—just
-              unbiased guidance.
-            </p>
-            <button
-              className="absolute top-2 right-4 text-gray-500 hover:text-gray-700"
-              onClick={handleModalToggle}
-            >
-              &#x2715;
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
