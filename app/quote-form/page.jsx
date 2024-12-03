@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import ChooseProvince from "@/Pages/Quote-form/ChooseProvince";
 import ChooseGender from "@/Pages/Quote-form/ChooseGender";
 import quoteForm1 from "../../assets/quote-form-1.png";
@@ -19,6 +19,7 @@ import ContactInformation from "@/Pages/Quote-form/ContactInformation";
 import { usePathname, useRouter } from "next/navigation";
 import Loading from "../loading";
 import ProvinceAlt from "@/Pages/Quote-form/ProvinceAlt";
+import { gsap } from "gsap";
 
 const Page = () => {
   const steps = ["choose-gender", "coverage", "contact-info", "province-alt"];
@@ -38,7 +39,14 @@ const Page = () => {
     ? ((currentStepIndex + 2) / totalSteps) * containerWidth
     : 0;
 
+  // References and state for animation
+  const contentRef = useRef(null);
+  const prevStepIndexRef = useRef(currentStepIndex);
+  const isInitialMount = useRef(true);
+  const [direction, setDirection] = useState(1);
+
   const handleNext = () => {
+    setDirection(1); // Set direction to right-to-left
     if (currentStepIndex === -1) {
       setProvinceSelected(true);
       setCurrentStepIndex(0);
@@ -60,6 +68,7 @@ const Page = () => {
   };
 
   const handleBack = () => {
+    setDirection(-1); // Set direction to left-to-right
     if (currentStepIndex > 0) {
       setCurrentStepIndex(currentStepIndex - 1);
     } else if (currentStepIndex === 0) {
@@ -129,15 +138,41 @@ const Page = () => {
       window.removeEventListener("resize", updateWidth);
     };
   }, []);
+  useLayoutEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+
+    prevStepIndexRef.current = currentStepIndex;
+    const el = contentRef.current;
+
+    gsap.fromTo(
+      el,
+      {
+        x: direction * 500,
+        // x: (direction * window.innerWidth) / 3,
+        autoAlpha: 0,
+        scale: 0.98,
+      },
+      {
+        x: 0,
+        autoAlpha: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power3.inOut",
+      }
+    );
+  }, [currentStepIndex]);
+
   if (loading) {
     return <Loading />;
   }
   return (
-    <div className="w-full min-h-[100vh] h-max flex justify-center items-start py-[3rem]">
+    <div className="w-full  min-h-[100vh] h-max flex justify-center items-start py-[3rem]">
       <div className="w-full min-h-[70vh] h-max flex justify-start items-center flex-col">
-        {/* {provinceSelected && ( */}
         <div>
-          <div className=" text-center text-[18px] absolute  text-halfBlack top-[34px] right-[40px] pr-[50px] z-[10000]">
+          <div className="text-center text-[18px] absolute text-halfBlack top-[34px] right-[40px] pr-[50px] z-[10000]">
             Step{" "}
             <strong className="font-semibold text-black">
               {currentStepIndex + 1}
@@ -145,53 +180,25 @@ const Page = () => {
             of {totalSteps - 1}
           </div>
         </div>
-        {/* )} */}
-        {/* <div className="w-max flex absolute top-[32px] z-[10000] justify-start items-center gap-[15px] mb-4">
-          <Image
-            width={35}
-            height={35}
-            className="object-cover object-center"
-            src={quoteForm2}
-            alt="logo"
-          />{" "}
-          */
-        /*{" "}
-          <Box
-            sx={{
-              width: "35vw",
-              borderRadius: "50px",
-              padding: "6px",
-            }}
-            className="border-solid border border-[#494949]"
-          >
-            <LinearProgress
-              variant="determinate"
-              value={((currentStepIndex + 1) / totalSteps) * 100}
-              sx={{
-                height: "17px",
-                borderRadius: "50px",
-                background: "transparent",
-                "& .MuiLinearProgress-bar": {
-                  background:
-                    "linear-gradient(to right, #00615F 0%, #FCC600 100%)",
-                },
-              }}
-            />
-          </Box>{" "} */}
-        {/* </div> */}
-        {/* {currentStepIndex !== -1 && (
-          <div className="w-[60vw] my-[20px] h-[1px] bg-gradient-to-r from-transparent via-halfBlack to-transparent"></div>
-        )} */}
-        <div className="w-full min-h-[400px]">
-          {loading ? (
-            <div className="w-full h-[40vh] flex justify-center items-center">
-              <Loading />
-            </div>
-          ) : (
-            renderStepContent()
-          )}
+        <div
+          className="w-[700px] min-h-[400px]"
+          style={{ overflow: "hidden", position: "relative" }}
+        >
+          <div ref={contentRef} style={{ position: "absolute", width: "100%" }}>
+            {loading ? (
+              <div className="w-full h-[40vh] flex justify-center items-center">
+                <Loading />
+              </div>
+            ) : (
+              renderStepContent()
+            )}
+          </div>
         </div>
-        <div className="flex justify-start items-center flex-col gap-[14px] mt-[0rem]">
+        <div
+          className={`flex justify-start items-center flex-col gap-[14px] ${
+            currentStepIndex === 2 ? "mt-[3rem]" : "mt-[0rem]"
+          }`}
+        >
           <div className="flex justify-center items-center gap-[1rem]">
             <button
               className="w-max h-[2.8rem] flex justify-center cursor-pointer items-center bg-transparent border-[2px] border-solid border-opposite text-nowrap px-[15px] py-[5px] gap-[10px] rounded-lg"

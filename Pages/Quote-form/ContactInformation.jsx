@@ -61,7 +61,7 @@ const ContactInformation = ({ setContactInfo }) => {
   };
 
   return (
-    <div className="w-full h-full flex justify-start items-center flex-col gap-[0rem] relative mb-[2rem]">
+    <div className="w-full h-full flex justify-start items-center flex-col gap-[0rem] relative ">
       <Image src={quoteForm3} alt="Teena" />
       <div className="w-full h-max flex text-halfBlack justify-start items-center gap-[5px] flex-col mt-[20px]">
         <div className="text-halfBlack font-normal text-[18px] text-center">
