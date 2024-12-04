@@ -32,7 +32,7 @@ const ChooseSmoker = ({ onClose }) => {
       <div className="w-full h-full flex text-halfBlack justify-start items-center gap-[5px] flex-col">
         <div className="flex items-center gap-2 flex-col">
           <div className="w-full h-max border-b font-light text-center text-[14px] p-4   border-halfBlack mb-4">
-            One last question to get your most accurate quote
+            One final question to get the most accurate quotes.{" "}
           </div>
           <div className="text-halfBlack font-normal px-6 text-[18px] text-center">
             Have you smoked or used any nicotine products in the past 12 months?
@@ -48,7 +48,10 @@ const ChooseSmoker = ({ onClose }) => {
             }`}
             onClick={() => handleClick("yes")}
           >
-            <SmokingRoomsOutlined className="text-[70px] text-halfBlack" />
+            <SmokingRoomsOutlined
+              sx={{ fontSize: "70px" }}
+              className="text-[70px] text-halfBlack"
+            />
           </button>
           Yes
         </div>
@@ -60,7 +63,10 @@ const ChooseSmoker = ({ onClose }) => {
             }`}
             onClick={() => handleClick("no")}
           >
-            <SmokeFreeRounded className="text-[70px] text-halfBlack" />
+            <SmokeFreeRounded
+              sx={{ fontSize: "70px" }}
+              className="text-[70px] text-halfBlack"
+            />
           </button>
           No
         </div>

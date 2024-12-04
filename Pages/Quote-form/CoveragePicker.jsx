@@ -1,8 +1,15 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import quoteForm3 from "../../assets/quote-form-3.png";
 import Image from "next/image";
 import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register the ScrollTrigger plugin with GSAP
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
   const [coverage, setCoverage] = useState("");
@@ -49,7 +56,11 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
     "250,000",
     "500,000",
   ];
+
   const [errorMessage, setErrorMessage] = useState("");
+
+  // Ref for the DOB input field
+  const dobInputRef = useRef(null);
 
   // Load data from localStorage on component mount
   useEffect(() => {
@@ -63,6 +74,26 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
       setAge(savedData.age || null);
     }
   }, []);
+
+  // Trigger shake animation when there's an error message
+  useEffect(() => {
+    if (errorMessage && dobInputRef.current) {
+      gsap.fromTo(
+        dobInputRef.current,
+        { x: -10 },
+        {
+          x: 10,
+          duration: 0.1,
+          repeat: 5,
+          yoyo: true,
+          ease: "power1.inOut",
+          onComplete: () => {
+            gsap.to(dobInputRef.current, { x: 0, duration: 0.1 });
+          },
+        }
+      );
+    }
+  }, [errorMessage]);
 
   const handleDobChange = (event) => {
     let dobInput = event.target.value;
@@ -118,6 +149,10 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
       }
 
       if (calculatedAge >= 0) {
+        if (calculatedAge < 18) {
+          setErrorMessage("Age must be greater than 18");
+          return;
+        }
         setAge(calculatedAge);
       } else {
         setAge(null);
@@ -154,7 +189,7 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
       <Image src={quoteForm3} alt="Teena" />
       <div className="w-full h-max flex text-halfBlack justify-start items-center gap-[5px] flex-col mt-[20px]">
         <div className="flex items-center gap-2">
-          <div className="text-halfBlack font-normal text-[18px]  text-center">
+          <div className="text-halfBlack font-normal text-[18px] text-center">
             Also, how much coverage do you need?
             <br /> and your date of birth?{" "}
           </div>
@@ -230,7 +265,7 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
             <div className="relative w-full mt-[1rem]">
               <label
                 htmlFor="dob"
-                className="absolute top-[-8px] left-2 bg-white px-1 text-sm text-gray-600"
+                className="absolute z-[1000] top-[-8px] left-2 bg-white px-1 text-sm text-gray-600"
               >
                 Date of Birth
               </label>
@@ -239,7 +274,10 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
                 type="text"
                 value={dob}
                 onChange={handleDobChange}
-                className="border-2 border-[#e5e7eb]  border-solid rounded-md p-4 h-[3.5rem] text-[16px] w-full text-halfBlack outline-none "
+                ref={dobInputRef}
+                className={`border-2 border-[#e5e7eb] border-solid rounded-md p-4 h-[3.5rem] text-[16px] w-full text-halfBlack outline-none ${
+                  errorMessage ? "border-red-500" : ""
+                }`}
                 placeholder="MM/DD/YYYY"
               />
               {age !== null && (
@@ -252,10 +290,6 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
               <span className="text-red-500 text-xs mt-1">{errorMessage}</span>
             )}
           </div>
-
-          {errorMessage && (
-            <span className="text-red-500 text-xs">{errorMessage}</span>
-          )}
         </div>
       </div>
     </div>

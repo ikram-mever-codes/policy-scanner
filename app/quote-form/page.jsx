@@ -57,6 +57,9 @@ const Page = () => {
     }
 
     if (steps[currentStepIndex] === "contact-info") {
+      if (!ContactInfo.email || !ContactInfo.phone || !ContactInfo.name) {
+        return null;
+      }
       const existingData = JSON.parse(localStorage.getItem("quote-data")) || {};
       existingData.contactInfo = ContactInfo;
       localStorage.setItem("quote-data", JSON.stringify(existingData));
@@ -71,6 +74,9 @@ const Page = () => {
   };
 
   const handleBack = () => {
+    if (currentStepIndex === -1) {
+      return router.push("/");
+    }
     setDirection(-1);
     if (currentStepIndex === 3) {
       setProvinceSelected(false);
@@ -220,7 +226,6 @@ const Page = () => {
             <button
               className="w-max h-[2.8rem] flex justify-center cursor-pointer items-center bg-transparent border-[2px] border-solid border-opposite text-nowrap px-[15px] py-[5px] gap-[10px] rounded-lg"
               onClick={handleBack}
-              disabled={currentStepIndex === -1}
             >
               <ArrowBackIosNew className="rounded-full w-[20px] h-[20px] text-[20px] bg-halfBlack text-white p-[2px]" />
               Back

@@ -1,8 +1,8 @@
 "use client";
+import React, { useEffect, useState } from "react";
 import Head from "@/Pages/FinalQuote/Head";
 import Quotes from "@/Pages/FinalQuote/Quotes";
 import Sidebar from "@/Pages/FinalQuote/Sidebar";
-import React, { useEffect, useState } from "react";
 import Modal from "@mui/material/Modal";
 import ChooseSmoker from "@/Pages/Quote-form/ChooseSomker";
 import { CSSTransition } from "react-transition-group";
@@ -13,7 +13,7 @@ import EffectiveSaving from "@/Pages/FinalQuote/EffectiveSaving";
 
 const FinalQuote = () => {
   const [effSaving, setEffSaving] = useState(false);
-  const [openPopup, setOpenPopup] = useState(true);
+  const [openPopup, setOpenPopup] = useState(true); // Initial modal is open
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selected, setSelected] = useState(null);
   const [decreasingTerm, setDecreasingTerm] = useState(false);
@@ -26,14 +26,21 @@ const FinalQuote = () => {
   const [isWholeLife, setIsWholeType] = useState(false);
   const router = useRouter();
 
-  const handleClosePopup = () => {
+  // Handler to prevent modal from closing on backdrop click or Escape key
+  const handleModalClose = (event, reason) => {
+    if (reason === "backdropClick" || reason === "escapeKeyDown") {
+      // Do nothing, prevent the modal from closing
+      return;
+    }
     setOpenPopup(false);
   };
 
+  // Handler to close the modal upon user selection
   const handleSelection = (choice) => {
     setSelected(choice);
-    handleClosePopup();
+    setOpenPopup(false);
   };
+
   useEffect(() => {
     const ins = localStorage.getItem("ins");
     if (!ins) {
@@ -51,30 +58,40 @@ const FinalQuote = () => {
       setQuoteData(existingData);
     };
     sendDatatoOdoo();
-  }, [insurance]);
+  }, [insurance, router]);
 
   return (
     <div className="py-[60px] ">
+      {/* First Modal: ChooseSmoker */}
       <Modal
         open={openPopup}
-        onClose={handleClosePopup}
+        onClose={handleModalClose} // Assign handleModalClose here
         className="flex justify-center items-center"
         disableScrollLock={true}
+        aria-labelledby="choose-smoker-title"
+        aria-describedby="choose-smoker-description"
       >
-        <div className="border-none outline-none bg-white rounded-lg p-6 pt-0 px-0 shadow-lg max-w-md w-full z-10">
+        <div
+          className="border-none outline-none bg-white rounded-lg p-6 pt-0 px-0 shadow-lg max-w-md w-full z-10"
+          role="dialog"
+          aria-modal="true"
+        >
           <ChooseSmoker
-            onClose={handleSelection}
+            onClose={handleSelection} // Assign handleSelection to onClose
             existingData={quoteData}
             uploadPostData={uploadPostData}
           />
         </div>
       </Modal>
+
+      {/* Second Modal: ChooseCoverageType */}
       <Modal
         open={choosePopup}
+        onClose={() => setChoosePopup(false)} // Regular close handler
         className="flex justify-center items-center"
         disableScrollLock={true}
       >
-        <div className="border-none outline-none bg-white rounded-lg py-2 px-4 shadow-lg  w-[530px] z-10 relative ">
+        <div className="border-none outline-none bg-white rounded-lg py-2 px-4 shadow-lg w-[530px] z-10 relative ">
           <ChooseCoverageType
             setChoosePopup={setChoosePopup}
             insurance={insurance}
@@ -83,12 +100,14 @@ const FinalQuote = () => {
         </div>
       </Modal>
 
+      {/* Third Modal: EffectiveSaving */}
       <Modal
         open={effSaving}
+        onClose={() => setEffSaving(false)} // Regular close handler
         className="flex justify-center items-center"
         disableScrollLock={true}
       >
-        <div className="border-none outline-none bg-white rounded-lg py-2 px-4 shadow-lg  w-[684px] z-10 relative ">
+        <div className="border-none outline-none bg-white rounded-lg py-2 px-4 shadow-lg w-[684px] z-10 relative ">
           <EffectiveSaving
             setEffSaving={setEffSaving}
             effSaving={effSaving}
@@ -97,13 +116,14 @@ const FinalQuote = () => {
           />
         </div>
       </Modal>
+
       <div className="flex justify-start items-center w-full h-max flex-col gap-[10rem]">
-        <div className=" w-main relative overflow-hidden h-max">
+        <div className="w-main relative overflow-hidden h-max">
           <div
             className="gap-[15px]"
             style={{ display: "grid", gridTemplateColumns: "75% auto" }}
           >
-            <div className="flex justify-start items-center gap-[1rem] flex-col w-[850px] h-max  overflow-hidden">
+            <div className="flex justify-start items-center gap-[1rem] flex-col w-[850px] h-max overflow-hidden">
               <Head
                 setSidebarOpenM={setSidebarOpen}
                 insurance={insurance}

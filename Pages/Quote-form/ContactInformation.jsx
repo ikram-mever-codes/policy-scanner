@@ -64,10 +64,10 @@ const ContactInformation = ({ setContactInfo, setReason }) => {
       <Image src={quoteForm3} alt="Teena" />
       <div className="w-full h-max flex text-halfBlack justify-start items-center gap-[5px] flex-col mt-[20px]">
         <div className="text-halfBlack font-normal text-[18px] text-center">
-          Get $1 Million Coverage for as Low as{" "}
+          Get $1 million coverage for as low as{" "}
           <span className="mt-2 font-normal text-green-600">$20/month!</span>
           <br />
-          Share Your Details to Unlock Quotes.
+          Share your details to unlock quotes.
         </div>
       </div>
       <div className="flex justify-center items-center py-[20px] pb-0 ">
