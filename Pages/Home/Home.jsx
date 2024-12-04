@@ -25,6 +25,7 @@ import QuoteProcess from "./QuoteProcess";
 import OurPartners from "./OurPartners";
 import Guides from "./Guides";
 import Stats from "@/Components/Stats";
+import Reviews from "./Reviews";
 
 const faqs = [
   {
@@ -125,6 +126,7 @@ const Home = () => {
       <Hero />
 
       <Stats />
+      <Reviews />
       <div className="w-full h-max flex  justify-center items-center mt-[20px] ">
         <div className="flex  h-[80vh]  w-[1140px] overflow-hidden  justify-center  flex-col items-center gap-[40px] mt-[20px] mb-[4rem] ">
           <h2 className="text-halfBlack text-[40px] font-bold text-center ">

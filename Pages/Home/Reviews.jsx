@@ -1,96 +1,104 @@
+"use client";
+import React, { useEffect, useRef } from "react";
 import { Star } from "@mui/icons-material";
-import Link from "next/link";
-import React from "react";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import avatar from "../../assets/avatar.png";
 import Image from "next/image";
-import Google from "../../assets/google.png";
+import { gsap } from "gsap";
+import avatar from "../../assets/avatar.png";
 
 const reviews = [
   {
     name: "Alex Dork",
     avatar: avatar,
     content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
     rating: 5,
   },
   {
     name: "Peter Winters",
     avatar: avatar,
     content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry",
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text.",
     rating: 5,
   },
+  {
+    name: "Sarah Parker",
+    avatar: avatar,
+    content:
+      "This service was a lifesaver! The team went above and beyond to ensure my satisfaction. Highly recommend!",
+    rating: 5,
+  },
+  // Add more reviews as needed
 ];
-const Reviews = () => {
-  return (
-    <section className="h-[100vh] flex justify-center items-center flex-col gap-[20px]">
-      <h2 className="font-bold text-[30px] text-center text-halfBlack">
-        PolicyScanner Rated 4.9 on Google Reviews
-      </h2>
-      <div className="w-full h-max flex justify-center items-center gap-[20px]">
-        <div className="w-[17rem] h-max px-[15px] py-[20px] rounded-xl flex justify-between items-center flex-col gap-[10px] bg-primary text-white">
-          <h4 className="text-center  font-extrabold tracking-wider text-[35px]">
-            4.99/5{" "}
-            <span className="text-[16px] font-light tracking-normal">
-              Rating
-            </span>
-          </h4>
-          <div className="flex justify-center items-center gap-[3px]">
-            <Star className="text-secondary text-[35px]" />
-            <Star className="text-secondary text-[35px]" />
-            <Star className="text-secondary text-[35px]" />
-            <Star className="text-secondary text-[35px]" />
-            <Star className="text-secondary text-[35px]" />
-          </div>
-          <div className="text-center flex justify-center items-center gap-[7px] font-medium text-[16px]">
-            <Image src={Google} alt="Google" /> Google reviews
-          </div>
-          <div className="text-center text-[14px] font-light">
-            100% of Our Customer Recommend us
-          </div>
-          <Link href={"#"}>Read all Reviews</Link>
-        </div>
 
-        <div className="flex justify-between items-center gap-[20px]">
-          <button className="w-[30px] h-[30px] p-[15px] rounded-full bg-white border border-solid border-halfBlack text-halfBlack flex justify-center items-center">
-            <ArrowBackIcon className="text-[18px]" />
-          </button>
-          <div className="flex justify-center items-center gap-[15px]">
-            {reviews.map((review, index) => {
-              return (
-                <div
-                  key={index}
-                  className="w-[13rem] h-max py-[10px] px-[10px] border border-opposite border-sold rounded-lg flex justify-center items-start gap-[10px] flex-col"
-                >
+const Reviews = () => {
+  const marqueeRef = useRef(null);
+  const marqueeContainerRef = useRef(null);
+
+  useEffect(() => {
+    const marquee = marqueeRef.current;
+    const marqueeContainer = marqueeContainerRef.current;
+
+    // Duplicate the content to achieve seamless scrolling
+    marqueeContainer.innerHTML += marqueeContainer.innerHTML;
+
+    const totalWidth = marquee.scrollWidth;
+
+    gsap.to(marquee, {
+      x: -totalWidth / 2,
+      duration: 20, // Adjust the duration for speed
+      ease: "linear",
+      repeat: -1,
+    });
+
+    // Cleanup on unmount
+    return () => {
+      gsap.killTweensOf(marquee);
+    };
+  }, []);
+
+  return (
+    <section className="py-[60px] bg-foreground2 flex flex-col justify-center items-center w-full">
+      <div className="w-full overflow-hidden">
+        <div ref={marqueeRef} className="flex">
+          <div
+            ref={marqueeContainerRef}
+            className="flex gap-6 items-center w-max whitespace-nowrap"
+          >
+            {reviews.map((review, index) => (
+              <div
+                key={index}
+                className="w-[400px] p-6 h-[12rem] overflow-hidden bg-white rounded-lg shadow-xl flex flex-col items-start gap-4"
+              >
+                <div className="flex items-center gap-4">
+                  <Image
+                    src={review.avatar}
+                    alt={`${review.name}'s avatar`}
+                    width={60}
+                    height={60}
+                    className="rounded-full object-cover w-[60px] h-[60px]"
+                  />
                   <div>
-                    <Star className="text-secondary text-[20px]" />
-                    <Star className="text-secondary text-[20px]" />
-                    <Star className="text-secondary text-[20px]" />
-                    <Star className="text-secondary text-[20px]" />
-                    <Star className="text-secondary text-[20px]" />
-                  </div>
-                  <div className="text-[13px] text-left font-light">
-                    {review.content}
-                  </div>
-                  <div className="flex justify-start items-center gap-[7px]">
-                    <Image
-                      src={review.avatar}
-                      alt="Profile Picture"
-                      width={60}
-                      height={60}
-                      className="rounded-full w-[40px] h-[40px] object-cover object-center"
-                    />{" "}
-                    <div className="text-[15px] font-medium">{review.name}</div>
+                    <h3 className="text-lg font-bold text-halfBlack">
+                      {review.name}
+                    </h3>
+                    <div className="flex">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <Star
+                          key={i}
+                          sx={{ color: "#FFD700" }}
+                          fontSize="small"
+                          aria-label="Star rating"
+                        />
+                      ))}
+                    </div>
                   </div>
                 </div>
-              );
-            })}
+                <p className="text-halfBlack text-[16px]   text-wrap">
+                  {review.content}
+                </p>
+              </div>
+            ))}
           </div>
-          <button className="w-[30px] h-[30px] p-[15px] rounded-full bg-halfBlack text-white flex justify-center items-center">
-            <ArrowForwardIcon className="text-[18px]" />
-          </button>
         </div>
       </div>
     </section>

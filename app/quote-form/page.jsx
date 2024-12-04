@@ -57,7 +57,7 @@ const Page = () => {
     }
 
     if (steps[currentStepIndex] === "contact-info") {
-      if (!ContactInfo.email || !ContactInfo.phone || !ContactInfo.name) {
+      if (!ContactInfo.email || !ContactInfo.phone || !contactInfo.name) {
         return null;
       }
       const existingData = JSON.parse(localStorage.getItem("quote-data")) || {};

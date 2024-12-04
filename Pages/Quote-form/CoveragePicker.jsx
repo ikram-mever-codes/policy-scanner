@@ -75,7 +75,6 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
     }
   }, []);
 
-  // Trigger shake animation when there's an error message
   useEffect(() => {
     if (errorMessage && dobInputRef.current) {
       gsap.fromTo(
@@ -149,10 +148,15 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
       }
 
       if (calculatedAge >= 0) {
+        if (calculatedAge >= 75) {
+          setErrorMessage("Age must be equal to or less than 75");
+          return;
+        }
         if (calculatedAge < 18) {
           setErrorMessage("Age must be greater than 18");
           return;
         }
+
         setAge(calculatedAge);
       } else {
         setAge(null);
