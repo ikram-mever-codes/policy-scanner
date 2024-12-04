@@ -9,7 +9,7 @@ const QuoteProcess = () => {
     <section className="w-full h-max bg-white sm:px-[80px] px-[20px] mt-[60px] mb-[60px] gap-[2.5rem] flex justify-start items-center flex-col">
       <div className="w-[1140px] overflow-hidden flex justify-start items-center flex-col gap-[4rem]">
         <h2 className="text-halfBlack text-[40px] font-bold text-center ">
-          Get Custom Quotes in Less Than 3 Minutes{" "}
+          Get custom quotes in less than 1 minute{" "}
         </h2>
         <div className="flex  w-[950px] justify-center items-center  overflow-hidden flex-col gap-[80px]">
           <div
@@ -26,11 +26,11 @@ const QuoteProcess = () => {
             </div>
             <div className="w-full px-[15px] flex justify-center items-center flex-col gap-4">
               <h3 className="text-[28px] w-full  text-left font-[700] text-halfBlack">
-                Explore Top Providers in One Place{" "}
+                Top insurance companies in one platform.{" "}
               </h3>
               <p className="text-dg text-left  ">
-                Compare quotes from Canada’s leading insurance providers. All in
-                one easy-to-use marketplace.
+                Compare quotes from Canada’s leading insurance providers, all in
+                one easy-to-use marketplace.
               </p>
             </div>
           </div>
@@ -48,11 +48,12 @@ const QuoteProcess = () => {
             </div>
             <div className="w-full px-[15px] flex justify-center items-center flex-col gap-4">
               <h3 className="text-[28px] w-full  text-left font-[700] text-halfBlack">
-                Find the Best Policy and <br /> Save More{" "}
+                Find the best life insurance and <br />
+                save more.
               </h3>
               <p className="text-dg text-left  ">
-                Discover Affordable Coverage Tailored to You—Compare Now and
-                Save for Years to come!
+                Discover affordable coverage tailored to you. Compare now and
+                save for years to come.
               </p>
             </div>
           </div>
@@ -70,11 +71,11 @@ const QuoteProcess = () => {
             </div>
             <div className="w-full px-[15px] flex justify-center items-center flex-col gap-4">
               <h3 className="text-[28px] w-full  text-left font-[700] text-halfBlack">
-                Personalized Support, Every Step of the Way{" "}
+                Personalized support, every step of the way.{" "}
               </h3>
               <p className="text-dg text-left  ">
-                Our Dedicated Advisors Are Here to Guide You Through Every Step
-                and Every Decision
+                Our dedicated advisors are here to guide you through every step
+                and every decision.
               </p>
             </div>
           </div>{" "}

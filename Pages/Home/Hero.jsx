@@ -24,19 +24,20 @@ const Hero = () => {
             </div>
 
             <div className="w-max self-start grid grid-cols-2  gap-x-[2rem] gap-y-[1rem] mt-[1.5rem] justify-center items-center">
-              {["Term Life", "Whole Life", "Mortgage", "Critical Illness"].map(
-                (item) => (
-                  <Link href="/quote-form" key={item}>
-                    <div className="relative group flex justify-center items-center w-[260px] h-[85px] shadow-2xl text-halfBlack  rounded-2xl bg-white border border-solid hover:text-white border-primary transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer overflow-hidden">
-                      <div className="absolute inset-0 bg-primary scale-x-0 origin-bottom-left transition-transform duration-500 group-hover:scale-x-100"></div>
-
-                      <h3 className="relative text-center text-[18px] font-normal z-10">
-                        {item}
-                      </h3>
-                    </div>
-                  </Link>
-                )
-              )}
+              {[
+                "Term Life",
+                "Whole Life",
+                "Mortgage Insurance",
+                "Critical Illness",
+              ].map((item) => (
+                <Link href="/quote-form" key={item}>
+                  <div className="relative group flex justify-center items-center w-[260px] h-[85px] shadow-2xl text-halfBlack  rounded-2xl ease-in-out  hover:bg-primary2 hover:text-white   bg-white border border-solid border-primary transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer overflow-hidden">
+                    <h3 className="relative text-center text-[18px] font-normal z-10">
+                      {item}
+                    </h3>
+                  </div>
+                </Link>
+              ))}
             </div>
           </div>
         </div>

@@ -69,14 +69,14 @@ const Header = () => {
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
 
       <div className="w-full h-[90px] relative z-[2]">
-        <header>
+        <header className="">
           <div
             className={`px-[${
-              isQForm ? "50px" : "150px"
-            }] h-[90px] w-full py-[15px] bg-white flex justify-center items-center fixed top-0 border-b-2 border-[#F5F5F5]`}
+              isQForm ? "50px" : "50px"
+            }] h-[90px] w-full  py-[15px] bg-white flex justify-center items-center fixed top-0 border-b-2 border-[#F5F5F5]`}
           >
             <Toolbar
-              className={`w-${isQForm ? "full" : "[1500px]"} flex ${
+              className={`w-${isQForm ? "full" : "full"} flex ${
                 isQForm ? "justify-start gap-6" : "justify-between"
               } items-center`}
               bgColor="white"

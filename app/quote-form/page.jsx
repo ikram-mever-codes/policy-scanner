@@ -180,14 +180,22 @@ const Page = () => {
   return (
     <div className="w-full  min-h-[100vh] h-max flex justify-center items-start py-[3rem]">
       <div className="w-full min-h-[70vh] h-max flex justify-start items-center flex-col">
-        <div>
-          <div className="text-center text-[18px] absolute text-halfBlack top-[34px] right-[40px] pr-[50px] z-[10000]">
+        <div className="text-center text-[18px] absolute text-halfBlack top-[34px] right-[40px] pr-[50px] z-[10000] flex justify-center items-center gap-4">
+          <div>
             Step{" "}
             <strong className="font-semibold text-black">
               {currentStepIndex + 1}
             </strong>{" "}
             of {totalSteps - 1}
           </div>
+          <button
+            onClick={() => {
+              setProvinceSelected(false);
+              setCurrentStepIndex(-1);
+            }}
+          >
+            <RestartAltIcon className="text-halfBlack text-[25px]" />
+          </button>
         </div>
         <div
           className="w-[700px] min-h-[420px]"

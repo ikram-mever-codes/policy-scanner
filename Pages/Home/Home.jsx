@@ -96,15 +96,15 @@ const faqs = [
 const reasons = [
   {
     id: "feat1",
-    title: "Advance tools",
+    title: "Instant Comparison",
     description:
-      "Our proprietary tools helps you to directly compare insurance policies instantly",
+      "Our proprietary tools helps you to directly compare <br/> life insurance policies instantly",
   },
   {
     id: "feat2",
     title: "Fully Independent",
     description:
-      "We work for you - not biased to any insurer. This helps us to you the best insurance rates.",
+      "We work for you - not biased to any insurer. This helps us to get you the best insurance rates.",
   },
   {
     id: "feat3",
@@ -114,18 +114,19 @@ const reasons = [
   },
   {
     id: "feat4",
-    title: "Human Support",
+    title: "Dedicated Support",
     description:
-      "Our licensed advisors are here to guide you at every step, handle any paperwork.",
+      "Our licensed advisors are here to guide you at every step and handle any paperwork.",
   },
 ];
 const Home = () => {
   return (
     <div className="overflow-hidden">
       <Hero />
+
       <Stats />
-      <div className="w-full h-max flex justify-center items-center mt-[20px] ">
-        <div className="flex  w-[1140px] overflow-hidden  justify-center  flex-col items-center gap-[40px] mt-[20px] mb-[4rem] ">
+      <div className="w-full h-max flex  justify-center items-center mt-[20px] ">
+        <div className="flex  h-[80vh]  w-[1140px] overflow-hidden  justify-center  flex-col items-center gap-[40px] mt-[20px] mb-[4rem] ">
           <h2 className="text-halfBlack text-[40px] font-bold text-center ">
             Why trust PolicyScanner for buying life insurance?{" "}
           </h2>
@@ -151,7 +152,10 @@ const Home = () => {
                     )}
                     {reason.title}
                   </h4>
-                  <p className="text-center text-dg">{reason.description}</p>
+                  <p
+                    className="text-center text-dg"
+                    dangerouslySetInnerHTML={{ __html: reason.description }}
+                  ></p>
                 </div>
               );
             })}
