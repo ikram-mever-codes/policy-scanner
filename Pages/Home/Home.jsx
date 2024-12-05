@@ -128,7 +128,7 @@ const Home = () => {
       <Stats />
       <Reviews />
       <div className="w-full h-max flex  justify-center items-center pt-[40px] ">
-        <div className="flex  h-[88vh]  w-[1140px]  overflow-hidden  justify-center  flex-col items-center gap-[40px]  pb-[40px] ">
+        <div className="flex  h-[550px]  w-[1140px]  overflow-hidden  justify-center  flex-col items-center gap-[40px]  pb-[40px] ">
           <h2 className="text-halfBlack text-[40px] font-bold text-center ">
             Why trust PolicyScanner for buying life insurance?{" "}
           </h2>
