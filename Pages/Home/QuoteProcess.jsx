@@ -6,8 +6,8 @@ import Image from "next/image";
 
 const QuoteProcess = () => {
   return (
-    <section className="w-full h-max bg-white sm:px-[80px] px-[20px] mt-[60px] mb-[60px] gap-[2.5rem] flex justify-start items-center flex-col">
-      <div className="w-[1140px] overflow-hidden flex justify-start items-center flex-col gap-[4rem]">
+    <section className="w-full h-max bg-white sm:px-[80px] px-[20px] mt-[50px] mb-[60px] gap-[2.5rem] flex justify-start items-center flex-col">
+      <div className="w-[1140px] overflow-hidden flex justify-start items-center flex-col gap-[50px]">
         <h2 className="text-halfBlack text-[40px] font-bold text-center ">
           Get custom quotes in less than 1 minute{" "}
         </h2>

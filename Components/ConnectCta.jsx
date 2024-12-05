@@ -7,7 +7,7 @@ const ConnectCta = ({ bg }) => {
   return (
     <section
       style={{ backgroundColor: bg }}
-      className="w-full  h-max  py-[30px] md:py-[50px] flex flex-col lg:flex-row justify-center items-center my-[80px] gap-[116px]"
+      className="w-full  h-max md:py-[50px] flex flex-col lg:flex-row justify-center items-center my-[60px] gap-[116px]"
     >
       <Image
         src={ctaImg}
