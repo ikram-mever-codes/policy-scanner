@@ -27,34 +27,71 @@ const reviews = [
       "This service was a lifesaver! The team went above and beyond to ensure my satisfaction. Highly recommend!",
     rating: 5,
   },
-  // Add more reviews as needed
+  {
+    name: "John Doe",
+    avatar: avatar,
+    content:
+      "Fantastic experience from start to finish. The support team was incredibly helpful and responsive.",
+    rating: 5,
+  },
+  {
+    name: "Emma Stone",
+    avatar: avatar,
+    content:
+      "I couldn't be happier with the service provided. Everything was handled professionally and efficiently.",
+    rating: 5,
+  },
 ];
 
 const Reviews = () => {
   const marqueeRef = useRef(null);
   const marqueeContainerRef = useRef(null);
+  const marqueeTween = useRef(null);
 
   useEffect(() => {
     const marquee = marqueeRef.current;
     const marqueeContainer = marqueeContainerRef.current;
 
-    // Duplicate the content to achieve seamless scrolling
-    marqueeContainer.innerHTML += marqueeContainer.innerHTML;
+    const duplicatedReviews = [...reviews, ...reviews];
 
-    const totalWidth = marquee.scrollWidth;
+    const handleResize = () => {
+      if (marquee) {
+        const totalWidth = marqueeContainer.scrollWidth / 2;
+        if (marqueeTween.current) {
+          marqueeTween.current.kill();
+        }
+        marqueeTween.current = gsap.to(marquee, {
+          x: -totalWidth,
+          duration: 25,
+          ease: "linear",
+          repeat: -1,
+        });
+      }
+    };
 
-    gsap.to(marquee, {
-      x: -totalWidth / 2,
-      duration: 20, // Adjust the duration for speed
-      ease: "linear",
-      repeat: -1,
-    });
+    handleResize();
 
-    // Cleanup on unmount
+    window.addEventListener("resize", handleResize);
+
     return () => {
-      gsap.killTweensOf(marquee);
+      if (marqueeTween.current) {
+        marqueeTween.current.kill();
+      }
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const handleMouseEnter = () => {
+    if (marqueeTween.current) {
+      marqueeTween.current.pause();
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (marqueeTween.current) {
+      marqueeTween.current.resume();
+    }
+  };
 
   return (
     <section className="py-[60px] bg-foreground2 flex flex-col justify-center items-center w-full">
@@ -62,12 +99,14 @@ const Reviews = () => {
         <div ref={marqueeRef} className="flex">
           <div
             ref={marqueeContainerRef}
-            className="flex gap-6 items-center w-max whitespace-nowrap"
+            className="flex gap-6 items-center w-max whitespace-nowrap "
           >
-            {reviews.map((review, index) => (
+            {[...reviews, ...reviews].map((review, index) => (
               <div
                 key={index}
-                className="w-[400px] p-6 h-[12rem] overflow-hidden bg-white rounded-lg shadow-xl flex flex-col items-start gap-4"
+                onMouseEnter={handleMouseEnter}
+                onMouseLeave={handleMouseLeave}
+                className="w-[400px] p-6 h-[12rem] overflow-hidden my-[2rem] bg-white rounded-lg shadow-xl flex flex-col items-start gap-4 transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer"
               >
                 <div className="flex items-center gap-4">
                   <Image
@@ -87,13 +126,13 @@ const Reviews = () => {
                           key={i}
                           sx={{ color: "#FFD700" }}
                           fontSize="small"
-                          aria-label="Star rating"
+                          aria-label={`Rating ${review.rating} out of 5`}
                         />
                       ))}
                     </div>
                   </div>
                 </div>
-                <p className="text-halfBlack text-[16px]   text-wrap">
+                <p className="text-halfBlack text-[16px] text-wrap">
                   {review.content}
                 </p>
               </div>
