@@ -33,17 +33,17 @@ const Guides = () => {
   ];
 
   return (
-    <section className="w-full px-4  py-[60px]  flex flex-col items-center">
+    <section className="w-full px-4  py-[60px] pb-0 flex flex-col items-center">
       <div className="w-[1140px] max-w-7xl flex flex-col items-center gap-[90px]">
         <h2 className="text-halfBlack text-[40px] font-bold text-center ">
-          Explore Our Guides
+          Explore our guides
         </h2>
 
         <div className="w-full h-max flex justify-center items-center gap-[25px]">
           {blogs.map((blog) => (
             <div
               key={blog.id}
-              className="min-h-[267px] bg-white shadow-lg flex flex-col rounded-xl overflow-hidden transition-all duration-300 hover:shadow-xl"
+              className="min-h-[267px] bg-white shadow-lg cursor-pointer hover:shadow-xl hover:scale-105 flex flex-col rounded-xl overflow-hidden transition-all duration-300 "
             >
               <div className="relative w-full h-[200px]">
                 <Image
