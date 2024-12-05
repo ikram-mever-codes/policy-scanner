@@ -67,7 +67,7 @@ const Stats = () => {
 
   return (
     <div
-      className="w-[1000px] flex justify-center items-center sm:bg-white mx-auto bg-foreground2 h-max mt-[60px] my-[80px]"
+      className="w-[1000px] flex justify-center items-center sm:bg-white mx-auto bg-foreground2 h-max mt-[60px] my-[60px]"
       style={{ overflow: "visible", position: "relative" }}
     >
       <svg width="0" height="0" style={{ position: "absolute" }}>

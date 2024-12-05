@@ -94,19 +94,19 @@ const Reviews = () => {
   };
 
   return (
-    <section className="py-[60px] bg-foreground2 flex flex-col justify-center items-center w-full">
+    <section className="py-[0px] bg-foreground2 flex flex-col justify-center items-center w-full">
       <div className="w-full overflow-hidden">
         <div ref={marqueeRef} className="flex">
           <div
             ref={marqueeContainerRef}
-            className="flex gap-6 items-center w-max whitespace-nowrap "
+            className="flex gap-6 items-center w-max whitespace-nowrap  h-[312px] "
           >
             {[...reviews, ...reviews].map((review, index) => (
               <div
                 key={index}
                 onMouseEnter={handleMouseEnter}
                 onMouseLeave={handleMouseLeave}
-                className="w-[400px] p-6 h-[12rem] overflow-hidden my-[2rem] bg-white rounded-lg shadow-xl flex flex-col items-start gap-4 transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl cursor-pointer"
+                className="w-[400px] p-6  h-[12rem] overflow-hidden  bg-white rounded-lg shadow-xl flex flex-col items-start gap-4 transform transition-transform duration-300  hover:shadow-2xl cursor-pointer"
               >
                 <div className="flex items-center gap-4">
                   <Image
