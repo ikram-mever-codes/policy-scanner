@@ -11,8 +11,14 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
-  const [coverage, setCoverage] = useState("");
+const CoveragePicker = ({
+  setDob,
+  setAge,
+  age,
+  dob,
+  coverage,
+  setCoverage,
+}) => {
   const [ins, setIns] = useState("term-life");
   const coverageTermOptions = [
     "50,000",
@@ -59,19 +65,15 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
 
   const [errorMessage, setErrorMessage] = useState("");
 
-  // Ref for the DOB input field
   const dobInputRef = useRef(null);
 
-  // Load data from localStorage on component mount
   useEffect(() => {
     let ins = localStorage.getItem("ins") || "term-life";
     setIns(ins);
     const savedData = JSON.parse(localStorage.getItem("quote-data"));
     if (savedData) {
       setCoverage(savedData.coverage || "");
-      setYears(savedData.years || "");
       setDob(savedData.dob || "");
-      setAge(savedData.age || null);
     }
   }, []);
 
@@ -175,16 +177,10 @@ const CoveragePicker = ({ setDob, setAge, setYears, years, age, dob }) => {
     saveToLocalStorage();
   };
 
-  const handleYearsChange = (value) => {
-    setYears(value);
-    saveToLocalStorage();
-  };
-
   const saveToLocalStorage = () => {
     const existingData = JSON.parse(localStorage.getItem("quote-data")) || {};
     existingData.dob = dob;
-    existingData.years = years;
-    existingData.age = age;
+    existingData.coverage = coverage;
     localStorage.setItem("quote-data", JSON.stringify(existingData));
   };
 

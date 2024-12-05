@@ -12,7 +12,7 @@ const InsuranceOptions = () => {
 
   const insuranceOptions = [
     {
-      icon: <Opt1 width="100%" height="100%" />,
+      icon: <Opt1 width="100%" height="100%" bg="black" />,
       title: "Term Life Insurance",
       description:
         "Provides coverage for a specific period, paying beneficiaries if you pass away.",

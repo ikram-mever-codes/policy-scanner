@@ -28,10 +28,10 @@ const Page = () => {
   const [currentStepIndex, setCurrentStepIndex] = useState(-1);
   const [provinceSelected, setProvinceSelected] = useState(false);
   const [selectedGender, setSelectedGender] = useState(null);
-  const [years, setYears] = useState("");
   const [dob, setDob] = useState("");
   const [age, setAge] = useState(null);
   const [ContactInfo, setContactInfo] = useState(null);
+  const [coverage, setCoverage] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
   const totalSteps = steps.length;
   const [containerWidth, setContainerWidth] = useState(0);
@@ -56,6 +56,20 @@ const Page = () => {
       return;
     }
 
+    if (steps[currentStepIndex] === "coverage") {
+      console.log(dob, coverage);
+      if (!dob || !coverage) {
+        return null;
+      }
+      const existingData = JSON.parse(localStorage.getItem("quote-data")) || {};
+      existingData.dob = dob;
+      existingData.coverage = coverage;
+      localStorage.setItem("quote-data", JSON.stringify(existingData));
+
+      setCurrentStepIndex(currentStepIndex + 1);
+
+      return;
+    }
     if (steps[currentStepIndex] === "contact-info") {
       if (!ContactInfo.email || !ContactInfo.phone || !ContactInfo.name) {
         return null;
@@ -113,11 +127,11 @@ const Page = () => {
         return (
           <CoveragePicker
             setAge={setAge}
-            setYears={setYears}
             setDob={setDob}
             age={age}
             dob={dob}
-            years={years}
+            coverage={coverage}
+            setCoverage={setCoverage}
             handleNext={handleNext}
           />
         );
@@ -237,8 +251,7 @@ const Page = () => {
               onClick={handleNext}
               disabled={
                 (currentStepIndex === -1 && !provinceSelected) ||
-                (currentStepIndex === 0 && selectedGender === null) ||
-                (currentStepIndex === 1 && age === null)
+                (currentStepIndex === 0 && selectedGender === null)
               }
             >
               {currentStepIndex === 3 || currentStepIndex === 2

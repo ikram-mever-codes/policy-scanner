@@ -1,4 +1,4 @@
-const BASE_URL = "https://staging-policyscanner.cloudpepper.site/api";
+const BASE_URL = "https://testing.academylearning.ca/api";
 
 export const uploadPostData = async (quoteData) => {
   try {
@@ -14,6 +14,12 @@ export const uploadPostData = async (quoteData) => {
         name: quoteData.contactInfo.name,
         email: quoteData.contactInfo.email,
         phone: Number(quoteData.contactInfo.phone),
+        gender: quoteData.gender,
+        province: quoteData.province,
+        smoker: quoteData.smoker,
+        dob: quoteData.dob,
+        // coverage: quoteData.coverage,
+        coverage: 100000,
         policy_lead_type,
       }),
     });
