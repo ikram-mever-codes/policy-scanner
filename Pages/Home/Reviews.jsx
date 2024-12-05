@@ -41,6 +41,34 @@ const reviews = [
       "I couldn't be happier with the service provided. Everything was handled professionally and efficiently.",
     rating: 5,
   },
+  {
+    name: "Emma Stone",
+    avatar: avatar,
+    content:
+      "I couldn't be happier with the service provided. Everything was handled professionally and efficiently.",
+    rating: 5,
+  },
+  {
+    name: "Emma Stone",
+    avatar: avatar,
+    content:
+      "I couldn't be happier with the service provided. Everything was handled professionally and efficiently.",
+    rating: 5,
+  },
+  {
+    name: "Emma Stone",
+    avatar: avatar,
+    content:
+      "I couldn't be happier with the service provided. Everything was handled professionally and efficiently.",
+    rating: 5,
+  },
+  {
+    name: "Emma Stone",
+    avatar: avatar,
+    content:
+      "I couldn't be happier with the service provided. Everything was handled professionally and efficiently.",
+    rating: 5,
+  },
 ];
 
 const Reviews = () => {
@@ -62,7 +90,7 @@ const Reviews = () => {
         }
         marqueeTween.current = gsap.to(marquee, {
           x: -totalWidth,
-          duration: 25,
+          duration: 40,
           ease: "linear",
           repeat: -1,
         });
