@@ -40,7 +40,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
 
   return (
     <Slide direction="left" in={open} mountOnEnter unmountOnExit>
-      <div className="fixed top-0 right-0 h-[100vh] w-[550px] select-none overflow-y-scroll z-[30] overflow-x-hidden bg-white shadow-lg p-5 flex flex-col">
+      <div className="fixed top-0 right-0 h-[100vh] w-[600px] select-none overflow-y-scroll z-[30] overflow-x-hidden bg-white shadow-lg p-5 flex flex-col">
         <div className="flex justify-between items-center mb-4">
           <button
             onClick={onClose}
@@ -180,15 +180,11 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
               <div className=" relative ">
                 {/* <Bracket className="text-[240px] absolute  top-[10px] left-[80px]" /> */}
                 <Timeline position="left" className="w-full py-10 px-0 pt-0">
-                  <TimelineItem className="py-0 relative   ">
-                    <TimelineContent className="flex items-center">
-                      <div className="pb-[1.5rem] relative top-[-15px]">
-                        <div className="mr-2 p-3 w-[240px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
-                          <p className="text-black w-full text-left text-[13px] font-medium">
-                            You begin paying the monthly premiums
-                          </p>
-                        </div>
-                      </div>
+                  <TimelineItem className="py-0 w-full relative   ">
+                    <TimelineContent className="flex w-[50%] items-center">
+                      {/* <span className="text-opposite font-semibold text-left w-full text-[16px] relative top-[-20px]">
+                        Age 37 yrs
+                      </span> */}
                     </TimelineContent>
                     <TimelineSeparator>
                       <TimelineDot className="bg-halfBlack ">
@@ -196,47 +192,50 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                       </TimelineDot>
                       <TimelineConnector className="bg-halfBlack  " />
                     </TimelineSeparator>
-                    <TimelineOppositeContent className="flex items-center justify-start">
-                      <span className="text-opposite font-semibold text-right w-full text-[16px] relative top-[-20px]">
-                        Age 37 yrs
-                      </span>
+                    <TimelineOppositeContent className="flex items-center w-[50%] justify-start">
+                      <div className="pb-[1.5rem] relative top-[-15px] w-full">
+                        <div className="mr-2 p-3 w-full flex-col bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                          <div className="text-opposite font-semibold text-left w-full text-[16px]">
+                            Age 37 yrs
+                          </div>
+                          <p className="text-black w-full text-left text-[13px] font-medium">
+                            You begin paying the monthly premiums
+                          </p>
+                        </div>
+                      </div>
                     </TimelineOppositeContent>
                   </TimelineItem>
 
                   {/* 2nd Event */}
-                  <TimelineItem className="py-0">
-                    <TimelineContent className="flex items-center">
-                      <div className="pb-[1.5rem] relative top-[-20px]">
-                        <div className="mr-2 p-3 w-[240px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
-                          <p className="text-black w-full text-left text-[13px] font-medium">
-                            If you pass away during the term, your family will
-                            receive the full sum assured, tax-free.
-                          </p>
-                        </div>
-                      </div>
-                    </TimelineContent>
+                  <TimelineItem className="py-0 w-full relative">
+                    <TimelineOppositeContent className="flex items-center w-[50%]">
+                      <span className="relative top-[-30px] text-halfBlack text-[13px]">
+                        {/* Convert to permanent life insurance, fully or partially. */}
+                      </span>
+                    </TimelineOppositeContent>
                     <TimelineSeparator>
                       <TimelineDot className="bg-halfBlack ">
                         <Rip className="text-[24px]" />
                       </TimelineDot>{" "}
                       <TimelineConnector className="bg-halfBlack" />
                     </TimelineSeparator>
-                    <TimelineOppositeContent className="flex items-center justify-start">
-                      <span className="relative top-[-30px] text-halfBlack text-[13px]">
-                        Convert to permanent life insurance, fully or partially.
-                      </span>
-                    </TimelineOppositeContent>
-                  </TimelineItem>
-
-                  <TimelineItem className="py-0">
-                    <TimelineContent className="flex items-center">
-                      <div className="pb-[1.5rem] relative top-[-10px]">
-                        <div className="mr-2 p-3 w-[240px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                    <TimelineOppositeContent className="flex items-center justify-start w-[50%]">
+                      <div className="pb-[1.5rem] relative top-[-20px]">
+                        <div className="mr-2 p-3 w-full bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
-                            Coverage ends with no cash value after the term.
+                            If you pass away during the term, your family will
+                            receive the full sum assured, tax-free.
                           </p>
                         </div>
                       </div>
+                    </TimelineOppositeContent>
+                  </TimelineItem>
+
+                  <TimelineItem className="py-0 w-full">
+                    <TimelineContent className="flex items-center w-[50%]">
+                      <span className="text-blue-500 font-semibold text-[16px] w-full text-left relative top-[-20px]">
+                        {/* Age 57 yrs */}
+                      </span>
                     </TimelineContent>
                     <TimelineSeparator>
                       <TimelineDot className="bg-halfBlack ">
@@ -244,18 +243,25 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                       </TimelineDot>
                       <TimelineConnector className="bg-halfBlack" />
                     </TimelineSeparator>
-                    <TimelineOppositeContent className="flex items-center justify-start">
-                      <span className="text-blue-500 font-semibold text-[16px] w-full text-right relative top-[-20px]">
-                        Age 57 yrs
-                      </span>
+                    <TimelineOppositeContent className="w-[50%] flex items-center justify-start">
+                      <div className="pb-[1.5rem] relative top-[-10px]">
+                        <div className="mr-2 p-3 w-full flex-col bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                          <div className="text-blue-500 font-semibold text-[16px] w-full text-left">
+                            Age 57 yrs
+                          </div>
+                          <p className="text-black w-full text-left text-[13px] font-medium">
+                            Coverage ends with no cash value after the term.
+                          </p>
+                        </div>
+                      </div>
                     </TimelineOppositeContent>
                   </TimelineItem>
 
                   {/* 4th Event */}
-                  <TimelineItem className="py-0">
+                  <TimelineItem className="py-0 w-full">
                     <TimelineContent className="flex items-center">
                       <div className="pb-[1.5rem] relative top-[-10px]">
-                        <div className="mr-2 p-3 w-[240px] bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                        <div className="mr-2 p-3 w-full bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
                             Coverage continues, building cash value.
                           </p>
@@ -269,18 +275,19 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                       <TimelineConnector className="bg-halfBlack" />
                     </TimelineSeparator>
                     <TimelineOppositeContent className="flex items-center justify-start">
-                      <span className="text-halfBlack text-[13px] relative top-[-10px]">
-                        If converted to permanent insurance, you get coverage
-                        until age 100 or death, plus cash value.
-                      </span>
+                      <span className="text-halfBlack text-[13px] relative top-[-10px]"></span>
                     </TimelineOppositeContent>
                   </TimelineItem>
 
                   {/* 5th Event - Age 100 yrs */}
-                  <TimelineItem className="py-0 ">
-                    <TimelineContent className="flex items-center">
+                  <TimelineItem className="py-0 w-full">
+                    <TimelineContent className="flex items-center w-[50%]">
                       <div className=" pb-0 relative top-[-10px]">
-                        <div className="mr-2 p-3 w-[240px] bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                        <div className="mr-2 p-3 w-full flex-col bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                          <div className="text-halfBlack font-semibold text-[16px] w-full text-left ">
+                            Age 100 yrs
+                          </div>
+
                           <p className="text-black w-full text-left text-[13px] font-medium">
                             At age 100, coverage remains in force if converted,
                             ensuring long-term protection and cash value.
@@ -296,7 +303,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                     </TimelineSeparator>
                     <TimelineOppositeContent className="flex items-center justify-start">
                       <span className="text-halfBlack font-semibold text-[16px] w-full text-right relative top-[-20px]">
-                        Age 100 yrs
+                        {/* Age 100 yrs */}
                       </span>
                     </TimelineOppositeContent>
                   </TimelineItem>
