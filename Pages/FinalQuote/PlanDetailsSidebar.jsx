@@ -40,7 +40,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
 
   return (
     <Slide direction="left" in={open} mountOnEnter unmountOnExit>
-      <div className="fixed top-0 right-0 h-[100vh] w-[550px] select-none overflow-y-scroll z-[30] overflow-x-hidden bg-white shadow-lg p-5 flex flex-col">
+      <div className="fixed top-0 right-0 h-[100vh] w-[600px] select-none overflow-y-scroll z-[30] overflow-x-hidden bg-white shadow-lg p-5 flex flex-col">
         <div className="flex justify-between items-center mb-4">
           <button
             onClick={onClose}
