@@ -172,7 +172,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
             </div>
 
             {/* How Does it Work Section */}
-            <div className="w-full relative border-solid border border-halfBlack/30 rounded-lg">
+            <div className="w-full mt-[2rem] relative border-solid border border-halfBlack/30 rounded-lg">
               <h3 className="font-semibold text-primary text-[20px] mt-4 w-max left-[20px] text-left px-2 relative top-[-33px] bg-white">
                 How Does it Work?
               </h3>
