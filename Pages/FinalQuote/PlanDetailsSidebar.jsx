@@ -92,7 +92,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
         >
           <div className="w-full h-max flex flex-col py-2 gap-6">
             {/* Top Plan Details */}
-            <div className="w-full flex h-max justify-start items-center gap-4 flex-col">
+            <div className="w-full flex h-max justify-start items-center gap-[1.5rem] flex-col">
               <div className="w-full h-max p-4 py-3 bg-primary2/10 flex flex-col gap-1 rounded-lg shadow-sidebar">
                 <h2 className="font-semibold text-halfBlack text-[15px]">
                   Plan Details
@@ -172,12 +172,12 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
             </div>
 
             {/* How Does it Work Section */}
-            <div className="w-full relative mt-[2rem] border-solid border border-halfBlack/30 rounded-lg">
+            <div className="w-full relative mt-[1.5rem] border-solid border border-halfBlack/30 rounded-lg">
               <h3 className="font-semibold text-primary text-[20px] mt-4 w-max left-[20px] text-left px-2 relative top-[-33px] bg-white">
                 How Does it Work?
               </h3>
 
-              <div className="mt-[2rem] relative ">
+              <div className="mt-[0rem] relative ">
                 {/* <Bracket className="text-[270px] absolute  top-[10px] left-[80px]" /> */}
                 <Timeline position="left" className="w-full py-10 px-0 pt-0">
                   <TimelineItem className="py-0 relative   ">
@@ -320,8 +320,8 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
           classNames="fade"
           unmountOnExit
         >
-          <div className="flex flex-col gap-[1rem]">
-            <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-[2rem]">
+            <div className="flex flex-col gap-[1.5rem]">
               <h2 className="w-full text-left font-medium text-[20px] text-halfBlack">
                 Paid Riders
               </h2>
