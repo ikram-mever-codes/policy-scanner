@@ -172,7 +172,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
             </div>
 
             {/* How Does it Work Section */}
-            <div className="w-full relative border-solid border border-halfBlack/30 rounded-lg">
+            <div className="w-full relative mt-[2rem] border-solid border border-halfBlack/30 rounded-lg">
               <h3 className="font-semibold text-primary text-[20px] mt-4 w-max left-[20px] text-left px-2 relative top-[-33px] bg-white">
                 How Does it Work?
               </h3>
@@ -198,7 +198,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                     </TimelineSeparator>
                     <TimelineOppositeContent className="flex items-center justify-start">
                       <span className="text-opposite font-semibold text-right w-full text-[16px] relative top-[-20px]">
-                        Age 37 yrs
+                        Age 37
                       </span>
                     </TimelineOppositeContent>
                   </TimelineItem>
@@ -244,8 +244,8 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                       <TimelineConnector className="bg-halfBlack" />
                     </TimelineSeparator>
                     <TimelineOppositeContent className="flex items-center justify-start">
-                      <span className="text-blue-500 font-semibold text-[16px] w-full text-right relative top-[-20px]">
-                        Age 57 yrs
+                      <span className="text-blue-500 font-semibold text-[16px] w-full text-right relative top-[-25px]">
+                        Age 57
                       </span>
                     </TimelineOppositeContent>
                   </TimelineItem>
@@ -257,7 +257,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                         <div className="mr-2 p-3 w-[270px] bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
                             If converted to a whole life policy, coverage
-                            continues and builds cash value.{" "}
+                            continues and builds cash value.{" "}
                           </p>
                         </div>
                       </div>
@@ -279,9 +279,9 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                       <div className=" pb-0 relative top-[-10px]">
                         <div className="mr-2 p-3 w-[270px] bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
-                            The policy ends at age 100 or when you pass away,
-                            and your family receives the cash value and death
-                            benefit.{" "}
+                            The policy ends at age 100 or when you pass away
+                            (whichever comes first) and your family gets the
+                            death benefit and cash value.
                           </p>
                         </div>
                       </div>
@@ -293,8 +293,8 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                       {/* No connector on the final item */}
                     </TimelineSeparator>
                     <TimelineOppositeContent className="flex items-center justify-start">
-                      <span className="text-halfBlack font-semibold text-[16px] w-full text-right relative top-[-20px]">
-                        Age 100 yrs
+                      <span className="text-halfBlack font-semibold text-[16px] w-full text-right relative top-[-25px]">
+                        Age 100
                       </span>
                     </TimelineOppositeContent>
                   </TimelineItem>
