@@ -20,6 +20,7 @@ const CoveragePicker = ({
   setCoverage,
 }) => {
   const [ins, setIns] = useState("term-life");
+
   const coverageTermOptions = [
     "50,000",
     "100,000",
@@ -189,10 +190,20 @@ const CoveragePicker = ({
       <Image src={quoteForm3} alt="Teena" />
       <div className="w-full h-max flex text-halfBlack justify-start items-center gap-[5px] flex-col mt-[20px]">
         <div className="flex items-center gap-2">
-          <div className="text-halfBlack font-normal text-[18px] text-center">
-            Also, how much coverage do you need?
-            <br /> and your date of birth?{" "}
-          </div>
+          <div
+            className="text-halfBlack font-normal text-[18px] text-center"
+            dangerouslySetInnerHTML={{
+              __html:
+                ins === "mortgage-insurnace"
+                  ? `Also, how much mortgage insurance do you need?
+           <br /> and your date of birth?`
+                  : `Also, how much ${ins.replace(
+                      "-",
+                      " "
+                    )} coverage do you need?
+           <br /> and your date of birth?`,
+            }}
+          ></div>
         </div>
       </div>
       <div className="w-[350px]">
@@ -215,6 +226,10 @@ const CoveragePicker = ({
                 backgroundPositionY: "center",
               }}
             >
+              <option value="" selected>
+                Select Coverage
+              </option>
+
               {(ins === "term-life" || ins === "level-term") &&
                 coverageTermOptions.map((option) => (
                   <option

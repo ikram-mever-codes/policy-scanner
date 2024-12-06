@@ -30,7 +30,24 @@ const Hero = () => {
                 "Mortgage Insurance",
                 "Critical Illness",
               ].map((item) => (
-                <Link href="/quote-form" key={item}>
+                <Link
+                  href="/quote-form"
+                  key={item}
+                  onClick={() => {
+                    if (item === "Term Life") {
+                      localStorage.setItem("ins", "term-life");
+                    }
+                    if (item === "Whole Life") {
+                      localStorage.setItem("ins", "whole-life");
+                    }
+                    if (item === "Critical Illness") {
+                      localStorage.setItem("ins", "critical-illness");
+                    }
+                    if (item === "Mortgage Insurance") {
+                      localStorage.setItem("ins", "mortgage-insurance");
+                    }
+                  }}
+                >
                   <div className="relative group flex justify-center items-center w-[260px] h-[85px] shadow-2xl text-halfBlack  rounded-2xl ease-in-out  hover:bg-primary2 hover:text-white   bg-white border border-solid border-primary transform transition-all duration-300 hover:scale-105 hover:shadow-lg cursor-pointer overflow-hidden">
                     <h3 className="relative text-center text-[18px] font-normal z-10">
                       {item}

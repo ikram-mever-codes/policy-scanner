@@ -10,6 +10,7 @@ import Link from "next/link";
 import logo from "../assets/logo.png";
 import { usePathname } from "next/navigation";
 import Sidebar from "./Sidebar"; // Import Sidebar
+import AddIcCallOutlinedIcon from "@mui/icons-material/AddIcCallOutlined";
 
 const Header = () => {
   const [menuOpenIndex, setMenuOpenIndex] = useState(null);
@@ -134,10 +135,16 @@ const Header = () => {
                       </li>
                     ))}
                   </ul>
-
-                  <button className="w-max h-[2.8rem] flex justify-center items-center text-black bg-secondary text-nowrap px-[15px] py-[5px] gap-[10px] rounded-lg">
-                    Get Quotes
-                  </button>
+                  {path === "/final-quote" ? (
+                    <button className="w-max h-[2.8rem] px-[1rem]  flex justify-center items-center gap-[6px]  bg-primary rounded-[10px] text-white">
+                      <AddIcCallOutlinedIcon sx={{ fontSize: "18px" }} /> Talk
+                      to Expert
+                    </button>
+                  ) : (
+                    <button className="w-max h-[2.8rem] flex justify-center items-center text-black bg-secondary text-nowrap px-[15px] py-[5px] gap-[10px] rounded-lg">
+                      Get Quotes
+                    </button>
+                  )}
                 </nav>
               )}
               {path !== "/quote-form" && (

@@ -1,9 +1,15 @@
 const BASE_URL = "https://testing.academylearning.ca/api";
 
+const parseCoverage = (coverageStr) => {
+  if (coverageStr.endsWith("M")) {
+    return parseFloat(coverageStr.replace("M", "")) * 1000000;
+  }
+  return Number(coverageStr.replace(/,/g, ""));
+};
+
 export const uploadPostData = async (quoteData) => {
   try {
     const policy_lead_type = "Request Quote";
-    console.log(quoteData);
     const response = await fetch(`${BASE_URL}/crm/create`, {
       method: "POST",
       headers: {
@@ -18,8 +24,7 @@ export const uploadPostData = async (quoteData) => {
         province: quoteData.province,
         smoker: quoteData.smoker,
         dob: quoteData.dob,
-        // coverage: quoteData.coverage,
-        coverage: 100000,
+        coverage: parseCoverage(quoteData.coverage),
         policy_lead_type,
       }),
     });
@@ -27,22 +32,13 @@ export const uploadPostData = async (quoteData) => {
     console.log(data);
 
     if (!response.ok) {
-      return console.log(data);
+      console.log(data);
+      return false;
     }
 
     return true;
   } catch (error) {
     console.log(error);
+    return false;
   }
 };
-
-/* 
-name string
-email string
-phoneNumber integer 
-province string 
-
-
- 
-
-*/

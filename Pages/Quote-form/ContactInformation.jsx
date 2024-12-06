@@ -36,6 +36,13 @@ const ContactInformation = ({ setContactInfo, setReason }) => {
       const email = existingData.contactInfo.email;
       setMaskedEmail("*".repeat(email.length));
       formik.setFieldValue("email", email);
+      formik.setFieldValue("name", existingData.contactInfo.name);
+      formik.setFieldValue("phone", existingData.contactInfo.phone);
+      setContactInfo({
+        email: email,
+        name: existingData.contactInfo.name,
+        phone: existingData.contactInfo.phone,
+      });
       setIsEmailMasked(false);
     }
   }, []);
