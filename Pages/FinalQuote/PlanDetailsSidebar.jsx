@@ -177,8 +177,8 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                   <TimelineItem className="py-0 relative   ">
                     <TimelineContent className="flex items-center">
                       <div className="pb-[1.5rem] relative top-[-30px]">
-                        <div className="mr-2 p-3 w-[240px] bg-white shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
-                          <p className="text-halfBlack w-full text-left text-[13px] font-medium">
+                        <div className="mr-2 p-3 w-[240px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                          <p className="text-black w-full text-left text-[13px] font-medium">
                             You begin paying the monthly premiums
                           </p>
                         </div>
@@ -201,8 +201,8 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                   <TimelineItem className="py-0">
                     <TimelineContent className="flex items-center">
                       <div className="pb-[1.5rem] relative top-[-30px]">
-                        <div className="mr-2 p-3 w-[240px] bg-white shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
-                          <p className="text-halfBlack w-full text-left text-[13px] font-medium">
+                        <div className="mr-2 p-3 w-[240px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                          <p className="text-black w-full text-left text-[13px] font-medium">
                             If you pass away during the term, your family will
                             receive the full sum assured, tax-free.
                           </p>
@@ -225,8 +225,8 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                   <TimelineItem className="py-0">
                     <TimelineContent className="flex items-center">
                       <div className="pb-[1.5rem] relative top-[-30px]">
-                        <div className="mr-2 p-3 w-[240px] bg-white shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
-                          <p className="text-halfBlack w-full text-left text-[13px] font-medium">
+                        <div className="mr-2 p-3 w-[240px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                          <p className="text-black w-full text-left text-[13px] font-medium">
                             Coverage ends with no cash value after the term.
                           </p>
                         </div>
@@ -249,8 +249,8 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                   <TimelineItem className="py-0">
                     <TimelineContent className="flex items-center">
                       <div className="pb-[1.5rem] relative top-[-30px]">
-                        <div className="mr-2 p-3 w-[240px] bg-white shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
-                          <p className="text-halfBlack w-full text-left text-[13px] font-medium">
+                        <div className="mr-2 p-3 w-[240px] bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                          <p className="text-black w-full text-left text-[13px] font-medium">
                             Coverage continues, building cash value.
                           </p>
                         </div>
@@ -274,8 +274,8 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                   <TimelineItem className="py-0">
                     <TimelineContent className="flex items-center">
                       <div className="pb-[1.5rem] relative top-[-30px]">
-                        <div className="mr-2 p-3 w-[240px] bg-white shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
-                          <p className="text-halfBlack w-full text-left text-[13px] font-medium">
+                        <div className="mr-2 p-3 w-[240px] bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                          <p className="text-black w-full text-left text-[13px] font-medium">
                             At age 100, coverage remains in force if converted,
                             ensuring long-term protection and cash value.
                           </p>
