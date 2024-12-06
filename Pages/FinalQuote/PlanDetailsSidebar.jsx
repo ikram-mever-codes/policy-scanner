@@ -4,7 +4,13 @@ import {
   AddCard,
   AlarmAddOutlined,
   Close,
+  HourglassBottom,
+  HourglassBottomOutlined,
+  MonitorHeart,
   PropaneOutlined,
+  Savings,
+  SavingsOutlined,
+  Security,
   SecurityRounded,
 } from "@mui/icons-material";
 import Slide from "@mui/material/Slide";
@@ -13,6 +19,7 @@ import logo from "../../assets/canada-life.png";
 import Rip from "../../assets/rip.svg";
 import { CSSTransition } from "react-transition-group";
 import "./Head.css";
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import {
   Timeline,
   TimelineItem,
@@ -24,7 +31,6 @@ import {
 } from "@mui/lab";
 
 // Icons (no changes to imports)
-import DescriptionOutlined from "@mui/icons-material/DescriptionOutlined";
 import SentimentSatisfiedOutlined from "@mui/icons-material/SentimentSatisfiedOutlined";
 import CreditCardOutlined from "@mui/icons-material/CreditCardOutlined";
 import AutorenewOutlined from "@mui/icons-material/AutorenewOutlined";
@@ -34,7 +40,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
 
   return (
     <Slide direction="left" in={open} mountOnEnter unmountOnExit>
-      <div className="fixed top-0 right-0 h-[100vh] w-[550px] overflow-y-scroll z-[30] overflow-x-hidden bg-white shadow-lg p-5 flex flex-col">
+      <div className="fixed top-0 right-0 h-[100vh] w-[550px] select-none overflow-y-scroll z-[30] overflow-x-hidden bg-white shadow-lg p-5 flex flex-col">
         <div className="flex justify-between items-center mb-4">
           <button
             onClick={onClose}
@@ -166,17 +172,17 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
             </div>
 
             {/* How Does it Work Section */}
-            <div className="w-full relative ">
-              <h3 className="font-semibold text-primary text-[20px] mt-4 w-full text-left">
+            <div className="w-full relative border-solid border border-halfBlack/30 rounded-lg">
+              <h3 className="font-semibold text-primary text-[20px] mt-4 w-max left-[20px] text-left px-2 relative top-[-33px] bg-white">
                 How Does it Work?
               </h3>
 
-              <div className="mt-[2rem] relative">
+              <div className=" relative ">
                 {/* <Bracket className="text-[240px] absolute  top-[10px] left-[80px]" /> */}
                 <Timeline position="left" className="w-full py-10 px-0 pt-0">
                   <TimelineItem className="py-0 relative   ">
                     <TimelineContent className="flex items-center">
-                      <div className="pb-[1.5rem] relative top-[-30px]">
+                      <div className="pb-[1.5rem] relative top-[-15px]">
                         <div className="mr-2 p-3 w-[240px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
                             You begin paying the monthly premiums
@@ -186,12 +192,12 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                     </TimelineContent>
                     <TimelineSeparator>
                       <TimelineDot className="bg-halfBlack ">
-                        <DescriptionOutlined />
+                        <MonetizationOnIcon />
                       </TimelineDot>
                       <TimelineConnector className="bg-halfBlack  " />
                     </TimelineSeparator>
                     <TimelineOppositeContent className="flex items-center justify-start">
-                      <span className="text-opposite font-semibold text-right w-full text-[16px] relative top-[-35px]">
+                      <span className="text-opposite font-semibold text-right w-full text-[16px] relative top-[-20px]">
                         Age 37 yrs
                       </span>
                     </TimelineOppositeContent>
@@ -200,7 +206,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                   {/* 2nd Event */}
                   <TimelineItem className="py-0">
                     <TimelineContent className="flex items-center">
-                      <div className="pb-[1.5rem] relative top-[-30px]">
+                      <div className="pb-[1.5rem] relative top-[-20px]">
                         <div className="mr-2 p-3 w-[240px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
                             If you pass away during the term, your family will
@@ -211,12 +217,12 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                     </TimelineContent>
                     <TimelineSeparator>
                       <TimelineDot className="bg-halfBlack ">
-                        <AddCard />
+                        <Rip className="text-[24px]" />
                       </TimelineDot>{" "}
                       <TimelineConnector className="bg-halfBlack" />
                     </TimelineSeparator>
                     <TimelineOppositeContent className="flex items-center justify-start">
-                      <span className="relative top-[-34px] text-halfBlack text-[13px]">
+                      <span className="relative top-[-30px] text-halfBlack text-[13px]">
                         Convert to permanent life insurance, fully or partially.
                       </span>
                     </TimelineOppositeContent>
@@ -224,7 +230,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
 
                   <TimelineItem className="py-0">
                     <TimelineContent className="flex items-center">
-                      <div className="pb-[1.5rem] relative top-[-30px]">
+                      <div className="pb-[1.5rem] relative top-[-10px]">
                         <div className="mr-2 p-3 w-[240px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
                             Coverage ends with no cash value after the term.
@@ -234,12 +240,12 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                     </TimelineContent>
                     <TimelineSeparator>
                       <TimelineDot className="bg-halfBlack ">
-                        <PropaneOutlined />
+                        <HourglassBottom />
                       </TimelineDot>
                       <TimelineConnector className="bg-halfBlack" />
                     </TimelineSeparator>
                     <TimelineOppositeContent className="flex items-center justify-start">
-                      <span className="text-blue-500 font-semibold text-[16px] w-full text-right relative top-[-35px]">
+                      <span className="text-blue-500 font-semibold text-[16px] w-full text-right relative top-[-20px]">
                         Age 57 yrs
                       </span>
                     </TimelineOppositeContent>
@@ -248,7 +254,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                   {/* 4th Event */}
                   <TimelineItem className="py-0">
                     <TimelineContent className="flex items-center">
-                      <div className="pb-[1.5rem] relative top-[-30px]">
+                      <div className="pb-[1.5rem] relative top-[-10px]">
                         <div className="mr-2 p-3 w-[240px] bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
                             Coverage continues, building cash value.
@@ -258,12 +264,12 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                     </TimelineContent>
                     <TimelineSeparator>
                       <TimelineDot className="bg-halfBlack">
-                        <SecurityRounded />
+                        <Savings />
                       </TimelineDot>
                       <TimelineConnector className="bg-halfBlack" />
                     </TimelineSeparator>
                     <TimelineOppositeContent className="flex items-center justify-start">
-                      <span className="text-halfBlack text-[13px] relative top-[-25px]">
+                      <span className="text-halfBlack text-[13px] relative top-[-10px]">
                         If converted to permanent insurance, you get coverage
                         until age 100 or death, plus cash value.
                       </span>
@@ -271,9 +277,9 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                   </TimelineItem>
 
                   {/* 5th Event - Age 100 yrs */}
-                  <TimelineItem className="py-0">
+                  <TimelineItem className="py-0 ">
                     <TimelineContent className="flex items-center">
-                      <div className="pb-[1.5rem] relative top-[-30px]">
+                      <div className=" pb-0 relative top-[-10px]">
                         <div className="mr-2 p-3 w-[240px] bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
                             At age 100, coverage remains in force if converted,
@@ -284,12 +290,12 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                     </TimelineContent>
                     <TimelineSeparator>
                       <TimelineDot className="bg-halfBlack">
-                        <AlarmAddOutlined />
+                        <Security />
                       </TimelineDot>
                       {/* No connector on the final item */}
                     </TimelineSeparator>
                     <TimelineOppositeContent className="flex items-center justify-start">
-                      <span className="text-halfBlack font-semibold text-[16px] w-full text-right relative top-[-40px]">
+                      <span className="text-halfBlack font-semibold text-[16px] w-full text-right relative top-[-20px]">
                         Age 100 yrs
                       </span>
                     </TimelineOppositeContent>
@@ -298,12 +304,12 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
               </div>
             </div>
 
-            <div className="w-[60vw] my-[20px] h-[1px] bg-gradient-to-r from-transparent via-halfBlack to-transparent"></div>
+            <div className="w-[60vw] my-[20px] mt-0 h-[1px] bg-gradient-to-r from-transparent via-halfBlack to-transparent"></div>
             <div className="w-full flex justify-center items-center gap-4">
               <div className="font-semibold text-center text-[20px] text-halfBlack">
                 $250.00 <span className="text-[16px] font-medium">/Month</span>
               </div>
-              <button className="w-[8rem] h-[3rem] flex justify-center items-center bg-secondary text-white px-[15px] py-[5px] gap-[10px] rounded-lg">
+              <button className="w-[8rem] h-[3rem] flex justify-center items-center bg-secondary text-black px-[15px] py-[5px] gap-[10px] rounded-lg">
                 Get this Rate
               </button>
             </div>
