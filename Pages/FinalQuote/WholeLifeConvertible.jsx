@@ -45,13 +45,14 @@ const WholeLifeConvertible = ({ open, onClose }) => {
   }, [coverage]);
 
   const conversionAge = currentAge + termLength;
-
   const generateData = React.useMemo(() => {
     const data = [];
     // Term phase
     for (let year = 0; year <= termLength; year++) {
+      const age = currentAge + year;
+      if (age > 100) break; // Stop if age exceeds 100
       data.push({
-        age: currentAge + year,
+        age,
         coverage: coverage,
         cashValue: 0,
         premium: termMonthlyPremium * 12,
@@ -60,8 +61,10 @@ const WholeLifeConvertible = ({ open, onClose }) => {
     }
     // Whole life phase
     for (let year = 1; year <= 30; year++) {
+      const age = conversionAge + year;
+      if (age > 100) break; // Stop if age exceeds 100
       data.push({
-        age: conversionAge + year,
+        age,
         coverage: coverage,
         cashValue: coverage * 0.03 * year,
         premium: wholeLifeMonthlyPremium * 12,
@@ -99,26 +102,62 @@ const WholeLifeConvertible = ({ open, onClose }) => {
             className="object-contain"
             priority
           />
-          <div className="w-[24px]" /> {/* Spacer for centering */}
+          <div className="w-[24px]" />
         </div>
 
         <div className="p-6 space-y-6">
-          {/* Introduction */}
-          <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 shadow-sm">
-            <div className="flex items-center gap-3 mb-3">
-              <Shield className="text-blue-600" size={24} />
-              <h2 className="text-xl font-semibold text-gray-800">
-                Whole Life Convertible Plan
-              </h2>
+          <div className="bg-blue-50 shadow-lg p-6 rounded-lg">
+            <div className="flex items-center gap-3 mb-4">
+              <Shield className="w-6 h-6 text-blue-600" />
+              <h2 className="text-xl font-semibold">Simple Explanation</h2>
             </div>
-            <p className="text-gray-600 leading-relaxed">
-              Start with affordable term coverage and convert to permanent life
-              insurance whenever you're ready - no medical exam needed.
+            <p className="mb-4  leading-[27px] text-[15px]  text-halfBlack">
+              Think of a Whole Life Convertible Term Plan like renting a house
+              with a guaranteed option to buy it later. Here's how it works:
             </p>
+
+            <div className="mb-4">
+              <h3 className="font-semibold mb-2">Starting Out:</h3>
+              <ul className=" pl-5 space-y-2 li-disc">
+                <li className="leading-[27px] text-[15px]  text-halfBlack">
+                  You get temporary life insurance (like renting) at an
+                  affordable rate
+                </li>
+                <li className="leading-[27px] text-[15px]  text-halfBlack">
+                  For example: $500,000 coverage for $66.67 per month
+                </li>
+                <li className="leading-[27px] text-[15px]  text-halfBlack">
+                  Your coverage is guaranteed for a specific period (say 20
+                  years)
+                </li>
+              </ul>
+            </div>
+
+            <div>
+              <h3 className="font-semibold mb-2">
+                The Special Conversion Feature:
+              </h3>
+              <ul className="list-disc pl-5 space-y-2 li-disc">
+                <li className="leading-[27px] text-[15px]  text-halfBlack">
+                  Any time during your term, you have a guaranteed right to
+                  convert to permanent coverage
+                </li>
+                <li className="leading-[27px] text-[15px]  text-halfBlack">
+                  No new medical exam needed
+                </li>
+                <li className="leading-[27px] text-[15px]  text-halfBlack">
+                  Your health when you first bought the policy is what matters,
+                  not your health when you convert
+                </li>
+                <li className="leading-[27px] text-[15px]  text-halfBlack">
+                  You can convert all or part of your coverage
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Interactive Controls */}
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-4  py-[30px]">
             <div className="space-y-2">
               <label className="flex items-center gap-2 text-gray-700 font-medium">
                 <Calendar size={18} />
@@ -182,8 +221,24 @@ const WholeLifeConvertible = ({ open, onClose }) => {
               <ResponsiveContainer>
                 <LineChart data={generateData}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
-                  <XAxis dataKey="age" stroke="#6B7280" />
-                  <YAxis stroke="#6B7280" />
+                  <XAxis
+                    dataKey="age"
+                    stroke="#6B7280"
+                    tick={{ fontSize: 12 }}
+                    tickSize={4}
+                    domain={[
+                      currentAge,
+                      Math.min(100, currentAge + termLength + 30),
+                    ]}
+                  />
+                  <YAxis
+                    stroke="#6B7280"
+                    tickFormatter={(value) =>
+                      `$${(value / 1000000).toFixed(1)}M`
+                    }
+                    tick={{ fontSize: 12 }}
+                    tickSize={4}
+                  />
                   <Tooltip
                     contentStyle={{
                       backgroundColor: "white",
@@ -191,11 +246,18 @@ const WholeLifeConvertible = ({ open, onClose }) => {
                       border: "none",
                       boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)",
                     }}
+                    formatter={(value) => [`$${value.toLocaleString()}`, ""]}
+                    labelFormatter={(label) => `Age: ${label}`}
                   />
                   <ReferenceLine
                     x={conversionAge}
                     stroke="#EF4444"
-                    label={{ value: "Conversion Point", position: "top" }}
+                    label={{
+                      value: "Conversion Point",
+                      position: "top",
+                      fill: "#EF4444",
+                      fontSize: 12,
+                    }}
                   />
                   <Line
                     type="monotone"
@@ -203,7 +265,8 @@ const WholeLifeConvertible = ({ open, onClose }) => {
                     name="Death Benefit"
                     stroke="#2563EB"
                     strokeWidth={2}
-                    dot={false}
+                    dot={{ r: 3 }}
+                    activeDot={{ r: 5 }}
                   />
                   <Line
                     type="monotone"
@@ -211,7 +274,8 @@ const WholeLifeConvertible = ({ open, onClose }) => {
                     name="Cash Value"
                     stroke="#059669"
                     strokeWidth={2}
-                    dot={false}
+                    dot={{ r: 3 }}
+                    activeDot={{ r: 5 }}
                   />
                 </LineChart>
               </ResponsiveContainer>
@@ -311,7 +375,7 @@ const WholeLifeConvertible = ({ open, onClose }) => {
             ${termMonthlyPremium}
             <span className="text-gray-500 text-base font-normal">/month</span>
           </div>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+          <button className="bg-secondary  text-black px-6 py-2 rounded-lg font-medium transition-colors">
             Get Started
           </button>
         </div>

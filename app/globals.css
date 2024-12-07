@@ -103,6 +103,9 @@ li {
   );
 }
 
+.li-disc li {
+  list-style: disc;
+}
 .custom-list-bullets {
   list-style: none;
   padding: 0;
