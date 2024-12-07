@@ -172,10 +172,12 @@ const Quotes = ({
   }, [sidebarOpen, wlcOpen, accidentalDeath]);
   return (
     <div className="w-[845px] h-max pb-[2rem]">
-      {sidebarOpen ||
-        (wlcOpen && (
-          <div className="fixed inset-0 bg-black opacity-50 z-10 pointer-events-none overflow-hidden"></div>
-        ))}
+      {sidebarOpen && (
+        <div className="fixed inset-0 bg-black opacity-50 z-10 pointer-events-none overflow-hidden"></div>
+      )}
+      {wlcOpen && (
+        <div className="fixed inset-0 bg-black opacity-50 z-10 pointer-events-none overflow-hidden"></div>
+      )}
       {accidentalDeath && (
         <div className="fixed inset-0 bg-black opacity-50 z-10 pointer-events-none overflow-hidden"></div>
       )}
