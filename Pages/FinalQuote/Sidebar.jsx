@@ -8,11 +8,11 @@ import Link from "next/link";
 const Sidebar = () => {
   return (
     <div className="w-full z-[1]  overflow-hidden relative top-[60px] min-h-[80vh] flex justify-start items-center gap-[1.5rem] flex-col">
-      <button className="w-[268px] h-[60px] flex text-[18px] justify-center items-center gap-[4px] font-medium bg-primary rounded-[10px] text-white">
+      {/* <button className="w-[268px] h-[60px] flex text-[18px] justify-center items-center gap-[4px] font-medium bg-primary rounded-[10px] text-white">
         <AddIcCallOutlinedIcon /> Talk to Expert
-      </button>
+      </button> */}
       <Link href={"#"} target="__blank">
-        <div className="w-[268px] h-max   py-[20px] rounded-xl mt-[1.5rem] flex justify-between items-center flex-col gap-[10px] bg-white text-halfBlack shadow-sidebar">
+        <div className="w-[268px] h-max   py-[20px] rounded-xl mt-[2px] flex justify-between items-center flex-col gap-[10px] bg-white text-halfBlack shadow-sidebar">
           <h4 className="text-center  font-extrabold tracking-wider text-[35px]">
             4.65/5
             <span className="text-[16px] font-medium tracking-normal">

@@ -30,11 +30,6 @@ import {
   TimelineContent,
 } from "@mui/lab";
 
-// Icons (no changes to imports)
-import SentimentSatisfiedOutlined from "@mui/icons-material/SentimentSatisfiedOutlined";
-import CreditCardOutlined from "@mui/icons-material/CreditCardOutlined";
-import AutorenewOutlined from "@mui/icons-material/AutorenewOutlined";
-
 const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
   const [activeTab, setActiveTab] = useState("Plan Summary");
 
@@ -106,21 +101,21 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
               {insurance === "term-life" && (
                 <>
                   <div className="w-full bg-opposite/10 h-max p-4 py-3 flex flex-col gap-1 rounded-lg shadow-sidebar">
-                    <h2 className="font-semibold text-halfBlack text-[15px]">
-                      Renewability
+                    <h2 className="font-medium text-black text-[15px]">
+                      Policy Benefits
                     </h2>
                     <p className="text-text1 leading-[24px] text-halfBlack">
-                      The policy auto-renews at the end of each term without a
-                      medical exam, with premiums increasing by age, until 85.
+                      Covers death from any cause, including natural events,
+                      accidents, and illnesses.
                     </p>
                   </div>
                   <div className="w-full h-max p-4 py-3 bg-secondary/10 flex flex-col gap-1 rounded-lg shadow-sidebar">
-                    <h2 className="font-semibold text-halfBlack text-[15px]">
-                      Convertibility
+                    <h2 className="font-semibold text-black text-[16px]">
+                      Exclusions
                     </h2>
                     <p className="text-text1 leading-[24px] text-halfBlack">
-                      The policy can be converted to permanent life insurance
-                      before age 70.
+                      Suicide is excluded during the first two years of the
+                      policy.
                     </p>
                   </div>
                 </>
@@ -138,12 +133,12 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                     </p>
                   </div>
                   <div className="w-full h-max p-4 py-3 bg-secondary/10 flex flex-col gap-1 rounded-lg shadow-sidebar">
-                    <h2 className="font-semibold text-halfBlack text-[15px]">
-                      Convertibility
+                    <h2 className="font-semibold text-black text-[16px]">
+                      Exclusions
                     </h2>
                     <p className="text-text1 leading-[24px] text-halfBlack">
-                      The policy can be converted to permanent life insurance
-                      before age 70.
+                      Suicide is excluded during the first two years of the
+                      policy.
                     </p>
                   </div>
                 </>
@@ -151,21 +146,21 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
 
               <div className="w-full flex h-full justify-between items-center gap-4">
                 <div className="w-full h-[8rem] p-4 py-3 flex flex-col gap-1 rounded-lg shadow-sidebar">
-                  <h2 className="font-medium text-black text-[15px]">
-                    Policy Benefits
+                  <h2 className="font-semibold text-halfBlack text-[15px]">
+                    Renewability
                   </h2>
                   <p className="text-text1 leading-[24px] text-halfBlack">
-                    Covers death from any cause, including natural events,
-                    accidents, and illnesses.
+                    The policy auto-renews at the end of each term without a
+                    medical exam until 85 years.
                   </p>
                 </div>
                 <div className="w-full min-h-[8rem] p-4 py-3 flex flex-col gap-1 rounded-lg shadow-sidebar">
-                  <h2 className="font-semibold text-black text-[16px]">
-                    Exclusions
+                  <h2 className="font-semibold text-halfBlack text-[15px]">
+                    Convertibility
                   </h2>
                   <p className="text-text1 leading-[24px] text-halfBlack">
-                    Suicide is excluded during the first two years of the
-                    policy.
+                    The policy can be converted to whole life insurance before
+                    age 70.
                   </p>
                 </div>
               </div>
@@ -177,13 +172,13 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                 How Does it Work?
               </h3>
 
-              <div className="mt-[0rem] relative ">
-                {/* <Bracket className="text-[270px] absolute  top-[10px] left-[80px]" /> */}
+              <div className="mt-[0rem] relative  ">
+                {/* <Bracket className="text-[370px] absolute  top-[10px] left-[80px]" /> */}
                 <Timeline position="left" className="w-full py-10 px-0 pt-0">
                   <TimelineItem className="py-0 relative   ">
                     <TimelineContent className="flex items-center">
                       <div className="pb-[3rem] relative top-[0px]">
-                        <div className="mr-2 p-3 w-[270px]  bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                        <div className="mr-2 p-3 w-[370px]  bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
                             You begin paying the monthly premiums
                           </p>
@@ -207,7 +202,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                   <TimelineItem className="py-0">
                     <TimelineContent className="flex items-center">
                       <div className="pb-[1.5rem] relative top-[-20px]">
-                        <div className="mr-2 p-3 w-[270px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                        <div className="mr-2 p-3 w-[370px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
                             If you pass away during the term, your family will
                             receive the full sum assured, tax-free.
@@ -229,7 +224,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                   <TimelineItem className="py-0">
                     <TimelineContent className="flex items-center">
                       <div className="pb-[1.5rem] relative top-[-10px]">
-                        <div className="mr-2 p-3 w-[270px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                        <div className="mr-2 p-3 w-[370px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
                             Convert to a whole life policy before this period,
                             or the coverage will end with no cash value.{" "}
@@ -254,7 +249,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                   <TimelineItem className="py-0">
                     <TimelineContent className="flex items-center">
                       <div className="pb-[3rem] relative top-[-0px]">
-                        <div className="mr-2 p-3 w-[270px] bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                        <div className="mr-2 p-3 w-[370px] bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
                             If converted to a whole life policy, coverage
                             continues and builds cash value.{" "}
@@ -277,7 +272,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                   <TimelineItem className="py-0 ">
                     <TimelineContent className="flex items-center">
                       <div className=" pb-0 relative top-[-10px]">
-                        <div className="mr-2 p-3 w-[270px] bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                        <div className="mr-2 p-3 w-[370px] bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
                             The policy ends at age 100 or when you pass away
                             (whichever comes first) and your family gets the
