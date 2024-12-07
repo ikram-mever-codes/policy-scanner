@@ -25,6 +25,7 @@ const FinalQuote = () => {
   const [payTermLength, setPayTermLength] = useState("Life 100 Pay");
   const [isWholeLife, setIsWholeType] = useState(false);
   const [wlcOpen, setWlcOpen] = useState(false);
+  const [accidentalDeath, setAccidentalDeath] = useState(false);
 
   const router = useRouter();
 
@@ -158,6 +159,8 @@ const FinalQuote = () => {
                   setSidebarOpen={setSidebarOpen}
                   payTermLength={payTermLength}
                   enhanced={enhanced}
+                  accidentalDeath={accidentalDeath}
+                  setAccidentalDeath={setAccidentalDeath}
                 />
               </CSSTransition>
             </div>

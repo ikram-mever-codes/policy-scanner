@@ -17,6 +17,7 @@ import "./Head.css";
 import PlanDetailsSidebar from "./PlanDetailsSidebar";
 import Link from "next/link";
 import WholeLifeConvertible from "./WholeLifeConvertible";
+import AccidentalDeath from "./AccidentalDeath";
 
 const Quotes = ({
   insurance,
@@ -28,6 +29,8 @@ const Quotes = ({
   enhanced,
   wlcOpen,
   setWlcOpen,
+  accidentalDeath,
+  setAccidentalDeath,
 }) => {
   const [expanded, setExpanded] = useState(false);
   const [paidAddons, setPaidAddons] = useState([]);
@@ -157,7 +160,7 @@ const Quotes = ({
   }
 
   useEffect(() => {
-    if (sidebarOpen || wlcOpen) {
+    if (sidebarOpen || accidentalDeath || wlcOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
@@ -166,13 +169,16 @@ const Quotes = ({
     return () => {
       document.body.style.overflow = "unset";
     };
-  }, [sidebarOpen, wlcOpen]);
+  }, [sidebarOpen, wlcOpen, accidentalDeath]);
   return (
     <div className="w-[845px] h-max pb-[2rem]">
       {sidebarOpen ||
         (wlcOpen && (
           <div className="fixed inset-0 bg-black opacity-50 z-10 pointer-events-none overflow-hidden"></div>
         ))}
+      {accidentalDeath && (
+        <div className="fixed inset-0 bg-black opacity-50 z-10 pointer-events-none overflow-hidden"></div>
+      )}
       <div className="w-full h-max flex justify-between items-center gap-[1rem]  flex-col relative z-0">
         <div className="w-full rounded-lg h-max bg-white shadow-sidebar min-h-[190px] flex relative justify-between pb-[15px] items-center gap-[0px] flex-col">
           {(insurance === "term-life" || insurance === "level-term") && (
@@ -455,7 +461,11 @@ const Quotes = ({
                     </div>
 
                     <div className="w-full h-[60px] flex justify-start items-start gap-[10px] flex-col text-text1 leading-l1">
-                      <div>
+                      <div
+                        onClick={() => {
+                          setAccidentalDeath(true);
+                        }}
+                      >
                         <input
                           type="checkbox"
                           className="text-[20px] mx-[5px]"
@@ -578,6 +588,14 @@ const Quotes = ({
       <WholeLifeConvertible
         open={wlcOpen}
         onClose={toggleWlc}
+        insurance={insurance}
+        decreasingTerm={decreasingTerm}
+      />
+      <AccidentalDeath
+        open={accidentalDeath}
+        onClose={() => {
+          setAccidentalDeath(false);
+        }}
         insurance={insurance}
         decreasingTerm={decreasingTerm}
       />

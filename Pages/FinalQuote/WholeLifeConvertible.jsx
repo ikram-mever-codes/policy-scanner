@@ -118,7 +118,7 @@ const WholeLifeConvertible = ({ open, onClose }) => {
 
             <div className="mb-4">
               <h3 className="font-semibold mb-2">Starting Out:</h3>
-              <ul className=" pl-5 space-y-2 li-disc">
+              <ul className=" pl-5 space-y-1 li-disc">
                 <li className="leading-[27px] text-[15px]  text-halfBlack">
                   You get temporary life insurance (like renting) at an
                   affordable rate
@@ -137,7 +137,7 @@ const WholeLifeConvertible = ({ open, onClose }) => {
               <h3 className="font-semibold mb-2">
                 The Special Conversion Feature:
               </h3>
-              <ul className="list-disc pl-5 space-y-2 li-disc">
+              <ul className="list-disc pl-5 space-y-1 li-disc">
                 <li className="leading-[27px] text-[15px]  text-halfBlack">
                   Any time during your term, you have a guaranteed right to
                   convert to permanent coverage
@@ -283,8 +283,8 @@ const WholeLifeConvertible = ({ open, onClose }) => {
           </div>
 
           {/* Phase Comparison */}
-          <div className="grid grid-cols-2 gap-6">
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6">
+          <div className="grid grid-cols-2 gap-6 ">
+            <div className="bg-gradient-to-br from-blue-50 shadow-lg to-indigo-50 rounded-xl p-6">
               <div className="flex items-center gap-2 mb-4">
                 <Shield className="text-blue-600" size={20} />
                 <h3 className="text-lg font-semibold text-gray-800">
@@ -310,7 +310,7 @@ const WholeLifeConvertible = ({ open, onClose }) => {
                 </p>
               </div>
             </div>
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6">
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl shadow-lg p-6">
               <div className="flex items-center gap-2 mb-4">
                 <HeartPulse className="text-emerald-600" size={20} />
                 <h3 className="text-lg font-semibold text-gray-800">
@@ -339,7 +339,7 @@ const WholeLifeConvertible = ({ open, onClose }) => {
           </div>
 
           {/* Key Benefits */}
-          <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-6">
+          <div className="bg-gradient-to-br from-amber-50 to-orange-50 shadow-lg  rounded-xl p-6">
             <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
               <HandCoins className="text-amber-600" size={20} />
               Key Benefits
