@@ -107,7 +107,7 @@ const WholeLifeConvertible = ({ open, onClose }) => {
 
         <div className="p-6 space-y-6">
           <div className="bg-blue-50 shadow-lg p-6 rounded-lg">
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-2">
               <Shield className="w-6 h-6 text-blue-600" />
               <h2 className="text-xl font-semibold">Simple Explanation</h2>
             </div>
@@ -157,7 +157,7 @@ const WholeLifeConvertible = ({ open, onClose }) => {
           </div>
 
           {/* Interactive Controls */}
-          <div className="grid grid-cols-3 gap-4  py-[30px]">
+          <div className="grid grid-cols-3 gap-4  py-[10px]">
             <div className="space-y-2">
               <label className="flex items-center gap-2 text-gray-700 font-medium">
                 <Calendar size={18} />
