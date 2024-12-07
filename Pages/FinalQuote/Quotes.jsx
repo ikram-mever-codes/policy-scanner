@@ -176,7 +176,10 @@ const Quotes = ({
       <div className="w-full h-max flex justify-between items-center gap-[1rem]  flex-col relative z-0">
         <div className="w-full rounded-lg h-max bg-white shadow-sidebar min-h-[190px] flex relative justify-between pb-[15px] items-center gap-[0px] flex-col">
           {(insurance === "term-life" || insurance === "level-term") && (
-            <div className="w-max h-[30px] px-[1rem] py-[7px]  mb-[12px] rounded-tl-[10px] rounded-br-[10px] bg-[#596B8A] text-white self-start text-[14px] font-normal flex justify-center items-center gap-[3px]">
+            <div
+              onClick={() => setWlcOpen(true)}
+              className="w-max h-[30px] cursor-pointer px-[1rem] py-[7px]  mb-[12px] rounded-tl-[10px] rounded-br-[10px] bg-[#596B8A] text-white self-start text-[14px] font-normal flex justify-center items-center gap-[3px]"
+            >
               $ Whole life convertible - See How{" "}
               <KeyboardArrowDownOutlined sx={{ fontSize: "16px" }} />
             </div>

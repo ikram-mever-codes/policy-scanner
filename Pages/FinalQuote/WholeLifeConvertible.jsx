@@ -369,7 +369,6 @@ const WholeLifeConvertible = ({ open, onClose }) => {
           </div>
         </div>
 
-        {/* CTA Section */}
         <div className="sticky bottom-0 bg-white border-t border-gray-200 p-4 flex justify-between items-center">
           <div className="text-gray-900 font-semibold text-xl">
             ${termMonthlyPremium}

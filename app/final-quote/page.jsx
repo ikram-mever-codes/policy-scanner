@@ -13,7 +13,7 @@ import EffectiveSaving from "@/Pages/FinalQuote/EffectiveSaving";
 
 const FinalQuote = () => {
   const [effSaving, setEffSaving] = useState(false);
-  const [openPopup, setOpenPopup] = useState(true); // Initial modal is open
+  const [openPopup, setOpenPopup] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selected, setSelected] = useState(null);
   const [decreasingTerm, setDecreasingTerm] = useState(false);
@@ -24,14 +24,12 @@ const FinalQuote = () => {
   const [yearly, setYearly] = useState(false);
   const [payTermLength, setPayTermLength] = useState("Life 100 Pay");
   const [isWholeLife, setIsWholeType] = useState(false);
-  const [wlcOpen, setWlcOpen] = useState(true);
+  const [wlcOpen, setWlcOpen] = useState(false);
 
   const router = useRouter();
 
-  // Handler to prevent modal from closing on backdrop click or Escape key
   const handleModalClose = (event, reason) => {
     if (reason === "backdropClick" || reason === "escapeKeyDown") {
-      // Do nothing, prevent the modal from closing
       return;
     }
     setOpenPopup(false);
