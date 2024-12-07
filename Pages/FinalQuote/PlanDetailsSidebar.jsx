@@ -172,13 +172,13 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                 How Does it Work?
               </h3>
 
-              <div className="mt-[0rem] relative  ">
-                {/* <Bracket className="text-[370px] absolute  top-[10px] left-[80px]" /> */}
+              <div className="mt-[0rem] relative  pr-[20px]">
+                {/* <Bracket className="text-[350px] absolute  top-[10px] left-[80px]" /> */}
                 <Timeline position="left" className="w-full py-10 px-0 pt-0">
                   <TimelineItem className="py-0 relative   ">
                     <TimelineContent className="flex items-center">
                       <div className="pb-[3rem] relative top-[0px]">
-                        <div className="mr-2 p-3 w-[370px]  bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                        <div className="mr-2 p-3 w-[350px]  bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
                             You begin paying the monthly premiums
                           </p>
@@ -202,7 +202,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                   <TimelineItem className="py-0">
                     <TimelineContent className="flex items-center">
                       <div className="pb-[1.5rem] relative top-[-20px]">
-                        <div className="mr-2 p-3 w-[370px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                        <div className="mr-2 p-3 w-[350px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
                             If you pass away during the term, your family will
                             receive the full sum assured, tax-free.
@@ -224,7 +224,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                   <TimelineItem className="py-0">
                     <TimelineContent className="flex items-center">
                       <div className="pb-[1.5rem] relative top-[-10px]">
-                        <div className="mr-2 p-3 w-[370px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                        <div className="mr-2 p-3 w-[350px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
                             Convert to a whole life policy before this period,
                             or the coverage will end with no cash value.{" "}
@@ -249,7 +249,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                   <TimelineItem className="py-0">
                     <TimelineContent className="flex items-center">
                       <div className="pb-[3rem] relative top-[-0px]">
-                        <div className="mr-2 p-3 w-[370px] bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                        <div className="mr-2 p-3 w-[350px] bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
                             If converted to a whole life policy, coverage
                             continues and builds cash value.{" "}
@@ -272,7 +272,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                   <TimelineItem className="py-0 ">
                     <TimelineContent className="flex items-center">
                       <div className=" pb-0 relative top-[-10px]">
-                        <div className="mr-2 p-3 w-[370px] bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+                        <div className="mr-2 p-3 w-[350px] bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
                           <p className="text-black w-full text-left text-[13px] font-medium">
                             The policy ends at age 100 or when you pass away
                             (whichever comes first) and your family gets the
@@ -288,7 +288,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
                       {/* No connector on the final item */}
                     </TimelineSeparator>
                     <TimelineOppositeContent className="flex items-center justify-start">
-                      <span className="text-halfBlack font-semibold text-[16px] w-full text-right relative top-[-25px]">
+                      <span className="text-halfBlack font-semibold text-[16px] text-wrap w-full text-right relative top-[-25px]">
                         Age 100
                       </span>
                     </TimelineOppositeContent>
@@ -298,7 +298,7 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
             </div>
 
             {/* <div className="w-[60vw] my-[20px] mt-0 h-[1px] bg-gradient-to-r from-transparent via-halfBlack to-transparent"></div> */}
-            <div className="w-full flex justify-center items-center gap-4">
+            <div className="w-full flex justify-start px-[20px] items-center gap-4">
               <div className="font-semibold text-center text-[20px] text-halfBlack">
                 $270.00 <span className="text-[16px] font-medium">/Month</span>
               </div>
@@ -386,3 +386,145 @@ const PlanDetailsSidebar = ({ open, onClose, insurance, decreasingTerm }) => {
 };
 
 export default PlanDetailsSidebar;
+
+// <div>
+// <div className="w-full h-max p-4 py-3 bg-white flex flex-col gap-1 rounded-lg shadow-sidebar">
+//   <h2 className="font-semibold text-primary text-[15px]">
+//     What is a Whole life convertible Term plan{" "}
+//   </h2>
+//   <p className="text-text1 leading-[24px] text-halfBlack">
+//     A Whole Life Convertible Term Plan offers temporary coverage
+//     with the option to convert it into a permanent whole life policy
+//     later, without needing additional medical tests.
+//   </p>
+// </div>
+// </div>
+// <div className="w-full relative mt-[1.5rem] border-solid border border-halfBlack/30 rounded-lg">
+// <h3 className="font-semibold text-primary text-[20px] mt-4 w-max left-[20px] text-left px-2 relative top-[-33px] bg-white">
+//   How Does it Work?
+// </h3>
+
+// <div className="mt-[0rem] relative  pr-[20px]">
+//   {/* <Bracket className="text-[350px] absolute  top-[10px] left-[80px]" /> */}
+//   <Timeline position="left" className="w-full py-10 px-0 pt-0">
+//     <TimelineItem className="py-0 relative   ">
+//       <TimelineContent className="flex items-center">
+//         <div className="pb-[3rem] relative top-[0px]">
+//           <div className="mr-2 p-3 w-[350px]  bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+//             <p className="text-black w-full text-left text-[13px] font-medium">
+//               You begin paying the monthly premiums
+//             </p>
+//           </div>
+//         </div>
+//       </TimelineContent>
+//       <TimelineSeparator>
+//         <TimelineDot className="bg-halfBlack ">
+//           <MonetizationOnIcon />
+//         </TimelineDot>
+//         <TimelineConnector className="bg-halfBlack  " />
+//       </TimelineSeparator>
+//       <TimelineOppositeContent className="flex items-center justify-start">
+//         <span className="text-opposite font-semibold text-right w-full text-[16px] relative top-[-20px]">
+//           Age 37
+//         </span>
+//       </TimelineOppositeContent>
+//     </TimelineItem>
+
+//     {/* 2nd Event */}
+//     <TimelineItem className="py-0">
+//       <TimelineContent className="flex items-center">
+//         <div className="pb-[1.5rem] relative top-[-20px]">
+//           <div className="mr-2 p-3 w-[350px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+//             <p className="text-black w-full text-left text-[13px] font-medium">
+//               If you pass away during the term, your family will
+//               receive the full sum assured, tax-free.
+//             </p>
+//           </div>
+//         </div>
+//       </TimelineContent>
+//       <TimelineSeparator>
+//         <TimelineDot className="bg-halfBlack ">
+//           <Rip className="text-[24px]" />
+//         </TimelineDot>{" "}
+//         <TimelineConnector className="bg-halfBlack" />
+//       </TimelineSeparator>
+//       <TimelineOppositeContent className="flex items-center justify-start">
+//         <span className="relative top-[-30px] text-halfBlack text-[13px]"></span>
+//       </TimelineOppositeContent>
+//     </TimelineItem>
+
+//     <TimelineItem className="py-0">
+//       <TimelineContent className="flex items-center">
+//         <div className="pb-[1.5rem] relative top-[-10px]">
+//           <div className="mr-2 p-3 w-[350px] bg-secondary/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+//             <p className="text-black w-full text-left text-[13px] font-medium">
+//               Convert to a whole life policy before this period, or
+//               the coverage will end with no cash value.{" "}
+//             </p>
+//           </div>
+//         </div>
+//       </TimelineContent>
+//       <TimelineSeparator>
+//         <TimelineDot className="bg-halfBlack ">
+//           <HourglassBottom />
+//         </TimelineDot>
+//         <TimelineConnector className="bg-halfBlack" />
+//       </TimelineSeparator>
+//       <TimelineOppositeContent className="flex items-center justify-start">
+//         <span className="text-blue-500 font-semibold text-[16px] w-full text-right relative top-[-25px]">
+//           Age 57
+//         </span>
+//       </TimelineOppositeContent>
+//     </TimelineItem>
+
+//     {/* 4th Event */}
+//     <TimelineItem className="py-0">
+//       <TimelineContent className="flex items-center">
+//         <div className="pb-[3rem] relative top-[-0px]">
+//           <div className="mr-2 p-3 w-[350px] bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+//             <p className="text-black w-full text-left text-[13px] font-medium">
+//               If converted to a whole life policy, coverage
+//               continues and builds cash value.{" "}
+//             </p>
+//           </div>
+//         </div>
+//       </TimelineContent>
+//       <TimelineSeparator>
+//         <TimelineDot className="bg-halfBlack">
+//           <Savings />
+//         </TimelineDot>
+//         <TimelineConnector className="bg-halfBlack" />
+//       </TimelineSeparator>
+//       <TimelineOppositeContent className="flex items-center justify-start">
+//         <span className="text-halfBlack text-[13px] relative top-[-10px]"></span>
+//       </TimelineOppositeContent>
+//     </TimelineItem>
+
+//     {/* 5th Event - Age 100 yrs */}
+//     <TimelineItem className="py-0 ">
+//       <TimelineContent className="flex items-center">
+//         <div className=" pb-0 relative top-[-10px]">
+//           <div className="mr-2 p-3 w-[350px] bg-primary2/10 shadow-xl border border-grays/20 border-solid rounded-lg flex items-center gap-2">
+//             <p className="text-black w-full text-left text-[13px] font-medium">
+//               The policy ends at age 100 or when you pass away
+//               (whichever comes first) and your family gets the death
+//               benefit and cash value.
+//             </p>
+//           </div>
+//         </div>
+//       </TimelineContent>
+//       <TimelineSeparator>
+//         <TimelineDot className="bg-halfBlack">
+//           <Security />
+//         </TimelineDot>
+//         {/* No connector on the final item */}
+//       </TimelineSeparator>
+//       <TimelineOppositeContent className="flex items-center justify-start">
+//         <span className="text-halfBlack font-semibold text-[16px] text-wrap w-full text-right relative top-[-25px]">
+//           Age 100
+//         </span>
+//       </TimelineOppositeContent>
+//     </TimelineItem>
+//   </Timeline>
+// </div>
+// </div>

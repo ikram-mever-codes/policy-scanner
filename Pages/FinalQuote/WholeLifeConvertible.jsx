@@ -1,232 +1,320 @@
-import React, { useState } from "react";
-import { Close } from "@mui/icons-material";
+import React, { useState, useEffect } from "react";
 import Slide from "@mui/material/Slide";
 import Image from "next/image";
 import logo from "../../assets/canada-life.png";
-import { CSSTransition } from "react-transition-group";
+import {
+  Clock,
+  DollarSign,
+  Calendar,
+  Shield,
+  TrendingUp,
+  XCircle,
+  Wallet,
+  HandCoins,
+  LockKeyhole,
+  HeartPulse,
+} from "lucide-react";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ReferenceLine,
+  ResponsiveContainer,
+} from "recharts";
 import "./Head.css";
 
 const WholeLifeConvertible = ({ open, onClose }) => {
-  const [activeTab, setActiveTab] = useState("Plan Summary");
+  const [isClient, setIsClient] = useState(false);
+  const [currentAge, setCurrentAge] = useState(35);
+  const [coverage, setCoverage] = useState(500000);
+  const [termLength, setTermLength] = useState(20);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  const termMonthlyPremium = React.useMemo(() => {
+    return ((coverage * 0.0016) / 12).toFixed(2);
+  }, [coverage]);
+
+  const wholeLifeMonthlyPremium = React.useMemo(() => {
+    return ((coverage * 0.004) / 12).toFixed(2);
+  }, [coverage]);
+
+  const conversionAge = currentAge + termLength;
+
+  const generateData = React.useMemo(() => {
+    const data = [];
+    // Term phase
+    for (let year = 0; year <= termLength; year++) {
+      data.push({
+        age: currentAge + year,
+        coverage: coverage,
+        cashValue: 0,
+        premium: termMonthlyPremium * 12,
+        phase: "Term",
+      });
+    }
+    // Whole life phase
+    for (let year = 1; year <= 30; year++) {
+      data.push({
+        age: conversionAge + year,
+        coverage: coverage,
+        cashValue: coverage * 0.03 * year,
+        premium: wholeLifeMonthlyPremium * 12,
+        phase: "Whole Life",
+      });
+    }
+    return data;
+  }, [
+    currentAge,
+    coverage,
+    termLength,
+    conversionAge,
+    termMonthlyPremium,
+    wholeLifeMonthlyPremium,
+  ]);
+
+  if (!isClient) return null;
 
   return (
     <Slide direction="left" in={open} mountOnEnter unmountOnExit>
-      <div className="fixed top-0 right-0 h-[100vh] w-[550px] overflow-y-scroll   z-[30] overflow-x-hidden bg-white shadow-lg p-5 flex flex-col">
-        <div className="flex justify-between items-center mb-4">
+      <div className="fixed top-0 right-0 h-screen w-[720px] z-[10000] bg-gray-50 shadow-2xl overflow-y-auto">
+        {/* Header */}
+        <div className="sticky top-0 z-50 bg-white shadow-sm px-6 py-4 flex justify-between items-center">
           <button
             onClick={onClose}
-            className="self-start text-halfBlack hover:text-black transition"
+            className="text-gray-500 hover:text-gray-700 transition-colors"
           >
-            <Close />
+            <XCircle size={24} />
           </button>
           <Image
             src={logo}
             alt="Logo"
-            className="mx-auto object-cover object-center relative left-[-150px]"
             width={100}
-            height={100}
+            height={40}
+            className="object-contain"
+            priority
           />
+          <div className="w-[24px]" /> {/* Spacer for centering */}
         </div>
 
-        <div className="flex gap-3  pb-2 my-5 text-center ">
-          <button
-            onClick={() => setActiveTab("Plan Summary")}
-            className={`w-[10rem] h-[2.8rem] px-3 py-1 rounded-[5px] font-normal bg-[#f4f4f4] ${
-              activeTab === "Plan Summary" &&
-              "border-solid border-b-[3px] font-semibold text-opposite border-opposite"
-            } `}
-          >
-            Plan Summary
-          </button>
-          <button
-            onClick={() => setActiveTab("Riders")}
-            className={` w-[10rem] h-[2.8rem] px-3 py-1 rounded-[5px] font-normal bg-[#f4f4f4]  ${
-              activeTab === "Riders" &&
-              "border-solid border-b-[3px] font-semibold text-opposite border-opposite"
-            } `}
-          >
-            Riders
-          </button>
-        </div>
+        <div className="p-6 space-y-6">
+          {/* Introduction */}
+          <div className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 shadow-sm">
+            <div className="flex items-center gap-3 mb-3">
+              <Shield className="text-blue-600" size={24} />
+              <h2 className="text-xl font-semibold text-gray-800">
+                Whole Life Convertible Plan
+              </h2>
+            </div>
+            <p className="text-gray-600 leading-relaxed">
+              Start with affordable term coverage and convert to permanent life
+              insurance whenever you're ready - no medical exam needed.
+            </p>
+          </div>
 
-        <CSSTransition
-          in={activeTab === "Plan Summary"}
-          timeout={300}
-          classNames="fade"
-          unmountOnExit
-        >
-          <div className="w-full h-max flex justify-start items-center gap-6 flex-col  py-2">
-            <div className="w-full flex h-max justify-start items-center gap-4 flex-col">
-              <div className="w-full h-max p-4 bg-secondary/10 flex justify-start items-start gap-2  rounded-lg shadow-sidebar flex-col">
-                <h2 className="font-semibold text-halfBlack text-[18px]">
-                  Plan Details
-                </h2>
-                <p className="text-text1 leading-[24px] text-halfBlack">
-                  In the event of your death during the policy term, your
-                  nominee will receive the sum assured amount, free from taxes.
-                </p>
-              </div>
-              <div className="w-full bg-primary2/10 h-max p-4 flex justify-start items-start  gap-2 rounded-lg shadow-sidebar flex-col">
-                <h2 className="font-semibold text-halfBlack text-[18px]">
-                  Renewability{" "}
-                </h2>
-                <p className="text-text1 leading-[24px] text-halfBlack">
-                  The policy auto-renews at the end of each term without a
-                  medical exam, with premiums increasing by age, until 85.
-                </p>
-              </div>
-              <div className="w-full h-max p-4 bg-opposite/10 flex justify-start items-start  gap-2 rounded-lg shadow-sidebar flex-col">
-                <h2 className="font-semibold text-halfBlack text-[18px]">
-                  Convertibility{" "}
-                </h2>
-                <p className="text-text1 leading-[24px] text-halfBlack">
-                  The policy can be converted to permanent life insurance before
-                  age 70.
-                </p>
-              </div>
-              <div className="w-full flex h-full justify-between items-center gap-4">
-                <div className="w-full  h-[9rem] p-4 flex justify-start items-start  gap-2 rounded-lg shadow-sidebar flex-col">
-                  <h2 className="font-medium text-black text-[18px]">
-                    Policy Benefits
-                  </h2>
-                  <p className="text-text1 leading-[24px] text-halfBlack">
-                    Covers death from any cause, including natural events,
-                    accidents, and illnesses.
-                  </p>
-                </div>
-                <div className="w-full min-h-[9rem] p-4 flex justify-start items-start  gap-2 rounded-lg shadow-sidebar flex-col">
-                  <h2 className="font-semibold text-black text-[18px]">
-                    Exclusions{" "}
-                  </h2>
-                  <p className="text-text1 leading-[24px] text-halfBlack">
-                    Suicide is excluded during the first two years of the
-                    policy.
-                  </p>
-                </div>
-              </div>
+          {/* Interactive Controls */}
+          <div className="grid grid-cols-3 gap-4">
+            <div className="space-y-2">
+              <label className="flex items-center gap-2 text-gray-700 font-medium">
+                <Calendar size={18} />
+                Current Age
+              </label>
+              <select
+                value={currentAge}
+                onChange={(e) => setCurrentAge(Number(e.target.value))}
+                className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+              >
+                {[25, 30, 35, 40, 45, 50].map((age) => (
+                  <option key={age} value={age}>
+                    {age} years
+                  </option>
+                ))}
+              </select>
             </div>
-            <div className="w-full">
-              <h3 className="font-semibold text-primary text-[20px] mt-4 w-full text-left">
-                How Does it Work?
-              </h3>
+            <div className="space-y-2">
+              <label className="flex items-center gap-2 text-gray-700 font-medium">
+                <DollarSign size={18} />
+                Coverage Amount
+              </label>
+              <select
+                value={coverage}
+                onChange={(e) => setCoverage(Number(e.target.value))}
+                className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+              >
+                {[250000, 500000, 750000, 1000000].map((amount) => (
+                  <option key={amount} value={amount}>
+                    ${amount.toLocaleString()}
+                  </option>
+                ))}
+              </select>
             </div>
-            <div className="w-[60vw] my-[20px] h-[1px] bg-gradient-to-r from-transparent via-halfBlack to-transparent"></div>
-            <div className="w-full flex justify-center items-center gap-4">
-              <div className="font-semibold text-center text-[20px] text-halfBlack">
-                $250.00 <span className="text-[16px] font-medium">/Month</span>
-              </div>{" "}
-              <button className="w-[8rem] h-[3rem] flex justify-center items-center bg-secondary text-nowrap px-[15px] py-[5px] gap-[10px] rounded-lg">
-                Get this Rate
-              </button>
+            <div className="space-y-2">
+              <label className="flex items-center gap-2 text-gray-700 font-medium">
+                <Clock size={18} />
+                Term Length
+              </label>
+              <select
+                value={termLength}
+                onChange={(e) => setTermLength(Number(e.target.value))}
+                className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+              >
+                {[10, 15, 20, 25, 30].map((term) => (
+                  <option key={term} value={term}>
+                    {term} years
+                  </option>
+                ))}
+              </select>
             </div>
           </div>
-        </CSSTransition>
 
-        <CSSTransition
-          in={activeTab === "Riders"}
-          timeout={300}
-          classNames="fade"
-          unmountOnExit
-        >
-          <div className="flex justify-start items-center flex-col gap-[1rem] px-4">
-            <div className="flex justify-start items-center gap-5 flex-col">
-              <h2 className="w-full text-left font-medium text-[20px] text-halfBlack">
-                Paid Riders
-              </h2>
-              <div className="w-full h-max grid grid-cols-1 gap-4">
-                <div className="flex justify-start items-center ">
-                  <div className="relative w-full shadow-sidebar h-max bg-primary2/10   flex justify-start flex-col  rounded-lg overflow-hidden items-start gap-0 pb-5">
-                    {/* <div className="self-start px-4 py-1 rounded-br-lg text-gray top-0 left-0 font-medium bg-[#efc93daf]">
-                      $25/m
-                    </div> */}
-                    <div className="p-3 pb-0 flex gap-3 flex-col justify-start items-start">
-                      <div className="font-semibold text-halfBlack text-[16px]">
-                        Extra Payout on Accidental death{" "}
-                      </div>
-                      <p className=" text-[14px] text-halfBlack">
-                        Incase of accidental death an additional amount of Rs.10
-                        Lac will be paid out to the nominee
-                      </p>
-                    </div>
-                  </div>
-                </div>{" "}
-                <div className="flex justify-start items-center ">
-                  <div className="relative w-full shadow-sidebar h-max   bg-secondary/10  flex justify-start flex-col  rounded-lg overflow-hidden items-start gap-0 pb-5">
-                    {/* <div className="self-start px-4 py-1 rounded-br-lg text-gray top-0 left-0 font-medium bg-[#efc93daf]">
-                      $25/m
-                    </div> */}
-                    <div className="p-3 pb-0 flex gap-3 flex-col justify-start items-start">
-                      <div className="font-semibold text-halfBlack text-[16px]">
-                        Extra Payout on Accidental death{" "}
-                      </div>
-                      <p className=" text-[14px] text-halfBlack">
-                        Incase of accidental death an additional amount of Rs.10
-                        Lac will be paid out to the nominee
-                      </p>
-                    </div>
-                  </div>
-                </div>{" "}
+          {/* Chart */}
+          <div className="bg-white rounded-xl p-6 shadow-sm">
+            <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+              <TrendingUp size={20} className="text-blue-600" />
+              Coverage & Value Timeline
+            </h3>
+            <div className="h-[300px] w-full">
+              <ResponsiveContainer>
+                <LineChart data={generateData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#E5E7EB" />
+                  <XAxis dataKey="age" stroke="#6B7280" />
+                  <YAxis stroke="#6B7280" />
+                  <Tooltip
+                    contentStyle={{
+                      backgroundColor: "white",
+                      borderRadius: "8px",
+                      border: "none",
+                      boxShadow: "0 4px 6px -1px rgba(0,0,0,0.1)",
+                    }}
+                  />
+                  <ReferenceLine
+                    x={conversionAge}
+                    stroke="#EF4444"
+                    label={{ value: "Conversion Point", position: "top" }}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="coverage"
+                    name="Death Benefit"
+                    stroke="#2563EB"
+                    strokeWidth={2}
+                    dot={false}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="cashValue"
+                    name="Cash Value"
+                    stroke="#059669"
+                    strokeWidth={2}
+                    dot={false}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+
+          {/* Phase Comparison */}
+          <div className="grid grid-cols-2 gap-6">
+            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <Shield className="text-blue-600" size={20} />
+                <h3 className="text-lg font-semibold text-gray-800">
+                  Term Phase
+                </h3>
               </div>
-              <div className="flex justify-start items-center ">
-                <div className="relative w-full shadow-sidebar h-max  bg-opposite/10 flex justify-start flex-col  rounded-lg overflow-hidden items-start gap-0 pb-5">
-                  {/* <div className="self-start px-4 py-1 rounded-br-lg text-gray top-0 left-0 font-medium bg-selected2">
-                      Free
-                    </div> */}
-                  <div className="p-3 pb-0 flex gap-3 flex-col justify-start items-start">
-                    <div className="font-semibold text-halfBlack text-[18px]">
-                      Wavier of Premium Cover
-                    </div>
-                    <p className=" text-[14px] text-halfBlack">
-                      As per your age you can exit the policy during the age of
-                      63 years. All premiums paid(excluding GST) shall
-                    </p>
-                  </div>
-                </div>
+              <div className="space-y-3">
+                <p className="flex justify-between text-gray-600">
+                  Monthly Premium
+                  <span className="font-semibold text-gray-900">
+                    ${termMonthlyPremium}
+                  </span>
+                </p>
+                <p className="flex justify-between text-gray-600">
+                  Death Benefit
+                  <span className="font-semibold text-gray-900">
+                    ${coverage.toLocaleString()}
+                  </span>
+                </p>
+                <p className="flex justify-between text-gray-600">
+                  Cash Value
+                  <span className="font-semibold text-gray-900">$0</span>
+                </p>
               </div>
             </div>
-            <div className="flex justify-start items-center gap-5 flex-col">
-              <h2 className="w-full text-left font-medium text-[20px] text-halfBlack">
-                Free Riders
-              </h2>
-              <div className="w-full h-max grid grid-cols-1 gap-4">
-                <div className="flex justify-start items-center ">
-                  <div className="relative w-full shadow-sidebar h-max    flex justify-start flex-col  rounded-lg overflow-hidden items-start gap-0 pb-5">
-                    {/* <div className="self-start px-4 py-1 rounded-br-lg text-gray top-0 left-0 font-medium bg-selected2">
-                      Free
-                    </div> */}
-                    <div className="p-3 pb-0 flex gap-3 h-full flex-col justify-between items-start">
-                      <div className="font-semibold text-halfBlack  text-[18px]">
-                        Wavier of Premium Cover
-                      </div>
-                      <p className=" text-[14px] text-halfBlack ">
-                        In case of a permanent disability to the life insured
-                        all future premiums will be paid by the insurance
-                        company.
-                      </p>
-                    </div>
-                  </div>
-                </div>{" "}
-                <div className="flex justify-start items-center ">
-                  <div className="relative w-full shadow-sidebar h-max   flex justify-start flex-col  rounded-lg overflow-hidden items-start gap-0 pb-5">
-                    {/* <div className="self-start px-4 py-1 rounded-br-lg text-gray top-0 left-0 font-medium bg-selected2">
-                      Free
-                    </div> */}
-                    <div className="p-3 pb-0 flex gap-3 flex-col justify-start items-start">
-                      <div className="font-semibold text-halfBlack text-[18px]">
-                        Wavier of Premium Cover
-                      </div>
-                      <p className=" text-[14px] text-halfBlack">
-                        In case the policyholder is diagnosed with a terminal
-                        illness, 100% of life cover will be paid out immediately
-                        instead of being paid on death.
-                      </p>
-                    </div>
-                  </div>
-                </div>{" "}
+            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <HeartPulse className="text-emerald-600" size={20} />
+                <h3 className="text-lg font-semibold text-gray-800">
+                  After Conversion
+                </h3>
+              </div>
+              <div className="space-y-3">
+                <p className="flex justify-between text-gray-600">
+                  Monthly Premium
+                  <span className="font-semibold text-gray-900">
+                    ${wholeLifeMonthlyPremium}
+                  </span>
+                </p>
+                <p className="flex justify-between text-gray-600">
+                  Death Benefit
+                  <span className="font-semibold text-gray-900">
+                    ${coverage.toLocaleString()}
+                  </span>
+                </p>
+                <p className="flex justify-between text-gray-600">
+                  Cash Value Growth
+                  <span className="font-semibold text-emerald-600">Yes</span>
+                </p>
               </div>
             </div>
           </div>
-        </CSSTransition>
+
+          {/* Key Benefits */}
+          <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-6">
+            <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center gap-2">
+              <HandCoins className="text-amber-600" size={20} />
+              Key Benefits
+            </h3>
+            <div className="grid grid-cols-2 gap-4">
+              <div className="flex items-start gap-2">
+                <Wallet className="text-amber-600 mt-1" size={18} />
+                <p className="text-gray-700">
+                  Start with affordable term coverage
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <Shield className="text-amber-600 mt-1" size={18} />
+                <p className="text-gray-700">Convert without medical exam</p>
+              </div>
+              <div className="flex items-start gap-2">
+                <TrendingUp className="text-amber-600 mt-1" size={18} />
+                <p className="text-gray-700">
+                  Build cash value after conversion
+                </p>
+              </div>
+              <div className="flex items-start gap-2">
+                <LockKeyhole className="text-amber-600 mt-1" size={18} />
+                <p className="text-gray-700">Coverage never expires</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* CTA Section */}
+        <div className="sticky bottom-0 bg-white border-t border-gray-200 p-4 flex justify-between items-center">
+          <div className="text-gray-900 font-semibold text-xl">
+            ${termMonthlyPremium}
+            <span className="text-gray-500 text-base font-normal">/month</span>
+          </div>
+          <button className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors">
+            Get Started
+          </button>
+        </div>
       </div>
     </Slide>
   );

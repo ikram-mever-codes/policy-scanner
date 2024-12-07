@@ -24,6 +24,8 @@ const FinalQuote = () => {
   const [yearly, setYearly] = useState(false);
   const [payTermLength, setPayTermLength] = useState("Life 100 Pay");
   const [isWholeLife, setIsWholeType] = useState(false);
+  const [wlcOpen, setWlcOpen] = useState(true);
+
   const router = useRouter();
 
   // Handler to prevent modal from closing on backdrop click or Escape key
@@ -61,11 +63,10 @@ const FinalQuote = () => {
   }, [insurance, router]);
 
   return (
-    <div className="py-[60px] ">
-      {/* First Modal: ChooseSmoker */}
+    <div className="py-[20px] ">
       <Modal
         open={openPopup}
-        onClose={handleModalClose} // Assign handleModalClose here
+        onClose={handleModalClose}
         className="flex justify-center items-center"
         disableScrollLock={true}
         aria-labelledby="choose-smoker-title"
@@ -77,7 +78,7 @@ const FinalQuote = () => {
           aria-modal="true"
         >
           <ChooseSmoker
-            onClose={handleSelection} // Assign handleSelection to onClose
+            onClose={handleSelection}
             existingData={quoteData}
             uploadPostData={uploadPostData}
           />
@@ -118,7 +119,7 @@ const FinalQuote = () => {
       </Modal>
 
       <div className="flex justify-start items-center w-full h-max flex-col gap-[10rem]">
-        <div className="w-main relative overflow-hidden h-max">
+        <div className="w-main relative overflow-hidden h-max ">
           <div
             className="gap-[15px]"
             style={{ display: "grid", gridTemplateColumns: "75% auto" }}
@@ -152,6 +153,8 @@ const FinalQuote = () => {
                   insurance={insurance}
                   decreasingTerm={decreasingTerm}
                   yearly={yearly}
+                  setWlcOpen={setWlcOpen}
+                  wlcOpen={wlcOpen}
                   setYearly={setYearly}
                   sidebarOpen={sidebarOpen}
                   setSidebarOpen={setSidebarOpen}

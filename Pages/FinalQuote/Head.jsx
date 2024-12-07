@@ -276,13 +276,13 @@ const Head = ({
   }
 
   return (
-    <div className="w-[845px] h-max flex justify-start items-center gap-[1rem] flex-col">
+    <div className="w-[845px] h-max flex justify-start items-center gap-[20px] flex-col">
       {isSidebarOpen && (
         <div className="fixed inset-0 bg-black opacity-50 z-10"></div>
       )}
       <EditInfoSidebar open={isSidebarOpen} onClose={handleCloseSidebar} />
       <div className="w-full h-max flex justify-between items-end">
-        <div className="w-max flex justify-start items-center gap-2">
+        <div className="w-max flex justify-start items-center gap-0">
           <div className="w-max h-[45px] rounded-md overflow-hidden border-solid border border-halfBlack">
             <button
               className={`px-[1rem] min-w-[10rem] w-max h-full bg-primary text-white  rounded-r-[5px]
@@ -292,8 +292,8 @@ const Head = ({
             </button>
           </div>
         </div>
-        <div className="w-max h-max flex justify-end items-center gap-[1px] text-halfBlack text-[14px]">
-          <div className="border-r border-solid border-halfBlack px-[5px]">
+        <div className="w-max  h-max flex justify-end items-center gap-[1px] text-halfBlack text-[14px]">
+          <div className="  border-r border-solid border-halfBlack px-[5px]">
             {quoteData.gender === "male" ? "Male" : "Female"}
           </div>
           <div className="border-r border-solid border-halfBlack px-[5px]">
@@ -318,7 +318,7 @@ const Head = ({
           </button>{" "}
         </div>
       </div>
-      <div className="w-full rounded-lg bg-white shadow-sidebar h-[5.5rem] flex justify-start  items-center gap-[1rem] px-[2rem] py-[0rem]">
+      <div className="w-full rounded-lg bg-white shadow-sidebar h-[5.5rem] flex justify-start   items-center gap-[1rem] px-[2rem] ">
         <div className="flex flex-col w-[10rem]   py-[10px] h-[70px]  pr-[1rem]">
           <div className="flex flex-col items-start justify-around border-r border-solid border-halfBlack h-full">
             <div className="text-text1 leading-l1 text-left text-halfBlack">

@@ -16,6 +16,7 @@ import Star from "../../assets/star.svg";
 import "./Head.css";
 import PlanDetailsSidebar from "./PlanDetailsSidebar";
 import Link from "next/link";
+import WholeLifeConvertible from "./WholeLifeConvertible";
 
 const Quotes = ({
   insurance,
@@ -25,6 +26,8 @@ const Quotes = ({
   sidebarOpen,
   setSidebarOpen,
   enhanced,
+  wlcOpen,
+  setWlcOpen,
 }) => {
   const [expanded, setExpanded] = useState(false);
   const [paidAddons, setPaidAddons] = useState([]);
@@ -34,6 +37,10 @@ const Quotes = ({
 
   const toggleSidebar = () => {
     setSidebarOpen((prev) => !prev);
+  };
+
+  const toggleWlc = () => {
+    setWlcOpen((prev) => !prev);
   };
 
   const handleCheckboxChange = (isChecked, value) => {
@@ -150,7 +157,7 @@ const Quotes = ({
   }
 
   useEffect(() => {
-    if (sidebarOpen) {
+    if (sidebarOpen || wlcOpen) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "unset";
@@ -159,12 +166,13 @@ const Quotes = ({
     return () => {
       document.body.style.overflow = "unset";
     };
-  }, [sidebarOpen]);
+  }, [sidebarOpen, wlcOpen]);
   return (
     <div className="w-[845px] h-max pb-[2rem]">
-      {sidebarOpen && (
-        <div className="fixed inset-0 bg-black opacity-50 z-10 pointer-events-none overflow-hidden"></div>
-      )}
+      {sidebarOpen ||
+        (wlcOpen && (
+          <div className="fixed inset-0 bg-black opacity-50 z-10 pointer-events-none overflow-hidden"></div>
+        ))}
       <div className="w-full h-max flex justify-between items-center gap-[1rem]  flex-col relative z-0">
         <div className="w-full rounded-lg h-max bg-white shadow-sidebar min-h-[190px] flex relative justify-between pb-[15px] items-center gap-[0px] flex-col">
           {(insurance === "term-life" || insurance === "level-term") && (
@@ -561,6 +569,12 @@ const Quotes = ({
       <PlanDetailsSidebar
         open={sidebarOpen}
         onClose={toggleSidebar}
+        insurance={insurance}
+        decreasingTerm={decreasingTerm}
+      />
+      <WholeLifeConvertible
+        open={wlcOpen}
+        onClose={toggleWlc}
         insurance={insurance}
         decreasingTerm={decreasingTerm}
       />

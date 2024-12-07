@@ -49,7 +49,7 @@ const Header = () => {
   };
 
   const isQForm = path === "/quote-form";
-
+  const isQPage = path === "/final-quote";
   const toggleBurgerMenu = () => {
     setMenuOpen((prev) => !prev);
   };
@@ -69,17 +69,17 @@ const Header = () => {
     <>
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
 
-      <div className="w-full h-[90px] relative z-[2]">
+      <div className={`w-full h-[90px] relative z-[2]`}>
         <header className="">
           <div
             className={`px-[${
-              isQForm ? "50px" : "50px"
+              isQForm ? "50px" : "20px"
             }] h-[90px] w-full  py-[15px] bg-white flex justify-center items-center fixed top-0 border-b-2 border-[#F5F5F5]`}
           >
             <Toolbar
-              className={`w-${isQForm ? "full" : "full"} flex ${
+              className={`w-${isQPage ? "main" : "full"} flex ${
                 isQForm ? "justify-start gap-6" : "justify-between"
-              } items-center`}
+              } items-center  px-0`}
               bgColor="white"
             >
               {isQForm && (
@@ -87,7 +87,7 @@ const Header = () => {
                   <MenuIcon fontSize="large" sx={{ color: "black" }} />
                 </IconButton>
               )}
-              <Box className="w-[200px] sm:w-[300px]">
+              <Box className="w-[230px] sm:w-[300px]">
                 <Link href="/">
                   <Image
                     src={logo}
@@ -99,7 +99,7 @@ const Header = () => {
                 </Link>
               </Box>
 
-              {path !== "/quote-form" && (
+              {!isQForm && !isQPage && (
                 <nav className="hidden sm:flex items-center gap-8">
                   <ul className="flex items-center gap-8">
                     {menuItems.map((item, index) => (
@@ -135,17 +135,19 @@ const Header = () => {
                       </li>
                     ))}
                   </ul>
-                  {path === "/final-quote" ? (
-                    <button className="w-max h-[2.8rem] px-[1rem]  flex justify-center items-center gap-[6px]  bg-primary rounded-[10px] text-white">
-                      <AddIcCallOutlinedIcon sx={{ fontSize: "18px" }} /> Talk
-                      to Expert
-                    </button>
-                  ) : (
-                    <button className="w-max h-[2.8rem] flex justify-center items-center text-black bg-secondary text-nowrap px-[15px] py-[5px] gap-[10px] rounded-lg">
-                      Get Quotes
-                    </button>
-                  )}
                 </nav>
+              )}
+              {isQPage ? (
+                <button className="w-max h-[2.8rem] px-[1rem]  flex justify-center items-center gap-[6px]  bg-primary rounded-[10px] text-white">
+                  <AddIcCallOutlinedIcon sx={{ fontSize: "18px" }} /> Talk to
+                  Expert
+                </button>
+              ) : (
+                !isQForm && (
+                  <button className="w-max h-[2.8rem] flex justify-center items-center text-black bg-secondary text-nowrap px-[15px] py-[5px] gap-[10px] rounded-lg">
+                    Get Quotes
+                  </button>
+                )
               )}
               {path !== "/quote-form" && (
                 <Box className="flex items-center sm:hidden gap-4">
