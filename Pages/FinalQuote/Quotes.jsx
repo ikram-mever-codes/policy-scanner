@@ -101,7 +101,7 @@ const Quotes = ({
   }, [isOverlayOpen]);
 
   return (
-    <div className="w-[845px] h-max pb-[2rem]">
+    <div className="w-[845px] h-max mt-[0rem]  pb-[1rem]">
       {isOverlayOpen && (
         <div className="fixed inset-0 bg-black opacity-50 z-10 pointer-events-none overflow-hidden"></div>
       )}
@@ -114,7 +114,7 @@ const Quotes = ({
                 return (
                   <div
                     onClick={toggleWlc}
-                    className="w-max h-[30px] cursor-pointer self-start px-[1rem] py-[7px] mb-[12px] rounded-tl-[10px] rounded-br-[10px] bg-[#596B8A] text-white text-[14px] font-normal flex justify-center items-center gap-[3px]"
+                    className="w-max h-[30px] cursor-pointer self-start px-[1rem] py-[7px] mb-[12px] rounded-tl-[10px] rounded-br-[10px] bg-[#596B8A] text-white text-[12px] font-normal flex justify-center items-center gap-[3px]"
                   >
                     $ Whole life convertible - See How
                     <KeyboardArrowDownOutlined sx={{ fontSize: 16 }} />
@@ -122,7 +122,7 @@ const Quotes = ({
                 );
               case "whole-life":
                 return (
-                  <div className="w-max h-[30px] px-[1rem] py-[7px] mb-[12px] rounded-tl-[10px] rounded-br-[10px] bg-[#AF7AB3] text-white text-[14px] font-normal flex justify-center items-center gap-[3px]">
+                  <div className="w-max h-[30px] px-[1rem] self-start py-[7px] mb-[12px] rounded-tl-[10px] rounded-br-[10px] bg-[#AF7AB3] text-white text-[12px] font-normal flex justify-center items-center gap-[3px]">
                     $ Effective saving 40% - See How
                     <KeyboardArrowDownOutlined sx={{ fontSize: 16 }} />
                   </div>
@@ -134,9 +134,9 @@ const Quotes = ({
             }
           }, [insurance, toggleWlc])}
 
-          <div className="w-full h-max px-[2rem] flex justify-between items-center">
-            <div className="w-full h-full flex justify-start items-center gap-[1rem]">
-              <div className="flex  text-left justify-center gap-[3px] flex-col items-center w-[5rem] mr-[2rem]  h-[38px]">
+          <div className="w-full h-max px-[2rem] flex justify-between gap-[4rem] items-center">
+            <div className="w-full h-full flex justify-between items-center ">
+              <div className="flex  text-left justify-center gap-[3px] flex-col items-center w-[5rem]  h-[38px]">
                 <Image
                   alt="insurance Provider"
                   width={100}
@@ -146,7 +146,7 @@ const Quotes = ({
                 />
               </div>
               <div className="flex text-left justify-center  px-[0px] gap-[5px] items-center w-max h-[38px]">
-                <div className="text-grays w-full text-left text-[14px] text-nowrap font-medium leading-l1">
+                <div className="text-grays w-full text-left text-[14px] text-nowrap font-normal leading-l1">
                   {insurance === "critical-illness" ||
                   insurance === "mortgage-insurance"
                     ? "Term Length"
@@ -162,7 +162,7 @@ const Quotes = ({
               </div>
               {insuranceDetails.label && (
                 <div className="flex text-left justify-center  px-[0px] gap-[5px] items-center w-max h-[38px]">
-                  <div className="text-grays w-full text-left text-[14px] text-nowrap font-medium leading-l1">
+                  <div className="text-grays w-full text-left text-[14px] text-nowrap font-normal leading-l1">
                     {insuranceDetails.label}
                   </div>
                   <div className="text-black  w-full text-left flex items-center text-nowrap text-sm font-medium leading-l1">
@@ -173,7 +173,7 @@ const Quotes = ({
               )}
             </div>
 
-            <div className="w-max flex justify-center items-center h-[38px] gap-[12px] flex-row">
+            <div className="w-max flex justify-center items-center h-[38px] gap-[2rem] flex-row">
               <div className="font-semibold flex justify-center gap-1 items-center h-full flex-col text-center text-[20px] text-halfBlack">
                 <div className="flex justify-center text-[18px] leading-[27px] items-center w-max gap-1">
                   $250.00{" "}
@@ -189,11 +189,11 @@ const Quotes = ({
             </div>
           </div>
 
-          <div className="w-full my-[20px] h-[1px] bg-gradient-to-r from-transparent via-halfBlack to-transparent"></div>
+          <div className="w-full my-[0px] h-[1px] bg-gradient-to-r from-transparent via-halfBlack to-transparent"></div>
 
           <div className="w-full px-[2rem] h-max flex justify-between items-center flex-row-reverse">
             <button
-              className="w-max px-[10px] flex justify-center items-center gap-[5px] font-medium text-[15px] h-[2.4rem] border-solid border border-opposite text-halfBlack rounded-md hover:bg-gray-200 transition"
+              className="w-max px-[7px] flex justify-center items-center gap-[10px] font-normal text-[14px] h-[2.2rem] border-solid border border-opposite text-halfBlack rounded-md hover:bg-gray-200 transition"
               onClick={toggleSidebar}
             >
               Plan info <ArrowForwardIos className="text-[14px]" />
@@ -203,7 +203,7 @@ const Quotes = ({
                 insurance !== "mortgage-insurance" &&
                 insurance !== "critical-illness" && (
                   <button
-                    className="w-max px-[10px] flex justify-center items-center gap-[5px] font-medium text-[15px] h-[2.4rem] border-solid border border-opposite text-halfBlack rounded-md hover:bg-gray-200 transition"
+                    className="w-max px-[10px] flex justify-center items-center gap-[5px] font-normal text-[14px] h-[2.2rem] border-solid border border-opposite text-halfBlack rounded-md hover:bg-gray-200 transition"
                     onClick={toggleExpanded}
                   >
                     2 Free Benefits{" "}
@@ -218,7 +218,7 @@ const Quotes = ({
               {insurance !== "critical-illness" && (
                 <button
                   onClick={toggleExpanded}
-                  className="w-max px-[10px] flex justify-center items-center gap-[5px] font-medium text-[15px] h-[2.4rem] border-solid border border-opposite text-halfBlack rounded-md hover:bg-gray-200 transition"
+                  className="w-max px-[10px] flex justify-center items-center gap-[5px] font-normal text-[14px] h-[2.2rem] border-solid border border-opposite text-halfBlack rounded-md hover:bg-gray-200 transition"
                 >
                   2 Paid Benefits
                   <ExpandMore className="text-[16px]" />
@@ -228,7 +228,7 @@ const Quotes = ({
               {insurance === "critical-illness" && (
                 <button
                   onClick={toggleExpanded}
-                  className="w-max px-[10px] flex justify-center items-center gap-[5px] font-medium text-[15px] h-[2.4rem] border-solid border border-opposite text-halfBlack rounded-md hover:bg-gray-200 transition"
+                  className="w-max px-[7px] flex justify-center items-center gap-[10px] font-normal text-[14px] h-[2.2rem] border-solid border border-opposite text-halfBlack rounded-md hover:bg-gray-200 transition"
                 >
                   Return of premium
                   <ExpandMore className="text-[16px]" />
