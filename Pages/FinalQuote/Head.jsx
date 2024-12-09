@@ -627,20 +627,21 @@ const Head = ({
                   alignItems: "center",
                   gap: "10px",
                   padding: "0px 16px",
-                  // backgroundColor: "#F9FAFB",
                   borderRadius: "8px",
                 }}
+                className="bg-gray-500/10"
               >
                 <PersonIcon style={{ fontSize: 20, color: "#6B7280" }} />
                 <span
                   style={{
-                    fontSize: "0.875rem",
-                    fontWeight: 500,
+                    fontSize: "12px",
+                    fontWeight: 400,
                     color: "#374151",
                   }}
                 >
-                  {quoteData.gender === "male" ? "Male" : "Female"} |
-                  {quoteData.smoker === "yes" ? "Smoker" : "Non-smoker"} | Age{" "}
+                  {quoteData.gender === "male" ? "Male" : "Female"} | &nbsp;
+                  {quoteData.smoker === "yes" ? "Smoker" : "Non-smoker"} |
+                  &nbsp; Age
                   {quoteData.years}
                 </span>
                 <Button
@@ -650,7 +651,8 @@ const Head = ({
                   style={{
                     color: "#2563EB",
                     textTransform: "none",
-                    fontSize: "0.875rem",
+                    fontSize: "14px",
+                    fontWeight: 500,
                   }}
                 >
                   Edit Profile
@@ -667,7 +669,7 @@ const Head = ({
                 padding: "16px",
                 borderRadius: "8px",
               }}
-              className="bg-primary2/10"
+              className="bg-gray-500/10"
             >
               <div
                 style={{ display: "flex", alignItems: "center", gap: "16px" }}

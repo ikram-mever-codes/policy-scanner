@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback, useMemo } from "react";
 import CanadaLife from "../../assets/canada-life.png";
 import Image from "next/image";
 import InfoIcon from "@mui/icons-material/Info";
@@ -34,178 +34,109 @@ const Quotes = ({
 }) => {
   const [expanded, setExpanded] = useState(false);
   const [paidAddons, setPaidAddons] = useState([]);
-  const toggleExpanded = () => {
+
+  const infoIconStyle = useMemo(
+    () => ({
+      fontSize: 16,
+      color: "#BDBDBD",
+      margin: "0px 4px",
+    }),
+    []
+  );
+
+  const toggleExpanded = useCallback(() => {
     setExpanded((prev) => !prev);
-  };
+  }, []);
 
-  const toggleSidebar = () => {
+  const toggleSidebar = useCallback(() => {
     setSidebarOpen((prev) => !prev);
-  };
+  }, [setSidebarOpen]);
 
-  const toggleWlc = () => {
+  const toggleWlc = useCallback(() => {
     setWlcOpen((prev) => !prev);
-  };
+  }, [setWlcOpen]);
 
-  const handleCheckboxChange = (isChecked, value) => {
-    setPaidAddons((prev) => {
-      if (isChecked) {
-        return [...prev, value];
-      } else {
-        return prev.filter((addon) => addon !== value);
-      }
-    });
-  };
+  const handleCheckboxChange = useCallback((isChecked, value) => {
+    setPaidAddons((prev) =>
+      isChecked ? [...prev, value] : prev.filter((addon) => addon !== value)
+    );
+  }, []);
 
-  function renderComponent(ins) {
-    switch (ins) {
-      case "term-life":
-        return (
-          <div className=" flex text-left justify-center px-[1rem] gap-[3px] flex-col items-center w-max h-[44px]">
-            <div className="text-grays w-full text-left text-text1 leading-l1">
-              Max Coverage
-            </div>
+  const insuranceDetails = useMemo(() => {
+    const detailsMap = {
+      "term-life": {
+        label: "Max Coverage",
+        value: "85 Years",
+      },
+      "whole-life": {
+        label: "Pay Term",
+        value: `${payTermLength}`,
+      },
+      "critical-illness": {
+        label: "Plan Type",
+        value: enhanced ? "Enhanced" : "Basic",
+      },
+      "mortgage-insurance": {
+        label: "Plan type",
+        value: !decreasingTerm ? "Decreasing Term" : "Level Term",
+      },
+      "level-term": {
+        label: "Plan type",
+        value: "Level Term",
+      },
+    };
+    return detailsMap[insurance] || {};
+  }, [insurance, payTermLength, enhanced, decreasingTerm]);
 
-            <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
-              85 Years
-              <InfoIcon
-                sx={{
-                  fontSize: "18px",
-                  color: "#BDBDBD",
-                  margin: "0px 10px",
-                }}
-              />
-            </div>
-          </div>
-        );
-      case "whole-life":
-        return (
-          <div className=" flex text-left justify-center px-[1rem] gap-[3px] flex-col items-center w-max h-[44px]">
-            <div className="text-grays w-full text-left text-text1 leading-l1">
-              Pay Term
-            </div>
-
-            <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
-              {payTermLength}{" "}
-              <InfoIcon
-                sx={{
-                  fontSize: "18px",
-                  color: "#BDBDBD",
-                  margin: "0px 10px",
-                }}
-              />
-            </div>
-          </div>
-        );
-      case "critical-illness":
-        return (
-          <div className=" flex text-left justify-center px-[1rem] gap-[3px] flex-col items-center w-max h-[44px]">
-            <div className="text-grays w-full text-left text-text1 leading-l1">
-              Plan Type
-            </div>
-
-            <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
-              {enhanced ? "Enhanced" : "Basic"}
-              <InfoIcon
-                sx={{
-                  fontSize: "18px",
-                  color: "#BDBDBD",
-                  margin: "0px 10px",
-                }}
-              />
-            </div>
-          </div>
-        );
-      case "mortgage-insurance":
-        return (
-          <div className=" flex text-left justify-center px-[1rem] gap-[3px] flex-col items-center w-max h-[44px]">
-            <div className="text-grays w-full text-left text-text1 leading-l1">
-              Plan type
-            </div>
-
-            <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
-              {!decreasingTerm ? "Decreasing Term" : "Level Term"}{" "}
-              <InfoIcon
-                sx={{
-                  fontSize: "18px",
-                  color: "#BDBDBD",
-                  margin: "0px 10px",
-                }}
-              />
-            </div>
-          </div>
-        );
-
-      case "level-term":
-        return (
-          <div className=" flex text-left justify-center px-[1rem] gap-[3px] flex-col items-center w-max h-[44px]">
-            <div className="text-grays w-full text-left text-text1 leading-l1">
-              Plan type
-            </div>
-
-            <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
-              Level Term
-              <InfoIcon
-                sx={{
-                  fontSize: "18px",
-                  color: "#BDBDBD",
-                  margin: "0px 10px",
-                }}
-              />
-            </div>
-          </div>
-        );
-      default:
-        break;
-    }
-  }
+  const isOverlayOpen = useMemo(
+    () => sidebarOpen || wlcOpen || accidentalDeath,
+    [sidebarOpen, wlcOpen, accidentalDeath]
+  );
 
   useEffect(() => {
-    if (sidebarOpen || accidentalDeath || wlcOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-
+    document.body.style.overflow = isOverlayOpen ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
-  }, [sidebarOpen, wlcOpen, accidentalDeath]);
+  }, [isOverlayOpen]);
+
   return (
     <div className="w-[845px] h-max pb-[2rem]">
-      {sidebarOpen && (
+      {isOverlayOpen && (
         <div className="fixed inset-0 bg-black opacity-50 z-10 pointer-events-none overflow-hidden"></div>
       )}
-      {wlcOpen && (
-        <div className="fixed inset-0 bg-black opacity-50 z-10 pointer-events-none overflow-hidden"></div>
-      )}
-      {accidentalDeath && (
-        <div className="fixed inset-0 bg-black opacity-50 z-10 pointer-events-none overflow-hidden"></div>
-      )}
-      <div className="w-full h-max flex justify-between items-center gap-[1rem]  flex-col relative z-0">
+      <div className="w-full h-max flex justify-between items-center gap-[1rem] flex-col relative z-0">
         <div className="w-full rounded-lg h-max bg-white shadow-sidebar min-h-[190px] flex relative justify-between pb-[15px] items-center gap-[0px] flex-col">
-          {(insurance === "term-life" || insurance === "level-term") && (
-            <div
-              onClick={() => setWlcOpen(true)}
-              className="w-max h-[30px] cursor-pointer px-[1rem] py-[7px]  mb-[12px] rounded-tl-[10px] rounded-br-[10px] bg-[#596B8A] text-white self-start text-[14px] font-normal flex justify-center items-center gap-[3px]"
-            >
-              $ Whole life convertible - See How{" "}
-              <KeyboardArrowDownOutlined sx={{ fontSize: "16px" }} />
-            </div>
-          )}
-          {insurance === "whole-life" && (
-            <div className="w-max h-[30px] px-[1rem] py-[7px]  mb-[12px] rounded-tl-[10px] rounded-br-[10px] bg-[#AF7AB3] text-white self-start text-[14px] font-normal flex justify-center items-center gap-[3px]">
-              $ Effective saving 40% - See How{" "}
-              <KeyboardArrowDownOutlined sx={{ fontSize: "16px" }} />
-            </div>
-          )}
-          {insurance === "critical-illness" && <div className="h-[30px]"></div>}
+          {useMemo(() => {
+            switch (insurance) {
+              case "term-life":
+              case "level-term":
+                return (
+                  <div
+                    onClick={toggleWlc}
+                    className="w-max h-[30px] cursor-pointer self-start px-[1rem] py-[7px] mb-[12px] rounded-tl-[10px] rounded-br-[10px] bg-[#596B8A] text-white text-[14px] font-normal flex justify-center items-center gap-[3px]"
+                  >
+                    $ Whole life convertible - See How
+                    <KeyboardArrowDownOutlined sx={{ fontSize: 16 }} />
+                  </div>
+                );
+              case "whole-life":
+                return (
+                  <div className="w-max h-[30px] px-[1rem] py-[7px] mb-[12px] rounded-tl-[10px] rounded-br-[10px] bg-[#AF7AB3] text-white text-[14px] font-normal flex justify-center items-center gap-[3px]">
+                    $ Effective saving 40% - See How
+                    <KeyboardArrowDownOutlined sx={{ fontSize: 16 }} />
+                  </div>
+                );
+              case "critical-illness":
+              case "mortgage-insurance":
+              default:
+                return <div className="h-[30px]"></div>;
+            }
+          }, [insurance, toggleWlc])}
 
-          {insurance === "mortgage-insurance" && (
-            <div className="h-[30px]"></div>
-          )}
-          <div className="w-full h-max  px-[2rem]  flex justify-between items-center ">
-            <div className="w-full h-full flex justify-start items-center gap-[2rem]">
-              <div className=" flex pr-[2rem] text-left justify-center gap-[3px] flex-col items-center w-[9rem] border-r border-solid border-grays h-[38px]">
+          <div className="w-full h-max px-[2rem] flex justify-between items-center">
+            <div className="w-full h-full flex justify-start items-center gap-[1rem]">
+              <div className="flex  text-left justify-center gap-[3px] flex-col items-center w-[5rem] mr-[2rem]  h-[38px]">
                 <Image
                   alt="insurance Provider"
                   width={100}
@@ -214,127 +145,51 @@ const Quotes = ({
                   src={CanadaLife}
                 />
               </div>
-              <div className=" flex text-left justify-center px-[2rem] gap-[3px] flex-col items-center w-max border-r border-solid border-halfBlack h-[38px]">
-                {insurance === "whole-life" && (
-                  <>
-                    <div className="text-grays w-full text-left text-text1 leading-l1">
-                      Covered till
-                    </div>
-
-                    <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
-                      100 Years
-                      <InfoIcon
-                        sx={{
-                          fontSize: "18px",
-                          color: "#BDBDBD",
-                          margin: "0px 10px",
-                        }}
-                      />
-                    </div>
-                  </>
-                )}
-                {insurance === "term-life" && (
-                  <>
-                    <div className="text-grays w-full text-left text-text1 leading-l1">
-                      Covered till
-                    </div>
-
-                    <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
-                      100 Years
-                      <InfoIcon
-                        sx={{
-                          fontSize: "18px",
-                          color: "#BDBDBD",
-                          margin: "0px 10px",
-                        }}
-                      />
-                    </div>
-                  </>
-                )}
-                {insurance === "level-term" && (
-                  <>
-                    <div className="text-grays w-full text-left text-text1 leading-l1">
-                      Covered till
-                    </div>
-
-                    <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
-                      100 Years
-                      <InfoIcon
-                        sx={{
-                          fontSize: "18px",
-                          color: "#BDBDBD",
-                          margin: "0px 10px",
-                        }}
-                      />
-                    </div>
-                  </>
-                )}
-                {insurance === "critical-illness" && (
-                  <>
-                    <div className="text-grays w-full text-left text-text1 leading-l1">
-                      Term Length
-                    </div>
-
-                    <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
-                      20 Years
-                      <InfoIcon
-                        sx={{
-                          fontSize: "18px",
-                          color: "#BDBDBD",
-                          margin: "0px 10px",
-                        }}
-                      />
-                    </div>
-                  </>
-                )}
-                {insurance === "mortgage-insurance" && (
-                  <>
-                    <div className="text-grays w-full text-left text-text1 leading-l1">
-                      Term Length
-                    </div>
-
-                    <div className="text-black font-semibold w-full text-left text-text1 leading-l1">
-                      20 Years
-                      <InfoIcon
-                        sx={{
-                          fontSize: "18px",
-                          color: "#BDBDBD",
-                          margin: "0px 10px",
-                        }}
-                      />
-                    </div>
-                  </>
-                )}
+              <div className="flex text-left justify-center  px-[0px] gap-[5px] items-center w-max h-[38px]">
+                <div className="text-grays w-full text-left text-[14px] text-nowrap font-medium leading-l1">
+                  {insurance === "critical-illness" ||
+                  insurance === "mortgage-insurance"
+                    ? "Term Length"
+                    : "Covered till"}
+                </div>
+                <div className="text-black  w-full text-left flex items-center text-nowrap text-sm font-medium leading-l1">
+                  {insurance === "critical-illness" ||
+                  insurance === "mortgage-insurance"
+                    ? "20 Yrs"
+                    : "100 Yrs"}
+                  <InfoIcon sx={infoIconStyle} />
+                </div>
               </div>
-              {renderComponent(insurance)}
-              {/* <div className=" flex text-left justify-center gap-[3px] flex-col items-center w-[10rem] h-[44px]">
-                <div className="text-grays w-full text-left">
-                  Coverage Amount
+              {insuranceDetails.label && (
+                <div className="flex text-left justify-center  px-[0px] gap-[5px] items-center w-max h-[38px]">
+                  <div className="text-grays w-full text-left text-[14px] text-nowrap font-medium leading-l1">
+                    {insuranceDetails.label}
+                  </div>
+                  <div className="text-black  w-full text-left flex items-center text-nowrap text-sm font-medium leading-l1">
+                    {insuranceDetails.value}
+                    <InfoIcon sx={infoIconStyle} />
+                  </div>
                 </div>
-
-                <div className="text-black font-semibold w-full text-left">
-                  $100,000
-                </div>
-              </div> */}
+              )}
             </div>
 
-            <div className="w-max flex justify-center items-center h-[38px] gap-[12px] flex-row ">
-              <div className="font-semibold flex justify-center gap-1 items-center h-full  flex-col text-center text-[20px] text-halfBlack">
-                <div className="flex justify-center text-[18px] leading-[27px] items-center w-max  gap-1">
+            <div className="w-max flex justify-center items-center h-[38px] gap-[12px] flex-row">
+              <div className="font-semibold flex justify-center gap-1 items-center h-full flex-col text-center text-[20px] text-halfBlack">
+                <div className="flex justify-center text-[18px] leading-[27px] items-center w-max gap-1">
                   $250.00{" "}
-                  <span className="text-[14px]">p/{yearly ? "y" : "m"}</span>
+                  <span className="text-[14px]">{yearly ? "p/y" : "p/m"}</span>
                 </div>
                 <span className="text-text2 leading-l2 text-grays font-light w-max">
-                  Incl. ${yearly ? "60" : "5"} policy fee{" "}
+                  Incl. ${yearly ? "60" : "5"} policy fee
                 </span>
               </div>
-              <button className="w-full h-[45px] flex justify-center items-center bg-secondary text-nowrap px-[15px] py-[5px] text-[14px] font-medium  flex-col rounded-lg">
+              <button className="w-full h-[45px] flex justify-center items-center bg-secondary text-nowrap px-[15px] py-[5px] text-[14px] font-medium flex-col rounded-lg">
                 Get this Rate
               </button>
             </div>
           </div>
 
-          <div className="w-full my-[20px] h-[1px] bg-gradient-to-r from-transparent via-halfBlack to-transparent px-[2rem]"></div>
+          <div className="w-full my-[20px] h-[1px] bg-gradient-to-r from-transparent via-halfBlack to-transparent"></div>
 
           <div className="w-full px-[2rem] h-max flex justify-between items-center flex-row-reverse">
             <button
@@ -363,7 +218,7 @@ const Quotes = ({
               {insurance !== "critical-illness" && (
                 <button
                   onClick={toggleExpanded}
-                  className="w-max px-[10px] flex justify-center items-center gap-[5px] font-medium  text-[15px] h-[2.4rem] border-solid border border-opposite text-halfBlack rounded-md hover:bg-gray-200 transition"
+                  className="w-max px-[10px] flex justify-center items-center gap-[5px] font-medium text-[15px] h-[2.4rem] border-solid border border-opposite text-halfBlack rounded-md hover:bg-gray-200 transition"
                 >
                   2 Paid Benefits
                   <ExpandMore className="text-[16px]" />
@@ -373,14 +228,13 @@ const Quotes = ({
               {insurance === "critical-illness" && (
                 <button
                   onClick={toggleExpanded}
-                  className="w-max px-[10px] flex justify-center items-center gap-[5px] font-medium  text-[15px] h-[2.4rem] border-solid border border-opposite text-halfBlack rounded-md hover:bg-gray-200 transition"
+                  className="w-max px-[10px] flex justify-center items-center gap-[5px] font-medium text-[15px] h-[2.4rem] border-solid border border-opposite text-halfBlack rounded-md hover:bg-gray-200 transition"
                 >
                   Return of premium
                   <ExpandMore className="text-[16px]" />
                 </button>
               )}
-              <div className="flex justify-center items-center text-[14px] text-grays ">
-                {" "}
+              <div className="flex justify-center items-center text-[14px] text-grays">
                 <Star className="mx-2 text-[18px]" />
                 Insurer Rating:
                 <span className="font-semibold mx-1 text-black">A+</span>
@@ -393,29 +247,27 @@ const Quotes = ({
             classNames="fade"
             unmountOnExit
           >
-            <div className="overflow-hidden  mt-[10px] gap-0 flex justify-start flex-col items-start  w-full">
-              {paidAddons.length !== 0 && (
+            <div className="overflow-hidden mt-[10px] flex flex-col items-start w-full">
+              {paidAddons.length > 0 && (
                 <div className="w-full flex justify-start items-center gap-3 px-[2rem] py-2">
-                  {paidAddons.map((pds) => {
-                    return (
-                      <div className="text-text1 leading-l1">
-                        <input
-                          type="checkbox"
-                          checked={true}
-                          className="text-[20px] mx-[5px] "
-                          onChange={(e) => handleCheckboxChange(false, pds)}
-                        />
-                        {pds}
-                      </div>
-                    );
-                  })}
+                  {paidAddons.map((addon) => (
+                    <div key={addon} className="text-text1 leading-l1">
+                      <input
+                        type="checkbox"
+                        checked
+                        className="text-[20px] mx-[5px]"
+                        onChange={() => handleCheckboxChange(false, addon)}
+                      />
+                      {addon}
+                    </div>
+                  ))}
                 </div>
               )}
-              <div className="py-5 pb-2 pt-1 px-[2rem] overflow-hidden w-full flex justify-start items-center gap-[1.5rem] ">
+              <div className="py-5 pb-2 pt-1 px-[2rem] w-full flex justify-start items-center gap-[1.5rem]">
                 {insurance !== "whole-life" &&
                   insurance !== "critical-illness" && (
-                    <div className="w-[23rem] shadow-sidebar p-[1rem] pb-[10px] rounded-lg flex justify-start items-start flex-col gap-[1rem]">
-                      <div className=" w-full flex justify-between items-center">
+                    <div className="w-[23rem] shadow-sidebar p-[1rem] pb-[10px] rounded-lg flex flex-col gap-[1rem]">
+                      <div className="w-full flex justify-between items-center">
                         <div className="text-text1 leading-l1 font-medium text-halfBlack">
                           4 Free Benefits
                         </div>
@@ -430,13 +282,13 @@ const Quotes = ({
                           )}
                         </button>
                       </div>
-                      <div className="w-full h-[60px] flex justify-start items-start gap-[10px] flex-col">
-                        <div className="text-text1 leading-l1">
+                      <div className="w-full h-[60px] flex flex-col gap-[10px] text-text1 leading-l1">
+                        <div>
                           <CheckCircleOutlineOutlinedIcon className="text-[16px] mr-1" />
-                          Wavier Of Premium Cover
+                          Waiver Of Premium Cover
                           <span className="text-primary2 mx-[5px]">free</span>
                         </div>
-                        <div className="text-text1 leading-l1">
+                        <div>
                           <CheckCircleOutlineOutlinedIcon className="text-[16px]" />{" "}
                           100% payout on Terminal illness
                           <span className="text-primary2 mx-[5px]">free</span>
@@ -445,7 +297,7 @@ const Quotes = ({
                     </div>
                   )}
                 {insurance !== "critical-illness" && (
-                  <div className="w-[23rem]   shadow-sidebar p-[1rem] pb-[10px] rounded-lg flex justify-start items-start flex-col gap-[1rem]">
+                  <div className="w-[23rem] shadow-sidebar p-[1rem] pb-[10px] rounded-lg flex flex-col gap-[1rem]">
                     <div className="w-full flex justify-between items-center">
                       <div className="text-text1 leading-l1 font-medium text-halfBlack">
                         4 Paid Benefits
@@ -462,11 +314,10 @@ const Quotes = ({
                       </button>
                     </div>
 
-                    <div className="w-full h-[60px] flex justify-start items-start gap-[10px] flex-col text-text1 leading-l1">
+                    <div className="w-full h-[60px] flex flex-col gap-[10px] text-text1 leading-l1">
                       <div
-                        onClick={() => {
-                          setAccidentalDeath(true);
-                        }}
+                        onClick={() => setAccidentalDeath(true)}
+                        className="flex items-center"
                       >
                         <input
                           type="checkbox"
@@ -478,16 +329,16 @@ const Quotes = ({
                               "accidental death $45"
                             )
                           }
-                        />{" "}
-                        Extra Payout on{""}
+                        />
+                        Extra Payout on
                         <Link
-                          href={"#"}
+                          href="#"
                           className="text-[#0066FF] underline mx-1"
                         >
                           accidental death $45
                         </Link>
                       </div>
-                      <div className="text-text1 leading-l1">
+                      <div className="flex items-center">
                         <input
                           type="checkbox"
                           className="text-[20px] mx-[5px]"
@@ -500,10 +351,10 @@ const Quotes = ({
                               "critical illnesses $65"
                             )
                           }
-                        />{" "}
+                        />
                         Cover against 34
                         <Link
-                          href={"#"}
+                          href="#"
                           className="text-[#0066FF] underline mx-2"
                         >
                           critical illnesses $65
@@ -513,10 +364,10 @@ const Quotes = ({
                   </div>
                 )}
                 {insurance === "critical-illness" && (
-                  <div className="w-[23rem]   shadow-sidebar p-[1rem] pb-[10px] pt-0 rounded-lg flex justify-start items-start flex-col gap-[1rem]">
-                    <div className="w-full flex justify-between relative items-center">
+                  <div className="w-[23rem] shadow-sidebar p-[1rem] pb-[10px] pt-0 rounded-lg flex flex-col gap-[1rem]">
+                    <div className="w-full flex justify-between items-center">
                       <button
-                        className="w-[20px] absolute top-0 right-0 flex items-center mt-2 justify-center h-[20px] rounded-full bg-selected text-halfBlack"
+                        className="w-[20px] flex items-center justify-center h-[20px] rounded-full bg-selected text-halfBlack"
                         onClick={toggleExpanded}
                       >
                         {expanded ? (
@@ -527,7 +378,7 @@ const Quotes = ({
                       </button>
                     </div>
 
-                    <div className="w-full h-[50px] flex justify-start items-start gap-[10px] flex-col text-text1 leading-l1">
+                    <div className="w-full h-[50px] flex flex-col gap-[10px] text-text1 leading-l1">
                       <div>
                         <input
                           type="checkbox"
@@ -541,32 +392,32 @@ const Quotes = ({
                               "Return of premium on death"
                             )
                           }
-                        />{" "}
+                        />
                         Return of
                         <Link
-                          href={"#"}
+                          href="#"
                           className="text-[#0066FF] underline mx-1"
                         >
                           premium on death
                         </Link>
                       </div>
-                      <div className="text-text1 leading-l1">
+                      <div>
                         <input
                           type="checkbox"
-                          className="text-[20px] mx-[5px]"
                           checked={paidAddons.includes(
                             "Return of premium on expiry"
                           )}
+                          className="text-[20px] mx-[5px]"
                           onChange={(e) =>
                             handleCheckboxChange(
                               e.target.checked,
                               "Return of premium on expiry"
                             )
                           }
-                        />{" "}
+                        />
                         Return of
                         <Link
-                          href={"#"}
+                          href="#"
                           className="text-[#0066FF] underline mx-2"
                         >
                           premium on expiry
@@ -595,9 +446,7 @@ const Quotes = ({
       />
       <AccidentalDeath
         open={accidentalDeath}
-        onClose={() => {
-          setAccidentalDeath(false);
-        }}
+        onClose={() => setAccidentalDeath(false)}
         insurance={insurance}
         decreasingTerm={decreasingTerm}
       />
