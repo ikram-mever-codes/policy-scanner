@@ -515,6 +515,9 @@ import {
   RefreshCw,
   Shield,
 } from "lucide-react";
+import logo from "../../assets/canada-life.png";
+import { CloseOutlined } from "@mui/icons-material";
+import Image from "next/image";
 
 export default function PlanDetailsSidebar({ open, onClose }) {
   // Added open and onClose props
@@ -572,11 +575,23 @@ export default function PlanDetailsSidebar({ open, onClose }) {
 
   return (
     <Slide direction="left" in={open} mountOnEnter unmountOnExit>
-      <div className="fixed top-0 right-0 h-[100vh] w-[720px] select-none overflow-y-scroll z-[30] overflow-x-hidden bg-white shadow-lg p-5 flex flex-col">
-        <div className="bg-blue-600 text-white p-4">
+      <div className="fixed top-0 right-0 h-[100vh] w-[720px] select-none overflow-y-scroll z-[30] overflow-x-hidden bg-white shadow-lg  flex flex-col">
+        <div className="bg-[#F0F1F2] text-white p-4 px-5">
           <div className="flex items-center gap-2">
-            <Shield className="w-6 h-6" />
-            <h2 className="text-xl font-semibold">Insurance Details</h2>
+            <button
+              onClick={() => {
+                onClose();
+              }}
+            >
+              <CloseOutlined sx={{ fontSize: "20px", color: "black" }} />
+            </button>
+            <Image
+              src={logo}
+              alt="Logo"
+              className="mx-auto object-cover object-center relative left-[-150px]"
+              width={100}
+              height={100}
+            />
           </div>
         </div>
 
@@ -685,6 +700,27 @@ export default function PlanDetailsSidebar({ open, onClose }) {
                   </div>
                 </div>
               </div>{" "}
+              <div className="bg-blue-50 p-4 rounded-lg">
+                <h3 className="text-lg font-semibold mb-3">Cost of delay</h3>
+                <div className="bg-white p-4 rounded-lg h-64">
+                  <ResponsiveContainer width="100%" height="100%">
+                    <LineChart data={premiumData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="age" />
+                      <YAxis />
+                      <Tooltip />
+                      <Line
+                        type="monotone"
+                        dataKey="premium"
+                        stroke="#3b82f6"
+                        strokeWidth={2}
+                        dot={{ r: 6 }}
+                        activeDot={{ r: 8, stroke: "#3b82f6", strokeWidth: 2 }}
+                      />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </div>
+              </div>
               <div className=" p-4 rounded-lg bg-purple-50">
                 <h4 className="text-md font-semibold mb-4 flex items-center gap-2">
                   <ArrowRight className="w-5 h-5" />
@@ -709,27 +745,6 @@ export default function PlanDetailsSidebar({ open, onClose }) {
                       )}
                     </div>
                   ))}
-                </div>
-              </div>
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <h3 className="text-lg font-semibold mb-3">Cost of delay</h3>
-                <div className="bg-white p-4 rounded-lg h-64">
-                  <ResponsiveContainer width="100%" height="100%">
-                    <LineChart data={premiumData}>
-                      <CartesianGrid strokeDasharray="3 3" />
-                      <XAxis dataKey="age" />
-                      <YAxis />
-                      <Tooltip />
-                      <Line
-                        type="monotone"
-                        dataKey="premium"
-                        stroke="#3b82f6"
-                        strokeWidth={2}
-                        dot={{ r: 6 }}
-                        activeDot={{ r: 8, stroke: "#3b82f6", strokeWidth: 2 }}
-                      />
-                    </LineChart>
-                  </ResponsiveContainer>
                 </div>
               </div>
             </div>

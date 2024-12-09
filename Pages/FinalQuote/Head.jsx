@@ -472,13 +472,20 @@ const Head = ({
                       backgroundColor: !yearly ? "#EBF5FF" : "transparent",
                       color: !yearly ? "#1D4ED8" : "#4B5563",
                       borderRadius: "8px 0 0 8px",
+                      boxShadow: !yearly
+                        ? "0px 2px 4px rgba(0, 0, 0,0)"
+                        : "none",
                       "&:hover": {
                         backgroundColor: !yearly ? "#D1E9FF" : "transparent",
+                        boxShadow: !yearly
+                          ? "0px 2px 4px rgba(0, 0, 0, 0.15)"
+                          : "none",
                       },
                     }}
                   >
                     Monthly ($89)
                   </Button>
+
                   <Button
                     variant={yearly ? "contained" : "text"}
                     onClick={() => handleYearlyToggle(true)}
@@ -487,9 +494,15 @@ const Head = ({
                       textTransform: "none",
                       backgroundColor: yearly ? "#EBF5FF" : "transparent",
                       color: yearly ? "#1D4ED8" : "#4B5563",
-                      borderRadius: "0 8px 8px 0",
+                      borderRadius: "0px 8px 8px 0px",
+                      boxShadow: yearly
+                        ? "0px 2px 4px rgba(0, 0, 0,0)"
+                        : "none",
                       "&:hover": {
                         backgroundColor: yearly ? "#D1E9FF" : "transparent",
+                        boxShadow: yearly
+                          ? "0px 2px 4px rgba(0, 0, 0, 0.15)"
+                          : "none",
                       },
                     }}
                   >
