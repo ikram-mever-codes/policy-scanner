@@ -18,6 +18,9 @@ import PlanDetailsSidebar from "./PlanDetailsSidebar";
 import Link from "next/link";
 import WholeLifeConvertible from "./WholeLifeConvertible";
 import AccidentalDeath from "./AccidentalDeath";
+import CriticalIllness from "./CriticalIllnessRider";
+import ChildrenRider from "./ChildrenRider";
+import Premiums from "./Premiums";
 
 const Quotes = ({
   insurance,
@@ -30,7 +33,13 @@ const Quotes = ({
   wlcOpen,
   setWlcOpen,
   accidentalDeath,
+  criticalIllness,
+  setCriticalIllness,
   setAccidentalDeath,
+  childrenRider,
+  setChildrenRider,
+  rtPremiums,
+  setRtPremiums,
 }) => {
   const [expanded, setExpanded] = useState(false);
   const [paidAddons, setPaidAddons] = useState([]);
@@ -89,8 +98,21 @@ const Quotes = ({
   }, [insurance, payTermLength, enhanced, decreasingTerm]);
 
   const isOverlayOpen = useMemo(
-    () => sidebarOpen || wlcOpen || accidentalDeath,
-    [sidebarOpen, wlcOpen, accidentalDeath]
+    () =>
+      sidebarOpen ||
+      wlcOpen ||
+      accidentalDeath ||
+      criticalIllness ||
+      childrenRider ||
+      rtPremiums,
+    [
+      (sidebarOpen,
+      wlcOpen,
+      accidentalDeath,
+      criticalIllness,
+      childrenRider,
+      rtPremiums),
+    ]
   );
 
   useEffect(() => {
@@ -134,7 +156,7 @@ const Quotes = ({
             }
           }, [insurance, toggleWlc])}
 
-          <div className="w-full h-max px-[2rem] flex justify-between gap-[4rem] items-center">
+          <div className="w-full h-max px-[2rem]  flex justify-between gap-[4rem] items-center">
             <div className="w-full h-full flex justify-between items-center ">
               <div className="flex  text-left justify-center gap-[3px] flex-col items-center w-[5rem]  h-[38px]">
                 <Image
@@ -189,16 +211,16 @@ const Quotes = ({
             </div>
           </div>
 
-          <div className="w-full my-[0px] h-[1px] bg-gradient-to-r from-transparent via-halfBlack to-transparent"></div>
+          <div className="w-full my-[1rem] h-[1px] bg-gradient-to-r from-transparent via-halfBlack to-transparent"></div>
 
-          <div className="w-full px-[2rem] h-max flex justify-between items-center flex-row-reverse">
+          <div className="w-full px-[2rem]  flex justify-between items-center flex-row-reverse">
             <button
               className="w-max px-[7px] flex justify-center items-center gap-[10px] font-normal text-[14px] h-[2.2rem] border-solid border border-opposite text-halfBlack rounded-md hover:bg-gray-200 transition"
               onClick={toggleSidebar}
             >
               Plan info <ArrowForwardIos className="text-[14px]" />
             </button>
-            <div className="w-max flex justify-center items-center gap-[1rem]">
+            <div className="w-max flex justify-center  items-center gap-[1rem]">
               {insurance !== "whole-life" &&
                 insurance !== "mortgage-insurance" &&
                 insurance !== "critical-illness" && (
@@ -247,7 +269,7 @@ const Quotes = ({
             classNames="fade"
             unmountOnExit
           >
-            <div className="overflow-hidden mt-[10px] flex flex-col items-start w-full">
+            <div className="overflow-hidden mt-[10px] h-max flex flex-col items-start w-full">
               {paidAddons.length > 0 && (
                 <div className="w-full flex justify-start items-center gap-3 px-[2rem] py-2">
                   {paidAddons.map((addon) => (
@@ -272,7 +294,7 @@ const Quotes = ({
                           4 Free Benefits
                         </div>
                         <button
-                          className="w-[20px] flex items-center justify-center h-[20px] rounded-full bg-selected text-halfBlack"
+                          className=" w-[20px] flex items-center justify-center h-[20px] rounded-full bg-selected text-halfBlack"
                           onClick={toggleExpanded}
                         >
                           {expanded ? (
@@ -282,7 +304,7 @@ const Quotes = ({
                           )}
                         </button>
                       </div>
-                      <div className="w-full h-[60px] flex flex-col gap-[10px] text-text1 leading-l1">
+                      <div className="w-full h-[75px] flex flex-col gap-[10px] text-text1 leading-l1">
                         <div>
                           <CheckCircleOutlineOutlinedIcon className="text-[16px] mr-1" />
                           Waiver Of Premium Cover
@@ -297,7 +319,7 @@ const Quotes = ({
                     </div>
                   )}
                 {insurance !== "critical-illness" && (
-                  <div className="w-[23rem] shadow-sidebar p-[1rem] pb-[10px] rounded-lg flex flex-col gap-[1rem]">
+                  <div className="w-[23rem]  shadow-sidebar p-[1rem] pb-[10px] rounded-lg flex flex-col gap-[1rem]">
                     <div className="w-full flex justify-between items-center">
                       <div className="text-text1 leading-l1 font-medium text-halfBlack">
                         4 Paid Benefits
@@ -314,7 +336,7 @@ const Quotes = ({
                       </button>
                     </div>
 
-                    <div className="w-full h-[60px] flex flex-col gap-[10px] text-text1 leading-l1">
+                    <div className="w-full h-[75px] flex flex-col gap-[10px] text-text1 leading-l1">
                       <div
                         onClick={() => setAccidentalDeath(true)}
                         className="flex items-center"
@@ -356,8 +378,34 @@ const Quotes = ({
                         <Link
                           href="#"
                           className="text-[#0066FF] underline mx-2"
+                          onClick={() => {
+                            setCriticalIllness(true);
+                          }}
                         >
                           critical illnesses $65
+                        </Link>
+                      </div>
+                      <div className="flex items-center">
+                        <input
+                          type="checkbox"
+                          className="text-[20px] mx-[5px]"
+                          checked={paidAddons.includes("Children Rider")}
+                          onChange={(e) =>
+                            handleCheckboxChange(
+                              e.target.checked,
+                              "Children Rider"
+                            )
+                          }
+                        />
+                        Children Rider
+                        <Link
+                          href="#"
+                          className="text-[#0066FF] underline mx-2"
+                          onClick={() => {
+                            setChildrenRider(true);
+                          }}
+                        >
+                          Children Rider
                         </Link>
                       </div>
                     </div>
@@ -365,9 +413,9 @@ const Quotes = ({
                 )}
                 {insurance === "critical-illness" && (
                   <div className="w-[23rem] shadow-sidebar p-[1rem] pb-[10px] pt-0 rounded-lg flex flex-col gap-[1rem]">
-                    <div className="w-full flex justify-between items-center">
+                    <div className="w-full relative flex justify-between items-center">
                       <button
-                        className="w-[20px] flex items-center justify-center h-[20px] rounded-full bg-selected text-halfBlack"
+                        className="w-[20px] flex  absolute right-0 top-[10px] items-center justify-center h-[20px] rounded-full bg-selected text-halfBlack"
                         onClick={toggleExpanded}
                       >
                         {expanded ? (
@@ -395,6 +443,9 @@ const Quotes = ({
                         />
                         Return of
                         <Link
+                          onClick={() => {
+                            setRtPremiums(true);
+                          }}
                           href="#"
                           className="text-[#0066FF] underline mx-1"
                         >
@@ -417,6 +468,9 @@ const Quotes = ({
                         />
                         Return of
                         <Link
+                          onClick={() => {
+                            setRtPremiums(true);
+                          }}
                           href="#"
                           className="text-[#0066FF] underline mx-2"
                         >
@@ -431,7 +485,10 @@ const Quotes = ({
           </CSSTransition>
         </div>
       </div>
-
+      <CriticalIllness
+        open={criticalIllness}
+        onClose={() => setCriticalIllness(false)}
+      />
       <PlanDetailsSidebar
         open={sidebarOpen}
         onClose={toggleSidebar}
@@ -447,9 +504,14 @@ const Quotes = ({
       <AccidentalDeath
         open={accidentalDeath}
         onClose={() => setAccidentalDeath(false)}
-        insurance={insurance}
-        decreasingTerm={decreasingTerm}
       />
+
+      <ChildrenRider
+        open={childrenRider}
+        onClose={() => setChildrenRider(false)}
+      />
+
+      <Premiums open={rtPremiums} onClose={() => setRtPremiums(false)} />
     </div>
   );
 };

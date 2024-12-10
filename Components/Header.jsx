@@ -11,6 +11,7 @@ import logo from "../assets/logo.png";
 import { usePathname } from "next/navigation";
 import Sidebar from "./Sidebar"; // Import Sidebar
 import AddIcCallOutlinedIcon from "@mui/icons-material/AddIcCallOutlined";
+import { MessageCircle } from "lucide-react";
 
 const Header = () => {
   const [menuOpenIndex, setMenuOpenIndex] = useState(null);
@@ -100,7 +101,7 @@ const Header = () => {
               </Box>
 
               {!isQForm && !isQPage && (
-                <nav className="hidden sm:flex items-center gap-8">
+                <nav className="hidden sm:flex items-center justify-end mx-[2rem] gap-8  w-full ">
                   <ul className="flex items-center gap-8">
                     {menuItems.map((item, index) => (
                       <li key={index} className="relative" ref={dropdownRef}>
@@ -138,9 +139,13 @@ const Header = () => {
                 </nav>
               )}
               {isQPage ? (
-                <button className="w-max h-[2.8rem] px-[1rem]  flex justify-center items-center gap-[6px]  bg-primary rounded-[10px] text-white">
-                  <AddIcCallOutlinedIcon sx={{ fontSize: "18px" }} /> Talk to
-                  Expert
+                <button className="group relative flex items-center justify-center gap-2 rounded-lg bg-teal-700 px-6 py-3 text-white transition-all duration-300 hover:bg-teal-800 hover:shadow-lg active:scale-95">
+                  <MessageCircle className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
+                  <span className="font-medium">Talk to Expert</span>
+                  <span className="absolute -right-1 -top-1 flex h-3 w-3">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75"></span>
+                    <span className="relative inline-flex h-3 w-3 rounded-full bg-teal-500"></span>
+                  </span>
                 </button>
               ) : (
                 !isQForm && (

@@ -86,7 +86,14 @@ const coverageOptionsMap = {
 
 // Consolidated term options mapping
 const termOptionsMap = {
-  "term-life": ["Life 100 Pay", "Life 20 Pay", "Life 10 Pay"],
+  "term-life": [
+    "10 years",
+    "20 years",
+    "25 years",
+    "30 years",
+    "35 years",
+    "40 years",
+  ],
   "level-term": ["Life 100 Pay", "Life 20 Pay", "Life 10 Pay"],
   "whole-life": ["Life 100 Pay", "Life 20 Pay", "Life 10 Pay"],
   "mortgage-insurance": ["Life 100 Pay", "Life 20 Pay", "Life 10 Pay"],

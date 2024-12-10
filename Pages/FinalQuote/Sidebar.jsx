@@ -5,6 +5,7 @@ import Google from "../../assets/google.png";
 import Image from "next/image";
 import AddIcCallOutlinedIcon from "@mui/icons-material/AddIcCallOutlined";
 import Link from "next/link";
+import { Phone } from "lucide-react";
 const Sidebar = () => {
   return (
     <div className="w-full z-[1]  overflow-hidden  min-h-[80vh] flex justify-start items-center gap-[1.5rem] flex-col">
@@ -35,9 +36,12 @@ const Sidebar = () => {
         </div>
       </Link>
       <div className="w-[268px] h-[60px] flex justify-start items-center flex-col overflow-hidden rounded-lg shadow-sidebar ">
-        <button className="w-full h-full flex text-primary font-semibold justify-center text-[18px] items-center bg-white text-nowrap px-[15px] py-[5px] gap-[5px] ">
-          <PhoneInTalk className="text-opposite mx-[5px]" />
-          Schedule a Call <ArrowForwardIos className="text-[16px] text-black" />
+        <button className="group w-full h-full relative flex items-center justify-center gap-2 rounded-lg  bg-white px-6 py-3  transition-all duration-300   hover:shadow-lg active:scale-95">
+          <Phone className="h-5 w-5 transition-transform duration-300 group-hover:-rotate-12 text-opposite" />
+          <span className="font-medium text-primary2 text-lg">
+            Schedule a Call
+          </span>
+          <ArrowForwardIos className="h-5 w-5 transition-transform duration-300 group-hover:-rotate-12 text-halfBlack" />
         </button>
       </div>
     </div>

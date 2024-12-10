@@ -26,7 +26,9 @@ const FinalQuote = () => {
   const [isWholeLife, setIsWholeType] = useState(false);
   const [wlcOpen, setWlcOpen] = useState(false);
   const [accidentalDeath, setAccidentalDeath] = useState(false);
-
+  const [childrenRider, setChildrenRider] = useState(false);
+  const [criticalIllness, setCriticalIllness] = useState(false);
+  const [rtPremiums, setRtPremiums] = useState(false);
   const router = useRouter();
 
   const handleModalClose = (event, reason) => {
@@ -161,6 +163,12 @@ const FinalQuote = () => {
                   enhanced={enhanced}
                   accidentalDeath={accidentalDeath}
                   setAccidentalDeath={setAccidentalDeath}
+                  criticalIllness={criticalIllness}
+                  setCriticalIllness={setCriticalIllness}
+                  childrenRider={childrenRider}
+                  setChildrenRider={setChildrenRider}
+                  rtPremiums={rtPremiums}
+                  setRtPremiums={setRtPremiums}
                 />
               </CSSTransition>
             </div>
