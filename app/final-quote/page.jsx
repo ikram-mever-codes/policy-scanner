@@ -13,7 +13,8 @@ import EffectiveSaving from "@/Pages/FinalQuote/EffectiveSaving";
 
 const FinalQuote = () => {
   const [effSaving, setEffSaving] = useState(false);
-  const [openPopup, setOpenPopup] = useState(true);
+  const [showEFfSaving, setShowEffSaving] = useState(false);
+  const [openPopup, setOpenPopup] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selected, setSelected] = useState(null);
   const [decreasingTerm, setDecreasingTerm] = useState(false);
@@ -29,6 +30,8 @@ const FinalQuote = () => {
   const [childrenRider, setChildrenRider] = useState(false);
   const [criticalIllness, setCriticalIllness] = useState(false);
   const [rtPremiums, setRtPremiums] = useState(false);
+  const [wholeSidebar, setWholeSidebar] = useState(false);
+
   const router = useRouter();
 
   const handleModalClose = (event, reason) => {
@@ -104,15 +107,15 @@ const FinalQuote = () => {
 
       {/* Third Modal: EffectiveSaving */}
       <Modal
-        open={effSaving}
-        onClose={() => setEffSaving(false)} // Regular close handler
+        open={showEFfSaving}
+        onClose={() => setShowEffSaving(false)} // Regular close handler
         className="flex justify-center items-center"
         disableScrollLock={true}
       >
         <div className="border-none outline-none bg-white rounded-lg py-2 px-4 shadow-lg w-[684px] z-10 relative ">
           <EffectiveSaving
-            setEffSaving={setEffSaving}
-            effSaving={effSaving}
+            setEffSaving={setShowEffSaving}
+            effSaving={showEFfSaving}
             payTermLength={payTermLength}
             setPayTermLength={setPayTermLength}
           />
@@ -142,6 +145,7 @@ const FinalQuote = () => {
                 setPayTermLength={setPayTermLength}
                 payTermLength={payTermLength}
                 enhanced={enhanced}
+                setShowEffSaving={setShowEffSaving}
                 setEnhanced={setEnhanced}
               />
               <CSSTransition
@@ -161,7 +165,10 @@ const FinalQuote = () => {
                   setSidebarOpen={setSidebarOpen}
                   payTermLength={payTermLength}
                   enhanced={enhanced}
+                  setPayTermLength={setPayTermLength}
                   accidentalDeath={accidentalDeath}
+                  setEffSaving={setEffSaving}
+                  effSaving={effSaving}
                   setAccidentalDeath={setAccidentalDeath}
                   criticalIllness={criticalIllness}
                   setCriticalIllness={setCriticalIllness}
@@ -169,6 +176,8 @@ const FinalQuote = () => {
                   setChildrenRider={setChildrenRider}
                   rtPremiums={rtPremiums}
                   setRtPremiums={setRtPremiums}
+                  wholeSidebar={wholeSidebar}
+                  setWholeSidebar={setWholeSidebar}
                 />
               </CSSTransition>
             </div>

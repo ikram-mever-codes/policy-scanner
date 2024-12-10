@@ -21,6 +21,7 @@ import AccidentalDeath from "./AccidentalDeath";
 import CriticalIllness from "./CriticalIllnessRider";
 import ChildrenRider from "./ChildrenRider";
 import Premiums from "./Premiums";
+import WholeLifeSidebar from "./WholeLifeSidebar";
 
 const Quotes = ({
   insurance,
@@ -34,12 +35,16 @@ const Quotes = ({
   setWlcOpen,
   accidentalDeath,
   criticalIllness,
+  effSaving,
   setCriticalIllness,
   setAccidentalDeath,
   childrenRider,
   setChildrenRider,
   rtPremiums,
   setRtPremiums,
+  setEffSaving,
+  wholeSidebar,
+  setWholeSidebar,
 }) => {
   const [expanded, setExpanded] = useState(false);
   const [paidAddons, setPaidAddons] = useState([]);
@@ -58,7 +63,13 @@ const Quotes = ({
   }, []);
 
   const toggleSidebar = useCallback(() => {
+    const ins = localStorage.getItem("ins");
+    if (ins === "whole-life") {
+      setWholeSidebar(true);
+      return;
+    }
     setSidebarOpen((prev) => !prev);
+    return;
   }, [setSidebarOpen]);
 
   const toggleWlc = useCallback(() => {
@@ -104,17 +115,19 @@ const Quotes = ({
       accidentalDeath ||
       criticalIllness ||
       childrenRider ||
+      wholeSidebar ||
+      sidebarOpen ||
       rtPremiums,
     [
-      (sidebarOpen,
+      sidebarOpen,
       wlcOpen,
       accidentalDeath,
       criticalIllness,
       childrenRider,
-      rtPremiums),
+      rtPremiums,
+      wholeSidebar,
     ]
   );
-
   useEffect(() => {
     document.body.style.overflow = isOverlayOpen ? "hidden" : "unset";
     return () => {
@@ -509,6 +522,11 @@ const Quotes = ({
       <ChildrenRider
         open={childrenRider}
         onClose={() => setChildrenRider(false)}
+      />
+
+      <WholeLifeSidebar
+        open={wholeSidebar}
+        onClose={() => setWholeSidebar(false)}
       />
 
       <Premiums open={rtPremiums} onClose={() => setRtPremiums(false)} />

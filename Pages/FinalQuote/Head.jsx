@@ -128,7 +128,9 @@ const Head = ({
   setDecreasingTerm,
   yearly,
   setYearly,
+  effSaving,
   setEffSaving,
+  setShowEffSaving,
   payTermLength,
   setPayTermLength,
   setSidebarOpenM,
@@ -343,6 +345,21 @@ const Head = ({
                     setEnhanced(!enhanced);
                   }}
                   label="Enhanced ( 25 illness)"
+                  tooltip="Level Term keeps your premium payments the same throughout the policy duration"
+                />
+              )}
+
+              {insurance === "whole-life" && (
+                <InsuranceSwitch
+                  checked={effSaving}
+                  onChange={(e) => {
+                    setEffSaving(!effSaving);
+                    if (e.target.checked === true) {
+                      setShowEffSaving(true);
+                      setPayTermLength("Life 20 Pay");
+                    }
+                  }}
+                  label="Save upto 30%"
                   tooltip="Level Term keeps your premium payments the same throughout the policy duration"
                 />
               )}
