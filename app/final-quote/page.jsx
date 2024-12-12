@@ -14,7 +14,7 @@ import EffectiveSaving from "@/Pages/FinalQuote/EffectiveSaving";
 const FinalQuote = () => {
   const [effSaving, setEffSaving] = useState(false);
   const [showEFfSaving, setShowEffSaving] = useState(false);
-  const [openPopup, setOpenPopup] = useState(false);
+  const [openPopup, setOpenPopup] = useState(true);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selected, setSelected] = useState(null);
   const [decreasingTerm, setDecreasingTerm] = useState(false);
@@ -30,8 +30,11 @@ const FinalQuote = () => {
   const [childrenRider, setChildrenRider] = useState(false);
   const [criticalIllness, setCriticalIllness] = useState(false);
   const [rtPremiums, setRtPremiums] = useState(false);
+  const [mortgageSidebar, setMortgageSidebar] = useState(false);
   const [wholeSidebar, setWholeSidebar] = useState(false);
-
+  const [SpaySidebar, setSpaySidebar] = useState(false);
+  const [enhancedCi, setEnhancedCI] = useState(false);
+  const [ciSidebar, setCiSidebar] = useState(false);
   const router = useRouter();
 
   const handleModalClose = (event, reason) => {
@@ -105,10 +108,9 @@ const FinalQuote = () => {
         </div>
       </Modal>
 
-      {/* Third Modal: EffectiveSaving */}
       <Modal
         open={showEFfSaving}
-        onClose={() => setShowEffSaving(false)} // Regular close handler
+        onClose={() => setShowEffSaving(false)}
         className="flex justify-center items-center"
         disableScrollLock={true}
       >
@@ -158,7 +160,13 @@ const FinalQuote = () => {
                   insurance={insurance}
                   decreasingTerm={decreasingTerm}
                   yearly={yearly}
+                  SpaySidebar={SpaySidebar}
+                  ciSidebar={ciSidebar}
+                  setCiSidebar={setCiSidebar}
+                  setSpaySidebar={setSpaySidebar}
                   setWlcOpen={setWlcOpen}
+                  mortgageSidebar={mortgageSidebar}
+                  setMortgageSidebar={setMortgageSidebar}
                   wlcOpen={wlcOpen}
                   setYearly={setYearly}
                   sidebarOpen={sidebarOpen}
@@ -176,6 +184,8 @@ const FinalQuote = () => {
                   setChildrenRider={setChildrenRider}
                   rtPremiums={rtPremiums}
                   setRtPremiums={setRtPremiums}
+                  enhancedCi={enhancedCi}
+                  setEnhancedCi={setEnhancedCI}
                   wholeSidebar={wholeSidebar}
                   setWholeSidebar={setWholeSidebar}
                 />

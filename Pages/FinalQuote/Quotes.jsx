@@ -22,11 +22,19 @@ import CriticalIllness from "./CriticalIllnessRider";
 import ChildrenRider from "./ChildrenRider";
 import Premiums from "./Premiums";
 import WholeLifeSidebar from "./WholeLifeSidebar";
+import SavePaySideBar from "./SavePaySideBar";
+import MortgageExp from "./MortgageExp";
+import CiSidebar from "./CiSidebar";
+import EnhancedCi from "./EnhancedCi";
 
 const Quotes = ({
   insurance,
   decreasingTerm,
   yearly,
+  mortgageSidebar,
+  setMortgageSidebar,
+  enhancedCi,
+  setEnhancedCi,
   payTermLength,
   sidebarOpen,
   setSidebarOpen,
@@ -42,13 +50,16 @@ const Quotes = ({
   setChildrenRider,
   rtPremiums,
   setRtPremiums,
+  ciSidebar,
+  setCiSidebar,
   setEffSaving,
   wholeSidebar,
   setWholeSidebar,
+  SpaySidebar,
+  setSpaySidebar,
 }) => {
   const [expanded, setExpanded] = useState(false);
   const [paidAddons, setPaidAddons] = useState([]);
-
   const infoIconStyle = useMemo(
     () => ({
       fontSize: 16,
@@ -68,9 +79,21 @@ const Quotes = ({
       setWholeSidebar(true);
       return;
     }
+    if (ins === "critical-illness") {
+      if (enhanced) {
+        setEnhancedCi(true);
+      } else {
+        setCiSidebar(true);
+      }
+      return;
+    }
+    if (ins === "mortgage-insurance") {
+      setMortgageSidebar(true);
+      return;
+    }
     setSidebarOpen((prev) => !prev);
     return;
-  }, [setSidebarOpen]);
+  }, [setSidebarOpen, setCiSidebar, setEnhancedCi, enhanced]);
 
   const toggleWlc = useCallback(() => {
     setWlcOpen((prev) => !prev);
@@ -117,15 +140,23 @@ const Quotes = ({
       childrenRider ||
       wholeSidebar ||
       sidebarOpen ||
-      rtPremiums,
+      rtPremiums ||
+      ciSidebar ||
+      enhancedCi ||
+      mortgageSidebar ||
+      SpaySidebar,
     [
       sidebarOpen,
       wlcOpen,
+      enhancedCi,
+      mortgageSidebar,
       accidentalDeath,
       criticalIllness,
       childrenRider,
+      ciSidebar,
       rtPremiums,
       wholeSidebar,
+      SpaySidebar,
     ]
   );
   useEffect(() => {
@@ -156,18 +187,25 @@ const Quotes = ({
                   </div>
                 );
               case "whole-life":
-                return (
-                  <div className="w-max h-[30px] px-[1rem] self-start py-[7px] mb-[12px] rounded-tl-[10px] rounded-br-[10px] bg-[#AF7AB3] text-white text-[12px] font-normal flex justify-center items-center gap-[3px]">
+                return payTermLength !== "Life 100 Pay" ? (
+                  <div
+                    onClick={() => {
+                      setSpaySidebar(true);
+                    }}
+                    className="w-max cursor-pointer h-[30px] px-[1rem] self-start py-[7px] mb-[12px] rounded-tl-[10px] rounded-br-[10px] bg-[#AF7AB3] text-white text-[12px] font-normal flex justify-center items-center gap-[3px]"
+                  >
                     $ Effective saving 40% - See How
                     <KeyboardArrowDownOutlined sx={{ fontSize: 16 }} />
                   </div>
+                ) : (
+                  <div className="w-max cursor-pointer h-[30px] px-[1rem] self-start py-[7px] mb-[12px] rounded-tl-[10px] rounded-br-[10px] text-white text-[12px] font-normal flex justify-center items-center gap-[3px]"></div>
                 );
               case "critical-illness":
               case "mortgage-insurance":
               default:
                 return <div className="h-[30px]"></div>;
             }
-          }, [insurance, toggleWlc])}
+          }, [insurance, toggleWlc, payTermLength])}
 
           <div className="w-full h-max px-[2rem]  flex justify-between gap-[4rem] items-center">
             <div className="w-full h-full flex justify-between items-center ">
@@ -528,7 +566,31 @@ const Quotes = ({
         open={wholeSidebar}
         onClose={() => setWholeSidebar(false)}
       />
-
+      <SavePaySideBar
+        payTermLength={payTermLength}
+        open={SpaySidebar}
+        onClose={() => {
+          setSpaySidebar(false);
+        }}
+      />
+      <MortgageExp
+        open={mortgageSidebar}
+        onClose={() => {
+          setMortgageSidebar(false);
+        }}
+      />
+      <EnhancedCi
+        open={enhancedCi}
+        onClose={() => {
+          setEnhancedCi(false);
+        }}
+      />
+      <CiSidebar
+        open={ciSidebar}
+        onClose={() => {
+          setCiSidebar(false);
+        }}
+      />
       <Premiums open={rtPremiums} onClose={() => setRtPremiums(false)} />
     </div>
   );
