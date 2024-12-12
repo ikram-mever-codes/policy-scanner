@@ -1,14 +1,41 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { ArrowForwardIos, PhoneInTalk, Star } from "@mui/icons-material";
 import Google from "../../assets/google.png";
 import Image from "next/image";
-import AddIcCallOutlinedIcon from "@mui/icons-material/AddIcCallOutlined";
 import Link from "next/link";
 import { Phone } from "lucide-react";
+import { Modal } from "@mui/material";
+import ScheduleACall from "@/Components/ScheduleACall";
+
 const Sidebar = () => {
+  const [schedule, setSchedule] = useState(false);
   return (
     <div className="w-full z-[1]  overflow-hidden  min-h-[80vh] flex justify-start items-center gap-[1.5rem] flex-col">
+      <Modal
+        open={schedule}
+        onClose={() => {
+          setSchedule(false);
+        }}
+        className="flex justify-center items-center"
+        aria-labelledby="choose-smoker-title"
+        aria-describedby="choose-smoker-description"
+      >
+        <div className="relative" onClick={() => setSchedule(false)}>
+          <div
+            className="border-none outline-none bg-white rounded-lg p-6 pt-0 px-0 shadow-lg max-w-md w-full z-10"
+            role="dialog"
+            aria-modal="true"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <ScheduleACall
+              onClose={() => {
+                setSchedule(false);
+              }}
+            />
+          </div>
+        </div>
+      </Modal>
       {/* <button className="w-[268px] h-[60px] flex text-[18px] justify-center items-center gap-[4px] font-medium bg-primary rounded-[10px] text-white">
         <AddIcCallOutlinedIcon /> Talk to Expert
       </button> */}

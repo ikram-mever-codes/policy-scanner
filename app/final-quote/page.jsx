@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { uploadPostData } from "../api";
 import ChooseCoverageType from "@/Pages/FinalQuote/ChangeCoverageType";
 import EffectiveSaving from "@/Pages/FinalQuote/EffectiveSaving";
+import TalkToExpert from "@/Pages/FinalQuote/TalkToExpert";
 
 const FinalQuote = () => {
   const [effSaving, setEffSaving] = useState(false);
@@ -34,6 +35,7 @@ const FinalQuote = () => {
   const [wholeSidebar, setWholeSidebar] = useState(false);
   const [SpaySidebar, setSpaySidebar] = useState(false);
   const [enhancedCi, setEnhancedCI] = useState(false);
+  const [openTtx, setOpenTtx] = useState(true);
   const [ciSidebar, setCiSidebar] = useState(false);
   const router = useRouter();
 
@@ -44,7 +46,6 @@ const FinalQuote = () => {
     setOpenPopup(false);
   };
 
-  // Handler to close the modal upon user selection
   const handleSelection = (choice) => {
     setSelected(choice);
     setOpenPopup(false);

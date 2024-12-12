@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { Toolbar, IconButton, Box, LinearProgress } from "@mui/material";
+import { Toolbar, IconButton, Box, LinearProgress, Modal } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
@@ -12,10 +12,13 @@ import { usePathname } from "next/navigation";
 import Sidebar from "./Sidebar"; // Import Sidebar
 import AddIcCallOutlinedIcon from "@mui/icons-material/AddIcCallOutlined";
 import { MessageCircle } from "lucide-react";
+import TalkToExpert from "@/Pages/FinalQuote/TalkToExpert";
 
 const Header = () => {
   const [menuOpenIndex, setMenuOpenIndex] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [openTtx, setOpenTtx] = useState(false);
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -139,7 +142,12 @@ const Header = () => {
                 </nav>
               )}
               {isQPage ? (
-                <button className="group relative flex items-center justify-center gap-2 rounded-lg bg-teal-700 px-6 py-3 text-white transition-all duration-300 hover:bg-teal-800 hover:shadow-lg active:scale-95">
+                <button
+                  onClick={() => {
+                    setOpenTtx(true);
+                  }}
+                  className="group relative flex items-center justify-center gap-2 rounded-lg bg-teal-700 px-6 py-3 text-white transition-all duration-300 hover:bg-teal-800 hover:shadow-lg active:scale-95"
+                >
                   <MessageCircle className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
                   <span className="font-medium">Talk to Expert</span>
                   <span className="absolute -right-1 -top-1 flex h-3 w-3">
@@ -195,6 +203,30 @@ const Header = () => {
             )}
           </div>
         </header>
+        <Modal
+          open={openTtx}
+          onClose={() => {
+            setOpenTtx(false);
+          }}
+          className="flex justify-center items-center"
+          aria-labelledby="choose-smoker-title"
+          aria-describedby="choose-smoker-description"
+        >
+          <div className="relative" onClick={() => setOpenTtx(false)}>
+            <div
+              className="border-none outline-none bg-white rounded-lg p-6 pt-0 px-0 shadow-lg max-w-md w-full z-10"
+              role="dialog"
+              aria-modal="true"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <TalkToExpert
+                onClose={() => {
+                  setOpenTtx(false);
+                }}
+              />
+            </div>
+          </div>
+        </Modal>
       </div>
     </>
   );
