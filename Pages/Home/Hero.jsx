@@ -66,7 +66,7 @@ const HeroSection = () => {
                                 hover:scale-105 hover:shadow-lg
                                 cursor-pointer overflow-hidden"
                   >
-                    <h3 className="relative text-center w-full flex justify-center items-center gap-3 text-lg font-normal z-10">
+                    <h3 className="relative text-center w-full flex justify-start px-[1.5rem] items-center gap-3 text-lg font-normal z-10">
                       {item.icon} {item.name}
                     </h3>
                   </div>

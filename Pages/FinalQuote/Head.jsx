@@ -227,12 +227,12 @@ const Head = ({
               }}
             >
               {/* Title */}
+              {/* Global Styles  */}
               <h1
                 style={{
-                  fontSize: "1.125rem",
-                  fontWeight: 600,
                   color: "rgba(17,24,39,1)",
                 }}
+                className="text-[18px] leading-[25px] font-semibold"
               >
                 {formatInsuranceHeading(insurance)} Quote
               </h1>
@@ -246,15 +246,14 @@ const Head = ({
                   padding: "0px 16px",
                   borderRadius: "8px",
                 }}
-                className="bg-gray-500/10"
+                className="bg-back w-max h-[35px]"
               >
                 <PersonIcon style={{ fontSize: 20, color: "#6B7280" }} />
                 <span
                   style={{
-                    fontSize: "12px",
-                    fontWeight: 400,
                     color: "#374151",
                   }}
+                  className="text-[12px] font-normal leading-l2"
                 >
                   {quoteData.gender === "male" ? "Male" : "Female"} |{" "}
                   {quoteData.smoker === "yes" ? "Smoker" : "Non-smoker"} | Age{" "}
@@ -267,8 +266,9 @@ const Head = ({
                   sx={{
                     color: "#2563EB",
                     textTransform: "none",
-                    fontSize: "14px",
-                    fontWeight: 500,
+                    fontSize: "12px",
+                    fontWeight: 300,
+                    lineHeight: "12px",
                   }}
                 >
                   Edit Profile
@@ -285,9 +285,8 @@ const Head = ({
                 padding: "16px",
                 borderRadius: "8px",
               }}
-              className="bg-gray-500/10"
+              className="bg-back"
             >
-              {/* Coverage Type Display and Change Button */}
               <div
                 style={{ display: "flex", alignItems: "center", gap: "16px" }}
               >
@@ -296,14 +295,14 @@ const Head = ({
                 >
                   <span
                     style={{
-                      fontSize: "0.875rem",
+                      fontSize: "14px",
                       fontWeight: 500,
                       color: "#111827",
                     }}
                   >
                     Coverage Type:
                   </span>
-                  <span style={{ fontSize: "0.875rem", color: "#374151" }}>
+                  <span style={{ fontSize: "14px", color: "#374151" }}>
                     {formatInsuranceHeading(insurance)}
                   </span>
                   <Tooltip title="Information about your coverage type" arrow>
@@ -318,7 +317,7 @@ const Head = ({
                   sx={{
                     color: "#2563EB",
                     textTransform: "none",
-                    fontSize: "0.875rem",
+                    fontSize: "14px",
                     padding: 0,
                   }}
                   endIcon={
@@ -383,8 +382,8 @@ const Head = ({
                 >
                   <InputLabel
                     sx={{
-                      fontSize: "0.875rem",
-                      fontWeight: 500,
+                      fontSize: "14px",
+                      fontWeight: 400,
                       color: "#374151",
                       position: "relative",
                       transform: "none",
@@ -429,8 +428,8 @@ const Head = ({
                 >
                   <InputLabel
                     sx={{
-                      fontSize: "0.875rem",
-                      fontWeight: 500,
+                      fontSize: "14px",
+                      fontWeight: 400,
                       color: "#374151",
                       position: "relative",
                       transform: "none",
@@ -469,7 +468,7 @@ const Head = ({
               >
                 <span
                   style={{
-                    fontSize: "0.875rem",
+                    fontSize: "14px",
                     fontWeight: 400,
                     color: "#374151",
                     position: "relative",
@@ -483,9 +482,10 @@ const Head = ({
                     display: "inline-flex",
                     border: "1px solid rgba(0,0,0,0.1)",
                     borderRadius: "8px",
-                    padding: "4px",
+                    padding: "2px 4px",
                     width: "100%",
                   }}
+                  className="flex justify-center items-center"
                 >
                   <Button
                     variant={!yearly ? "contained" : "text"}
@@ -493,12 +493,13 @@ const Head = ({
                     sx={{
                       flex: 1,
                       textTransform: "none",
+                      height: "33px",
                       backgroundColor: !yearly ? "#EBF5FF" : "transparent",
                       color: !yearly ? "#1D4ED8" : "#4B5563",
                       borderRadius: "8px 0 0 8px",
                       boxShadow: !yearly
                         ? "0px 2px 4px rgba(0, 0, 0,0)"
-                        : "none",
+                        : "none ",
                       "&:hover": {
                         backgroundColor: !yearly ? "#D1E9FF" : "transparent",
                         boxShadow: !yearly
@@ -514,6 +515,7 @@ const Head = ({
                     variant={yearly ? "contained" : "text"}
                     onClick={() => handleYearlyToggle(true)}
                     sx={{
+                      height: "33px",
                       flex: 1,
                       textTransform: "none",
                       backgroundColor: yearly ? "#EBF5FF" : "transparent",

@@ -13,7 +13,8 @@ import Sidebar from "./Sidebar"; // Import Sidebar
 import AddIcCallOutlinedIcon from "@mui/icons-material/AddIcCallOutlined";
 import { MessageCircle } from "lucide-react";
 import TalkToExpert from "@/Pages/FinalQuote/TalkToExpert";
-import { PhoneInTalk } from "@mui/icons-material";
+import { ArrowForwardIos, Phone, PhoneInTalk } from "@mui/icons-material";
+import ScheduleACall from "./ScheduleACall";
 
 const Header = () => {
   const [menuOpenIndex, setMenuOpenIndex] = useState(null);
@@ -22,6 +23,7 @@ const Header = () => {
   const [talked, setTalked] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const [schedule, setSchedule] = useState(false);
 
   const path = usePathname();
   const menuItems = [
@@ -145,26 +147,20 @@ const Header = () => {
                 </nav>
               )}
               {isQPage ? (
-                <button
-                  disabled={talked}
-                  onClick={() => {
-                    setOpenTtx(true);
-                    sessionStorage.setItem("talked", true);
-                    setTalked(true);
-                  }}
-                  className="disabled:cursor-not-allowed disabled:bg-gray-500 group relative flex items-center justify-center gap-2 rounded-lg bg-teal-700 px-6 py-3 text-white transition-all duration-300 hover:bg-teal-800 hover:shadow-lg active:scale-95"
-                >
-                  <PhoneInTalk className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
-                  <span className="font-medium">Talk to Expert</span>
-                  <span className="absolute -right-1 -top-1 flex h-3 w-3">
-                    {talked === false && (
-                      <>
-                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75"></span>
-                        <span className="relative inline-flex h-3 w-3 rounded-full bg-teal-500"></span>
-                      </>
-                    )}
-                  </span>
-                </button>
+                <div className="w-[268px] h-[60px] flex justify-start items-center flex-col overflow-hidden rounded-lg shadow-sidebar ">
+                  <button
+                    onClick={() => {
+                      setSchedule(true);
+                    }}
+                    className=" cursor-pointer group w-full h-full relative flex items-center justify-center gap-2 rounded-lg  bg-white px-6 py-3  transition-all duration-300   hover:shadow-lg active:scale-95"
+                  >
+                    <Phone className="h-5 w-5 transition-transform duration-300 group-hover:-rotate-12 text-opposite" />
+                    <span className="font-medium text-primary2 text-lg">
+                      Schedule a Call
+                    </span>
+                    <ArrowForwardIos className="h-5 w-5 transition-transform duration-300 group-hover:-rotate-12 text-halfBlack" />
+                  </button>
+                </div>
               ) : (
                 !isQForm && (
                   <button className="w-max h-[2.8rem] flex justify-center items-center text-black bg-secondary text-nowrap px-[15px] py-[5px] gap-[10px] rounded-lg">
@@ -213,7 +209,7 @@ const Header = () => {
             )}
           </div>
         </header>
-        <Modal
+        {/* <Modal
           open={openTtx}
           onClose={() => {
             setOpenTtx(false);
@@ -232,6 +228,31 @@ const Header = () => {
               <TalkToExpert
                 onClose={() => {
                   setOpenTtx(false);
+                }}
+              />
+            </div>
+          </div>
+        </Modal> */}
+
+        <Modal
+          open={schedule}
+          onClose={() => {
+            setSchedule(false);
+          }}
+          className="flex justify-center items-center"
+          aria-labelledby="choose-smoker-title"
+          aria-describedby="choose-smoker-description"
+        >
+          <div className="relative" onClick={() => setSchedule(false)}>
+            <div
+              className="border-none outline-none rounded-lg p-6 pt-0 px-0 shadow-lg max-w-md w-full z-10"
+              role="dialog"
+              aria-modal="true"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <ScheduleACall
+                onClose={() => {
+                  setSchedule(false);
                 }}
               />
             </div>

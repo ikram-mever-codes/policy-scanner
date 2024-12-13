@@ -9,33 +9,8 @@ import { Modal } from "@mui/material";
 import ScheduleACall from "@/Components/ScheduleACall";
 
 const Sidebar = () => {
-  const [schedule, setSchedule] = useState(false);
   return (
     <div className="w-full z-[1]  overflow-hidden  min-h-[80vh] flex justify-start items-center gap-[1.5rem] flex-col">
-      <Modal
-        open={schedule}
-        onClose={() => {
-          setSchedule(false);
-        }}
-        className="flex justify-center items-center"
-        aria-labelledby="choose-smoker-title"
-        aria-describedby="choose-smoker-description"
-      >
-        <div className="relative" onClick={() => setSchedule(false)}>
-          <div
-            className="border-none outline-none rounded-lg p-6 pt-0 px-0 shadow-lg max-w-md w-full z-10"
-            role="dialog"
-            aria-modal="true"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <ScheduleACall
-              onClose={() => {
-                setSchedule(false);
-              }}
-            />
-          </div>
-        </div>
-      </Modal>
       {/* <button className="w-[268px] h-[60px] flex text-[18px] justify-center items-center gap-[4px] font-medium bg-primary rounded-[10px] text-white">
         <AddIcCallOutlinedIcon /> Talk to Expert
       </button> */}
@@ -62,20 +37,6 @@ const Sidebar = () => {
           </div>
         </div>
       </Link>
-      <div className="w-[268px] h-[60px] flex justify-start items-center flex-col overflow-hidden rounded-lg shadow-sidebar ">
-        <button
-          onClick={() => {
-            setSchedule(true);
-          }}
-          className=" cursor-pointer group w-full h-full relative flex items-center justify-center gap-2 rounded-lg  bg-white px-6 py-3  transition-all duration-300   hover:shadow-lg active:scale-95"
-        >
-          <Phone className="h-5 w-5 transition-transform duration-300 group-hover:-rotate-12 text-opposite" />
-          <span className="font-medium text-primary2 text-lg">
-            Schedule a Call
-          </span>
-          <ArrowForwardIos className="h-5 w-5 transition-transform duration-300 group-hover:-rotate-12 text-halfBlack" />
-        </button>
-      </div>
     </div>
   );
 };
