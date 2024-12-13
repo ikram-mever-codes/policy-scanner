@@ -2,6 +2,7 @@ import React from "react";
 import home1 from "../../assets/home-asset-3.png";
 import Image from "next/image";
 import Link from "next/link";
+import { Shield, Heart, Home, Star } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -38,13 +39,12 @@ const HeroSection = () => {
                 Compare Canada's best life Insurance rates instantly
               </p>
             </div>
-
             <div className="w-max self-start grid grid-cols-2 gap-x-8 gap-y-4 mt-6">
               {[
-                "Term Life",
-                "Whole Life",
-                "Mortgage Insurance",
-                "Critical Illness",
+                { name: "Term Life", icon: <Shield /> },
+                { name: "Whole Life", icon: <Star /> },
+                { name: "Critical Illnesss", icon: <Heart /> },
+                { name: "Mortgage Insurance", icon: <Home /> },
               ].map((item) => (
                 <Link
                   href="/quote-form"
@@ -63,16 +63,25 @@ const HeroSection = () => {
                     className="relative group flex justify-center items-center w-[260px] h-[85px] 
                                 shadow-2xl text-teal-600 rounded-2xl bg-white/95
                                 transform transition-all duration-300 ease-in-out
-                                hover:bg-teal-600 hover:text-white hover:scale-105 hover:shadow-lg
+                                hover:scale-105 hover:shadow-lg
                                 cursor-pointer overflow-hidden"
                   >
-                    <h3 className="relative text-center text-lg font-normal z-10">
-                      {item}
+                    <h3 className="relative text-center w-full flex justify-center items-center gap-3 text-lg font-normal z-10">
+                      {item.icon} {item.name}
                     </h3>
                   </div>
                 </Link>
               ))}
             </div>
+            <div className=" w-full">
+              <div className="container mx-auto px-4">
+                <div className="flex items-center justify-start space-x-6 text-white/90 text-sm">
+                  <span>✓ Licensed Providers</span>
+                  <span>✓ Instant Quotes</span>
+                  <span>✓ Best Rate Guarantee</span>
+                </div>
+              </div>
+            </div>{" "}
           </div>
         </div>
 
@@ -80,17 +89,6 @@ const HeroSection = () => {
         <div className="w-full h-full flex justify-start items-end">
           <div className="relative bottom-0 left-[150px] lg:left-[200px] w-[492px] h-[466px]">
             <Image src={home1} alt="Insurance Hero" className="object-cover" />
-          </div>
-        </div>
-      </div>
-
-      {/* Trust indicators */}
-      <div className="absolute bottom-4 left-0 w-full">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-start space-x-6 text-white/90 text-sm">
-            <span>✓ Licensed Providers</span>
-            <span>✓ Instant Quotes</span>
-            <span>✓ Best Rate Guarantee</span>
           </div>
         </div>
       </div>
