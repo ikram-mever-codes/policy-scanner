@@ -13,12 +13,13 @@ import Sidebar from "./Sidebar"; // Import Sidebar
 import AddIcCallOutlinedIcon from "@mui/icons-material/AddIcCallOutlined";
 import { MessageCircle } from "lucide-react";
 import TalkToExpert from "@/Pages/FinalQuote/TalkToExpert";
+import { PhoneInTalk } from "@mui/icons-material";
 
 const Header = () => {
   const [menuOpenIndex, setMenuOpenIndex] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [openTtx, setOpenTtx] = useState(false);
-
+  const [talked, setTalked] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -63,6 +64,8 @@ const Header = () => {
   };
 
   useEffect(() => {
+    const tk = sessionStorage.getItem("talked");
+    setTalked(tk);
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -143,16 +146,23 @@ const Header = () => {
               )}
               {isQPage ? (
                 <button
+                  disabled={talked}
                   onClick={() => {
                     setOpenTtx(true);
+                    sessionStorage.setItem("talked", true);
+                    setTalked(true);
                   }}
-                  className="group relative flex items-center justify-center gap-2 rounded-lg bg-teal-700 px-6 py-3 text-white transition-all duration-300 hover:bg-teal-800 hover:shadow-lg active:scale-95"
+                  className="disabled:cursor-not-allowed disabled:bg-gray-500 group relative flex items-center justify-center gap-2 rounded-lg bg-teal-700 px-6 py-3 text-white transition-all duration-300 hover:bg-teal-800 hover:shadow-lg active:scale-95"
                 >
-                  <MessageCircle className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
+                  <PhoneInTalk className="h-5 w-5 transition-transform duration-300 group-hover:rotate-12" />
                   <span className="font-medium">Talk to Expert</span>
                   <span className="absolute -right-1 -top-1 flex h-3 w-3">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75"></span>
-                    <span className="relative inline-flex h-3 w-3 rounded-full bg-teal-500"></span>
+                    {talked === false && (
+                      <>
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-75"></span>
+                        <span className="relative inline-flex h-3 w-3 rounded-full bg-teal-500"></span>
+                      </>
+                    )}
                   </span>
                 </button>
               ) : (

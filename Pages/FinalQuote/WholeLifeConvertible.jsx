@@ -108,77 +108,52 @@ const WholeLifeConvertible = ({ open, onClose }) => {
         <div className="p-6 space-y-6">
           <div className="bg-blue-50 shadow-lg p-6 rounded-lg">
             <div className="flex items-center gap-3 mb-2">
-              <Shield className="w-6 h-6 text-blue-600" />
-              <h2 className="text-xl font-semibold">Simple Explanation</h2>
+              <h2 className="text-xl font-semibold">
+                What is convertible term insurance ?{" "}
+              </h2>
             </div>
             <p className="mb-4  leading-[27px] text-[15px]  text-halfBlack">
-              Think of a Whole Life Convertible Term Plan like renting a house
-              with a guaranteed option to buy it later. Here's how it works:
+              Let's consider whole life convertible term insurance as renting a
+              home with a guaranteed option to buy it later.{" "}
             </p>
-
-            <div className="mb-4">
-              <h3 className="font-semibold mb-2">Starting Out:</h3>
-              <ul className=" pl-5 space-y-1 li-disc">
-                <li className="leading-[27px] text-[15px]  text-halfBlack">
-                  You get temporary life insurance (like renting) at an
-                  affordable rate
-                </li>
-                <li className="leading-[27px] text-[15px]  text-halfBlack">
-                  For example: $500,000 coverage for $66.67 per month
-                </li>
-                <li className="leading-[27px] text-[15px]  text-halfBlack">
-                  Your coverage is guaranteed for a specific period (say 20
-                  years)
-                </li>
-              </ul>
-            </div>
 
             <div>
               <h3 className="font-semibold mb-2">
-                The Special Conversion Feature:
+                The whole life conversion feature:
               </h3>
               <ul className="list-disc pl-5 space-y-1 li-disc">
                 <li className="leading-[27px] text-[15px]  text-halfBlack">
-                  Any time during your term, you have a guaranteed right to
-                  convert to permanent coverage
+                  Any time before the expiry of the term insurance you can
+                  convert it into a whole life insurance.
                 </li>
                 <li className="leading-[27px] text-[15px]  text-halfBlack">
-                  No new medical exam needed
+                  No new medical exam is needed
                 </li>
                 <li className="leading-[27px] text-[15px]  text-halfBlack">
-                  Your health when you first bought the policy is what matters,
-                  not your health when you convert
+                  Your health when you first bought the policy will only be
+                  considered.
                 </li>
                 <li className="leading-[27px] text-[15px]  text-halfBlack">
-                  You can convert all or part of your coverage
+                  You can convert all or part of your coverage
                 </li>
               </ul>
             </div>
           </div>
 
           {/* Interactive Controls */}
-          <div className="grid grid-cols-3 gap-4  py-[10px]">
+          <div className="flex justify-between items-center gap-2 pb-0 py-[10px] ">
             <div className="space-y-2">
               <label className="flex items-center gap-2 text-gray-700 font-medium">
                 <Calendar size={18} />
-                Current Age
+                Your Age
               </label>
-              <select
-                value={currentAge}
-                onChange={(e) => setCurrentAge(Number(e.target.value))}
-                className="w-full p-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
-              >
-                {[25, 30, 35, 40, 45, 50].map((age) => (
-                  <option key={age} value={age}>
-                    {age} years
-                  </option>
-                ))}
-              </select>
+              <div className="w-max font-semibold px-6 py-2">45 Years</div>
             </div>
-            <div className="space-y-2">
+
+            <div className="space-y-2 w-[12rem]">
               <label className="flex items-center gap-2 text-gray-700 font-medium">
                 <DollarSign size={18} />
-                Coverage Amount
+                Conversion Amount
               </label>
               <select
                 value={coverage}
@@ -192,10 +167,10 @@ const WholeLifeConvertible = ({ open, onClose }) => {
                 ))}
               </select>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-2 w-[12rem]">
               <label className="flex items-center gap-2 text-gray-700 font-medium">
                 <Clock size={18} />
-                Term Length
+                Conversion Term{" "}
               </label>
               <select
                 value={termLength}
@@ -279,62 +254,6 @@ const WholeLifeConvertible = ({ open, onClose }) => {
                   />
                 </LineChart>
               </ResponsiveContainer>
-            </div>
-          </div>
-
-          {/* Phase Comparison */}
-          <div className="grid grid-cols-2 gap-6 ">
-            <div className="bg-gradient-to-br from-blue-50 shadow-lg to-indigo-50 rounded-xl p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <Shield className="text-blue-600" size={20} />
-                <h3 className="text-lg font-semibold text-gray-800">
-                  Term Phase
-                </h3>
-              </div>
-              <div className="space-y-3">
-                <p className="flex justify-between text-gray-600">
-                  Monthly Premium
-                  <span className="font-semibold text-gray-900">
-                    ${termMonthlyPremium}
-                  </span>
-                </p>
-                <p className="flex justify-between text-gray-600">
-                  Death Benefit
-                  <span className="font-semibold text-gray-900">
-                    ${coverage.toLocaleString()}
-                  </span>
-                </p>
-                <p className="flex justify-between text-gray-600">
-                  Cash Value
-                  <span className="font-semibold text-gray-900">$0</span>
-                </p>
-              </div>
-            </div>
-            <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl shadow-lg p-6">
-              <div className="flex items-center gap-2 mb-4">
-                <HeartPulse className="text-emerald-600" size={20} />
-                <h3 className="text-lg font-semibold text-gray-800">
-                  After Conversion
-                </h3>
-              </div>
-              <div className="space-y-3">
-                <p className="flex justify-between text-gray-600">
-                  Monthly Premium
-                  <span className="font-semibold text-gray-900">
-                    ${wholeLifeMonthlyPremium}
-                  </span>
-                </p>
-                <p className="flex justify-between text-gray-600">
-                  Death Benefit
-                  <span className="font-semibold text-gray-900">
-                    ${coverage.toLocaleString()}
-                  </span>
-                </p>
-                <p className="flex justify-between text-gray-600">
-                  Cash Value Growth
-                  <span className="font-semibold text-emerald-600">Yes</span>
-                </p>
-              </div>
             </div>
           </div>
 
