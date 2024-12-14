@@ -110,7 +110,19 @@ li {
   list-style: none;
   padding: 0;
 }
+.side-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: #636363;
+  line-height: 18px;
+}
 
+.side-head {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 25px;
+  color: #494949;
+}
 .custom-list-bullets li {
   display: flex;
   align-items: flex-start;

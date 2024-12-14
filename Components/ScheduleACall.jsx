@@ -1,33 +1,112 @@
 import { Sparkles } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const ScheduleACall = ({}) => {
   const [selectedDate, setSelectedDate] = useState(null);
   const [selectedTime, setSelectedTime] = useState(null);
   const [timeOfDay, setTimeOfDay] = useState("morning");
+  const [currentTime, setCurrentTime] = useState(new Date());
 
-  const dates = [
-    { day: "Thu", date: "12" },
-    { day: "Fri", date: "13" },
-    { day: "Sat", date: "14" },
-    { day: "Sun", date: "15" },
-    { day: "Mon", date: "16" },
-  ];
+  // Convert the current time to EST
+  const getESTTime = () => {
+    const now = new Date();
+    const utcOffset = now.getTimezoneOffset();
+    const estOffset = 300;
+    const estTime = new Date(now.getTime() + (utcOffset - estOffset) * 60000);
+    return estTime;
+  };
+
+  const generateDates = () => {
+    const dates = [];
+    const today = getESTTime();
+    for (let i = 0; i < 5; i++) {
+      const date = new Date(today);
+      date.setDate(today.getDate() + i);
+      dates.push({
+        day: date.toLocaleDateString("en-US", { weekday: "short" }),
+        date: date.getDate().toString(),
+      });
+    }
+    return dates;
+  };
+
+  const dates = generateDates();
 
   const timeSlots = {
     morning: [
-      { id: "m1", time: "09:30 - 11:30", icon: "☀️" },
-      { id: "m2", time: "11:30 - 13:30", icon: "⛅" },
+      {
+        id: "m1",
+        time: "09:30 - 11:30",
+        icon: "☀️",
+        start: "09:30",
+        end: "11:30",
+      },
+      {
+        id: "m2",
+        time: "11:30 - 13:30",
+        icon: "⛅",
+        start: "11:30",
+        end: "13:30",
+      },
     ],
     afternoon: [
-      { id: "a1", time: "13:30 - 15:30", icon: "🌤️" },
-      { id: "a2", time: "15:30 - 17:30", icon: "🌥️" },
+      {
+        id: "a1",
+        time: "13:30 - 15:30",
+        icon: "🌤️",
+        start: "13:30",
+        end: "15:30",
+      },
+      {
+        id: "a2",
+        time: "15:30 - 17:30",
+        icon: "🌥️",
+        start: "15:30",
+        end: "17:30",
+      },
     ],
     evening: [
-      { id: "e1", time: "17:30 - 19:30", icon: "🌆" },
-      { id: "e2", time: "19:30 - 21:30", icon: "🌙" },
+      {
+        id: "e1",
+        time: "17:30 - 19:30",
+        icon: "🌆",
+        start: "17:30",
+        end: "19:30",
+      },
+      {
+        id: "e2",
+        time: "19:30 - 21:30",
+        icon: "🌙",
+        start: "19:30",
+        end: "21:30",
+      },
     ],
   };
+
+  // Utility to convert time strings to Date objects in EST
+  const parseTime = (time) => {
+    const [hours, minutes] = time.split(":");
+    const now = getESTTime();
+    now.setHours(parseInt(hours), parseInt(minutes), 0, 0);
+    return now;
+  };
+
+  // Check if a time slot has passed in EST
+  const isTimeSlotDisabled = (start, end) => {
+    if (!selectedDate || selectedDate === getESTTime().getDate().toString()) {
+      const startTime = parseTime(start);
+      const endTime = parseTime(end);
+      return currentTime > endTime;
+    }
+    return false; // Enable all slots for future dates
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(getESTTime());
+    }, 60000); // Update every minute
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <div className="w-full h-full flex justify-start items-center flex-col gap-[0rem]">
@@ -102,10 +181,13 @@ const ScheduleACall = ({}) => {
                   <button
                     key={slot.id}
                     onClick={() => setSelectedTime(slot.id)}
+                    disabled={isTimeSlotDisabled(slot.start, slot.end)}
                     className={`
-                    p-4 rounded-xl transition-all duration-300 flex items-center gap-3
+                    p-4 rounded-xl transition-all duration-300 flex items-center gap-3 relative
                     ${
-                      selectedTime === slot.id
+                      isTimeSlotDisabled(slot.start, slot.end)
+                        ? "bg-gray-100 text-gray-400 cursor-not-allowed line-through"
+                        : selectedTime === slot.id
                         ? "bg-gradient-to-r from-teal-50 to-teal-100 border-teal-200 border-2"
                         : "bg-gray-50 hover:bg-gray-100 border border-gray-200"
                     }

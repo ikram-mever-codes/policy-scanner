@@ -19,7 +19,8 @@ module.exports = {
         selected2: "#f4f4f4",
         grays: "#818181",
         gray2: "#BDBDBD",
-        gray1: "#CFCFCF",
+        gray1: "#636363",
+        gray3: "#E4E4E4",
         back: "#F4F4F4",
       },
       fontSize: {

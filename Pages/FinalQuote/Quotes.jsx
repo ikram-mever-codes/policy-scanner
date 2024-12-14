@@ -209,7 +209,7 @@ const Quotes = ({
 
           <div className="w-full h-max px-[2rem]  flex justify-between gap-[4rem] items-center">
             <div className="w-full h-full flex justify-between items-center ">
-              <div className="flex  text-left justify-center gap-[3px] flex-col items-center w-[5rem]  h-[38px]">
+              <div className="flex  text-left justify-center gap-[3px] flex-col items-center w-[5rem]  h-[30px]">
                 <Image
                   alt="insurance Provider"
                   width={100}
@@ -218,7 +218,7 @@ const Quotes = ({
                   src={CanadaLife}
                 />
               </div>
-              <div className="flex text-left justify-center  px-[0px] gap-[5px] items-center w-max h-[38px]">
+              <div className="flex text-left justify-center  px-[0px] gap-[5px] items-center w-max h-[30px]">
                 <div className="text-grays w-full text-left text-[14px] text-nowrap font-normal leading-l1">
                   {insurance === "critical-illness" ||
                   insurance === "mortgage-insurance"
@@ -234,7 +234,7 @@ const Quotes = ({
                 </div>
               </div>
               {insuranceDetails.label && (
-                <div className="flex text-left justify-center  px-[0px] gap-[5px] items-center w-max h-[38px]">
+                <div className="flex text-left justify-center  px-[0px] gap-[5px] items-center w-max h-[30px]">
                   <div className="text-grays w-full text-left text-[14px] text-nowrap font-normal leading-l1">
                     {insuranceDetails.label}
                   </div>
@@ -246,7 +246,7 @@ const Quotes = ({
               )}
             </div>
 
-            <div className="w-max flex justify-center items-center h-[38px] gap-[2rem] flex-row">
+            <div className="w-max flex justify-center items-center h-[30px] gap-[2rem] flex-row">
               <div className="font-semibold flex justify-center gap-1 items-center h-full flex-col text-center text-[20px] text-halfBlack">
                 <div className="flex justify-center text-[18px] leading-[27px] items-center w-max gap-1">
                   $250.00{" "}
@@ -262,7 +262,7 @@ const Quotes = ({
             </div>
           </div>
 
-          <div className="w-full my-[1rem] h-[1px] bg-gradient-to-r from-transparent via-halfBlack to-transparent"></div>
+          <div className="w-full my-[1rem]  h-[2px] bg-gradient-to-r from-transparent via-gray3 to-transparent"></div>
 
           <div className="w-full px-[2rem]  flex justify-between items-center flex-row-reverse">
             <button
@@ -322,7 +322,7 @@ const Quotes = ({
           >
             <div className="overflow-hidden mt-[10px] h-max flex flex-col items-start w-full">
               {paidAddons.length > 0 && (
-                <div className="w-full flex justify-start items-center gap-3 px-[2rem] py-2">
+                <div className="w- flex justify-start items-center gap-3 px-[2rem] py-2">
                   {paidAddons.map((addon) => (
                     <div key={addon} className="text-text1 leading-l1">
                       <input

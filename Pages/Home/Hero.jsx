@@ -56,7 +56,7 @@ const HeroSection = () => {
                       "Critical Illness": "critical-illness",
                       "Mortgage Insurance": "mortgage-insurance",
                     };
-                    localStorage.setItem("ins", insuranceTypes[item]);
+                    localStorage.setItem("ins", insuranceTypes[item.name]);
                   }}
                 >
                   <div
