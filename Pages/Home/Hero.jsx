@@ -32,10 +32,10 @@ const HeroSection = () => {
         <div className="flex justify-end items-center w-full h-full">
           <div className="w-max h-full relative left-[120px] flex justify-start py-[70px] gap-4 items-center flex-col">
             <div className="w-full h-max flex justify-end items-center flex-col">
-              <h1 className="text-[55px] font-extrabold leading-[4.5rem] text-left text-white">
-                Let us do the comparison. <br /> You enjoy the savings.
+              <h1 className="text-[50px] font-bold leading-[4rem] text-left text-white">
+                Let us do the comparison <br /> You enjoy the savings
               </h1>
-              <p className="w-full text-white/90 text-[17px] text-left my-[10px]">
+              <p className="w-full text-white/90 text-[18px] text-left my-[10px]">
                 Compare Canada's best life Insurance rates instantly
               </p>
             </div>
@@ -43,7 +43,7 @@ const HeroSection = () => {
               {[
                 { name: "Term Life", icon: <Shield /> },
                 { name: "Whole Life", icon: <Star /> },
-                { name: "Critical Illnesss", icon: <Heart /> },
+                { name: "Critical Illness", icon: <Heart /> },
                 { name: "Mortgage Insurance", icon: <Home /> },
               ].map((item) => (
                 <Link

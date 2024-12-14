@@ -1,130 +1,78 @@
-"use client";
+import React, { useState } from "react";
+import { Menu, X, FileText, Home, Heart, Building, Lock } from "lucide-react";
 
-import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import {
-  FacebookOutlined,
-  Twitter,
-  LinkedIn,
-  Instagram,
-  Close,
-} from "@mui/icons-material";
-import logo from "../assets/logo.png";
+const SidebarPreview = ({ setIsOpen, isOpen }) => {
+  const insuranceOptions = [
+    {
+      title: "Term Life Insurance",
+      icon: <FileText />,
+      path: "/quote/term-life",
+    },
+    {
+      title: "Whole Life Insurance",
+      icon: <Home />,
+      path: "/quote/whole-life",
+    },
+    {
+      title: "Mortgage Insurance",
+      icon: <Building />,
+      path: "/quote/mortgage",
+    },
+    {
+      title: "Critical Illness",
+      icon: <Heart />,
+      path: "/quote/critical-illness",
+    },
+  ];
 
-const Sidebar = ({ isOpen, toggleSidebar }) => {
   return (
-    <>
-      <div
-        className={`fixed top-0 left-0 h-screen w-[300px] bg-primary text-white z-[999] shadow-lg transition-transform duration-500 ${
-          isOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-      >
-        <div className="flex justify-between items-center p-4">
-          <div className="flex items-center gap-2">
-            <Image
-              src={logo}
-              alt="Policy Scanner"
-              height={30}
-              width={200}
-              className="object-contain"
-            />
-          </div>
+    <div
+      className={`fixed top-0 left-0 h-screen w-[300px] bg-white shadow-lg transition-transform duration-300 ease-in-out z-50 ${
+        isOpen ? "translate-x-0" : "-translate-x-full"
+      }`}
+    >
+      <div className="flex justify-between items-center p-6 border-b border-gray-100">
+        <span className="text-xl font-semibold text-teal-600">
+          PolicyScanner
+        </span>
+        <X
+          className="h-5 w-5 text-gray-400 cursor-pointer hover:text-teal-600"
+          onClick={() => setIsOpen(false)}
+        />
+      </div>
+
+      <div className="mt-6 px-4">
+        {insuranceOptions.map((option, index) => (
           <button
-            onClick={toggleSidebar}
-            className="text-white hover:text-secondary transition duration-300"
+            key={index}
+            className="flex items-center gap-3 p-4 rounded-lg hover:bg-teal-50 group cursor-pointer"
           >
-            <Close fontSize="large" />
+            <div className="text-gray-400 group-hover:text-teal-600">
+              {option.icon}
+            </div>
+            <span className="text-sm font-medium text-gray-600 group-hover:text-teal-600">
+              {option.title}
+            </span>
           </button>
+        ))}
+      </div>
+
+      <div className="absolute bottom-16 left-0 w-full px-6">
+        <div className="flex justify-between text-sm text-gray-500 mb-2">
+          <span>Progress</span>
+          <span>Step 0 of 3</span>
         </div>
-
-        {/* Links */}
-        <ul className="flex flex-col gap-6 px-6 mt-10">
-          <li>
-            <Link
-              href="/"
-              className="block text-lg font-medium hover:text-secondary transition duration-300"
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/about"
-              className="block text-lg font-medium hover:text-secondary transition duration-300"
-            >
-              About Us
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/contact"
-              className="block text-lg font-medium hover:text-secondary transition duration-300"
-            >
-              Contact Us
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/services"
-              className="block text-lg font-medium hover:text-secondary transition duration-300"
-            >
-              Services
-            </Link>
-          </li>
-        </ul>
-
-        {/* Social Media Links */}
-        <div className="absolute bottom-6 left-0 w-full flex flex-col items-center gap-4">
-          <div className="flex gap-4">
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-secondary transition duration-300"
-            >
-              <FacebookOutlined fontSize="large" />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-secondary transition duration-300"
-            >
-              <Twitter fontSize="large" />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-secondary transition duration-300"
-            >
-              <LinkedIn fontSize="large" />
-            </a>
-            <a
-              href="https://instagram.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-white hover:text-secondary transition duration-300"
-            >
-              <Instagram fontSize="large" />
-            </a>
-          </div>
-          <p className="text-sm text-gray-300 font-light">
-            © 2024-25 Policy Scanner
-          </p>
+        <div className="w-full bg-gray-100 rounded-full h-2">
+          <div className="bg-teal-600 h-2 rounded-full w-0"></div>
         </div>
       </div>
 
-      {/* Overlay */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-[998] transition-opacity duration-500"
-          onClick={toggleSidebar}
-        ></div>
-      )}
-    </>
+      <div className="absolute bottom-4 left-0 w-full px-6 flex items-center gap-2 text-xs text-gray-400">
+        <Lock className="h-4 w-4" />
+        <span>Your personal information is secure with us</span>
+      </div>
+    </div>
   );
 };
 
-export default Sidebar;
+export default SidebarPreview;

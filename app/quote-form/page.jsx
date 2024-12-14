@@ -71,7 +71,7 @@ const Page = () => {
       return;
     }
     if (steps[currentStepIndex] === "contact-info") {
-      if (!ContactInfo.email || !ContactInfo.phone || !ContactInfo.name) {
+      if (!ContactInfo?.email || !ContactInfo?.phone || !ContactInfo?.name) {
         return null;
       }
       const existingData = JSON.parse(localStorage.getItem("quote-data")) || {};
@@ -197,12 +197,13 @@ const Page = () => {
   if (loading) {
     return <Loading />;
   }
+  const ins = localStorage.getItem("ins");
   return (
     <div className="w-full  min-h-[100vh] h-max flex justify-center items-start py-[3rem]">
       <div className="w-full min-h-[70vh] h-max flex justify-start items-center flex-col">
-        <div className="text-center text-[18px] absolute text-halfBlack top-[34px] right-[40px] pr-[50px] z-[10000] flex justify-center items-center gap-4">
+        <div className="text-center text-[15px] absolute text-halfBlack top-[34px] right-[10px] pr-[40px] z-[10000] flex justify-center items-center gap-2">
           <div>
-            Step{" "}
+            Step &nbsp;
             <strong className="font-semibold text-black">
               {currentStepIndex + 1}
             </strong>{" "}
@@ -214,8 +215,11 @@ const Page = () => {
               setCurrentStepIndex(-1);
             }}
           >
-            <RestartAltIcon className="text-halfBlack text-[25px]" />
+            <RestartAltIcon className="text-halfBlack text-[20px]" />
           </button>
+          <div className="text-[15px]">
+            {ins.normalize().replace("-", "  ")}
+          </div>
         </div>
         <div
           className="w-[700px] min-h-[420px]"

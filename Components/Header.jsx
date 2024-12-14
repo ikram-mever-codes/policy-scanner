@@ -9,7 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import logo from "../assets/logo.png";
 import { usePathname } from "next/navigation";
-import Sidebar from "./Sidebar"; // Import Sidebar
+import Sidebar from "./Sidebar";
 import AddIcCallOutlinedIcon from "@mui/icons-material/AddIcCallOutlined";
 import { MessageCircle } from "lucide-react";
 import TalkToExpert from "@/Pages/FinalQuote/TalkToExpert";
@@ -26,21 +26,66 @@ const Header = () => {
   const [schedule, setSchedule] = useState(false);
 
   const path = usePathname();
+  const [activeDropdown, setActiveDropdown] = useState(null);
+
   const menuItems = [
     {
-      label: "Life Insurance",
-      dropdown: ["Term Life", "Whole Life", "Universal Life"],
+      name: "Life Insurance",
+      hasDoubleColumn: true,
+      dropdown: {
+        termLife: {
+          title: "Term Life Insurance",
+          items: [
+            "What is Term Life Insurance",
+            "T10 Term Insurance",
+            "T20 Term Insurance",
+            "T30 Term Insurance",
+            "Term Insurance Calculator",
+            "Non-Medical Term Insurance",
+            "Compare Term Plans",
+          ],
+        },
+        wholeLife: {
+          title: "Whole Life Insurance",
+          items: [
+            "What is Whole Life Insurance",
+            "Participating Whole Life",
+            "Non-Participating Whole Life",
+            "Universal Life Plans",
+            "Investment Options",
+            "Cash Value Calculator",
+            "Estate Planning",
+          ],
+        },
+      },
     },
     {
-      label: "Mortgage Insurance",
-      dropdown: ["Coverage Options", "Premiums", "Claims"],
+      name: "Mortgage Insurance",
+      dropdown: [
+        "What is Mortgage Insurance",
+        "CMHC Insurance",
+        "Private Mortgage Insurance",
+        "Self-Employed Coverage",
+        "First-Time Home Buyer",
+        "Refinance Calculator",
+        "Down Payment Calculator",
+        "Provincial Programs",
+      ],
     },
     {
-      label: "Critical Illness",
-      dropdown: ["Conditions Covered", "Policy Details", "Payout Options"],
+      name: "Critical Illness",
+      dropdown: [
+        "What is Critical Illness",
+        "Coverage Benefits",
+        "25 Covered Conditions",
+        "Return of Premium",
+        "Child Critical Illness",
+        "Critical Illness Calculator",
+        "Compare Plans",
+        "Claims Process",
+      ],
     },
   ];
-
   const handleMenuClick = (index) => {
     setMenuOpenIndex(index === menuOpenIndex ? null : index);
   };
@@ -76,7 +121,11 @@ const Header = () => {
 
   return (
     <>
-      <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
+      <Sidebar
+        isOpen={sidebarOpen}
+        toggleSidebar={toggleSidebar}
+        setIsOpen={setSidebarOpen}
+      />
 
       <div className={`w-full h-[90px] relative z-[2]`}>
         <header className="">
@@ -93,7 +142,10 @@ const Header = () => {
             >
               {isQForm && (
                 <IconButton onClick={toggleSidebar}>
-                  <MenuIcon fontSize="large" sx={{ color: "black" }} />
+                  <MenuIcon
+                    fontSize="large"
+                    sx={{ color: "black", ml: "30px" }}
+                  />
                 </IconButton>
               )}
               <Box className="w-[230px] sm:w-[300px]">
@@ -110,37 +162,82 @@ const Header = () => {
 
               {!isQForm && !isQPage && (
                 <nav className="hidden sm:flex items-center justify-end mx-[2rem] gap-8  w-full ">
-                  <ul className="flex items-center gap-8">
+                  <ul className="flex justify-end gap-[3rem] items-center w-full">
                     {menuItems.map((item, index) => (
-                      <li key={index} className="relative" ref={dropdownRef}>
-                        <button
-                          className="flex items-center gap-1 text-black text-nowrap hover:text-primary font-medium"
-                          onClick={() => handleMenuClick(index)}
-                          aria-expanded={menuOpenIndex === index}
-                        >
-                          {item.label}
-                          {menuOpenIndex === index ? (
-                            <ExpandLessIcon fontSize="small" />
-                          ) : (
-                            <ExpandMoreIcon fontSize="small" />
-                          )}
+                      <li
+                        key={index}
+                        className="relative py-4 "
+                        onMouseEnter={() => setActiveDropdown(index)}
+                        onMouseLeave={() => setActiveDropdown(null)}
+                      >
+                        <button className="text-gray-700  hover:text-blue-600 font-medium">
+                          {item.name}
                         </button>
-                        {menuOpenIndex === index && (
-                          <ul className="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-lg py-2 z-10">
-                            {item.dropdown.map((subItem, subIndex) => (
-                              <li key={subIndex}>
-                                <Link
-                                  href={`/insurance/${subItem
-                                    .toLowerCase()
-                                    .replace(" ", "-")}`}
-                                  className="block px-4 py-2 hover:bg-gray-100 submenu-link"
-                                >
-                                  {subItem}
-                                </Link>
-                              </li>
-                            ))}
-                          </ul>
-                        )}
+
+                        {activeDropdown === index &&
+                          (item.hasDoubleColumn ? (
+                            <div className="absolute  left-[0px] mt-4 w-[500px] pl-[1rem] bg-white shadow-lg rounded-lg py-6 z-10">
+                              <div className="flex">
+                                <div className="flex-1 border-r border-gray-200">
+                                  <h3 className="px-4 py-2 font-medium text-blue-600">
+                                    {item.dropdown.termLife.title}
+                                  </h3>
+                                  <ul>
+                                    {item.dropdown.termLife.items.map(
+                                      (subItem, subIndex) => (
+                                        <li key={subIndex}>
+                                          <a
+                                            href={`/insurance/${subItem
+                                              .toLowerCase()
+                                              .replace(/ /g, "-")}`}
+                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm"
+                                          >
+                                            {subItem}
+                                          </a>
+                                        </li>
+                                      )
+                                    )}
+                                  </ul>
+                                </div>
+                                <div className="flex-1">
+                                  <h3 className="px-4 py-2 font-medium text-blue-600">
+                                    {item.dropdown.wholeLife.title}
+                                  </h3>
+                                  <ul>
+                                    {item.dropdown.wholeLife.items.map(
+                                      (subItem, subIndex) => (
+                                        <li key={subIndex}>
+                                          <a
+                                            href={`/insurance/${subItem
+                                              .toLowerCase()
+                                              .replace(/ /g, "-")}`}
+                                            className="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm"
+                                          >
+                                            {subItem}
+                                          </a>
+                                        </li>
+                                      )
+                                    )}
+                                  </ul>
+                                </div>
+                              </div>
+                            </div>
+                          ) : (
+                            <ul className="absolute left-0 mt-4 w-48 bg-white shadow-lg rounded-lg py-2 z-10">
+                              {item.dropdown.map((subItem, subIndex) => (
+                                <li key={subIndex}>
+                                  <a
+                                    href={`/insurance/${subItem
+                                      .toLowerCase()
+                                      .replace(/ /g, "-")}`}
+                                    className="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm"
+                                  >
+                                    {subItem}
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          ))}
                       </li>
                     ))}
                   </ul>
