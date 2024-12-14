@@ -10,7 +10,6 @@ import { useRouter } from "next/navigation";
 import { uploadPostData } from "../api";
 import ChooseCoverageType from "@/Pages/FinalQuote/ChangeCoverageType";
 import EffectiveSaving from "@/Pages/FinalQuote/EffectiveSaving";
-import TalkToExpert from "@/Pages/FinalQuote/TalkToExpert";
 
 const FinalQuote = () => {
   const [effSaving, setEffSaving] = useState(false);

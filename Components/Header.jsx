@@ -12,7 +12,6 @@ import { usePathname } from "next/navigation";
 import Sidebar from "./Sidebar";
 import AddIcCallOutlinedIcon from "@mui/icons-material/AddIcCallOutlined";
 import { MessageCircle } from "lucide-react";
-import TalkToExpert from "@/Pages/FinalQuote/TalkToExpert";
 import { ArrowForwardIos, Phone, PhoneInTalk } from "@mui/icons-material";
 import ScheduleACall from "./ScheduleACall";
 
