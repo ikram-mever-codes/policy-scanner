@@ -224,7 +224,7 @@ const Page = () => {
             <RestartAltIcon className="text-halfBlack text-[20px]" />
           </button>
           <div className="text-[15px]">
-            {ins?.normalize().replace("-", "  ") || Term Insurance}
+            {ins?.normalize().replace("-", "  ") || "Term Insurance"}
           </div>
         </div>
         <div
