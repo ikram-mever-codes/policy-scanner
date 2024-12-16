@@ -73,7 +73,7 @@ const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto pl-[10rem] py-16">
+      <div className="relative z-10 container mx-auto pl-[10rem] flex justify-start  h-full items-center py-16">
         <div className="max-w-2xl">
           <h1 className="text-5xl leading-[64px]  font-bold text-white mb-6">
             Protect your family's future
@@ -99,45 +99,32 @@ const Hero = () => {
 
             {/* Sub-text */}
             <p className="text-center text-white/80 text-sm mt-4">
-              Takes only 2 minutes • No obligation
+              Takes only 1 minute • No obligation
             </p>
           </div>
-
-          {/* Coverage range pills */}
-          <div className="flex flex-wrap gap-3 mt-12">
-            {["$100K-$5M Coverage", "10-30 Year Terms", "Instant Decision"].map(
-              (feature) => (
-                <div
-                  key={feature}
-                  className="bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-white/90 text-sm"
-                >
-                  {feature}
-                </div>
-              )
-            )}
-          </div>
         </div>
+        {/* 
+        <div className="absolute bottom-4 left-[9rem] w-full">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-start space-x-8 text-white/90 text-sm">
+              {[
+                "Licensed Providers",
+                "No Medical Option",
+                "Price Match Guarantee",
+              ].map((text, i) => (
+                <div key={i} className="flex items-center space-x-2">
+                  <div className="w-5 h-5 rounded-full flex items-center justify-center">
+                    <span className="text-teal-300">✓</span>
+                  </div>
+                  <span>{text}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div> */}
       </div>
 
       {/* Trust indicators */}
-      <div className="absolute bottom-4 left-0 w-full">
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-start space-x-8 text-white/90 text-sm">
-            {[
-              "Licensed Providers",
-              "No Medical Option",
-              "Price Match Guarantee",
-            ].map((text, i) => (
-              <div key={i} className="flex items-center space-x-2">
-                <div className="w-5 h-5 rounded-full bg-teal-500/20 flex items-center justify-center">
-                  <span className="text-teal-300">✓</span>
-                </div>
-                <span>{text}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
     </div>
   );
 };
