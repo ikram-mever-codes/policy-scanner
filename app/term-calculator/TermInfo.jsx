@@ -69,7 +69,7 @@ const TermInfo = () => {
   ];
 
   return (
-    <article className="min-h-screen bg-gray-50">
+    <article className="min-h-screen">
       {/* Real Life Examples Section */}
       <section className="max-w-4xl mx-auto px-4 py-16">
         <h2 className="text-3xl font-bold text-center mb-12">
@@ -89,7 +89,7 @@ const TermInfo = () => {
       </section>
 
       {/* Simple Cost Breakdown */}
-      <section className="bg-teal-50 py-16">
+      <section className=" py-16">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
             See How Affordable Protection Can Be
@@ -171,7 +171,7 @@ const TermInfo = () => {
       </section>
 
       {/* Common Questions */}
-      <section className="bg-gray-50 py-16">
+      <section className=" py-16">
         <div className="max-w-3xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
             Common Questions
@@ -205,12 +205,12 @@ const TermInfo = () => {
       </section>
 
       {/* Call to Action */}
-      <section className="bg-teal-600 text-white py-16">
+      <section className=" text-white py-16">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold mb-4">
             Ready to Protect Your Family?
           </h2>
-          <p className="text-xl text-teal-100 mb-8">
+          <p className="text-xl text-teal-300 mb-8">
             Get covered in minutes for less than CAD 1 a day
           </p>
           <button className="bg-white text-teal-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-teal-50 transition-colors">
@@ -219,7 +219,7 @@ const TermInfo = () => {
         </div>
       </section>
 
-      <footer className="bg-gray-900 text-gray-400 py-12">
+      <footer className=" text-gray-400 py-12">
         <div className="max-w-4xl mx-auto px-4">
           <p className="text-center">
             Coverage amounts and prices shown are examples only. Your actual
