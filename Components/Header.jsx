@@ -259,16 +259,17 @@ const Header = () => {
                 </div>
               ) : (
                 !isQForm && (
-                  <button className="w-max h-[2.8rem] flex justify-center items-center text-black bg-secondary text-nowrap px-[15px] py-[5px] gap-[10px] rounded-lg">
+                  <button className="w-max h-[2.8rem] flex justify-center items-center text-black bg-secondary text-nowrap px-[15px] py-[5px] gap-[10px] rounded-lg hover-effect">
                     Get Quotes
                   </button>
                 )
               )}
               {path !== "/quote-form" && (
                 <Box className="flex items-center sm:hidden gap-4">
-                  <button className="bg-secondary text-white px-4 py-2 text-sm rounded-lg">
+                  <button className="w-max h-[2.8rem] flex justify-center items-center text-black bg-secondary text-nowrap px-[15px] py-[5px] gap-[10px] rounded-lg hover-effect">
                     Get Quotes
                   </button>
+
                   <IconButton onClick={toggleBurgerMenu}>
                     <MenuIcon />
                   </IconButton>

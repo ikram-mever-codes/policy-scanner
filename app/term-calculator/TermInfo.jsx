@@ -26,19 +26,19 @@ const TermInfo = () => {
   const lifeScenarios = [
     {
       title: "Just Got Married",
-      coverage: "CAD 250,000",
+      coverage: "CAD 500K",
       explanation:
         "Enough to cover joint debts and give your spouse time to adjust",
     },
     {
       title: "New Parent",
-      coverage: "CAD 500,000",
+      coverage: "CAD 750K",
       explanation:
         "Covers childcare, education, and family expenses for your growing family",
     },
     {
       title: "Homeowner",
-      coverage: "CAD 400,000",
+      coverage: "CAD 1M",
       explanation: "Helps pay off the mortgage and maintain the family home",
     },
   ];
@@ -69,27 +69,28 @@ const TermInfo = () => {
   ];
 
   return (
-    <article className="min-h-screen">
+    <article className="min-h-screen w-full ">
       {/* Real Life Examples Section */}
-      <section className="max-w-4xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-center mb-12">
-          Coverage That Makes Sense
-        </h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {lifeScenarios.map((scenario, index) => (
-            <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
-              <h3 className="text-xl font-semibold mb-4">{scenario.title}</h3>
-              <div className="text-2xl text-teal-600 font-bold mb-2">
-                {scenario.coverage}
+      <div className="w-full bg-foreground2">
+        <section className="w-main mx-auto px-4 py-16">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Coverage That Makes Sense
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            {lifeScenarios.map((scenario, index) => (
+              <div key={index} className="bg-white p-6 rounded-lg shadow-sm">
+                <h3 className="text-xl font-semibold mb-4">{scenario.title}</h3>
+                <div className="text-2xl text-teal-600 font-bold mb-2">
+                  {scenario.coverage}
+                </div>
+                <p className="text-gray-600">{scenario.explanation}</p>
               </div>
-              <p className="text-gray-600">{scenario.explanation}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Simple Cost Breakdown */}
-      <section className=" py-16">
+            ))}
+          </div>
+        </section>
+      </div>
+      {/* Simple Cost Breakdown */}{" "}
+      <section className="w-full bg-foreground2 mx-auto px-4 py-16">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-3xl font-bold text-center mb-12">
             See How Affordable Protection Can Be
@@ -120,7 +121,6 @@ const TermInfo = () => {
           </div>
         </div>
       </section>
-
       {/* Why It Matters */}
       <section className="max-w-4xl mx-auto px-4 py-16">
         <h2 className="text-3xl font-bold text-center mb-12">
@@ -169,7 +169,6 @@ const TermInfo = () => {
           </div>
         </div>
       </section>
-
       {/* Common Questions */}
       <section className=" py-16">
         <div className="max-w-3xl mx-auto px-4">
@@ -203,31 +202,6 @@ const TermInfo = () => {
           </div>
         </div>
       </section>
-
-      {/* Call to Action */}
-      <section className=" text-white py-16">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            Ready to Protect Your Family?
-          </h2>
-          <p className="text-xl text-teal-300 mb-8">
-            Get covered in minutes for less than CAD 1 a day
-          </p>
-          <button className="bg-white text-teal-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-teal-50 transition-colors">
-            Get Started Now
-          </button>
-        </div>
-      </section>
-
-      <footer className=" text-gray-400 py-12">
-        <div className="max-w-4xl mx-auto px-4">
-          <p className="text-center">
-            Coverage amounts and prices shown are examples only. Your actual
-            cost will depend on your age, health, and coverage needs. All
-            amounts in Canadian Dollars (CAD).
-          </p>
-        </div>
-      </footer>
     </article>
   );
 };

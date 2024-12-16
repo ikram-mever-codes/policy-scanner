@@ -6,13 +6,7 @@ import homextr2 from "../assets/home-extra-2.png";
 import { Star } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
 import { gsap } from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// if (typeof window !== "undefined") {
-//   gsap.registerPlugin(ScrollTrigger);
-// }
-
-// Gradient star: uses a gradient fill defined in <defs>
 const GradientStar = styled(Star)({
   fontSize: 24,
   "& path": {
@@ -30,40 +24,6 @@ const SolidStar = styled(Star)({
 
 const Stats = () => {
   const starsRef = useRef(null);
-
-  useLayoutEffect(() => {
-    if (!starsRef.current) return;
-
-    const stars = starsRef.current.querySelectorAll(".animated-star");
-    if (!stars || stars.length === 0) {
-      console.warn("No stars found with .animated-star class");
-      return;
-    }
-
-    let ctx = gsap.context(() => {
-      gsap.fromTo(
-        stars,
-        {
-          y: -20,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          ease: "bounce.out",
-          stagger: 0.1,
-          duration: 1,
-          scrollTrigger: {
-            trigger: starsRef.current,
-            start: "top 90%",
-            once: true,
-          },
-        }
-      );
-    }, starsRef);
-
-    return () => ctx.revert();
-  }, []);
 
   return (
     <div
