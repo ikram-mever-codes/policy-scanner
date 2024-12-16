@@ -6,11 +6,11 @@ import homextr2 from "../assets/home-extra-2.png";
 import { Star } from "@mui/icons-material";
 import { styled } from "@mui/material/styles";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+// if (typeof window !== "undefined") {
+//   gsap.registerPlugin(ScrollTrigger);
+// }
 
 // Gradient star: uses a gradient fill defined in <defs>
 const GradientStar = styled(Star)({

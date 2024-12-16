@@ -4,12 +4,7 @@ import quoteForm3 from "../../assets/quote-form-3.png";
 import Image from "next/image";
 import LightbulbOutlinedIcon from "@mui/icons-material/LightbulbOutlined";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// Register the ScrollTrigger plugin with GSAP
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const CoveragePicker = ({
   setDob,
@@ -69,6 +64,12 @@ const CoveragePicker = ({
   const dobInputRef = useRef(null);
 
   useEffect(() => {
+    // const loadGSAP = async () => {
+    //   const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+    //   const gsap = await import("gsap");
+    //   gsap.registerPlugin(ScrollTrigger);
+    // };
+
     let ins = localStorage.getItem("ins") || "term-life";
     setIns(ins);
     const savedData = JSON.parse(localStorage.getItem("quote-data"));

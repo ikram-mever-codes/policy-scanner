@@ -18,7 +18,6 @@ import KeyboardArrowDownOutlinedIcon from "@mui/icons-material/KeyboardArrowDown
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import PersonIcon from "@mui/icons-material/Person";
 
-// Utility function moved outside to prevent re-creation on every render
 const formatInsuranceHeading = (insurance) => {
   if (!insurance) return null;
   const formattedMap = {
@@ -255,9 +254,9 @@ const Head = ({
                   }}
                   className="text-[12px] font-normal leading-l2"
                 >
-                  {quoteData.gender === "male" ? "Male" : "Female"} |{" "}
-                  {quoteData.smoker === "yes" ? "Smoker" : "Non-smoker"} | Age{" "}
-                  {quoteData.years}
+                  {quoteData?.gender === "male" ? "Male" : "Female" || "Male"} |{" "}
+                  {quoteData?.smoker === "yes" ? "Smoker" : "Non-smoker"} | Age{" "}
+                  {quoteData?.years}
                 </span>
                 <Button
                   variant="text"

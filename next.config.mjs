@@ -7,7 +7,7 @@ const nextConfig = {
         {
           loader: "@svgr/webpack",
           options: {
-            icon: true,
+            icon: true, // optional, enables SVGR to treat the SVG as an icon (adds width/height)
           },
         },
       ],

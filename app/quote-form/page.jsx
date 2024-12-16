@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import ChooseProvince from "@/Pages/Quote-form/ChooseProvince";
 import ChooseGender from "@/Pages/Quote-form/ChooseGender";
@@ -26,6 +27,7 @@ const Page = () => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const [currentStepIndex, setCurrentStepIndex] = useState(-1);
+  const [ins, setIns] = useState(null);
   const [provinceSelected, setProvinceSelected] = useState(false);
   const [selectedGender, setSelectedGender] = useState(null);
   const [dob, setDob] = useState("");
@@ -193,11 +195,15 @@ const Page = () => {
       }
     );
   }, [currentStepIndex]);
+  useEffect(() => {
+    const ins = localStorage.getItem("ins");
+    setIns(ins);
+  }, []);
 
   if (loading) {
     return <Loading />;
   }
-  const ins = localStorage.getItem("ins");
+
   return (
     <div className="w-full  min-h-[100vh] h-max flex justify-center items-start py-[3rem]">
       <div className="w-full min-h-[70vh] h-max flex justify-start items-center flex-col">
@@ -218,7 +224,7 @@ const Page = () => {
             <RestartAltIcon className="text-halfBlack text-[20px]" />
           </button>
           <div className="text-[15px]">
-            {ins.normalize().replace("-", "  ")}
+            {ins?.normalize().replace("-", "  ") || Term Insurance}
           </div>
         </div>
         <div
