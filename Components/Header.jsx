@@ -23,7 +23,6 @@ const Header = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const dropdownRef = useRef(null);
   const [schedule, setSchedule] = useState(false);
-
   const path = usePathname();
   const [activeDropdown, setActiveDropdown] = useState(null);
 
@@ -35,25 +34,60 @@ const Header = () => {
         termLife: {
           title: "Term Life Insurance",
           items: [
-            "What is Term Life Insurance",
-            "T10 Term Insurance",
-            "T20 Term Insurance",
-            "T30 Term Insurance",
-            "Term Insurance Calculator",
-            "Non-Medical Term Insurance",
-            "Compare Term Plans",
+            {
+              text: "What is Term Life Insurance",
+              link: `/insurance/term-life`,
+            },
+            {
+              text: "What is Term Life Insurance",
+              link: `/insurance/term-life`,
+            },
+            {
+              text: "What is Term Life Insurance",
+              link: `/insurance/term-life`,
+            },
+            {
+              text: "What is Term Life Insurance",
+              link: `/insurance/term-life`,
+            },
+            {
+              text: "What is Term Life Insurance",
+              link: `/insurance/term-life`,
+            },
+            {
+              text: "What is Term Life Insurance",
+              link: `/insurance/term-life`,
+            },
+            {
+              text: "What is Term Life Insurance",
+              link: `/insurance/term-life`,
+            },
           ],
         },
         wholeLife: {
           title: "Whole Life Insurance",
           items: [
-            "What is Whole Life Insurance",
-            "Participating Whole Life",
-            "Non-Participating Whole Life",
-            "Universal Life Plans",
-            "Investment Options",
-            "Cash Value Calculator",
-            "Estate Planning",
+            {
+              text: "What is Whoe Life Insurance",
+              link: `/insurance/whole-life`,
+            },
+
+            {
+              text: "What is Whoe Life Insurance",
+              link: `/insurance/whole-life`,
+            },
+            {
+              text: "What is Whoe Life Insurance",
+              link: `/insurance/whole-life`,
+            },
+            {
+              text: "What is Whoe Life Insurance",
+              link: `/insurance/whole-life`,
+            },
+            {
+              text: "What is Whoe Life Insurance",
+              link: `/insurance/whole-life`,
+            },
           ],
         },
       },
@@ -61,27 +95,57 @@ const Header = () => {
     {
       name: "Mortgage Insurance",
       dropdown: [
-        "What is Mortgage Insurance",
-        "CMHC Insurance",
-        "Private Mortgage Insurance",
-        "Self-Employed Coverage",
-        "First-Time Home Buyer",
-        "Refinance Calculator",
-        "Down Payment Calculator",
-        "Provincial Programs",
+        {
+          text: "What is Mortgage Insurance",
+          link: "/insurance/mortgage-protection",
+        },
+
+        {
+          text: "What is Mortgage Insurance",
+          link: "/insurance/mortgage-protection",
+        },
+        {
+          text: "What is Mortgage Insurance",
+          link: "/insurance/mortgage-protection",
+        },
+        {
+          text: "What is Mortgage Insurance",
+          link: "/insurance/mortgage-protection",
+        },
+        {
+          text: "What is Mortgage Insurance",
+          link: "/insurance/mortgage-protection",
+        },
+        {
+          text: "What is Mortgage Insurance",
+          link: "/insurance/mortgage-protection",
+        },
       ],
     },
     {
       name: "Critical Illness",
       dropdown: [
-        "What is Critical Illness",
-        "Coverage Benefits",
-        "25 Covered Conditions",
-        "Return of Premium",
-        "Child Critical Illness",
-        "Critical Illness Calculator",
-        "Compare Plans",
-        "Claims Process",
+        {
+          text: "What is Critical Illness",
+          link: "/insurance/critical-illness",
+        },
+
+        {
+          text: "What is Critical Illness",
+          link: "/insurance/critical-illness",
+        },
+        {
+          text: "What is Critical Illness",
+          link: "/insurance/critical-illness",
+        },
+        {
+          text: "What is Critical Illness",
+          link: "/insurance/critical-illness",
+        },
+        {
+          text: "What is Critical Illness",
+          link: "/insurance/critical-illness",
+        },
       ],
     },
   ];
@@ -109,14 +173,14 @@ const Header = () => {
     setSidebarOpen((prev) => !prev);
   };
 
-  useEffect(() => {
-    const tk = sessionStorage.getItem("talked");
-    setTalked(tk);
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+  // useEffect(() => {
+  //   const tk = sessionStorage.getItem("talked");
+  //   setTalked(tk);
+  //   document.addEventListener("mousedown", handleClickOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleClickOutside);
+  //   };
+  // }, []);
 
   return (
     <>
@@ -175,45 +239,45 @@ const Header = () => {
 
                         {activeDropdown === index &&
                           (item.hasDoubleColumn ? (
-                            <div className="absolute  left-[0px] mt-4 w-[500px] pl-[1rem] bg-white shadow-lg rounded-lg py-6 z-10">
+                            <div className="absolute  left-[0px] mt-4 w-[500px] pl-[1rem] bg-white shadow-lg rounded-lg py-6 pt-3 z-10">
                               <div className="flex">
                                 <div className="flex-1 border-r border-gray-200">
-                                  <h3 className="px-4 py-2 font-medium text-blue-600">
-                                    {item.dropdown.termLife.title}
-                                  </h3>
+                                  <Link href={"/insurance/term-life"}>
+                                    <h3 className="px-4 py-2 font-medium text-blue-600">
+                                      {item.dropdown.termLife.title}
+                                    </h3>
+                                  </Link>
                                   <ul>
                                     {item.dropdown.termLife.items.map(
                                       (subItem, subIndex) => (
                                         <li key={subIndex}>
-                                          <a
-                                            href={`/insurance/${subItem
-                                              .toLowerCase()
-                                              .replace(/ /g, "-")}`}
+                                          <Link
+                                            href={subItem.link}
                                             className="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm"
                                           >
-                                            {subItem}
-                                          </a>
+                                            {subItem.text}
+                                          </Link>
                                         </li>
                                       )
                                     )}
                                   </ul>
                                 </div>
                                 <div className="flex-1">
-                                  <h3 className="px-4 py-2 font-medium text-blue-600">
-                                    {item.dropdown.wholeLife.title}
-                                  </h3>
+                                  <Link href={"/insurance/whole-life"}>
+                                    <h3 className="px-4 py-2 font-medium text-blue-600">
+                                      {item.dropdown.wholeLife.title}
+                                    </h3>
+                                  </Link>
                                   <ul>
                                     {item.dropdown.wholeLife.items.map(
                                       (subItem, subIndex) => (
                                         <li key={subIndex}>
-                                          <a
-                                            href={`/insurance/${subItem
-                                              .toLowerCase()
-                                              .replace(/ /g, "-")}`}
+                                          <Link
+                                            href={subItem.link}
                                             className="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm"
                                           >
-                                            {subItem}
-                                          </a>
+                                            {subItem.text}
+                                          </Link>
                                         </li>
                                       )
                                     )}
@@ -222,16 +286,14 @@ const Header = () => {
                               </div>
                             </div>
                           ) : (
-                            <ul className="absolute left-0 mt-4 w-48 bg-white shadow-lg rounded-lg py-2 z-10">
+                            <ul className="absolute left-0 mt-4 w-56 bg-white shadow-lg rounded-lg py-2 z-10">
                               {item.dropdown.map((subItem, subIndex) => (
                                 <li key={subIndex}>
                                   <a
-                                    href={`/insurance/${subItem
-                                      .toLowerCase()
-                                      .replace(/ /g, "-")}`}
+                                    href={subItem.link}
                                     className="block px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm"
                                   >
-                                    {subItem}
+                                    {subItem.text}
                                   </a>
                                 </li>
                               ))}

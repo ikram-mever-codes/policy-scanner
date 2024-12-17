@@ -86,11 +86,11 @@ const HeroSection = () => {
         </div>
 
         {/* Right Content - Image */}
-        <div className="w-full h-full flex justify-start items-end">
+        {/* <div className="w-full h-full flex justify-start items-end">
           <div className="relative bottom-0 left-[150px] lg:left-[200px] w-[492px] h-[466px]">
             <Image src={home1} alt="Insurance Hero" className="object-cover" />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

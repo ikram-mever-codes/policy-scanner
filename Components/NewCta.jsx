@@ -1,8 +1,13 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import newCta1 from "../assets/new-cta-1.png";
 import Image from "next/image";
+import ScheduleACall from "./ScheduleACall";
+import { Modal } from "@mui/material";
 
 const NewCta = () => {
+  const [schedule, setSchedule] = useState(false);
+
   return (
     <section className="w-full h-max  bg-white gap-[3rem]  flex justify-center items-center flex-col">
       <div className="w-[1140px] h-full  shadow-2xl  bg-foreground2 p-4 pt-[3rem]  rounded-2xl flex justify-center overflow-hidden items-center flex-col  gap-[3rem]">

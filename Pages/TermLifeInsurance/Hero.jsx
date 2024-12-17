@@ -151,7 +151,7 @@ const Hero = () => {
             </p>
           </div>
         </div>
-        <div className="w-max h-full flex justify-start items-end">
+        {/* <div className="w-max h-full flex justify-start items-end">
           <Image
             src={termLifeHero}
             alt="Policy Scanner Insurance"
@@ -159,7 +159,7 @@ const Hero = () => {
             width={500}
             className="object-fit   relative bottom-0 left-[200px] object-center"
           />
-        </div>
+        </div> */}
         {/* 
         <div className="absolute bottom-4 left-[9rem] w-full">
           <div className="container mx-auto px-4">
