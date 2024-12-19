@@ -31,7 +31,7 @@ const HeroSection = () => {
         <div className="h-full w-full">
           {/* Left Content */}
           <div className=" absolute   w-full h-full z-[1]">
-            <div className="w-max h-full relative xl:left-[700px] top-[20px] flex justify-start py-[70px] gap-4 items-center flex-col">
+            <div className="w-max h-full relative xl:left-[600px] top-[20px] flex justify-start py-[70px] gap-4 items-center flex-col">
               <div className="w-full h-max flex justify-end items-center flex-col">
                 <h1 className="text-[50px] font-bold leading-[4rem] text-left text-white">
                   Let us do the comparison <br /> You enjoy the savings
