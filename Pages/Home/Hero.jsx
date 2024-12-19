@@ -30,8 +30,8 @@ const HeroSection = () => {
         {/* Content Grid */}
         <div className="h-full w-full">
           {/* Left Content */}
-          <div className=" absolute   w-full h-full z-[1000]">
-            <div className="w-max h-full relative left-[500px] flex justify-start py-[70px] gap-4 items-center flex-col">
+          <div className=" absolute   w-full h-full z-[1]">
+            <div className="w-max h-full relative xl:left-[700px] top-[20px] flex justify-start py-[70px] gap-4 items-center flex-col">
               <div className="w-full h-max flex justify-end items-center flex-col">
                 <h1 className="text-[50px] font-bold leading-[4rem] text-left text-white">
                   Let us do the comparison <br /> You enjoy the savings
@@ -40,7 +40,7 @@ const HeroSection = () => {
                   Compare Canada's best life Insurance rates instantly
                 </p>
               </div>
-              <div className="w-max self-start grid grid-cols-2 gap-x-8 gap-y-4 mt-6">
+              <div className="w-max self-start grid grid-cols-2   gap-x-8 gap-y-4 mt-6">
                 {[
                   { name: "Term Life", icon: <Shield /> },
                   { name: "Whole Life", icon: <Star /> },
@@ -65,7 +65,7 @@ const HeroSection = () => {
                                 shadow-2xl text-teal-600 rounded-2xl bg-white/95
                                 transform transition-all duration-300 ease-in-out
                                 hover:scale-105 hover:shadow-lg
-                                cursor-pointer overflow-hidden"
+                                cursor-pointer overflow-hidden "
                     >
                       <h3 className="relative text-center w-full flex justify-start px-[1.5rem] items-center gap-3 text-lg font-normal z-10">
                         {item.icon} {item.name}
